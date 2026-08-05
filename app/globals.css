@@ -30,6 +30,8 @@ body {
   margin: 0;
   background: var(--cream);
   color: var(--ink);
+  font-size: 18px;
+  line-height: 1.5;
   font-family:
     Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
@@ -58,7 +60,7 @@ a {
 
 .app-shell {
   display: grid;
-  grid-template-columns: 248px minmax(0, 1fr);
+  grid-template-columns: 264px minmax(0, 1fr);
   min-height: 100vh;
 }
 
@@ -91,7 +93,7 @@ a {
   display: grid;
   place-items: center;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 15px;
+  font-size: 16px;
   position: relative;
 }
 
@@ -109,13 +111,13 @@ a {
 
 .brand strong {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 17px;
+  font-size: 19px;
   letter-spacing: 0.14em;
 }
 
 .brand small {
   color: #91aea5;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.36em;
   margin-top: 2px;
 }
@@ -132,7 +134,7 @@ a {
   border-radius: 8px;
   color: #9fb1b8;
   display: grid;
-  font-size: 14px;
+  font-size: 16px;
   grid-template-columns: 24px 1fr auto;
   padding: 11px 12px;
   transition: 160ms ease;
@@ -153,14 +155,14 @@ a {
 
 .side-nav a span {
   color: #7ea695;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .side-nav a b {
   background: var(--green);
   border-radius: 99px;
   color: white;
-  font-size: 10px;
+  font-size: 12px;
   min-width: 20px;
   padding: 3px 6px;
   text-align: center;
@@ -174,7 +176,7 @@ a {
 
 .side-section > p {
   color: #71878f;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   margin: 0 0 14px;
   text-transform: uppercase;
@@ -184,7 +186,7 @@ a {
   align-items: center;
   color: #a9b7bc;
   display: flex;
-  font-size: 12px;
+  font-size: 14px;
   justify-content: space-between;
   margin: 10px 0;
 }
@@ -192,7 +194,7 @@ a {
 .side-stat strong {
   color: white;
   font-family: Georgia, serif;
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .source-health {
@@ -205,7 +207,7 @@ a {
 
 .health-head {
   display: flex;
-  font-size: 10px;
+  font-size: 12px;
   justify-content: space-between;
 }
 
@@ -234,7 +236,7 @@ a {
 
 .source-health small {
   color: #6d848c;
-  font-size: 9px;
+  font-size: 12px;
 }
 
 main {
@@ -257,7 +259,7 @@ main {
 
 .topbar p {
   color: var(--muted);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   margin: 0 0 3px;
   text-transform: uppercase;
@@ -265,7 +267,7 @@ main {
 
 .topbar strong {
   font-family: Georgia, "Noto Serif TC", serif;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
 }
 
@@ -302,7 +304,7 @@ main {
   color: #f8f3e8;
   display: grid;
   font-family: Georgia, serif;
-  font-size: 12px;
+  font-size: 14px;
   height: 36px;
   place-items: center;
   width: 36px;
@@ -361,7 +363,7 @@ main {
   align-items: center;
   color: #91b3a5;
   display: flex;
-  font-size: 10px;
+  font-size: 12px;
   gap: 8px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -391,7 +393,7 @@ main {
 
 .hero-copy > p {
   color: #aab8ba;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.8;
   margin: 0;
   max-width: 600px;
@@ -413,13 +415,13 @@ main {
 .hero-metrics strong {
   color: #f5f0e6;
   font-family: Georgia, serif;
-  font-size: 27px;
+  font-size: 30px;
   font-weight: 400;
 }
 
 .hero-metrics span {
   color: #768f96;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.12em;
 }
 
@@ -444,12 +446,12 @@ main {
 
 .panel-kicker span {
   font-family: Georgia, "Noto Serif TC", serif;
-  font-size: 17px;
+  font-size: 19px;
 }
 
 .panel-kicker small {
   color: #839087;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.15em;
 }
 
@@ -471,17 +473,17 @@ main {
 }
 
 .signal-row strong {
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .signal-row small {
   color: #7d8887;
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .signal-row b {
   font-family: Georgia, serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 400;
 }
 
@@ -526,7 +528,7 @@ main {
   display: grid;
   flex: 0 0 auto;
   font-family: Georgia, serif;
-  font-size: 10px;
+  font-size: 12px;
   height: 18px;
   place-items: center;
   width: 18px;
@@ -534,7 +536,7 @@ main {
 
 .signal-note p {
   color: #687673;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.5;
   margin: 0;
 }
@@ -542,7 +544,7 @@ main {
 .signal-note strong {
   color: var(--ink);
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   margin-bottom: 2px;
 }
 
@@ -574,7 +576,7 @@ main {
 
 .search-box > span {
   color: #73817e;
-  font-size: 22px;
+  font-size: 24px;
   margin-right: 8px;
 }
 
@@ -596,7 +598,7 @@ kbd {
   border: 1px solid #d3d5d1;
   border-radius: 4px;
   color: #7a8380;
-  font-size: 9px;
+  font-size: 12px;
   padding: 3px 5px;
 }
 
@@ -619,7 +621,7 @@ kbd {
 
 .priority-toggle span {
   color: var(--amber);
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .priority-toggle.selected {
@@ -658,21 +660,21 @@ kbd {
 .section-heading h2 {
   display: inline-block;
   font-family: Georgia, "Noto Serif TC", serif;
-  font-size: 21px;
+  font-size: 24px;
   font-weight: 500;
   margin: 0;
 }
 
 .section-heading p {
   color: #7a8582;
-  font-size: 10px;
+  font-size: 12px;
   margin: 6px 0 0 34px;
 }
 
 .section-index {
   color: #9aa49f;
   font-family: Georgia, serif;
-  font-size: 10px;
+  font-size: 12px;
   margin-right: 10px;
   vertical-align: 3px;
 }
@@ -680,7 +682,7 @@ kbd {
 .verified-badge {
   background: var(--green-soft);
   color: var(--green);
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   padding: 7px 9px;
 }
@@ -715,14 +717,14 @@ kbd {
 
 .update-date strong {
   font-family: Georgia, serif;
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 400;
   line-height: 1;
 }
 
 .update-date span {
   color: #89928f;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.12em;
   margin-top: 5px;
 }
@@ -732,7 +734,7 @@ kbd {
   color: #7b8684;
   display: flex;
   flex-wrap: wrap;
-  font-size: 9px;
+  font-size: 12px;
   gap: 6px;
 }
 
@@ -742,7 +744,7 @@ kbd {
   border-radius: 2px;
   color: white;
   display: inline-flex;
-  font-size: 8px;
+  font-size: 11px;
   font-style: normal;
   font-weight: 700;
   height: 20px;
@@ -753,7 +755,7 @@ kbd {
 }
 
 .importance {
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 600;
   margin-left: 4px;
   padding: 3px 6px;
@@ -771,7 +773,7 @@ kbd {
 
 .update-body h3 {
   font-family: Georgia, "Noto Serif TC", serif;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.45;
   margin: 8px 0 7px;
@@ -779,7 +781,7 @@ kbd {
 
 .update-body > p {
   color: #687674;
-  font-size: 11px;
+  font-size: 13px;
   line-height: 1.7;
   margin: 0;
 }
@@ -796,7 +798,7 @@ kbd {
 .action-line span {
   color: var(--green);
   flex: 0 0 auto;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   padding-top: 2px;
@@ -804,7 +806,7 @@ kbd {
 
 .action-line p {
   color: #596762;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.5;
   margin: 0;
 }
@@ -817,7 +819,7 @@ kbd {
 
 .update-links a {
   color: var(--green);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -826,7 +828,7 @@ kbd {
   border: 0;
   color: #89918f;
   cursor: pointer;
-  font-size: 8px;
+  font-size: 11px;
   padding: 0;
 }
 
@@ -841,7 +843,7 @@ kbd {
 
 .radar-icon {
   color: var(--green);
-  font-size: 21px;
+  font-size: 24px;
 }
 
 .deadline-list {
@@ -891,20 +893,20 @@ kbd {
 
 .deadline-content small {
   color: #84908c;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.06em;
 }
 
 .deadline-content h3 {
   font-family: Georgia, "Noto Serif TC", serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.45;
   margin: 8px 0 3px;
 }
 
 .deadline-content > p {
   color: #7a8582;
-  font-size: 9px;
+  font-size: 12px;
   margin: 0;
 }
 
@@ -919,14 +921,14 @@ kbd {
 
 .deadline-date strong {
   font-family: Georgia, serif;
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 500;
 }
 
 .deadline-date b {
   background: var(--green-soft);
   color: var(--green);
-  font-size: 8px;
+  font-size: 11px;
   padding: 4px 6px;
 }
 
@@ -951,7 +953,7 @@ kbd {
   display: grid;
   flex: 0 0 auto;
   font-family: Georgia, serif;
-  font-size: 9px;
+  font-size: 12px;
   height: 17px;
   place-items: center;
   width: 17px;
@@ -959,7 +961,7 @@ kbd {
 
 .calendar-note p {
   color: #6f7b78;
-  font-size: 8px;
+  font-size: 11px;
   line-height: 1.5;
   margin: 0;
 }
@@ -972,7 +974,7 @@ kbd {
   align-items: center;
   color: #74817d;
   display: flex;
-  font-size: 9px;
+  font-size: 12px;
   gap: 12px;
 }
 
@@ -1014,7 +1016,7 @@ kbd {
 
 .reg-head {
   color: #8a9390;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.08em;
   padding: 14px 12px 10px;
   text-transform: uppercase;
@@ -1057,7 +1059,7 @@ kbd {
 
 .reg-title strong {
   color: #687673;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.07em;
   margin-bottom: 3px;
   text-transform: uppercase;
@@ -1065,7 +1067,7 @@ kbd {
 
 .reg-title b {
   font-family: Georgia, "Noto Serif TC", serif;
-  font-size: 13px;
+  font-size: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1073,7 +1075,7 @@ kbd {
 
 .reg-title small {
   color: #8b9391;
-  font-size: 8px;
+  font-size: 11px;
   margin-top: 3px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1083,7 +1085,7 @@ kbd {
 .status-pill,
 .risk-pill {
   display: inline-flex;
-  font-size: 8px;
+  font-size: 11px;
   font-style: normal;
   justify-content: center;
   padding: 5px 7px;
@@ -1122,13 +1124,13 @@ kbd {
 
 .next-date strong {
   font-family: Georgia, serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
 }
 
 .next-date small {
   color: #8a9491;
-  font-size: 8px;
+  font-size: 11px;
 }
 
 .row-actions {
@@ -1139,7 +1141,7 @@ kbd {
 
 .row-actions i {
   color: #a6aca9;
-  font-size: 16px;
+  font-size: 18px;
   font-style: normal;
 }
 
@@ -1151,7 +1153,7 @@ kbd {
   border: 1px solid #ccd2ce;
   border-radius: 50%;
   display: grid;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 400;
   height: 24px;
   place-items: center;
@@ -1169,14 +1171,14 @@ kbd {
 
 .reg-details > div > p {
   color: #596763;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 1.7;
   margin: 6px 0 0;
 }
 
 .detail-label {
   color: var(--green);
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
 }
@@ -1196,12 +1198,12 @@ kbd {
 
 .detail-meta span {
   color: #83908b;
-  font-size: 8px;
+  font-size: 11px;
 }
 
 .detail-meta strong {
   color: #52615d;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -1217,7 +1219,7 @@ kbd {
 .detail-actions a {
   border: 1px solid #bfc9c4;
   cursor: pointer;
-  font-size: 9px;
+  font-size: 12px;
   padding: 8px 10px;
 }
 
@@ -1248,7 +1250,7 @@ kbd {
 
 .empty-state p {
   color: var(--muted);
-  font-size: 11px;
+  font-size: 13px;
 }
 
 footer {
@@ -1277,19 +1279,19 @@ footer {
 .footer-brand p {
   color: #788480;
   display: grid;
-  font-size: 9px;
+  font-size: 12px;
   margin: 0;
 }
 
 .footer-brand strong {
   color: var(--ink);
   font-family: Georgia, serif;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .disclaimer {
   color: #7c8783;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.6;
   margin: 0;
   text-align: center;
@@ -1297,7 +1299,7 @@ footer {
 
 footer > a {
   color: var(--green);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 600;
 }
 
@@ -1327,7 +1329,7 @@ footer > a {
   }
 
   .side-nav a span {
-    font-size: 18px;
+    font-size: 20px;
     margin: 0;
   }
 
@@ -1477,7 +1479,7 @@ footer > a {
   }
 
   .hero-metrics strong {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   .signal-panel {
