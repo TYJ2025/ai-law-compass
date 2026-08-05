@@ -1,0 +1,86 @@
+[
+  {
+    "id": "uk-data-call-2026",
+    "date": "2026-07-15",
+    "jurisdiction": "英國",
+    "flag": "UK",
+    "category": "公開徵詢",
+    "importance": "中",
+    "title": "英國就 AI 時代的資料監管啟動證據徵集",
+    "summary": "DSIT 徵求個人與非個人資料規範如何影響 AI 使用、再利用與風險治理的實務案例。",
+    "action": "評估企業在英國的資料再利用摩擦與政策立場，決定是否提出意見。",
+    "sourceUrl": "https://www.gov.uk/government/calls-for-evidence/data-regulation-in-the-age-of-ai-and-other-data-intensive-technologies"
+  },
+  {
+    "id": "us-eo-14409",
+    "date": "2026-06-02",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "行政命令",
+    "importance": "高",
+    "title": "美國發布先進 AI 創新與安全行政命令",
+    "summary": "行政命令聚焦 AI 驅動的資安、關鍵基礎設施防護與聯邦政府採用。",
+    "action": "涉及美國政府、關鍵基礎設施或國安供應鏈者，應追蹤後續機關指令。",
+    "sourceUrl": "https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/"
+  },
+  {
+    "id": "tw-ai-implementation",
+    "date": "2026-05-21",
+    "jurisdiction": "臺灣",
+    "flag": "TW",
+    "category": "施行規劃",
+    "importance": "高",
+    "title": "行政院公布人工智慧基本法施行規劃",
+    "summary": "政府將推進可信任 AI、風險分類、產業指引與跨部會治理工作。",
+    "action": "將臺灣 AI 風險分類與子法列為持續監測項目。",
+    "sourceUrl": "https://www.ey.gov.tw/Page/448DE008087A1971/f784469b-fe42-438b-8788-18846a53cec4"
+  },
+  {
+    "id": "sg-agentic-update",
+    "date": "2026-05-20",
+    "jurisdiction": "新加坡",
+    "flag": "SG",
+    "category": "指引更新",
+    "importance": "中",
+    "title": "新加坡更新代理型 AI 治理框架",
+    "summary": "新版納入企業案例與實務做法，強調代理權限、人類核准節點與生命週期控制。",
+    "action": "若部署 AI agent，將框架納入設計審查與第三方採購評估。",
+    "sourceUrl": "https://www.imda.gov.sg/resources/press-releases-factsheets-and-speeches/press-releases/2026/accelerate-real-world-deployment"
+  },
+  {
+    "id": "colorado-sb26-189",
+    "date": "2026-05-14",
+    "jurisdiction": "美國・科羅拉多州",
+    "flag": "US",
+    "category": "新法簽署",
+    "importance": "高",
+    "title": "科羅拉多州簽署自動化決策技術法",
+    "summary": "新法重新規範影響重大決策的 ADMT，2027 年起要求文件、告知、資料更正與人工作業覆核。",
+    "action": "在 2027 年前完成受規範決策流程與模型供應商盤點。",
+    "sourceUrl": "https://www.leg.colorado.gov/bills/SB26-189"
+  },
+  {
+    "id": "china-label-enforcement",
+    "date": "2026-04-28",
+    "jurisdiction": "中國",
+    "flag": "CN",
+    "category": "執法",
+    "importance": "高",
+    "title": "網信部門查處 AI 生成合成內容標識違規",
+    "summary": "主管機關就多個 App 與網站未有效落實生成合成內容標識要求採取執法行動。",
+    "action": "檢查顯式與隱式標識、下載檔案 metadata 及模型資訊揭露流程。",
+    "sourceUrl": "https://www.cac.gov.cn/2026-04/28/c_1779119736411711.htm"
+  },
+  {
+    "id": "korea-improvement-group",
+    "date": "2026-03-25",
+    "jurisdiction": "韓國",
+    "flag": "KR",
+    "category": "制度檢討",
+    "importance": "中",
+    "title": "韓國成立 AI 基本法制度改善工作小組",
+    "summary": "產官學與公民社會共同檢視基本法、施行令、通知與指引的改善空間。",
+    "action": "在寬限期間追蹤透明度、安全與高影響 AI 規則是否調整。",
+    "sourceUrl": "https://www.msit.go.kr/eng/bbs/view.do?bbsSeqNo=42&mId=4&mPid=2&nttSeqNo=1238&sCode=eng"
+  }
+]
