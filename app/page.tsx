@@ -9,7 +9,7 @@ type RegulatoryUpdate = (typeof updatesData)[number];
 
 const regulations = regulationsData as Regulation[];
 const updates = updatesData as RegulatoryUpdate[];
-const AS_OF = new Date("2026-08-04T00:00:00+08:00");
+const AS_OF = new Date("2026-08-05T00:00:00+08:00");
 
 const regionSignals = [
   { name: "亞太", count: 5, tone: "critical", note: "基本法與生成式 AI 執法加速" },
@@ -90,6 +90,12 @@ export default function Home() {
         item.titleEn,
         item.jurisdiction,
         item.summary,
+        item.detailedOverview,
+        item.scope,
+        item.articleCount,
+        item.structure,
+        item.transition,
+        item.keyPoints.join(" "),
         item.action,
         item.sectors.join(" "),
       ]
@@ -164,7 +170,7 @@ export default function Home() {
           <div className="health-bar">
             <i />
           </div>
-          <small>8 個司法管轄區 · 2026/08/04 查核</small>
+          <small>8 個司法管轄區 · 2026/08/05 查核</small>
         </div>
       </aside>
 
@@ -172,7 +178,7 @@ export default function Home() {
         <header className="topbar">
           <div>
             <p>企業法遵情報中心</p>
-            <strong>星期二，2026 年 8 月 4 日</strong>
+            <strong>星期三，2026 年 8 月 5 日</strong>
           </div>
           <div className="top-actions">
             <button className="icon-button" aria-label="通知">
@@ -433,7 +439,7 @@ export default function Home() {
                       </span>
                       <span className="next-date">
                         <strong>{regulation.nextDeadline}</strong>
-                        <small>{regulation.type}</small>
+                        <small>{regulation.type}・{regulation.articleCount}</small>
                       </span>
                       <span className="row-actions">
                         <i
@@ -449,14 +455,58 @@ export default function Home() {
 
                     {isExpanded && (
                       <div className="reg-details">
-                        <div>
+                        <div className="law-facts" aria-label="法規基本資料">
+                          <div>
+                            <span>公布／發布日</span>
+                            <strong>{regulation.promulgationDate}</strong>
+                          </div>
+                          <div>
+                            <span>生效／適用日</span>
+                            <strong>{regulation.effectiveDate}</strong>
+                          </div>
+                          <div>
+                            <span>條文數量</span>
+                            <strong>{regulation.articleCount}</strong>
+                          </div>
+                          <div>
+                            <span>文件結構</span>
+                            <strong>{regulation.structure}</strong>
+                          </div>
+                        </div>
+
+                        <div className="detail-section">
                           <span className="detail-label">法遵摘要</span>
                           <p>{regulation.summary}</p>
                         </div>
-                        <div>
+                        <div className="detail-section">
                           <span className="detail-label">建議行動</span>
                           <p>{regulation.action}</p>
                         </div>
+
+                        <div className="detail-section detail-wide">
+                          <span className="detail-label">適用範圍</span>
+                          <p>{regulation.scope}</p>
+                        </div>
+
+                        <div className="detail-section detail-wide">
+                          <span className="detail-label">規範全貌</span>
+                          <p>{regulation.detailedOverview}</p>
+                        </div>
+
+                        <div className="key-points detail-wide">
+                          <span className="detail-label">法規重點</span>
+                          <ol>
+                            {regulation.keyPoints.map((point) => (
+                              <li key={point}>{point}</li>
+                            ))}
+                          </ol>
+                        </div>
+
+                        <div className="transition-note detail-wide">
+                          <span className="detail-label">期限／過渡安排</span>
+                          <p>{regulation.transition}</p>
+                        </div>
+
                         <div className="detail-meta">
                           <p>
                             <span>主管機關</span>
