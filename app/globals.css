@@ -16,6 +16,8 @@
   --red-soft: #f4dfda;
   --blue-soft: #dce9ef;
   --shadow: 0 18px 50px rgba(12, 32, 43, 0.08);
+  --font-primary: "Microsoft JhengHei", "Microsoft JhengHei UI", "微軟正黑體",
+    "Noto Sans TC", "PingFang TC", "Microsoft YaHei", sans-serif;
 }
 
 * {
@@ -32,9 +34,7 @@ body {
   color: var(--ink);
   font-size: 18px;
   line-height: 1.5;
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  font-family: var(--font-primary);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -92,7 +92,7 @@ a {
   border: 1px solid rgba(255, 255, 255, 0.5);
   display: grid;
   place-items: center;
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   position: relative;
 }
@@ -110,7 +110,7 @@ a {
 }
 
 .brand strong {
-  font-family: Georgia, "Times New Roman", serif;
+  font-family: var(--font-primary);
   font-size: 19px;
   letter-spacing: 0.14em;
 }
@@ -193,7 +193,7 @@ a {
 
 .side-stat strong {
   color: white;
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 18px;
 }
 
@@ -266,7 +266,7 @@ main {
 }
 
 .topbar strong {
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
   font-size: 15px;
   font-weight: 500;
 }
@@ -303,7 +303,7 @@ main {
   border-radius: 50%;
   color: #f8f3e8;
   display: grid;
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 14px;
   height: 36px;
   place-items: center;
@@ -378,7 +378,7 @@ main {
 }
 
 .hero h1 {
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
   font-size: clamp(36px, 4vw, 62px);
   font-weight: 400;
   letter-spacing: -0.04em;
@@ -414,7 +414,7 @@ main {
 
 .hero-metrics strong {
   color: #f5f0e6;
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 30px;
   font-weight: 400;
 }
@@ -445,7 +445,7 @@ main {
 }
 
 .panel-kicker span {
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
   font-size: 19px;
 }
 
@@ -482,7 +482,7 @@ main {
 }
 
 .signal-row b {
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 20px;
   font-weight: 400;
 }
@@ -527,7 +527,7 @@ main {
   color: var(--green);
   display: grid;
   flex: 0 0 auto;
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 12px;
   height: 18px;
   place-items: center;
@@ -659,7 +659,7 @@ kbd {
 
 .section-heading h2 {
   display: inline-block;
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
   font-size: 24px;
   font-weight: 500;
   margin: 0;
@@ -673,7 +673,7 @@ kbd {
 
 .section-index {
   color: #9aa49f;
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 12px;
   margin-right: 10px;
   vertical-align: 3px;
@@ -716,7 +716,7 @@ kbd {
 }
 
 .update-date strong {
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 28px;
   font-weight: 400;
   line-height: 1;
@@ -772,7 +772,7 @@ kbd {
 }
 
 .update-body h3 {
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
   font-size: 18px;
   font-weight: 600;
   line-height: 1.45;
@@ -898,7 +898,7 @@ kbd {
 }
 
 .deadline-content h3 {
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
   font-size: 16px;
   line-height: 1.45;
   margin: 8px 0 3px;
@@ -920,7 +920,7 @@ kbd {
 }
 
 .deadline-date strong {
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 13px;
   font-weight: 500;
 }
@@ -952,7 +952,7 @@ kbd {
   color: #687571;
   display: grid;
   flex: 0 0 auto;
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 12px;
   height: 17px;
   place-items: center;
@@ -1066,7 +1066,7 @@ kbd {
 }
 
 .reg-title b {
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
   font-size: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1123,7 +1123,7 @@ kbd {
 }
 
 .next-date strong {
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 12px;
   font-weight: 500;
 }
@@ -1215,7 +1215,7 @@ kbd {
 }
 
 .law-facts strong {
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
   font-size: 14px;
   font-weight: 500;
   line-height: 1.5;
@@ -1250,7 +1250,7 @@ kbd {
   color: var(--green);
   content: counter(law-point, decimal-leading-zero);
   display: grid;
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 10px;
   height: 24px;
   place-items: center;
@@ -1333,7 +1333,7 @@ kbd {
 }
 
 .empty-state strong {
-  font-family: Georgia, "Noto Serif TC", serif;
+  font-family: var(--font-primary);
 }
 
 .empty-state p {
@@ -1373,7 +1373,7 @@ footer {
 
 .footer-brand strong {
   color: var(--ink);
-  font-family: Georgia, serif;
+  font-family: var(--font-primary);
   font-size: 14px;
 }
 
