@@ -511,7 +511,11 @@ export default function Home() {
             <p className="disclaimer">
               本站內容為監管情報整理，不構成法律意見。重大決策請諮詢合格法律專業人士。
             </p>
-            <a href="https://github.com" rel="noreferrer" target="_blank">
+            <a
+              href="https://github.com/TYJ2025/ai-law-compass"
+              rel="noreferrer"
+              target="_blank"
+            >
               資料版本由 GitHub 管理 ↗
             </a>
           </footer>

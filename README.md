@@ -2,6 +2,8 @@
 
 面向企業法遵團隊的全球 AI 法規與監管情報 Dashboard。
 
+正式網站：https://tyj2025.github.io/ai-law-compass/
+
 ## 目前功能
 
 - 全球 AI 法規摘要、狀態、風險與官方原文
