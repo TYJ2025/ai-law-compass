@@ -1,22 +1,57 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import researchRegulationsData from "@/data/regulations-research.json";
 import regulationsData from "@/data/regulations.json";
 import updatesData from "@/data/updates.json";
 
-type Regulation = (typeof regulationsData)[number];
+type Regulation =
+  | (typeof regulationsData)[number]
+  | (typeof researchRegulationsData)[number];
 type RegulatoryUpdate = (typeof updatesData)[number];
 
-const regulations = regulationsData as Regulation[];
+const jurisdictionOrder = [
+  "歐盟",
+  "臺灣",
+  "中國",
+  "日本",
+  "韓國",
+  "新加坡",
+  "印度",
+  "英國",
+  "美國",
+  "加拿大",
+  "巴西",
+  "澳洲",
+  "國際標準",
+];
+
+const regulations = [
+  ...regulationsData,
+  ...researchRegulationsData,
+].sort((left, right) => {
+  const jurisdictionDifference =
+    jurisdictionOrder.indexOf(left.jurisdiction) -
+    jurisdictionOrder.indexOf(right.jurisdiction);
+
+  if (jurisdictionDifference !== 0) return jurisdictionDifference;
+  if (right.priority !== left.priority) return right.priority - left.priority;
+  return left.title.localeCompare(right.title, "zh-Hant");
+}) as Regulation[];
 const updates = updatesData as RegulatoryUpdate[];
 const AS_OF = new Date("2026-08-07T00:00:00+08:00");
 
 const regionSignals = [
-  { name: "亞太", count: 6, tone: "critical", note: "基本法與風險分類框架加速落地" },
-  { name: "歐洲", count: 2, tone: "high", note: "EU AI Act 進入主要適用期" },
-  { name: "北美", count: 2, tone: "watch", note: "州法與 NIST 治理框架並行" },
-  { name: "國際標準", count: 1, tone: "quiet", note: "ISO 42001 支援可稽核治理" },
-];
+  { name: "亞太", region: "亞太", tone: "critical", note: "基本法、平台規則與產業指引並行" },
+  { name: "歐洲", region: "歐洲", tone: "high", note: "AI Act 與資料、資安規範交疊" },
+  { name: "北美", region: "北美", tone: "watch", note: "聯邦框架、採購與地方立法並行" },
+  { name: "拉丁美洲", region: "拉丁美洲", tone: "high", note: "巴西資料法與 AI 法案並進" },
+  { name: "大洋洲", region: "大洋洲", tone: "watch", note: "企業指南與政府強制政策分流" },
+  { name: "國際標準", region: "國際", tone: "quiet", note: "ISO 與 OECD 支援治理互通" },
+].map((signal) => ({
+  ...signal,
+  count: regulations.filter((item) => item.region === signal.region).length,
+}));
 
 const deadlineItems = [
   {
@@ -61,6 +96,7 @@ function deadlineLabel(date: string) {
 function statusClass(statusGroup: string) {
   if (statusGroup === "生效") return "status-live";
   if (statusGroup === "即將生效") return "status-soon";
+  if (statusGroup === "草案") return "status-draft";
   return "status-guidance";
 }
 
@@ -160,7 +196,7 @@ export default function Home() {
             <strong>{watched.length}</strong>
           </div>
           <div className="side-stat">
-            <span>高優先法規</span>
+            <span>高優先文件</span>
             <strong>{regulations.filter((item) => item.priority >= 4).length}</strong>
           </div>
         </div>
@@ -214,7 +250,7 @@ export default function Home() {
               <div className="hero-metrics">
                 <div>
                   <strong>{regulations.length}</strong>
-                  <span>已查核法規</span>
+                  <span>已查核文件</span>
                 </div>
                 <div>
                   <strong>{updates.length}</strong>
@@ -283,6 +319,7 @@ export default function Home() {
               <option>全部狀態</option>
               <option>生效</option>
               <option>即將生效</option>
+              <option>草案</option>
               <option>指引</option>
             </select>
             <button
@@ -458,12 +495,13 @@ export default function Home() {
                 <span className="section-index">03</span>
                 <h2>全球法規庫</h2>
                 <p>
-                  顯示 {filteredRegulations.length} / {regulations.length} 筆已查核資料
+                  顯示 {filteredRegulations.length} / {regulations.length} 筆已查核資料；涵蓋法律、施行細則、監管指引與國際標準
                 </p>
               </div>
               <div className="legend">
                 <span><i className="legend-live" />已生效</span>
                 <span><i className="legend-soon" />即將生效</span>
+                <span><i className="legend-draft" />審議中</span>
                 <span><i className="legend-guide" />監管指引</span>
               </div>
             </div>

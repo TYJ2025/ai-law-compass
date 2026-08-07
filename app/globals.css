@@ -1129,6 +1129,10 @@ kbd {
   background: var(--amber);
 }
 
+.legend-draft {
+  background: #806198;
+}
+
 .legend-guide {
   background: #6e8fa1;
 }
@@ -1229,6 +1233,11 @@ kbd {
 .status-soon {
   background: var(--amber-soft);
   color: #936017;
+}
+
+.status-draft {
+  background: #ebe4f3;
+  color: #725487;
 }
 
 .status-guidance {

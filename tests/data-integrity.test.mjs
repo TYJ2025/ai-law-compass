@@ -4,9 +4,14 @@ import test from "node:test";
 
 const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
 
+const readRegulations = async () => [
+  ...(await readJson("data/regulations.json")),
+  ...(await readJson("data/regulations-research.json")),
+];
+
 test("regulations contain complete compliance profiles", async () => {
-  const regulations = await readJson("data/regulations.json");
-  assert.ok(regulations.length >= 11);
+  const regulations = await readRegulations();
+  assert.ok(regulations.length >= 38);
 
   for (const regulation of regulations) {
     assert.match(regulation.sourceUrl, /^https:\/\//);
@@ -24,7 +29,7 @@ test("regulations contain complete compliance profiles", async () => {
 });
 
 test("global governance frameworks are present and correctly classified", async () => {
-  const regulations = await readJson("data/regulations.json");
+  const regulations = await readRegulations();
   const byId = new Map(regulations.map((regulation) => [regulation.id, regulation]));
 
   for (const id of ["nist-ai-rmf", "iso-iec-42001", "taiwan-ai-risk-classification"]) {
@@ -35,6 +40,67 @@ test("global governance frameworks are present and correctly classified", async 
   assert.match(byId.get("nist-ai-rmf").status, /修訂中/);
   assert.match(byId.get("iso-iec-42001").effectiveDate, /自願採用/);
   assert.match(byId.get("taiwan-ai-risk-classification").structure, /20 子類型/);
+});
+
+test("every represented country has multiple researched instruments", async () => {
+  const regulations = await readRegulations();
+  const countryCounts = regulations.reduce((counts, regulation) => {
+    if (regulation.jurisdiction !== "國際標準") {
+      counts.set(regulation.jurisdiction, (counts.get(regulation.jurisdiction) ?? 0) + 1);
+    }
+    return counts;
+  }, new Map());
+
+  for (const [country, count] of countryCounts) {
+    assert.ok(count >= 2, `${country} has only ${count} researched instrument`);
+  }
+
+  for (const country of ["加拿大", "澳洲", "巴西", "印度"]) {
+    assert.ok(countryCounts.has(country), `missing newly researched jurisdiction: ${country}`);
+  }
+});
+
+test("researched instruments link to official primary sources", async () => {
+  const regulations = await readJson("data/regulations-research.json");
+  const officialHosts = [
+    "digital-strategy.ec.europa.eu",
+    "cac.gov.cn",
+    "meti.go.jp",
+    "msit.go.kr",
+    "ey.gov.tw",
+    "fsc.gov.tw",
+    "pdpc.gov.sg",
+    "imda.gov.sg",
+    "ico.org.uk",
+    "gov.uk",
+    "nist.gov",
+    "whitehouse.gov",
+    "tbs-sct.canada.ca",
+    "canada.ca",
+    "industry.gov.au",
+    "digital.gov.au",
+    "planalto.gov.br",
+    "camara.leg.br",
+    "pib.gov.in",
+    "meity.gov.in",
+    "iso.org",
+    "oecd.org",
+  ];
+
+  for (const regulation of regulations) {
+    const hostname = new URL(regulation.sourceUrl).hostname.replace(/^www\./, "");
+    assert.ok(
+      officialHosts.some((host) => hostname === host || hostname.endsWith(`.${host}`)),
+      `${regulation.id} does not use an approved official source: ${hostname}`,
+    );
+  }
+});
+
+test("legislative proposals are not presented as enacted law", async () => {
+  const regulations = await readRegulations();
+  const brazilBill = regulations.find((regulation) => regulation.id === "brazil-ai-bill-2338");
+  assert.equal(brazilBill.statusGroup, "草案");
+  assert.match(brazilBill.effectiveDate, /尚未生效/);
 });
 
 test("regulatory updates are sorted newest first", async () => {
