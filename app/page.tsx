@@ -9,7 +9,7 @@ type RegulatoryUpdate = (typeof updatesData)[number];
 
 const regulations = regulationsData as Regulation[];
 const updates = updatesData as RegulatoryUpdate[];
-const AS_OF = new Date("2026-08-05T00:00:00+08:00");
+const AS_OF = new Date("2026-08-07T00:00:00+08:00");
 
 const regionSignals = [
   { name: "亞太", count: 5, tone: "critical", note: "基本法與生成式 AI 執法加速" },
@@ -76,6 +76,9 @@ export default function Home() {
     "taiwan-ai-basic-act",
   ]);
   const [readUpdates, setReadUpdates] = useState<string[]>([]);
+  const [expandedUpdate, setExpandedUpdate] = useState<string | null>(
+    "eu-ai-act-enforcement-2026",
+  );
 
   const jurisdictions = useMemo(
     () => ["全部地區", ...Array.from(new Set(regulations.map((item) => item.jurisdiction)))],
@@ -170,7 +173,7 @@ export default function Home() {
           <div className="health-bar">
             <i />
           </div>
-          <small>8 個司法管轄區 · 2026/08/05 查核</small>
+          <small>8 個司法管轄區 · 2026/08/07 查核</small>
         </div>
       </aside>
 
@@ -178,7 +181,7 @@ export default function Home() {
         <header className="topbar">
           <div>
             <p>企業法遵情報中心</p>
-            <strong>星期三，2026 年 8 月 5 日</strong>
+            <strong>星期五，2026 年 8 月 7 日</strong>
           </div>
           <div className="top-actions">
             <button className="icon-button" aria-label="通知">
@@ -296,14 +299,24 @@ export default function Home() {
                   <h2>最新監管動態</h2>
                   <p>只收錄對企業法遵有行動意義的官方更新</p>
                 </div>
-                <span className="verified-badge">已查核至 2026/08/04</span>
+                <span className="verified-badge">
+                  已查核至 {updates[0].verifiedAt.replaceAll("-", "/")}
+                </span>
               </div>
 
               <div className="updates-list">
-                {updates.slice(0, 5).map((update) => {
+                {updates.map((update) => {
                   const isRead = readUpdates.includes(update.id);
+                  const isExpanded = expandedUpdate === update.id;
                   return (
-                    <article className={"update-item " + (isRead ? "is-read" : "")} key={update.id}>
+                    <article
+                      className={
+                        "update-item " +
+                        (isRead ? "is-read " : "") +
+                        (isExpanded ? "is-expanded" : "")
+                      }
+                      key={update.id}
+                    >
                       <div className="update-date">
                         <strong>{new Date(update.date).getDate()}</strong>
                         <span>
@@ -323,7 +336,21 @@ export default function Home() {
                           </b>
                         </div>
                         <h3>{update.title}</h3>
-                        <p>{update.summary}</p>
+                        <p className="update-summary">{update.summary}</p>
+                        <div className="update-facts">
+                          <div>
+                            <span>主管機關</span>
+                            <strong>{update.authority}</strong>
+                          </div>
+                          <div>
+                            <span>重要日期</span>
+                            <strong>{update.keyDate}</strong>
+                          </div>
+                        </div>
+                        <div className="impact-line">
+                          <span>企業影響</span>
+                          <p>{update.businessImpact}</p>
+                        </div>
                         <div className="action-line">
                           <span>建議行動</span>
                           <p>{update.action}</p>
@@ -333,10 +360,46 @@ export default function Home() {
                         <a href={update.sourceUrl} rel="noreferrer" target="_blank">
                           官方原文 ↗
                         </a>
+                        <button
+                          aria-expanded={isExpanded}
+                          className="analysis-toggle"
+                          onClick={() => setExpandedUpdate(isExpanded ? null : update.id)}
+                        >
+                          {isExpanded ? "收合法遵分析 −" : "完整法遵分析 +"}
+                        </button>
                         <button onClick={() => toggleRead(update.id)}>
                           {isRead ? "設為未讀" : "標記已讀"}
                         </button>
                       </div>
+                      {isExpanded && (
+                        <div className="update-analysis">
+                          <div className="update-analysis-grid">
+                            <section>
+                              <span>事件背景</span>
+                              <p>{update.background}</p>
+                            </section>
+                            <section>
+                              <span>具體變更</span>
+                              <p>{update.whatChanged}</p>
+                            </section>
+                          </div>
+                          <section className="affected-scope">
+                            <span>主要影響對象</span>
+                            <p>{update.affectedCompanies}</p>
+                          </section>
+                          <section className="update-key-points">
+                            <span>法遵判讀重點</span>
+                            <ul>
+                              {update.keyPoints.map((point) => (
+                                <li key={point}>{point}</li>
+                              ))}
+                            </ul>
+                          </section>
+                          <p className="update-verified">
+                            本站最後查核：{update.verifiedAt} · 內容以官方原文為準
+                          </p>
+                        </div>
+                      )}
                     </article>
                   );
                 })}
