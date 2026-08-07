@@ -12,10 +12,10 @@ const updates = updatesData as RegulatoryUpdate[];
 const AS_OF = new Date("2026-08-07T00:00:00+08:00");
 
 const regionSignals = [
-  { name: "亞太", count: 5, tone: "critical", note: "基本法與生成式 AI 執法加速" },
+  { name: "亞太", count: 6, tone: "critical", note: "基本法與風險分類框架加速落地" },
   { name: "歐洲", count: 2, tone: "high", note: "EU AI Act 進入主要適用期" },
-  { name: "北美", count: 1, tone: "watch", note: "州法與聯邦政策持續變動" },
-  { name: "其他地區", count: 0, tone: "quiet", note: "待擴充官方資料來源" },
+  { name: "北美", count: 2, tone: "watch", note: "州法與 NIST 治理框架並行" },
+  { name: "國際標準", count: 1, tone: "quiet", note: "ISO 42001 支援可稽核治理" },
 ];
 
 const deadlineItems = [
@@ -173,7 +173,10 @@ export default function Home() {
           <div className="health-bar">
             <i />
           </div>
-          <small>8 個司法管轄區 · 2026/08/07 查核</small>
+          <small>
+            {new Set(regulations.map((item) => item.jurisdiction)).size} 個司法管轄區／治理體系 ·
+            2026/08/07 查核
+          </small>
         </div>
       </aside>
 

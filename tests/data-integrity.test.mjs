@@ -6,7 +6,7 @@ const readJson = async (path) => JSON.parse(await readFile(path, "utf8"));
 
 test("regulations contain complete compliance profiles", async () => {
   const regulations = await readJson("data/regulations.json");
-  assert.ok(regulations.length >= 8);
+  assert.ok(regulations.length >= 11);
 
   for (const regulation of regulations) {
     assert.match(regulation.sourceUrl, /^https:\/\//);
@@ -23,6 +23,20 @@ test("regulations contain complete compliance profiles", async () => {
   }
 });
 
+test("global governance frameworks are present and correctly classified", async () => {
+  const regulations = await readJson("data/regulations.json");
+  const byId = new Map(regulations.map((regulation) => [regulation.id, regulation]));
+
+  for (const id of ["nist-ai-rmf", "iso-iec-42001", "taiwan-ai-risk-classification"]) {
+    assert.ok(byId.has(id), `missing ${id}`);
+    assert.equal(byId.get(id).statusGroup, "指引");
+  }
+
+  assert.match(byId.get("nist-ai-rmf").status, /修訂中/);
+  assert.match(byId.get("iso-iec-42001").effectiveDate, /自願採用/);
+  assert.match(byId.get("taiwan-ai-risk-classification").structure, /20 子類型/);
+});
+
 test("regulatory updates are sorted newest first", async () => {
   const updates = await readJson("data/updates.json");
   const dates = updates.map((update) => update.date);
@@ -31,7 +45,7 @@ test("regulatory updates are sorted newest first", async () => {
 
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
-  assert.ok(updates.length >= 8);
+  assert.ok(updates.length >= 9);
 
   for (const update of updates) {
     assert.match(update.sourceUrl, /^https:\/\//);
