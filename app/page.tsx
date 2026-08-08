@@ -26,6 +26,22 @@ const jurisdictionOrder = [
   "國際標準",
 ];
 
+const jurisdictionFlags: Record<string, string> = {
+  歐盟: "🇪🇺",
+  臺灣: "🇹🇼",
+  中國: "🇨🇳",
+  日本: "🇯🇵",
+  韓國: "🇰🇷",
+  新加坡: "🇸🇬",
+  印度: "🇮🇳",
+  英國: "🇬🇧",
+  美國: "🇺🇸",
+  加拿大: "🇨🇦",
+  巴西: "🇧🇷",
+  澳洲: "🇦🇺",
+  國際標準: "🌐",
+};
+
 const regulations = [
   ...regulationsData,
   ...researchRegulationsData,
@@ -119,6 +135,16 @@ export default function Home() {
   const jurisdictions = useMemo(
     () => ["全部地區", ...Array.from(new Set(regulations.map((item) => item.jurisdiction)))],
     [],
+  );
+
+  const jurisdictionQuickFilters = useMemo(
+    () =>
+      jurisdictions.slice(1).map((name) => ({
+        count: regulations.filter((item) => item.jurisdiction === name).length,
+        flag: jurisdictionFlags[name] ?? "⚑",
+        name,
+      })),
+    [jurisdictions],
   );
 
   const filteredRegulations = useMemo(() => {
@@ -505,6 +531,50 @@ export default function Home() {
                 <span><i className="legend-guide" />監管指引</span>
               </div>
             </div>
+
+            <nav className="jurisdiction-quick-filter" aria-label="依國家快速篩選法規">
+              <div className="jurisdiction-filter-intro">
+                <span>國家快捷選單</span>
+                <small>點選國旗查看法規</small>
+              </div>
+              <div className="jurisdiction-filter-list" role="group" aria-label="國家與治理體系">
+                <button
+                  aria-label={`顯示全部 ${regulations.length} 筆法規`}
+                  aria-pressed={jurisdiction === "全部地區"}
+                  className={
+                    "jurisdiction-filter-button " +
+                    (jurisdiction === "全部地區" ? "active" : "")
+                  }
+                  onClick={() => setJurisdiction("全部地區")}
+                  type="button"
+                >
+                  <span className="jurisdiction-flag" aria-hidden="true">🗺️</span>
+                  <span className="jurisdiction-filter-name">全部</span>
+                  <span className="jurisdiction-filter-count">{regulations.length}</span>
+                </button>
+                {jurisdictionQuickFilters.map((item) => {
+                  const isSelected = jurisdiction === item.name;
+                  return (
+                    <button
+                      aria-label={`${isSelected ? "取消" : "顯示"}${item.name}法規，共 ${item.count} 筆`}
+                      aria-pressed={isSelected}
+                      className={
+                        "jurisdiction-filter-button " + (isSelected ? "active" : "")
+                      }
+                      key={item.name}
+                      onClick={() =>
+                        setJurisdiction(isSelected ? "全部地區" : item.name)
+                      }
+                      type="button"
+                    >
+                      <span className="jurisdiction-flag" aria-hidden="true">{item.flag}</span>
+                      <span className="jurisdiction-filter-name">{item.name}</span>
+                      <span className="jurisdiction-filter-count">{item.count}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </nav>
 
             <div className="reg-table">
               <div className="reg-row reg-head" aria-hidden="true">
