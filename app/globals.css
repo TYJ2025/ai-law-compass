@@ -461,13 +461,40 @@ main {
 
 .signal-row {
   align-items: center;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: inherit;
+  cursor: pointer;
   display: grid;
   gap: 10px;
   grid-template-columns: 10px 1fr auto;
-  padding: 8px 0;
+  margin: 0 -8px;
+  padding: 8px;
+  text-align: left;
+  transition: background-color 160ms ease, border-color 160ms ease,
+    transform 160ms ease;
+  width: calc(100% + 16px);
 }
 
-.signal-row > div {
+.signal-row:hover {
+  background: white;
+  border-color: #d6ddd8;
+  transform: translateX(2px);
+}
+
+.signal-row:focus-visible {
+  outline: 3px solid rgba(38, 116, 91, 0.24);
+  outline-offset: 1px;
+}
+
+.signal-row.active {
+  background: var(--navy-800);
+  border-color: var(--navy-800);
+  color: white;
+}
+
+.signal-copy {
   display: grid;
   gap: 2px;
 }
@@ -481,10 +508,36 @@ main {
   font-size: 12px;
 }
 
+.signal-row.active small {
+  color: #b9c9c7;
+}
+
+.signal-row-action {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
 .signal-row b {
   font-family: var(--font-primary);
   font-size: 20px;
   font-weight: 400;
+}
+
+.signal-row-action > i {
+  color: #85938e;
+  font-size: 13px;
+  font-style: normal;
+  transition: transform 160ms ease;
+}
+
+.signal-row:hover .signal-row-action > i {
+  color: var(--green);
+  transform: translate(2px, 2px);
+}
+
+.signal-row.active .signal-row-action > i {
+  color: #b9cfc4;
 }
 
 .signal-dot {

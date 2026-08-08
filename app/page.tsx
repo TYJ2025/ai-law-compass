@@ -119,6 +119,7 @@ function statusClass(statusGroup: string) {
 export default function Home() {
   const [query, setQuery] = useState("");
   const [jurisdiction, setJurisdiction] = useState("全部地區");
+  const [regionFilter, setRegionFilter] = useState("全部區域");
   const [status, setStatus] = useState("全部狀態");
   const [priorityOnly, setPriorityOnly] = useState(false);
   const [expanded, setExpanded] = useState<string | null>("eu-ai-act");
@@ -170,11 +171,24 @@ export default function Home() {
       return (
         (!normalizedQuery || searchable.includes(normalizedQuery)) &&
         (jurisdiction === "全部地區" || item.jurisdiction === jurisdiction) &&
+        (regionFilter === "全部區域" || item.region === regionFilter) &&
         (status === "全部狀態" || item.statusGroup === status) &&
         (!priorityOnly || item.priority >= 4)
       );
     });
-  }, [jurisdiction, priorityOnly, query, status]);
+  }, [jurisdiction, priorityOnly, query, regionFilter, status]);
+
+  const selectJurisdiction = (nextJurisdiction: string) => {
+    setJurisdiction(nextJurisdiction);
+    setRegionFilter("全部區域");
+  };
+
+  const selectRegion = (nextRegion: string) => {
+    setRegionFilter((current) =>
+      current === nextRegion ? "全部區域" : nextRegion,
+    );
+    setJurisdiction("全部地區");
+  };
 
   const toggleWatch = (id: string) => {
     setWatched((current) =>
@@ -295,16 +309,29 @@ export default function Home() {
                 <small>LIVE SIGNAL</small>
               </div>
               <div className="signal-grid">
-                {regionSignals.map((region) => (
-                  <div className="signal-row" key={region.name}>
-                    <i className={"signal-dot " + region.tone} />
-                    <div>
-                      <strong>{region.name}</strong>
-                      <small>{region.note}</small>
-                    </div>
-                    <b>{region.count}</b>
-                  </div>
-                ))}
+                {regionSignals.map((signal) => {
+                  const isActive = regionFilter === signal.region;
+                  return (
+                    <a
+                      aria-current={isActive ? "true" : undefined}
+                      aria-label={`${isActive ? "取消" : "查看"}${signal.name}監管訊號，共 ${signal.count} 筆法規`}
+                      className={"signal-row " + (isActive ? "active" : "")}
+                      href="#regulations"
+                      key={signal.name}
+                      onClick={() => selectRegion(signal.region)}
+                    >
+                      <i className={"signal-dot " + signal.tone} />
+                      <span className="signal-copy">
+                        <strong>{signal.name}</strong>
+                        <small>{signal.note}</small>
+                      </span>
+                      <span className="signal-row-action">
+                        <b>{signal.count}</b>
+                        <i aria-hidden="true">↘</i>
+                      </span>
+                    </a>
+                  );
+                })}
               </div>
               <div className="signal-note">
                 <span>!</span>
@@ -330,7 +357,7 @@ export default function Home() {
             </label>
             <select
               aria-label="司法管轄區"
-              onChange={(event) => setJurisdiction(event.target.value)}
+              onChange={(event) => selectJurisdiction(event.target.value)}
               value={jurisdiction}
             >
               {jurisdictions.map((item) => (
@@ -521,7 +548,9 @@ export default function Home() {
                 <span className="section-index">03</span>
                 <h2>全球法規庫</h2>
                 <p>
-                  顯示 {filteredRegulations.length} / {regulations.length} 筆已查核資料；涵蓋法律、施行細則、監管指引與國際標準
+                  {regionFilter === "全部區域"
+                    ? `顯示 ${filteredRegulations.length} / ${regulations.length} 筆已查核資料；涵蓋法律、施行細則、監管指引與國際標準`
+                    : `監管訊號篩選：${regionSignals.find((signal) => signal.region === regionFilter)?.name}；顯示 ${filteredRegulations.length} / ${regulations.length} 筆資料`}
                 </p>
               </div>
               <div className="legend">
@@ -545,7 +574,7 @@ export default function Home() {
                     "jurisdiction-filter-button " +
                     (jurisdiction === "全部地區" ? "active" : "")
                   }
-                  onClick={() => setJurisdiction("全部地區")}
+                  onClick={() => selectJurisdiction("全部地區")}
                   type="button"
                 >
                   <span className="jurisdiction-flag" aria-hidden="true">🗺️</span>
@@ -563,7 +592,7 @@ export default function Home() {
                       }
                       key={item.name}
                       onClick={() =>
-                        setJurisdiction(isSelected ? "全部地區" : item.name)
+                        selectJurisdiction(isSelected ? "全部地區" : item.name)
                       }
                       type="button"
                     >
