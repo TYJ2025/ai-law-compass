@@ -1,5 +1,31 @@
 [
   {
+    "id": "brazil-anpd-ai-sandbox-consultation-2026",
+    "date": "2026-08-13",
+    "jurisdiction": "巴西",
+    "flag": "BR",
+    "category": "監理沙盒／社會諮詢",
+    "importance": "中",
+    "title": "巴西 ANPD 推進 AI 與個資保護監理沙盒諮詢",
+    "summary": "巴西國家資料保護機關以 8 月 13 日線上會議推進 AI 與個資保護監理沙盒，邀集企業、研究與社會團體就試驗專案及監管設計提供意見。",
+    "authority": "Autoridade Nacional de Proteção de Dados（ANPD）",
+    "keyDate": "2026-08-13 社會諮詢會議；後續由 ANPD 決定試點設計與專案遴選",
+    "affectedCompanies": "在巴西開發或部署涉及個人資料的 AI、生成式 AI、身分辨識、信用、健康、勞動或其他高影響服務的企業與研究機構",
+    "background": "ANPD 同時負責 LGPD 個資監管，並持續擴張對 AI、深偽與兒少數位環境的政策工具。監理沙盒旨在讓具體 AI 專案於受控條件下測試資料保護與風險控制，並把實證結果回饋至未來指引或監管做法。",
+    "whatChanged": "這次不是新法律生效，也不是一般創新補助；ANPD 已把沙盒推進到公開展示與收集意見的制度設計節點。參與者需要說明使用情境、個資處理、風險、保障措施與可量測成果，後續規則可能形成巴西 AI／LGPD 合規的重要監管參考。",
+    "businessImpact": "處理巴西個資的 AI 企業可爭取在監管陪伴下驗證新做法，但沙盒不會豁免 LGPD。即使不參與，企業也應關注 ANPD 對合法基礎、透明度、敏感資料、偏差、人類監督與事件治理所採用的證據標準。",
+    "keyPoints": [
+      "沙盒主題同時涵蓋人工智慧與個人資料保護，由 ANPD 主導。",
+      "8 月 13 日會議用於展示構想、收集不同產業與社會參與者意見。",
+      "試驗仍須遵守 LGPD，監理沙盒不等同法規豁免或產品核准。",
+      "具體專案預期需提出風險、保障、監測指標與可驗證的試驗成果。",
+      "沙盒經驗可能影響後續 AI 指引、執法期待與高風險資料處理監管。"
+    ],
+    "action": "評估是否有適合提交的巴西 AI 用例；先備妥資料流程、合法基礎、DPIA、偏差測試、人類監督、事件處理與退出方案。",
+    "sourceUrl": "https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-realizara-consulta-a-sociedade-sobre-sandbox-regulatorio-de-ia-e-protecao-de-dados",
+    "verifiedAt": "2026-08-14"
+  },
+  {
     "id": "eu-ai-act-enforcement-2026",
     "date": "2026-08-02",
     "jurisdiction": "歐盟",
@@ -9,21 +35,99 @@
     "title": "EU AI Act 透明度義務與執法機制正式啟動",
     "summary": "歐盟執委會 AI Office 與各會員國主管機關自 8 月 2 日起開始執行 AI Act；聊天機器人、深偽與部分 AI 生成或變造內容的透明度要求同步適用。",
     "authority": "歐盟執委會 AI Office、各會員國市場監管機關",
-    "keyDate": "2026-08-02 起適用；Annex III 高風險系統延至 2027-12-02，產品內嵌系統延至 2028-08-02",
+    "keyDate": "2026-08-02 多數透明度義務適用；既有合成內容系統 Article 50(2) 過渡至 2026-12-02",
     "affectedCompanies": "向歐盟市場提供或在歐盟使用互動式 AI、生成式 AI、GPAI 模型或高風險 AI 的境內外企業",
     "background": "AI Act 採分階段適用。禁止性行為與 AI 素養規定、GPAI 義務已先後啟動；2026 年 7 月生效的 AI Omnibus 又調整高風險制度時程，因此企業不能只用原始法規日期表判斷準備順序。",
-    "whatChanged": "自 8 月 2 日起，使用者與 AI 互動時原則上須獲得告知；深偽須清楚揭露，AI 生成或變造內容須具可機器讀取標記。AI Office 同日起可就 GPAI 要求技術文件、進行模型評估、命令改正並裁罰；高風險 AI 的主要義務則依 Omnibus 延後。",
-    "businessImpact": "產品介面、內容發布流程與模型輸出管線都可能需要改版。企業還應把 GPAI 供應商文件、歐盟輸出用途及高風險分類納入同一份管制清冊，避免把『延期』誤解為所有 AI Act 義務都暫停。",
+    "whatChanged": "自 8 月 2 日起，使用者與 AI 互動時原則上須獲得告知；深偽須清楚揭露，AI 生成或變造內容原則上須具可機器讀取標記。AI Office 同日起可就 GPAI 要求文件、評估、改正與裁罰；但 2026-08-02 前已上市的合成內容系統，Article 50(2) 標記義務依 Omnibus 可於 2026-12-02 前完成。",
+    "businessImpact": "產品介面、內容發布流程與模型輸出管線都可能需要改版。企業需逐系統判定是 8 月 2 日立即適用，或符合既有系統到 12 月 2 日的有限過渡；同時不能把高風險延期誤解為透明度、GPAI 或其他 AI Act 義務都暫停。",
     "keyPoints": [
       "互動式 AI 應讓使用者知道對方是 AI，而非真人。",
       "深偽及特定公共利益文字須以清楚可見方式揭露其 AI 性質。",
-      "生成或變造的影像、音訊、影片與文字應支援有效、可互通且可機器讀取的標記。",
+      "生成或變造的影像、音訊、影片與文字應支援有效、可互通且可機器讀取的標記；既有系統須核對 2026-12-02 過渡條件。",
       "AI Office 對 GPAI 的完整執法權限已啟動，可要求文件、模型評估、改正及裁罰。",
       "高風險 AI 時程已分流：Annex III 使用情境為 2027-12-02，受管制產品內嵌 AI 為 2028-08-02。"
     ],
-    "action": "立即測試聊天機器人告知、深偽揭露及輸出標記；同步更新 GPAI 與高風險 AI 專案的義務矩陣與到期日。",
+    "action": "立即測試聊天機器人告知、深偽揭露及輸出標記；逐系統記錄是否符合 2026-12-02 過渡條件，並同步更新 GPAI 與高風險 AI 義務矩陣。",
     "sourceUrl": "https://digital-strategy.ec.europa.eu/en/news/commission-starts-enforcing-ai-act-rules-and-new-transparency-requirements-2-august",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
+  },
+  {
+    "id": "canada-ai-transparency-consultation-2026",
+    "date": "2026-07-23",
+    "jurisdiction": "加拿大",
+    "flag": "CA",
+    "category": "公開徵詢／政策形成",
+    "importance": "中",
+    "title": "加拿大啟動 AI 透明度政策公開諮詢",
+    "summary": "加拿大創新、科學暨經濟發展部就 AI 生成內容、AI 互動告知、系統資訊、重大事件及 AI agent 活動追蹤五大透明度議題公開徵詢。",
+    "authority": "Innovation, Science and Economic Development Canada（ISED）",
+    "keyDate": "2026-07-23 開放；意見提交截止 2026-09-23",
+    "affectedCompanies": "在加拿大開發、提供、採購或部署生成式 AI、AI agent、聊天機器人、重大決策系統及企業用 AI 產品的境內外組織",
+    "background": "加拿大目前以個資、消保、人權、刑法、產業法、政府自動化決策指令與自願性生成式 AI 準則構成分散治理。政府的新國家 AI 策略已表明將評估立法與非立法措施，因此透明度諮詢是下一階段政策形成的重要證據程序。",
+    "whatChanged": "政府把可能採取行動的透明度議題具體化為五類，並明確詢問應採法律、指引、行為準則、標準、技術、研究、素養或採購要求。這不是已生效的新義務，但問題設計已顯示未來可能要求開發者與部署者分別提供標示、模型資訊、事件資料與代理活動紀錄。",
+    "businessImpact": "加拿大市場的 AI 供應商可在期限內影響責任分配與技術可行性；同時應預先盤點內容來源標示、AI 身分告知、模型卡、重大事件通報與 agent 行動日誌，因這些項目可能轉成新法、採購條款或主管機關期待。",
+    "keyPoints": [
+      "徵詢期間為 2026-07-23 至 2026-09-23，目前仍屬政策形成而非強制規範。",
+      "第一類關注 AI 生成內容的識別、標示、浮水印與來源資訊。",
+      "第二、三類關注 AI 互動告知，以及能力、限制、資料與治理資訊的可理解揭露。",
+      "第四類評估重大 AI 事件的追蹤與通報，可能影響企業事件管理流程。",
+      "第五類專門處理 AI agent 的活動與互動紀錄，顯示自主代理已進入政策議程。"
+    ],
+    "action": "在 9 月 23 日前評估是否提交意見；同步建立加拿大 AI 透明度基線，涵蓋內容標示、AI 告知、模型資訊、事件紀錄與 agent 日誌。",
+    "sourceUrl": "https://ised-isde.canada.ca/site/ised/en/have-your-say-advancing-ai-transparency-canada",
+    "verifiedAt": "2026-08-14"
+  },
+  {
+    "id": "korea-ai-decree-amendment-effective-2026",
+    "date": "2026-07-21",
+    "jurisdiction": "韓國",
+    "flag": "KR",
+    "category": "施行令修正生效",
+    "importance": "高",
+    "title": "韓國 AI 基本法修正施行令正式生效",
+    "summary": "韓國總統令第 36506 號修正 AI 基本法施行令，自 7 月 21 日生效，補進公共部門 AI 採購、AI 弱勢群體、研究機構與訓練資料支持細節。",
+    "authority": "科學技術資訊通信部（MSIT）；韓國政府",
+    "keyDate": "2026-07-20 公布修正；2026-07-21 生效",
+    "affectedCompanies": "向韓國政府或公共機構供應 AI、申請 AI 產品確認或公共支持，以及在韓提供高影響 AI、生成式 AI 或高性能 AI 的業者",
+    "background": "韓國 AI 基本法與原施行令已於 2026 年 1 月 22 日生效。國會於 2025 年底通過的修正內容有部分須以子法補充，MSIT 因而修訂施行令，讓公共採購、弱勢群體支持、研究與產業促進制度可以運作。",
+    "whatChanged": "最終修正版施行令已不是草案。它新增或調整 AI 技術導入、訓練資料、AI 產品服務確認、研究機構、弱勢群體、影響評估與委託執行等細節；原有透明度、高影響 AI 與安全義務則繼續適用，至少一年執法寬限也不等於義務停止。",
+    "businessImpact": "政府 AI 供應商需要把產品確認、採購資格與技術文件納入投標準備；其他企業仍須以最新 31 條施行令進行高影響分類、透明度、安全與影響評估，不能只沿用 1 月版本的合規清單。",
+    "keyPoints": [
+      "修正施行令以總統令第 36506 號公布，官方法規庫標示 2026-07-21 施行。",
+      "公共機關優先採購的 AI 產品服務，須依確認或主管機關指定制度辨識。",
+      "擴充 AI 弱勢群體與費用支持的適用對象，並補充研究及人才措施。",
+      "高影響 AI 影響評估仍須辨識受影響群體、基本權類型、風險與改善計畫。",
+      "透明度、安全、高影響分類及境外業者要求仍需持續建置，不能因寬限而停工。"
+    ],
+    "action": "以 2026-07-20 修正版更新韓國法遵矩陣；政府供應商另盤點 AI 產品確認、公共採購文件及資料／研究支持條件。",
+    "sourceUrl": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lspttninfSeq=198009",
+    "verifiedAt": "2026-08-14"
+  },
+  {
+    "id": "australia-ai-framework-office-2026",
+    "date": "2026-07-15",
+    "jurisdiction": "澳洲",
+    "flag": "AU",
+    "category": "政策宣布／立法規劃",
+    "importance": "中",
+    "title": "澳洲成立 Office of AI 並宣布 AI 標準立法方向",
+    "summary": "澳洲政府成立 Office of AI，宣布制定 Australian Standards for AI，初期聚焦大型資料中心、AI 訓練、能源與用水責任，預計 2027 年推進立法。",
+    "authority": "Australian Government；Department of the Prime Minister and Cabinet",
+    "keyDate": "2026-07-15 Office of AI 成立；2026-08 提交 National Cabinet；預計 2027 年立法",
+    "affectedCompanies": "在澳洲營運大型資料中心、訓練模型、提供雲端或 AI 基礎設施，以及使用澳洲創作內容進行模型訓練的企業",
+    "background": "澳洲此前以既有法律、國家 AI 計畫、政府負責任使用政策及自願性安全指南處理 AI 風險。新宣布把監管重點擴大到 AI 基礎設施的能源、水資源、選址、安全與創作內容控制，並建立中央 Office of AI 加速跨政府協調。",
+    "whatChanged": "Office of AI 自宣布日起設立，政府並承諾把 Australian Standards for AI 交由 National Cabinet 討論，預期下一年立法。這仍是政策與立法規劃，不是已生效的企業強制標準；但大型資料中心自備新增電力、連接成本、需量調整與用水效率已成為明確政策方向。",
+    "businessImpact": "資料中心、雲端與前沿模型投資的能源、水、設址和成本模型可能受到直接影響；使用澳洲創作內容訓練模型的企業也要關注政府所稱的創作者控制。企業應在法案提出前保留基礎設施與訓練資料決策證據。",
+    "keyPoints": [
+      "Office of AI 已在總理與內閣部架構內成立，負責推進全國 AI 標準。",
+      "政策方向要求大型資料中心承擔新增電力與電網連接成本。",
+      "標準將關注尖峰減載、用水效率、設址、安全及地方社區參與。",
+      "政府表示將強化澳洲創作者與媒體對 AI 訓練使用作品的控制。",
+      "現階段仍待 National Cabinet 與後續立法，不能標示為已生效法律。"
+    ],
+    "action": "澳洲資料中心與模型業者應建立能源、用水、選址及訓練資料權利基線，並追蹤 National Cabinet 結論與 2027 年法案文本。",
+    "sourceUrl": "https://www.minister.industry.gov.au/t-ayres/media/ai-australias-interests",
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "uk-data-call-2026",
@@ -75,7 +179,7 @@
     ],
     "action": "下載官方檢核表，依每個 AI 使用情境完成 20 項固有風險盤點，記錄現有措施涵蓋程度、缺口與責任人，並優先處理可能嚴重危害的情境。",
     "sourceUrl": "https://moda.gov.tw/major-policies/ai/governance/19244",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "us-eo-14409",

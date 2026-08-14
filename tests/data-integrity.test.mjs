@@ -32,11 +32,19 @@ test("global governance frameworks are present and correctly classified", async 
   const regulations = await readRegulations();
   const byId = new Map(regulations.map((regulation) => [regulation.id, regulation]));
 
-  for (const id of ["nist-ai-rmf", "iso-iec-42001", "taiwan-ai-risk-classification"]) {
+  for (const id of [
+    "nist-ai-rmf",
+    "iso-iec-42001",
+    "taiwan-ai-risk-classification",
+    "eu-ai-omnibus-2026",
+  ]) {
     assert.ok(byId.has(id), `missing ${id}`);
-    assert.equal(byId.get(id).statusGroup, "指引");
   }
 
+  assert.equal(byId.get("nist-ai-rmf").statusGroup, "指引");
+  assert.equal(byId.get("iso-iec-42001").statusGroup, "指引");
+  assert.equal(byId.get("taiwan-ai-risk-classification").statusGroup, "指引");
+  assert.equal(byId.get("eu-ai-omnibus-2026").statusGroup, "生效");
   assert.match(byId.get("nist-ai-rmf").status, /修訂中/);
   assert.match(byId.get("iso-iec-42001").effectiveDate, /自願採用/);
   assert.match(byId.get("taiwan-ai-risk-classification").structure, /20 子類型/);
@@ -64,9 +72,11 @@ test("researched instruments link to official primary sources", async () => {
   const regulations = await readJson("data/regulations-research.json");
   const officialHosts = [
     "digital-strategy.ec.europa.eu",
+    "eur-lex.europa.eu",
     "cac.gov.cn",
     "meti.go.jp",
     "msit.go.kr",
+    "law.go.kr",
     "ey.gov.tw",
     "fsc.gov.tw",
     "pdpc.gov.sg",
@@ -111,7 +121,17 @@ test("regulatory updates are sorted newest first", async () => {
 
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
-  assert.ok(updates.length >= 9);
+  assert.ok(updates.length >= 13);
+
+  const updateIds = new Set(updates.map((update) => update.id));
+  for (const id of [
+    "brazil-anpd-ai-sandbox-consultation-2026",
+    "canada-ai-transparency-consultation-2026",
+    "korea-ai-decree-amendment-effective-2026",
+    "australia-ai-framework-office-2026",
+  ]) {
+    assert.ok(updateIds.has(id), `missing current regulatory update: ${id}`);
+  }
 
   for (const update of updates) {
     assert.match(update.sourceUrl, /^https:\/\//);

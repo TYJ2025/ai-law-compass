@@ -7,31 +7,31 @@
     "title": "歐盟人工智慧法",
     "titleEn": "Regulation (EU) 2024/1689 — Artificial Intelligence Act",
     "type": "法律",
-    "status": "全面適用",
+    "status": "已生效・分階段適用",
     "statusGroup": "生效",
     "promulgationDate": "2024-07-12",
-    "effectiveDate": "2024-08-01（生效）／2026-08-02（一般適用及執法啟動）",
+    "effectiveDate": "2024-08-01 生效／2026-08-02 多數規則適用",
     "articleCount": "113 條",
     "structure": "12 章・113 條・13 附錄",
-    "transition": "2025-02-02 起適用禁止行為與 AI 素養；2025-08-02 起適用 GPAI 與治理規則；2026-08-02 起透明度義務及 AI Office 執法啟動。AI Omnibus 已將 Annex III 高風險用途延至 2027-12-02，產品內嵌高風險系統延至 2028-08-02。",
-    "nextDeadline": "2027-12-02（Annex III 高風險）",
+    "transition": "2025-02-02 起適用禁止行為；2025-08-02 起適用 GPAI 與治理規則；2026-08-02 起透明度義務及 AI Office 執法啟動。Regulation (EU) 2026/1744 已將 Annex III 高風險用途延至 2027-12-02、產品內嵌高風險系統延至 2028-08-02；2026-08-02 前已上市的特定合成內容系統，Article 50(2) 標記義務須於 2026-12-02 前完成。",
+    "nextDeadline": "2026-12-02（既有合成內容系統標記）",
     "authority": "European Union",
     "risk": "極高",
     "priority": 5,
     "sectors": ["跨產業", "科技", "人力資源", "金融", "醫療"],
     "scope": "適用於在歐盟投放或使用 AI 系統／模型的提供者、部署者、進口商、經銷商及產品製造商；境外業者若系統輸出在歐盟使用，也可能納入。軍事、國安及部分純研發用途有例外。",
-    "summary": "採風險分級治理，對禁止用途、高風險系統、一般用途 AI 模型與透明度建立不同義務；亦可能適用於歐盟境外供應商。",
-    "detailedOverview": "這是一套具直接拘束力的跨產業法規。企業首先要辨識自己在 AI 供應鏈中的角色，再依用途判定是否屬禁止、高風險、透明度義務或一般用途 AI 模型。高風險系統須建立風險管理、資料治理、技術文件、紀錄、人類監督、準確性與資安控制；特定一般用途 AI 模型另有模型文件、著作權政策與訓練內容摘要等要求。",
+    "summary": "採風險分級治理，對禁止用途、高風險系統、一般用途 AI 模型與透明度建立不同義務；2026 年 Omnibus 已調整部分義務及時程。",
+    "detailedOverview": "這是一套具直接拘束力的跨產業法規。企業首先要辨識自己在 AI 供應鏈中的角色，再依用途判定是否屬禁止、高風險、透明度義務或一般用途 AI 模型。2026 年 AI Omnibus 並未讓整部法律暫停，而是調整高風險時程、AI 素養、資料庫登錄、上市後監測與部分禁止行為；企業應使用修正後文本管理義務版本。",
     "keyPoints": [
       "禁止社會評分、特定操縱或剝削、部分即時遠端生物辨識等不可接受風險用途。",
-      "高風險 AI 須完成合格評定、登錄、風險管理、資料治理、技術文件、日誌與上市後監測。",
+      "高風險 AI 仍須完成合格評定、風險管理、資料治理、技術文件、日誌與上市後監測，但 Annex III 與產品內嵌系統的適用日已分流延後。",
       "部署者須依說明使用、安排人類監督、監測運作；部分公共服務或重大決策情境須做基本權利影響評估。",
       "生成式或深偽內容涉及透明標示；與人互動的 AI 原則上須讓使用者知道正在與 AI 互動。",
       "一般用途 AI 模型提供者須維護技術文件、下游資訊與著作權政策；具系統性風險者另負模型評估、事件通報與資安義務。"
     ],
-    "action": "完成 AI 系統盤點、角色判定、風險分類、供應商文件蒐集與高風險控制差距分析。",
+    "action": "以 Regulation (EU) 2026/1744 重整義務矩陣；優先完成 Article 50 透明度與既有合成內容系統的 2026-12-02 標記期限，再維持高風險控制建置。",
     "sourceUrl": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj?locale=en",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "iso-iec-42001",
@@ -168,7 +168,7 @@
     ],
     "action": "完成高影響 AI 判定、透明度告知、安全管理、文件保存與境外業者國內代表安排評估。",
     "sourceUrl": "https://www.law.go.kr/LSW/lsInfoP.do?lsiSeq=282791",
-    "verifiedAt": "2026-08-05"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "taiwan-ai-basic-act",
@@ -238,7 +238,7 @@
     ],
     "action": "用官方檢核表逐一盤點企業 AI 情境與 20 項風險，先以未考慮控制的固有風險判斷嚴重危害，再記錄現有措施、缺口、責任人與持續監測計畫。",
     "sourceUrl": "https://www-api.moda.gov.tw/File/Get/moda/zh-tw/UieEfux5Yv0iJuR",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "singapore-agentic-framework",
@@ -341,7 +341,7 @@
     ],
     "action": "以 Govern／Map／Measure／Manage 建立 AI 治理證據鏈，將每個系統的情境、風險容忍度、評測結果、殘餘風險與核准決策連結，並安排新版發布後的差異分析。",
     "sourceUrl": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-ai-rmf-10",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "colorado-admt",

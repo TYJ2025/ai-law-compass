@@ -1,5 +1,39 @@
 [
   {
+    "id": "eu-ai-omnibus-2026",
+    "jurisdiction": "歐盟",
+    "flag": "EU",
+    "region": "歐洲",
+    "title": "AI Omnibus 2026",
+    "titleEn": "Regulation (EU) 2026/1744 — Digital Omnibus on AI",
+    "type": "修正規則",
+    "status": "已生效",
+    "statusGroup": "生效",
+    "promulgationDate": "2026-07-24（歐盟公報；法規日期 2026-07-08）",
+    "effectiveDate": "2026-07-27",
+    "articleCount": "4 條・其中第 1 條含 41 項 AI Act 修正",
+    "structure": "AI Act 時程・義務簡化・新增禁止行為・治理與產品法協調",
+    "transition": "Annex III 高風險規則延至 2027-12-02，產品內嵌高風險 AI 延至 2028-08-02。2026-08-02 前已上市且生成合成音訊、影像、影片或文字的系統，Article 50(2) 機器可讀標記須於 2026-12-02 前完成。",
+    "nextDeadline": "2026-12-02（既有合成內容系統 Article 50(2)）",
+    "authority": "European Union；European Commission AI Office",
+    "risk": "極高",
+    "priority": 5,
+    "sectors": ["跨產業", "生成式 AI", "高風險 AI", "產品製造", "平台"],
+    "scope": "直接修正 Regulation (EU) 2024/1689，影響在歐盟提供或部署高風險 AI、生成合成內容系統、一般用途 AI 與產品內嵌 AI 的境內外業者，亦調整 AI Office、資料庫及監理沙盒制度。",
+    "summary": "正式改寫 EU AI Act 的高風險適用時程、透明度過渡安排、AI 素養與部分行政義務，並新增對非自願親密內容及兒少性虐待素材生成系統的禁止規則。",
+    "detailedOverview": "Regulation (EU) 2026/1744 不是單純政策建議，而是已生效並直接修正 AI Act 的歐盟規則。它為 Annex III 與產品內嵌高風險 AI 設定固定延後日期，調整 AI 素養、資料庫登錄、上市後監測與主管機關權限，同時保留 2026-08-02 已啟動的透明度及 GPAI 執法。企業應重新建立法規版本基準，不能把高風險延期解讀成整部 AI Act 暫停。",
+    "keyPoints": [
+      "Annex III 獨立型高風險 AI 的主要規則自 2027-12-02 適用；Annex I 產品內嵌系統自 2028-08-02 適用。",
+      "2026-08-02 前已上市的合成內容生成系統，Article 50(2) 機器可讀標記設有至 2026-12-02 的特定過渡期。",
+      "新增禁止生成非自願色情、親密內容或兒少性虐待素材的 AI 作法，相關條款自 2026-12-02 適用。",
+      "原企業 AI 素養強制條文改為鼓勵性安排，但禁止行為、透明度、GPAI 與其他既有義務並未因此消失。",
+      "調整 EU 資料庫、上市後監測、監理沙盒與 AI Office 權限，並釐清 AI Act 與機械等產品法規的關係。"
+    ],
+    "action": "更新 EU AI Act 義務矩陣與產品路線圖；先確認 Article 50 標記是否可利用 2026-12-02 過渡期，再分別維持 2027-12-02 與 2028-08-02 的高風險控制計畫。",
+    "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=OJ:L_202601744",
+    "verifiedAt": "2026-08-14"
+  },
+  {
     "id": "eu-gpai-guidelines",
     "jurisdiction": "歐盟",
     "flag": "EU",
@@ -269,7 +303,7 @@
     ],
     "action": "將十二類風險映射至每個生成式 AI 用例，設定測試資料、門檻、紅隊、人工覆核、內容來源、供應商證據與持續監控。",
     "sourceUrl": "https://www.nist.gov/publications/artificial-intelligence-risk-management-framework-generative-artificial-intelligence",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "us-omb-m26-04",
@@ -337,7 +371,7 @@
     ],
     "action": "建立生成內容類型清冊，逐項指定可讀標記、前台揭露、例外判斷與責任人，並對第三方模型輸出做標記保留及偵測測試。",
     "sourceUrl": "https://digital-strategy.ec.europa.eu/en/library/guidelines-transparency-obligations-providers-and-deployers-ai-systems",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "china-algorithm-recommendation",
@@ -519,29 +553,30 @@
     "type": "施行令",
     "status": "已生效・寬限期",
     "statusGroup": "生效",
-    "promulgationDate": "2026-01-20（內閣通過）",
-    "effectiveDate": "2026-01-22",
-    "articleCount": "施行令正文與附表",
+    "promulgationDate": "2026-01-20（制定）／2026-07-20（最新修正）",
+    "effectiveDate": "2026-01-22（修正條文 2026-07-21 生效）",
+    "articleCount": "31 條・附表及書式",
     "structure": "適用門檻・10 類高影響領域・國內代表・安全與透明細則",
-    "transition": "與基本法同日生效；MSIT 對事實調查與行政罰鍰宣布至少一年寬限。寬限是執法政策而非停止義務，企業仍應在 2026 年完成分類與制度建置。",
+    "transition": "2026-07-20 修正施行令已於 2026-07-21 生效；MSIT 對事實調查與行政罰鍰宣布至少一年寬限。寬限是執法政策而非停止義務，企業仍應完成分類、透明度與文件制度。",
     "nextDeadline": "2027-01-22（寬限檢查點）",
     "authority": "科學技術資訊通信部（MSIT）",
     "risk": "高",
     "priority": 5,
     "sectors": ["能源", "飲用水", "醫療", "核能", "人力資源", "金融", "交通", "教育"],
     "scope": "細化 AI 基本法對高影響 AI、高性能 AI、生成式 AI 與境外業者的適用門檻及程序，供在韓國開發、提供或營運相關產品服務的業者判定具體義務。",
-    "summary": "把基本法的高影響領域、業者門檻、國內代表、安全管理、文件與透明度義務具體化，是企業實際分類的主要依據。",
-    "detailedOverview": "施行令把高影響 AI 具體化為能源、飲用水、醫療、核能、犯罪偵查、招聘、信用評估、交通、公共服務與教育等十類，並細化高性能 AI 的計算門檻與境外業者條件。企業不能只以產品名稱判定，還需檢視 AI 是否直接參與重大決策、影響基本權利，以及自己在供應鏈中的角色。",
+    "summary": "把基本法的高影響領域、業者門檻、透明與安全義務具體化；2026-07 修正另落實公共採購、AI 弱勢群體與研發支持制度。",
+    "detailedOverview": "施行令把高影響 AI 具體化為能源、飲用水、醫療、核能、犯罪偵查、招聘、信用評估、交通、公共服務與教育等十類，並細化高性能 AI、透明度及境外業者條件。2026-07-20 修正自次日生效，補進公共部門優先採購 AI 產品服務、AI 弱勢群體、研究機構與訓練資料支持等制度；信賴義務與產業促進措施因此須以最新文本一併判讀。",
     "keyPoints": [
       "列出十類高影響領域，並要求依具體功能與對生命、安全、基本權利的重大影響判斷。",
       "細化生成式 AI 的事前告知與人工生成內容標示方式，深偽內容須以清楚方式揭露。",
       "高影響 AI 提供者須建立風險管理、人類監督、可解釋資訊、使用者保護與文件保存。",
       "高性能 AI 達訓練計算量門檻時，須建立全生命週期風險識別、評估、緩解與事件應變制度。",
-      "符合規模門檻且在韓國無營業據點的境外業者，須指定可接受主管機關聯繫的國內代表。"
+      "符合規模門檻且在韓國無營業據點的境外業者，須指定可接受主管機關聯繫的國內代表。",
+      "2026-07 修正後，公共採購 AI 產品服務的確認程序及 AI 弱勢群體支持範圍已有進一步法定細節。"
     ],
-    "action": "依十類領域重跑 AI 清冊分類，記錄是否參與重大決策、模型計算量、在韓規模與角色，並補齊高影響控制與國內代表安排。",
-    "sourceUrl": "https://www.msit.go.kr/eng/bbs/view.do?bbsSeqNo=42&mId=4&mPid=2&nttSeqNo=1214&sCode=eng",
-    "verifiedAt": "2026-08-07"
+    "action": "以 2026-07-20 修正版重跑十類高影響分類，並檢查透明度、影響評估、模型計算量、國內代表，以及韓國公共採購專案的新確認要求。",
+    "sourceUrl": "https://www.law.go.kr/LSW/lsLinkCommonInfo.do?chrClsCd=010202&lspttninfSeq=198009",
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "korea-ai-transparency-guidelines",
@@ -575,7 +610,7 @@
     ],
     "action": "盤點韓國使用者會接觸的 AI 功能與合成內容，設計事前告知與內容標籤，測試可見性、可理解性及第三方轉載後的保留效果。",
     "sourceUrl": "https://www.msit.go.kr/eng/bbs/view.do?bbsSeqNo=42&mId=4&nttSeqNo=1215&sCode=eng",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "canada-automated-decision-directive",
@@ -643,7 +678,7 @@
     ],
     "action": "依角色與是否公開使用建立準則對照表，補齊第三方測試、模型資訊、內容辨識、事件資料庫及開發者—營運者通報契約。",
     "sourceUrl": "https://ised-isde.canada.ca/site/ised/en/voluntary-code-conduct-responsible-development-and-management-advanced-generative-ai-systems",
-    "verifiedAt": "2026-08-07"
+    "verifiedAt": "2026-08-14"
   },
   {
     "id": "australia-ai-adoption-guidance",
