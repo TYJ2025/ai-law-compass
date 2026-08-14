@@ -55,7 +55,10 @@ const regulations = [
   return left.title.localeCompare(right.title, "zh-Hant");
 }) as Regulation[];
 const updates = updatesData as RegulatoryUpdate[];
-const AS_OF = new Date("2026-08-07T00:00:00+08:00");
+const latestVerifiedAt = [...regulations, ...updates]
+  .map((item) => item.verifiedAt)
+  .sort((left, right) => right.localeCompare(left))[0];
+const AS_OF = new Date(latestVerifiedAt + "T00:00:00+08:00");
 
 const regionSignals = [
   { name: "亞太", region: "亞太", tone: "critical", note: "基本法、平台規則與產業指引並行" },
@@ -99,6 +102,15 @@ function formatDate(date: string) {
     month: "short",
     day: "numeric",
   }).format(new Date(date + "T00:00:00"));
+}
+
+function formatVerificationDate(date: string) {
+  return new Intl.DateTimeFormat("zh-TW", {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(new Date(date + "T00:00:00+08:00"));
 }
 
 function deadlineLabel(date: string) {
@@ -251,7 +263,7 @@ export default function Home() {
           </div>
           <small>
             {new Set(regulations.map((item) => item.jurisdiction)).size} 個司法管轄區／治理體系 ·
-            2026/08/07 查核
+            {latestVerifiedAt.replaceAll("-", "/")} 查核 · 每 3 日更新
           </small>
         </div>
       </aside>
@@ -259,8 +271,8 @@ export default function Home() {
       <main>
         <header className="topbar">
           <div>
-            <p>企業法遵情報中心</p>
-            <strong>星期五，2026 年 8 月 7 日</strong>
+            <p>企業法遵情報中心 · 資料更新日期</p>
+            <strong>{formatVerificationDate(latestVerifiedAt)}</strong>
           </div>
           <div className="top-actions">
             <button className="icon-button" aria-label="通知">
@@ -393,7 +405,7 @@ export default function Home() {
                   <p>只收錄對企業法遵有行動意義的官方更新</p>
                 </div>
                 <span className="verified-badge">
-                  已查核至 {updates[0].verifiedAt.replaceAll("-", "/")}
+                  已查核至 {latestVerifiedAt.replaceAll("-", "/")} · 每 3 日更新
                 </span>
               </div>
 
