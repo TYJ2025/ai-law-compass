@@ -26,6 +26,32 @@
     "verifiedAt": "2026-08-14"
   },
   {
+    "id": "australia-aisi-multi-agent-risks-controls-2026",
+    "date": "2026-08-10",
+    "jurisdiction": "澳洲",
+    "flag": "AU",
+    "category": "技術報告／風險治理",
+    "importance": "中",
+    "title": "澳洲 AI Safety Institute 發布跨組織 AI agents 風險控制框架",
+    "summary": "澳洲 AI Safety Institute 首份出版品建立三層代理治理框架，協助企業辨識 AI agents 在單一組織、跨組織及開放環境互動時的失誤傳播、誘因衝突與基礎設施風險。",
+    "authority": "Australian AI Safety Institute；Department of Industry, Science and Resources",
+    "keyDate": "2026-08-10 官方發布；屬技術風險框架，並非強制法規或合格認證",
+    "affectedCompanies": "在澳洲或跨境供應、採購、整合或部署 AI agents、多代理系統、自主客服、採購代理、交易代理與開放網路代理的組織",
+    "background": "企業代理逐步從內部單一環境走向供應商、客戶、合作夥伴與陌生外部代理互動。既有控制多聚焦個別模型或代理，但跨代理錯誤、敏感資料與惡意指令可能快速傳播，且跨組織場景沒有單一主體能看見或控制整體系統。",
+    "whatChanged": "澳洲政府首次以 AI Safety Institute 名義發布系統化技術框架，按最低共同治理程度區分單一治理、聯邦式治理及開放環境，並把風險整理為協調失誤、傳播與感染、策略與誘因失敗、基礎設施與環境失敗四類。報告同時指出各類控制可由誰執行，以及現有治理缺口；它是政策與企業風險管理參考，不構成新法律義務。",
+    "businessImpact": "導入 AI agents 的企業不能只測試單一代理輸出，還需評估跨代理交接、資料與指令傳播、代理間勾結、對手身分及共享基礎設施。與外部代理互通時，契約、身分、監測、事件處理和退出機制應跨越單一供應商邊界。",
+    "keyPoints": [
+      "Tier 1 單一治理由一個組織控制全部代理，可採結構化交接、模型多樣化、協調代理及回復檢查點。",
+      "Tier 2 聯邦式治理涉及多個組織，需共同部署條件、測試與揭露義務、爭議處理及共享監測基礎設施。",
+      "Tier 3 開放環境缺乏中央治理，企業需限制代理權限，或透過自願標準、可信身分與聲譽機制建立運行時治理。",
+      "主要失敗模式涵蓋協調失誤、錯誤或敏感資料傳播、非預期勾結與共享環境操弄。",
+      "報告是技術與治理參考，不是澳洲已生效的強制標準、產品核准或合格認證。"
+    ],
+    "action": "將所有 AI agent 用例依三層治理分類；補做跨代理威脅模型、結構化交接、最小權限、身分與對手驗證、全鏈監測、異常中止、回復檢查點及跨組織事件契約。",
+    "sourceUrl": "https://www.industry.gov.au/publications/risks-and-controls-multi-agent-systems",
+    "verifiedAt": "2026-08-17"
+  },
+  {
     "id": "eu-ai-act-enforcement-2026",
     "date": "2026-08-02",
     "jurisdiction": "歐盟",
