@@ -1,5 +1,57 @@
 [
   {
+    "id": "eu-ai-act-enforcement-tools-2026",
+    "date": "2026-08-24",
+    "jurisdiction": "歐盟",
+    "flag": "EU",
+    "category": "執法工具／申訴機制",
+    "importance": "高",
+    "title": "歐盟公布 AI Act 執法權責與三類申訴通道",
+    "summary": "歐盟執委會整理 AI Office、會員國主管機關與 EDPS 的執法分工，並上線一般申訴、吹哨者及 GPAI 下游供應商三類通報工具。",
+    "authority": "歐盟執委會 AI Office；會員國主管機關；European Data Protection Supervisor",
+    "keyDate": "2026-08-24 官方執法框架更新；相關執法權限已自 2026-08-02 啟動",
+    "affectedCompanies": "向歐盟提供 GPAI 模型、以自有 GPAI 建置 AI 系統、經營 VLOP／VLOSE 整合 AI，或供應及部署其他 AI 系統的境內外企業",
+    "background": "EU AI Act 已進入實際執法階段，但 AI Office、會員國市場監管機關與 EDPS 的案件邊界，以及企業、下游供應商和內部人員可使用哪些通道，直接影響調查應對、供應商爭議與吹哨者管理。",
+    "whatChanged": "執委會在 8 月 24 日的執法框架頁面集中說明權責與工具：AI Office 處理 GPAI、同一提供者或同集團以該模型建置的 AI 系統，以及整合進指定 VLOP／VLOSE 的系統；其他系統原則上由會員國主管機關執法，EU 機關使用的 AI 則由 EDPS 管理。頁面同時提供三個可直接提交案件的通道。",
+    "businessImpact": "企業面臨的監管入口已更具體。GPAI 供應商可能收到資訊要求、模型存取或評估要求；下游業者可就 Articles 53–55 的模型供應義務提出申訴，員工及合作人員也可使用安全吹哨通道。法遵、稽核、客服與事件應變流程應能辨識並升級這些外部程序。",
+    "keyPoints": [
+      "AI Office 可對 GPAI 及特定以同集團 GPAI 建置的 AI 系統要求資訊、模型存取、評估、改正或限制公開提供。",
+      "AI Office 也監管整合於 DSA 指定超大型線上平台或搜尋引擎的相關 AI 系統；其他系統主要由會員國主管機關負責。",
+      "一般自然人與法人可使用 AI Act Complaint Tool，就 AI Office 管轄案件提出申訴。",
+      "具專業關係的內部人員可透過 Whistleblower Tool 安全通報；GPAI 下游供應商另有 Articles 53–55 專用申訴通道。",
+      "禁止行為最高罰款可達 3,500 萬歐元或全球年營收 7%；其他違規最高可達 1,500 萬歐元或 3%，仍依個案與法規適用。"
+    ],
+    "action": "更新 EU 監管機關路由表與調查應對手冊；為 AI Office 資訊要求、模型存取、下游 GPAI 爭議及吹哨案件指定收件人、法律保全、證據封存與升級時限。",
+    "sourceUrl": "https://digital-strategy.ec.europa.eu/en/policies/enforcement-ai-act",
+    "verifiedAt": "2026-08-26"
+  },
+  {
+    "id": "brazil-anpd-genai-platform-monitoring-2026",
+    "date": "2026-08-21",
+    "jurisdiction": "巴西",
+    "flag": "BR",
+    "category": "監測／執法準備",
+    "importance": "高",
+    "title": "巴西 ANPD 對生成式 AI 工具啟動系統性監測",
+    "summary": "巴西 ANPD 已把 Copilot、Claude、DeepSeek、Gemini、ChatGPT、Meta AI、Perplexity 與應用程式商店納入監測，查核防止生成或修改第三人私密內容的安全措施。",
+    "authority": "Autoridade Nacional de Proteção de Dados（ANPD）",
+    "keyDate": "2026-08-21 啟動監測；後續由 ANPD 分析企業回覆並決定監管或執法措施",
+    "affectedCompanies": "在巴西提供生成式 AI、聊天機器人、應用程式商店、社群平台或公開內容傳播服務，尤其可能生成、編輯或散布私密影像的境內外企業",
+    "background": "巴西 2026 年第 12.975 與 12.976 號法令擴充平台對犯罪、詐騙及針對女性數位暴力的系統性注意義務，並賦予 ANPD 監管、檢查與調查權。ECA Digital 亦已於 2026 年 3 月生效，使兒少保護要求與平台治理義務交疊。",
+    "whatChanged": "ANPD 不再只進行政策諮詢，而是以案件 00261.005032/2026-78 對生成式 AI 工具及應用程式商店展開第一階段實際監測。受監測企業須說明治理、透明度、風險管理、內容處理及申訴機制，並證明用於阻止或偵測第三人私密內容生成、編輯與修改的過濾、封鎖及其他安全措施確實有效。",
+    "businessImpact": "這是針對已生效平台義務的監管活動，不是一般市場調查。ANPD 採系統性而非逐則內容審查，企業需提出控制設計與效能證據；僅有政策文字或模型拒答宣示不足以回應查核。未能證明勤勉治理者，可能進入後續調查、改正或制裁程序。",
+    "keyPoints": [
+      "第二監測群組明列七項生成式 AI 工具與 App Store、Google Play Store，顯示模型及分發平台均在監管視野內。",
+      "查核焦點包括生成、編輯、操弄或修改涉及第三人的私密內容，尤其是 AI deepfake 風險。",
+      "企業須說明過濾器、封鎖、偵測與其他安全機制，並證明措施的實際有效性。",
+      "ANPD 也會檢視治理架構、透明度、風險管理、內容處理、檢舉管道與使用者保護措施。",
+      "監測屬系統性合規查核；電子郵件及私人通訊不在本輪範圍，公開內容與公開群組功能則可能納入。"
+    ],
+    "action": "在巴西產品建立私密內容濫用測試包與葡萄牙語越獄測試；保存過濾、偵測、申訴、處置時間、誤判及模型更新後回歸測試證據，並預先指定 ANPD 回覆與法律保全負責人。",
+    "sourceUrl": "https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-avalia-como-plataformas-digitais-atuam-para-prevenir-conteudos-criminosos-e-proteger-criancas-e-mulheres-na-internet",
+    "verifiedAt": "2026-08-26"
+  },
+  {
     "id": "brazil-anpd-ai-sandbox-consultation-2026",
     "date": "2026-08-13",
     "jurisdiction": "巴西",
@@ -24,6 +76,32 @@
     "action": "評估是否有適合提交的巴西 AI 用例；先備妥資料流程、合法基礎、DPIA、偏差測試、人類監督、事件處理與退出方案。",
     "sourceUrl": "https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-realizara-consulta-a-sociedade-sobre-sandbox-regulatorio-de-ia-e-protecao-de-dados",
     "verifiedAt": "2026-08-14"
+  },
+  {
+    "id": "colorado-admt-chatbot-rules-proposed-2026",
+    "date": "2026-08-11",
+    "jurisdiction": "美國・科羅拉多州",
+    "flag": "US",
+    "category": "規則草案／公開徵詢",
+    "importance": "高",
+    "title": "科羅拉多州提出 ADMT 與聊天機器人安全細則草案",
+    "summary": "科羅拉多州檢察長提出 14 章規則草案，細化重大決策自動化技術的通知、文件與消費者權利，以及聊天機器人的年齡估計、兒少安全、自傷應變與年度報告。",
+    "authority": "Colorado Department of Law；Colorado Attorney General",
+    "keyDate": "2026-08-11 提案；2026-09-04 前意見納入修正版；正式意見截止 2026-10-26",
+    "affectedCompanies": "在科羅拉多州提供或使用重大決策 ADMT 的開發者、整合商與部署者，以及向一般公眾提供 conversational AI 的營運者",
+    "background": "SB26-189 的主要 ADMT 義務及 HB26-1263 聊天機器人安全義務均將於 2027-01-01 適用。前者要求州檢察長制定細則，後者雖未強制規則制定，但年度報告、年齡估計與安全控制仍需要可操作的判準，因此主管機關合併提出 4 CCR 904-6 草案。",
+    "whatChanged": "草案首次把兩部法律轉成具體操作規格，共 14 章，涵蓋通知的語言、可及性與裝置呈現、上游及中游文件傳遞、不利結果說明、資料更正與人工作業覆核、chatbot 例外、年齡保證、AI 身分揭露、未成年人保護、自傷程序、專業服務表述及年度報告。它目前仍是草案，不能標示為最終生效規則。",
+    "businessImpact": "企業的介面、資料、模型與客服流程可能需要同步改造。ADMT 部署者要準備可解釋的不利決策通知及兩種送達方式，供應鏈整合商要取得並向下游提供開發者文件；聊天機器人營運者則需量化年齡估計、危機轉介、兒少性內容及情感依賴防護的有效性。",
+    "keyPoints": [
+      "所有消費者通知原則上須清楚、無障礙、支援平常提供的語言，並在各裝置及常用介面可讀取。",
+      "中游開發者須合理取得上游 ADMT 文件並提供給下游；涉及商業秘密時仍須交代保留資訊的法律依據。",
+      "不利結果後 30 日內須提供 ADMT 角色、版本、開發者、使用資料及消費者權利資訊，草案原則上要求以兩種方式送達。",
+      "聊天機器人章節細化年齡估計、每三小時或持續 AI 告知、兒少預設隱私、性內容與情感依賴測試，以及自傷危機處理。",
+      "年度報告草案要求使用者規模、危機轉介準確率、年齡估計與兒少安全指標；主管機關可要求底層文件或示範並在 30 日內提供。"
+    ],
+    "action": "以草案完成介面與控制差異分析；在 9 月 4 日前提交需影響修正版的技術問題，最遲 10 月 26 日前提出正式意見，同時保留最終規則變更緩衝。",
+    "sourceUrl": "https://coag.gov/ai/",
+    "verifiedAt": "2026-08-26"
   },
   {
     "id": "australia-aisi-multi-agent-risks-controls-2026",
