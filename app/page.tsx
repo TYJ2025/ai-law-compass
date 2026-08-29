@@ -52,8 +52,7 @@ const regulations = [
 
   if (jurisdictionDifference !== 0) return jurisdictionDifference;
   if (right.priority !== left.priority) return right.priority - left.priority;
-  if (left.title === right.title) return 0;
-  return left.title < right.title ? -1 : 1;
+  return left.title.localeCompare(right.title, "zh-Hant");
 }) as Regulation[];
 const updates = updatesData as RegulatoryUpdate[];
 const latestVerifiedAt = [...regulations, ...updates]
