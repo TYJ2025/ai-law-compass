@@ -52,13 +52,15 @@ const regulations = [
 
   if (jurisdictionDifference !== 0) return jurisdictionDifference;
   if (right.priority !== left.priority) return right.priority - left.priority;
-  return left.title.localeCompare(right.title, "zh-Hant");
+  if (left.title === right.title) return 0;
+  return left.title < right.title ? -1 : 1;
 }) as Regulation[];
 const updates = updatesData as RegulatoryUpdate[];
 const latestVerifiedAt = [...regulations, ...updates]
   .map((item) => item.verifiedAt)
   .sort((left, right) => right.localeCompare(left))[0];
 const AS_OF = new Date(latestVerifiedAt + "T00:00:00+08:00");
+const DISPLAY_TIME_ZONE = "Asia/Taipei";
 
 const regionSignals = [
   { name: "亞太", region: "亞太", tone: "critical", note: "基本法、平台規則與產業指引並行" },
@@ -101,7 +103,8 @@ function formatDate(date: string) {
     year: "numeric",
     month: "short",
     day: "numeric",
-  }).format(new Date(date + "T00:00:00"));
+    timeZone: DISPLAY_TIME_ZONE,
+  }).format(new Date(date + "T00:00:00+08:00"));
 }
 
 function formatVerificationDate(date: string) {
@@ -110,7 +113,21 @@ function formatVerificationDate(date: string) {
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: DISPLAY_TIME_ZONE,
   }).format(new Date(date + "T00:00:00+08:00"));
+}
+
+function formatUpdateDay(date: string) {
+  return Number(date.slice(8, 10));
+}
+
+function formatUpdateMonth(date: string) {
+  return new Intl.DateTimeFormat("en", {
+    month: "short",
+    timeZone: DISPLAY_TIME_ZONE,
+  })
+    .format(new Date(date + "T00:00:00+08:00"))
+    .toUpperCase();
 }
 
 function deadlineLabel(date: string) {
@@ -423,12 +440,8 @@ export default function Home() {
                       key={update.id}
                     >
                       <div className="update-date">
-                        <strong>{new Date(update.date).getDate()}</strong>
-                        <span>
-                          {new Intl.DateTimeFormat("en", { month: "short" })
-                            .format(new Date(update.date))
-                            .toUpperCase()}
-                        </span>
+                        <strong>{formatUpdateDay(update.date)}</strong>
+                        <span>{formatUpdateMonth(update.date)}</span>
                       </div>
                       <div className="update-body">
                         <div className="update-meta">
