@@ -130,6 +130,32 @@
     "verifiedAt": "2026-08-17"
   },
   {
+    "id": "nist-tevv-athlon-draft-2026",
+    "date": "2026-08-07",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "技術框架草案／公開徵詢",
+    "importance": "高",
+    "title": "NIST 公開 TEVV-Athlon AI 系統評估框架初始草案",
+    "summary": "NIST AI 200-2 初始公開草案提出四階段 TEVV-Athlon 方法，協助企業把可信任 AI 目標轉換為可依用途客製的測試、評估、驗證與確效證據。",
+    "authority": "U.S. National Institute of Standards and Technology（NIST）",
+    "keyDate": "2026-08-07 公開徵詢開始；2026-10-06 意見截止",
+    "affectedCompanies": "開發、採購或部署 AI，尤其是大型語言模型、多模態、代理型 AI 與高影響系統，並需建立模型測試、紅隊或第三方保證證據的組織",
+    "background": "NIST AI RMF 要求以 TEVV 支援 Measure 與風險管理，但企業常缺少把高階可信任特性轉為實際測試計畫的方法。NIST 因而提出可依組織目標與使用情境客製的 TEVV-Athlon 初始公開草案。",
+    "whatChanged": "草案把評估流程分為 Articulate & Organize、Define & Construct、Apply & Measure、Synthesize & Interrogate 四階段，並提供模型測試、紅隊、使用者／實地測試與實驗設計工具箱。NIST 明確標示這仍是初始公開草案，最終版本可能調整。",
+    "businessImpact": "企業可用它檢查現有模型評測是否真正對應使用目的、風險與決策需求，而不是只保存通用基準分數。採購、產品、風險與稽核團隊需共同定義評估目標、證據、限制及結果升級門檻。",
+    "keyPoints": [
+      "四階段方法從評估目的與利害關係人開始，再設計量測區塊、測試事件與工具。",
+      "TEVV-Athlon 對應 AI RMF：Govern／Map 提供輸入，框架落實 Measure，結果支援 Manage。",
+      "可混合模型測試、紅隊、使用者研究與實地測試，並依系統及使用情境客製。",
+      "結果須揭露不確定性、有效性與限制，避免基準指標被過度最佳化或誤用。",
+      "目前為 41 頁初始公開草案，不是法律或最終 NIST 標準；公開意見至 10 月 6 日。"
+    ],
+    "action": "在 2026-10-06 前以一個高風險 AI 用例試跑四階段流程，盤點現有評測缺口並決定是否向 NIST 提交實務意見；同時把情境與限制納入採購及上線核准文件。",
+    "sourceUrl": "https://www.nist.gov/artificial-intelligence/ai-research/tevv-athlon-framework-evaluating-ai-systems",
+    "verifiedAt": "2026-08-30"
+  },
+  {
     "id": "eu-ai-act-enforcement-2026",
     "date": "2026-08-02",
     "jurisdiction": "歐盟",
