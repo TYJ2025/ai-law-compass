@@ -263,7 +263,7 @@ export default function Home() {
           </div>
           <small>
             {new Set(regulations.map((item) => item.jurisdiction)).size} 個司法管轄區／治理體系 ·
-            {latestVerifiedAt.replaceAll("-", "/")} 查核 · 每 3 日更新
+            {latestVerifiedAt.replaceAll("-", "/")} 查核 · 每日 06:30 更新
           </small>
         </div>
       </aside>
@@ -405,7 +405,7 @@ export default function Home() {
                   <p>只收錄對企業法遵有行動意義的官方更新</p>
                 </div>
                 <span className="verified-badge">
-                  已查核至 {latestVerifiedAt.replaceAll("-", "/")} · 每 3 日更新
+                  已查核至 {latestVerifiedAt.replaceAll("-", "/")} · 每日 06:30 更新
                 </span>
               </div>
 
