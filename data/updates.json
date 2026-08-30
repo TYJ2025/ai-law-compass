@@ -1,5 +1,31 @@
 [
   {
+    "id": "australia-national-cabinet-ai-data-centre-laws-2026",
+    "date": "2026-08-26",
+    "jurisdiction": "澳洲",
+    "flag": "AU",
+    "category": "政府間協議／立法規劃",
+    "importance": "高",
+    "title": "澳洲 National Cabinet 同意制定全國 AI 資料中心強制標準",
+    "summary": "澳洲聯邦、州與領地首長同意共同制定全國一致的 AI 資料中心強制標準，涵蓋能源、用水、土地使用與 AI 訓練條件，聯邦政府預計 2027 年初立法。",
+    "authority": "Australian National Cabinet；Australian Government",
+    "keyDate": "2026-08-26 National Cabinet 達成協議；聯邦政府預計 2027 年初提出立法",
+    "affectedCompanies": "在澳洲投資、興建或營運大型資料中心，提供雲端、算力或模型訓練服務，以及規劃高耗能 AI 基礎設施的境內外企業",
+    "background": "澳洲政府於 2026 年 7 月成立 Office of AI，並宣布把大型資料中心的電力、電網連接、用水與設址要求轉為 Australian Standards for AI。由於規劃與審批權限跨越聯邦、州及領地，National Cabinet 是否取得一致立場，是後續強制制度能否全國實施的關鍵。",
+    "whatChanged": "8 月 26 日的 National Cabinet 公報確認所有第一部長支持共同建立全國一致的強制標準，並明列能源、用水、土地使用、技能培訓及 AI 訓練條件。聯邦法規將與州、領地既有規劃及審批程序互補而不重複；目前仍是政府間政策協議與立法承諾，並非已生效法律或已發布的最終標準。",
+    "businessImpact": "政策已從聯邦單方宣布進入跨政府共同執行階段，大型資料中心專案面臨的能源新增性、電網成本、用水效率與土地使用要求更可能成為全國最低門檻。投資人不能只依單一州的現行許可條件估算，還需為 2027 年聯邦法律及與地方審批並行的雙層合規預留成本與時程。",
+    "keyPoints": [
+      "聯邦、六州及兩領地首長同意由各級政府共同發展一致的強制標準。",
+      "標準將至少涵蓋資料中心的能源、用水與土地使用影響，並支援相關技能及訓練。",
+      "聯邦立法預計於 2027 年初推進，並可能納入提供 AI 訓練服務的條件。",
+      "聯邦制度將補充而非取代州及領地的規劃、選址與專案審批程序。",
+      "公報尚未提供法案文字、容量門檻或技術指標，現階段不得標示為已生效強制義務。"
+    ],
+    "action": "澳洲資料中心與模型訓練業者應把電力來源與新增性、連接成本、需量調整、用水、土地及地方審批資料整合成單一證據包；投資契約應保留因 2027 年新法調整設計、時程與成本的機制。",
+    "sourceUrl": "https://www.pm.gov.au/media/meeting-national-cabinet-26-august-26",
+    "verifiedAt": "2026-08-31"
+  },
+  {
     "id": "eu-ai-act-enforcement-tools-2026",
     "date": "2026-08-24",
     "jurisdiction": "歐盟",
