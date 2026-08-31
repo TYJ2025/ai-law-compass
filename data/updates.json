@@ -1,5 +1,31 @@
 [
   {
+    "id": "us-ftc-active-listening-ai-orders-2026",
+    "date": "2026-08-27",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "執法和解／AI 行銷宣稱",
+    "importance": "中",
+    "title": "美國 FTC 最終核准「Active Listening」AI 行銷服務和解令",
+    "summary": "FTC 最終命令 Cox Media Group、MindSift 與 1010 Digital Works 合計支付 93 萬美元，處理其對 AI 語音聆聽、地理廣告定位及消費者同意所作的不實宣稱。",
+    "authority": "U.S. Federal Trade Commission（FTC）",
+    "keyDate": "2026-08-27 FTC 最終核准三份同意命令；命令自送達後生效",
+    "affectedCompanies": "在美國提供或轉售 AI 廣告科技、智慧裝置語音資料分析、受眾定位與資料仲介服務，以及採購並向客戶轉述供應商 AI 能力的企業",
+    "background": "三家公司曾宣稱其 Active Listening 服務利用特殊演算法，從消費者智慧裝置的對話辨識主題，再向特定地區投放廣告，並表示消費者已選擇加入。FTC 指出服務實際上並未使用語音資料；如果真如宣傳所述在沒有適當同意下收集及利用語音，該行為本身也會違反 FTC Act。",
+    "whatChanged": "FTC 在收到公開意見後以 2 比 0 最終核准三份和解命令，將 2026 年 5 月提出的處分轉為正式要求。Cox Media Group 支付 88 萬美元，MindSift 與 1010 Digital Works 各支付 2.5 萬美元；三家公司並被禁止不實陳述廣告服務功能、語音資料的收集與使用、消費者是否同意，以及地理定位能力。",
+    "businessImpact": "此案表明即使產品並未實際執行所宣稱的 AI 或語音資料處理，虛構技術能力與同意狀態仍可形成獨立的消費者保護責任；若能力真的存在，未取得充分同意的敏感語音收集又會增加另一層違法風險。廣告主、代理商與技術供應商都需驗證上游宣稱，而不能把銷售簡報直接轉述給客戶。",
+    "keyPoints": [
+      "三份命令合計金額為 93 萬美元，將用於補償受相關作法影響的 Cox Media Group 客戶。",
+      "FTC 認定受查服務並未以語音資料運作，與其 AI 主動聆聽及智慧裝置對話定位宣稱不符。",
+      "命令禁止不實陳述廣告或行銷服務的品質、功能及地理定位能力。",
+      "命令也涵蓋語音資料是否被收集、使用或揭露，以及消費者是否已提供同意。",
+      "FTC 明示若服務真的在缺乏充分同意下蒐集與使用消費者語音，該資料處理本身亦可能違反 FTC Act。"
+    ],
+    "action": "對 AI 廣告、語音分析及定位供應商執行宣稱驗證與資料流查核；保留能力測試、同意介面、資料來源及銷售文案核准紀錄，並在契約中要求上游保證 AI 功能與資料處理敘述可被證明。",
+    "sourceUrl": "https://www.ftc.gov/news-events/news/press-releases/2026/08/ftc-finalizes-orders-cox-media-group-two-other-firms-settling-charges-they-deceived-customers-about",
+    "verifiedAt": "2026-09-01"
+  },
+  {
     "id": "australia-national-cabinet-ai-data-centre-laws-2026",
     "date": "2026-08-26",
     "jurisdiction": "澳洲",
