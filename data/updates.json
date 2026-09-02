@@ -1,5 +1,31 @@
 [
   {
+    "id": "g20-innovation-ministerial-ai-consensus-2026",
+    "date": "2026-09-02",
+    "jurisdiction": "G20／國際",
+    "flag": "G20",
+    "category": "政策共識／AI 智財與標準",
+    "importance": "中",
+    "title": "G20 創新部長就 AI 智財與標準政策達成共識",
+    "summary": "G20 創新部長通過涵蓋 AI 智慧財產政策、AI 用於標準制定及 AI 標準的共識聲明，並提出促進可信任新興科技採用的 Carolina Principles。",
+    "authority": "G20 Innovation Ministers；U.S. Department of Commerce；White House OSTP",
+    "keyDate": "2026-09-02 G20 Innovation Ministerial 發布共識聲明及配套成果",
+    "affectedCompanies": "跨境開發或部署 AI、授權訓練資料與模型、參與國際標準制定，或向 G20 政府及受監管產業供應 AI 技術的企業與研究機構",
+    "background": "美國商務部與白宮科技政策辦公室在北卡羅來納州主持為期兩日的 G20 創新部長會議，與會者包括主要 AI 市場、歐盟及非洲聯盟代表。各國對訓練資料、智慧財產、技術標準及可信任採用的政策取向仍有差異，因此能否形成共同語言會影響後續國內制度與標準化活動。",
+    "whatChanged": "部長級共識聲明確立六項支柱，其中直接涉及企業 AI 法遵的是促進創新的政策框架、AI 智慧財產政策，以及「AI for standards and standards for AI」。會議另通過 Carolina Principles for Emerging Technologies，主張投資基礎研究、強化商業化路徑並促進可信任技術採用；AI Prosperity Objectives 與 AI Prosperity Compact 則聚焦技術人才及公私協力。這些成果屬非拘束性國際政策共識，不是條約或直接適用法律。",
+    "businessImpact": "短期不產生新的申報、測試或裁罰義務，但 G20 成員後續可能把共識轉化為國內 AI 智財規則、採購條件、人才方案及標準政策。模型與資料企業應預期訓練資料授權、權利人保護、標準互通與可信任部署會持續成為跨國市場准入及政府合作議題。",
+    "keyPoints": [
+      "共識聲明包含六項支柱，明列 AI 智慧財產政策及 AI 與標準的雙向關係。",
+      "Carolina Principles 鼓勵基礎研究、技術商業化與可信任新興科技的採用及部署。",
+      "AI Prosperity Objectives 與 Compact 著重 G20 技術人才培育及擴大私部門合作。",
+      "主要 AI 經濟體、歐盟及非洲聯盟均有代表與會，使其可作為後續政策方向的國際訊號。",
+      "文件是部長級非拘束性共識，不取代各國法律、ISO／IEC 標準或企業既有智慧財產義務。"
+    ],
+    "action": "跨國企業應把 G20 共識納入政策雷達，盤點訓練資料權利、模型授權與標準參與策略；持續追蹤各成員是否將其轉化為立法、政府採購、資助條件或國家標準，並避免把共識文件誤列為已生效義務。",
+    "sourceUrl": "https://www.whitehouse.gov/releases/2026/09/g20-innovation-ministerial-concludes-with-consensus-statement/",
+    "verifiedAt": "2026-09-03"
+  },
+  {
     "id": "eu-ai-act-first-rfis-30-companies-2026",
     "date": "2026-09-01",
     "jurisdiction": "歐盟",
