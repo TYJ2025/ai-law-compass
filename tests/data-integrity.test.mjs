@@ -37,6 +37,7 @@ test("global governance frameworks are present and correctly classified", async 
     "iso-iec-42001",
     "taiwan-ai-risk-classification",
     "eu-ai-omnibus-2026",
+    "council-of-europe-ai-framework-convention",
   ]) {
     assert.ok(byId.has(id), `missing ${id}`);
   }
@@ -45,6 +46,7 @@ test("global governance frameworks are present and correctly classified", async 
   assert.equal(byId.get("iso-iec-42001").statusGroup, "指引");
   assert.equal(byId.get("taiwan-ai-risk-classification").statusGroup, "指引");
   assert.equal(byId.get("eu-ai-omnibus-2026").statusGroup, "生效");
+  assert.equal(byId.get("council-of-europe-ai-framework-convention").statusGroup, "尚未生效");
   assert.match(byId.get("nist-ai-rmf").status, /修訂中/);
   assert.match(byId.get("iso-iec-42001").effectiveDate, /自願採用/);
   assert.match(byId.get("taiwan-ai-risk-classification").structure, /20 子類型/);
@@ -95,6 +97,7 @@ test("researched instruments link to official primary sources", async () => {
     "meity.gov.in",
     "iso.org",
     "oecd.org",
+    "coe.int",
   ];
 
   for (const regulation of regulations) {

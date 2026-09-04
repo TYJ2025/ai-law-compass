@@ -67,7 +67,7 @@ const regionSignals = [
   { name: "北美", region: "北美", tone: "watch", note: "聯邦框架、採購與地方立法並行" },
   { name: "拉丁美洲", region: "拉丁美洲", tone: "high", note: "巴西資料法與 AI 法案並進" },
   { name: "大洋洲", region: "大洋洲", tone: "watch", note: "企業指南與政府強制政策分流" },
-  { name: "國際標準", region: "國際", tone: "quiet", note: "ISO 與 OECD 支援治理互通" },
+  { name: "國際標準", region: "國際", tone: "quiet", note: "國際公約與標準支援治理互通" },
 ].map((signal) => ({
   ...signal,
   count: regulations.filter((item) => item.region === signal.region).length,
@@ -140,6 +140,7 @@ function deadlineLabel(date: string) {
 function statusClass(statusGroup: string) {
   if (statusGroup === "生效") return "status-live";
   if (statusGroup === "即將生效") return "status-soon";
+  if (statusGroup === "尚未生效") return "status-soon";
   if (statusGroup === "草案") return "status-draft";
   return "status-guidance";
 }
@@ -400,6 +401,7 @@ export default function Home() {
               <option>全部狀態</option>
               <option>生效</option>
               <option>即將生效</option>
+              <option>尚未生效</option>
               <option>草案</option>
               <option>指引</option>
             </select>
