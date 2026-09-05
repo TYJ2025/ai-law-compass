@@ -98,6 +98,7 @@ test("researched instruments link to official primary sources", async () => {
     "iso.org",
     "oecd.org",
     "coe.int",
+    "samr.gov.cn",
   ];
 
   for (const regulation of regulations) {

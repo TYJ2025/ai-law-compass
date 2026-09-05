@@ -82,6 +82,13 @@ const deadlineItems = [
     kind: "法定期限",
   },
   {
+    jurisdiction: "中國",
+    flag: "CN",
+    title: "GB/T 47863 GenAI 合規指南實施",
+    date: "2026-11-01",
+    kind: "推薦性標準",
+  },
+  {
     jurisdiction: "美國・科羅拉多州",
     flag: "US",
     title: "ADMT 主要義務開始適用",
