@@ -106,6 +106,33 @@
     "verifiedAt": "2026-09-02"
   },
   {
+    "id": "eu-dsa-chatgpt-vlose-designation-2026",
+    "date": "2026-08-31",
+    "jurisdiction": "歐盟",
+    "flag": "EU",
+    "category": "平台監管／指定決定",
+    "importance": "高",
+    "title": "歐盟將 ChatGPT 指定為 DSA 超大型線上搜尋引擎",
+    "summary": "歐盟執委會依《數位服務法》將 ChatGPT 指定為超大型線上搜尋引擎，OpenAI 須於收到通知後四個月內履行系統性風險評估、緩解與其他加重義務。",
+    "authority": "歐盟執委會（European Commission）",
+    "keyDate": "2026-08-31 指定；指定通知後四個月內（執委會說明為 2027 年 1 月前）符合 VLOSE 加重義務",
+    "affectedCompanies": "OpenAI Ireland Limited，以及在歐盟營運具網路搜尋功能、可能達每月 4,500 萬活躍使用者門檻的生成式 AI 與線上搜尋服務提供者",
+    "background": "《數位服務法》按服務規模與社會影響採分級義務；在歐盟平均每月活躍使用者達 4,500 萬的線上平台或搜尋引擎，可被指定為 VLOP 或 VLOSE。這些業者除一般 DSA 義務外，還須處理服務及演算法可能造成的廣泛系統性風險，並接受執委會與會員國數位服務協調機關的加強監督。",
+    "whatChanged": "執委會把 ChatGPT 指定為 VLOSE，同日把 Reddit 與 Roblox 指定為 VLOP。官方指定名單記載 ChatGPT 由 OpenAI Ireland Limited 提供，申報的歐盟平均每月活躍使用者為 1.591 億，已超過 4,500 萬門檻；名單同時註明正式指定決定文本尚未公開。指定是監管身分變更，不是違法認定或裁罰。",
+    "businessImpact": "OpenAI 須在通知後四個月內完成 VLOSE 加重控制，特別是辨識、評估並降低非法內容、未成年人與身心健康、基本權利、選舉程序及公共安全等系統性風險。企業客戶不會因供應商被指定而自動成為 VLOSE，但在模型與搜尋服務採購、風險分攤及事件處理中，應確認供應商如何履行 DSA，並避免把 DSA 指定與 AI Act 合規混為一談。",
+    "keyPoints": [
+      "ChatGPT 自 2026 年 8 月 31 日起被指定為 DSA 的 Very Large Online Search Engine。",
+      "官方名單記載 OpenAI Ireland Limited 申報歐盟平均每月活躍使用者為 1.591 億，超過 4,500 萬門檻。",
+      "指定通知後有四個月完成 VLOSE 加重義務；執委會公告將期限表述為 2027 年 1 月前。",
+      "重點義務包括評估與緩解服務及演算法對非法內容、未成年人、身心健康、基本權利、選舉及公共安全造成的系統性風險。",
+      "歐盟執委會主要負責監督 VLOSE 加重義務，並與愛爾蘭數位服務協調機關合作。",
+      "指定不是違規結論、罰款或服務禁令；官方清單截至本次查核仍標示指定決定文本尚未公開。"
+    ],
+    "action": "使用 ChatGPT 或其他含網路搜尋功能之 AI 的企業，應更新歐盟供應商盡職調查與契約附件，確認系統性風險、未成年人保護、事件通報及監管調查協作安排；大型 AI 服務商另應持續計算歐盟活躍使用者並預判 VLOSE 門檻。",
+    "sourceUrl": "https://digital-strategy.ec.europa.eu/en/news/commission-designates-chatgpt-reddit-roblox-under-digital-services-act",
+    "verifiedAt": "2026-09-08"
+  },
+  {
     "id": "us-ftc-active-listening-ai-orders-2026",
     "date": "2026-08-27",
     "jurisdiction": "美國",
