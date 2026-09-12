@@ -80,6 +80,7 @@ test("researched instruments link to official primary sources", async () => {
     "msit.go.kr",
     "law.go.kr",
     "ey.gov.tw",
+    "gazette.nat.gov.tw",
     "fsc.gov.tw",
     "pdpc.gov.sg",
     "imda.gov.sg",
