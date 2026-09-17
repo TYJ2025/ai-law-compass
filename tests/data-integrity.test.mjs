@@ -118,6 +118,19 @@ test("legislative proposals are not presented as enacted law", async () => {
   assert.match(brazilBill.effectiveDate, /尚未生效/);
 });
 
+test("Korean decree includes inserted articles and cumulative safety criteria", async () => {
+  const regulations = await readRegulations();
+  const decree = regulations.find((regulation) => regulation.id === "korea-ai-enforcement-decree");
+  assert.match(decree.promulgationDate, /2026-01-21（制定）/);
+  assert.match(decree.articleCount, /39 條本則/);
+  assert.match(decree.articleCount, /6 條增訂/);
+  assert.ok(decree.keyPoints.some((point) => /同時符合.*10\^26 FLOP.*最先進.*廣泛重大風險/.test(point)));
+  assert.ok(decree.keyPoints.some((point) => /保存 5 年/.test(point)));
+  const sourceUrl = new URL(decree.sourceUrl);
+  assert.equal(sourceUrl.pathname, "/LSW/lsInfoP.do");
+  assert.equal(sourceUrl.searchParams.get("lsId"), "015032");
+});
+
 test("regulatory updates are sorted newest first", async () => {
   const updates = await readJson("data/updates.json");
   const dates = updates.map((update) => update.date);
