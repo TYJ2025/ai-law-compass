@@ -82,6 +82,7 @@ test("researched instruments link to official primary sources", async () => {
     "ey.gov.tw",
     "gazette.nat.gov.tw",
     "fsc.gov.tw",
+    "moda.gov.tw",
     "pdpc.gov.sg",
     "imda.gov.sg",
     "ico.org.uk",
@@ -135,6 +136,42 @@ test("regulatory updates are sorted newest first", async () => {
   const updates = await readJson("data/updates.json");
   const dates = updates.map((update) => update.date);
   assert.deepEqual(dates, [...dates].sort().reverse());
+});
+
+test("September guidance and REDATA preserve status, dates and conditional benefits", async () => {
+  const regulations = await readRegulations();
+  const byId = new Map(regulations.map((regulation) => [regulation.id, regulation]));
+  const taiwan = byId.get("taiwan-frontier-ai-cybersecurity-policy");
+  const uk = byId.get("uk-ai-risk-management-toolkit");
+  const brazil = byId.get("brazil-redata-ai-datacenter-law-2026");
+
+  assert.equal(taiwan.statusGroup, "指引");
+  assert.equal(taiwan.promulgationDate, "2026-09-04");
+  assert.match(taiwan.articleCount, /3 頁.*7 項/);
+  assert.match(taiwan.transition, /不得推定/);
+  assert.equal(uk.statusGroup, "指引");
+  assert.equal(uk.promulgationDate, "2026-09-08");
+  assert.match(uk.articleCount, /9 節.*4 附錄/);
+  assert.match(uk.scope, /不是.*新企業 AI 法/);
+  assert.equal(brazil.statusGroup, "生效");
+  assert.match(brazil.articleCount, /^5 條/);
+  assert.match(brazil.promulgationDate, /2026-09-15.*DOU 號外/);
+  assert.match(brazil.effectiveDate, /2026-09-15.*資格核准/);
+  assert.match(brazil.nextDeadline, /2026-12-31.*IPI/);
+  assert.ok(brazil.keyPoints.some((point) => /產品價值的 2%.*不是營收/.test(point)));
+  assert.ok(brazil.keyPoints.some((point) => /五年.*2026-12-31.*不可/.test(point)));
+
+  const updates = await readJson("data/updates.json");
+  for (const [id, date] of [
+    ["taiwan-frontier-ai-cybersecurity-policy-2026", "2026-09-04"],
+    ["uk-ai-risk-management-toolkit-2026", "2026-09-08"],
+    ["brazil-redata-ai-datacenter-law-2026", "2026-09-15"],
+  ]) {
+    const update = updates.find((entry) => entry.id === id);
+    assert.equal(update.date, date, `${id} must use its publication date`);
+  }
+  assert.equal(byId.size, regulations.length, "duplicate regulation id");
+  assert.equal(new Set(updates.map((entry) => entry.id)).size, updates.length, "duplicate update id");
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
