@@ -174,6 +174,26 @@ test("September guidance and REDATA preserve status, dates and conditional benef
   assert.equal(new Set(updates.map((entry) => entry.id)).size, updates.length, "duplicate update id");
 });
 
+test("Canadian agentic AI guide preserves public-sector scope and operational controls", async () => {
+  const regulations = await readRegulations();
+  const guide = regulations.find((regulation) => regulation.id === "canada-agentic-ai-use-guide");
+
+  assert.equal(guide.statusGroup, "指引");
+  assert.match(guide.promulgationDate, /2026-09-15.*官方頁面日期/);
+  assert.match(guide.effectiveDate, /非一般企業法律/);
+  assert.match(guide.articleCount, /6 節.*2 項.*13 組/);
+  assert.match(guide.scope, /聯邦部門.*供應商.*不創設普遍法定義務/);
+  assert.ok(guide.keyPoints.some((point) => /唯讀.*唯一代理身分/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /狀態變更.*人工覆核/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /外部.*指令.*停用機制/.test(point)));
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "canada-agentic-ai-use-guide-2026");
+  assert.equal(update.date, "2026-09-15");
+  assert.equal(update.verifiedAt, "2026-09-20");
+  assert.match(update.businessImpact, /不是一般私人企業新法/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
