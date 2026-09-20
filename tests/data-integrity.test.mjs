@@ -194,6 +194,36 @@ test("Canadian agentic AI guide preserves public-sector scope and operational co
   assert.match(update.businessImpact, /不是一般私人企業新法/);
 });
 
+test("China AI trustworthiness standard preserves recommended status and official structure", async () => {
+  const regulations = await readRegulations();
+  const standard = regulations.find(
+    (regulation) => regulation.id === "china-ai-trustworthiness-general-rules-gbt-47507",
+  );
+
+  assert.equal(standard.statusGroup, "指引");
+  assert.equal(standard.type, "推薦性國家標準");
+  assert.equal(standard.promulgationDate, "2026-04-30");
+  assert.match(standard.effectiveDate, /2026-08-01.*非強制法規/);
+  assert.match(standard.articleCount, /23 頁.*5 章.*20 項.*18 類/);
+  assert.match(standard.structure, /28 項術語.*20 項.*附錄 A/);
+  assert.match(standard.transition, /沒有法定.*獨立罰則/);
+  assert.ok(standard.keyPoints.some((point) => /不要求所有系統.*20 項/.test(point)));
+  assert.ok(standard.keyPoints.some((point) => /推薦性國家標準.*不得.*強制義務/.test(point)));
+  assert.equal(
+    new URL(standard.sourceUrl).hostname,
+    "openstd.samr.gov.cn",
+  );
+  assert.equal(standard.verifiedAt, "2026-09-21");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "china-ai-trustworthiness-standard-gbt47507-2026",
+  );
+  assert.equal(update.date, "2026-08-01");
+  assert.equal(update.verifiedAt, "2026-09-21");
+  assert.match(update.businessImpact, /推薦性而非強制性/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
