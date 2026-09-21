@@ -224,6 +224,34 @@ test("China AI trustworthiness standard preserves recommended status and officia
   assert.match(update.businessImpact, /推薦性而非強制性/);
 });
 
+test("OECD responsible AI due diligence guide preserves voluntary status and six-step scope", async () => {
+  const regulations = await readRegulations();
+  const guide = regulations.find(
+    (regulation) => regulation.id === "oecd-responsible-ai-due-diligence-guidance-2026",
+  );
+
+  assert.equal(guide.statusGroup, "指引");
+  assert.match(guide.type, /自願性/);
+  assert.match(guide.promulgationDate, /2026-02-19.*2026-05/);
+  assert.match(guide.effectiveDate, /自願性指引/);
+  assert.match(guide.articleCount, /61 頁.*2 章.*6 步驟.*17.*7 表/);
+  assert.match(guide.scope, /AI 輸入供應商.*設計.*開發.*下游組織/);
+  assert.match(guide.transition, /不能單獨.*法律合規藍圖/);
+  assert.ok(guide.keyPoints.some((point) => /造成、促成或直接連結/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /國家聯絡點.*最終聲明/.test(point)));
+  assert.equal(new URL(guide.sourceUrl).hostname, "www.oecd.org");
+  assert.equal(guide.verifiedAt, "2026-09-22");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "oecd-responsible-ai-due-diligence-guidance-2026",
+  );
+  assert.equal(update.date, "2026-02-19");
+  assert.equal(update.verifiedAt, "2026-09-22");
+  assert.match(update.businessImpact, /不會自行產生罰鍰/);
+  assert.match(update.businessImpact, /國家聯絡點/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
