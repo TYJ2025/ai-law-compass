@@ -224,6 +224,34 @@ test("China AI trustworthiness standard preserves recommended status and officia
   assert.match(update.businessImpact, /推薦性而非強制性/);
 });
 
+test("China open-source model platform standard preserves recommended status and official scope", async () => {
+  const regulations = await readRegulations();
+  const standard = regulations.find(
+    (regulation) => regulation.id === "china-open-source-model-platform-gbt-48110",
+  );
+
+  assert.equal(standard.statusGroup, "指引");
+  assert.equal(standard.type, "推薦性國家標準");
+  assert.equal(standard.promulgationDate, "2026-08-28");
+  assert.match(standard.effectiveDate, /2026-12-01.*非強制法規/);
+  assert.match(standard.articleCount, /不適用.*不以法條編號.*未揭示頁數/);
+  assert.match(standard.structure, /平台管理.*開源資料集管理.*開源模型管理.*貢獻者服務.*開發者服務/);
+  assert.match(standard.scope, /規劃、建設、運行與維護/);
+  assert.match(standard.transition, /沒有獨立罰則.*不能取代/);
+  assert.ok(standard.keyPoints.some((point) => /推薦性國家標準.*不得.*強制法規/.test(point)));
+  assert.ok(standard.keyPoints.some((point) => /資料與模型來源.*開源授權.*內容標識/.test(point)));
+  assert.equal(new URL(standard.sourceUrl).hostname, "std.samr.gov.cn");
+  assert.equal(standard.verifiedAt, "2026-09-23");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "china-open-source-model-platform-standard-2026",
+  );
+  assert.equal(update.date, "2026-08-28");
+  assert.equal(update.verifiedAt, "2026-09-23");
+  assert.match(update.businessImpact, /推薦性 GB\/T.*不會.*自行產生罰鍰/);
+});
+
 test("OECD responsible AI due diligence guide preserves voluntary status and six-step scope", async () => {
   const regulations = await readRegulations();
   const guide = regulations.find(
