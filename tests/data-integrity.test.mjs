@@ -280,6 +280,34 @@ test("OECD responsible AI due diligence guide preserves voluntary status and six
   assert.match(update.businessImpact, /國家聯絡點/);
 });
 
+test("UK Google Search AI measures preserve final and draft legal status", async () => {
+  const regulations = await readRegulations();
+  const requirement = regulations.find(
+    (regulation) => regulation.id === "uk-google-search-publisher-ai-conduct-requirement",
+  );
+
+  assert.equal(requirement.statusGroup, "即將生效");
+  assert.equal(requirement.promulgationDate, "2026-06-03");
+  assert.match(requirement.effectiveDate, /2026-12-03.*2027-03-03/);
+  assert.match(requirement.articleCount, /9 項.*5 頁.*47 頁/);
+  assert.match(requirement.scope, /直接受規範者.*Google.*出版者.*不.*直接義務主體/);
+  assert.match(requirement.transition, /2030-10-10/);
+  assert.ok(requirement.keyPoints.some((point) => /Gemini Assistant.*Vertex AI API/.test(point)));
+  assert.ok(requirement.keyPoints.some((point) => /不得.*降權/.test(point)));
+  assert.equal(requirement.verifiedAt, "2026-09-24");
+
+  const updates = await readJson("data/updates.json");
+  const consultation = updates.find(
+    (entry) => entry.id === "uk-cma-ai-search-user-choice-consultation-2026",
+  );
+  assert.equal(consultation.date, "2026-09-23");
+  assert.equal(consultation.verifiedAt, "2026-09-24");
+  assert.match(consultation.keyDate, /2026-10-09 17:00/);
+  assert.match(consultation.summary, /AI 助理.*仍在諮詢.*尚未/);
+  assert.match(consultation.whatChanged, /18 段.*6 個月.*尚未正式施加/);
+  assert.match(consultation.businessImpact, /不得把草案當作已生效義務/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
