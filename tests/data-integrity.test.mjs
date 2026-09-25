@@ -85,6 +85,7 @@ test("researched instruments link to official primary sources", async () => {
     "moda.gov.tw",
     "pdpc.gov.sg",
     "imda.gov.sg",
+    "moh.gov.sg",
     "ico.org.uk",
     "gov.uk",
     "nist.gov",
@@ -306,6 +307,32 @@ test("UK Google Search AI measures preserve final and draft legal status", async
   assert.match(consultation.summary, /AI 助理.*仍在諮詢.*尚未/);
   assert.match(consultation.whatChanged, /18 段.*6 個月.*尚未正式施加/);
   assert.match(consultation.businessImpact, /不得把草案當作已生效義務/);
+});
+
+test("Singapore healthcare AI guide preserves sector scope and non-statutory status", async () => {
+  const regulations = await readRegulations();
+  const guide = regulations.find(
+    (regulation) => regulation.id === "singapore-healthcare-ai-guidelines-2",
+  );
+
+  assert.equal(guide.statusGroup, "指引");
+  assert.match(guide.promulgationDate, /2026-03-10.*2026-03-13/);
+  assert.match(guide.effectiveDate, /沒有獨立法定生效日/);
+  assert.match(guide.articleCount, /42 頁.*10 章.*7 項.*3 類/);
+  assert.match(guide.scope, /Clinical.*Clinical-Ops.*Ops.*IMDA/);
+  assert.match(guide.transition, /不能取代.*Health Products Act.*PDPA/);
+  assert.ok(guide.keyPoints.some((point) => /Clinical.*Clinical-Ops.*人類監督/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /紅隊測試.*RAG/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /AI-MD.*SaMD.*HSA 註冊/.test(point)));
+  assert.equal(guide.verifiedAt, "2026-09-26");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "singapore-healthcare-ai-guidelines-2-2026",
+  );
+  assert.equal(update.date, "2026-03-10");
+  assert.equal(update.verifiedAt, "2026-09-26");
+  assert.match(update.businessImpact, /不是獨立強制法規.*不能.*替代證明/);
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {

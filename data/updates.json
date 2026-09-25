@@ -1087,6 +1087,34 @@
     "verifiedAt": "2026-08-07"
   },
   {
+    "id": "singapore-healthcare-ai-guidelines-2-2026",
+    "date": "2026-03-10",
+    "jurisdiction": "新加坡",
+    "flag": "SG",
+    "category": "醫療 AI／生命週期治理",
+    "importance": "高",
+    "title": "新加坡更新醫療 AI 指引，明確分配開發、部署與臨床使用責任",
+    "summary": "新加坡 MOH 與 HSA 發布 AIHGle 2.0，以七項倫理原則及三類角色治理醫療 AI 全生命週期，新增生成式 AI、持續學習模型與消費者直用應用控制；文件是監管指引，不是獨立新法。",
+    "authority": "Ministry of Health（MOH）；Health Sciences Authority（HSA）",
+    "keyDate": "2026-03-10 發布；2026-03-13 以 MOH-MHC-0024-2026 函送 HCSA 被授權業者與醫療專業人員；無獨立法定生效或寬限日",
+    "affectedCompanies": "向新加坡醫療機構提供 AI、LLM、臨床決策支援、語音紀錄、AI 軟體醫材、消費者健康應用或部署整合服務的開發商與供應商，以及採購、部署與使用相關系統的醫療機構和專業人員",
+    "background": "2021 年版醫療 AI 框架主要處理早期醫療 AI 的治理需求。隨生成式 AI、持續學習模型及病患直接使用應用增加，MOH 與 HSA 需要更清楚區分技術開發者、醫療機構與臨床使用者責任，並把 AI 建議與現行醫材、醫療服務、個資、資安及專業義務銜接。",
+    "whatChanged": "42 頁第二版以安全、公平、透明、可解釋、穩健、資安與資料保護、人類價值一致七項原則，新增三類角色的生命週期責任。醫療機構應設治理平台、核准 AI 並維護含風險分類的清冊；Clinical 與 Clinical-Ops 用例須保留人類監督。生成式 AI 另須處理 hallucination、危害內容、資料洩漏與對抗提示，並採情境驗證、紅隊、事實核對、RAG、介面標示與人員訓練。",
+    "businessImpact": "供應商不能只提供模型準確率，還要交付預定用途、醫材資格、資料與族群代表性、驗證、限制、監測、事件、變更、快照及退場證據；醫療機構則需把清冊、場域測試、人類監督、病患溝通與事件流程寫入治理及合約。AIHGle 2.0 本身不是獨立強制法規，不能當作符合 HPA、HCSA、PDPA、Cybersecurity Act 或醫療專業規範的替代證明。",
+    "keyPoints": [
+      "指引主要聚焦直接影響照護的 Clinical 及間接影響照護流程的 Clinical-Ops；一般行政 Ops 用例改參考 IMDA 跨產業框架。",
+      "AI 是否為醫療器材依預定用途與功能判定；提供診斷、治療或臨床建議的 LLM 可能須依 HPA 及 HSA 規則註冊和管理。",
+      "部署機構應設跨職能治理、核准用例、維護含風險分類的 AI 清冊，並做情境化場域驗證與持續監測。",
+      "Clinical 與 Clinical-Ops 用例須維持人類監督；醫療專業人員仍負責核對資料、查證輸出、異常應變及最終病患照護。",
+      "生成式 AI 控制涵蓋情境特定評測、人類判斷、紅隊、RAG、來源核對、AI 標示、資料清理與對抗提示測試。",
+      "消費者直用 AI-MD 或 SaMD 仍須向 HSA 註冊，並清楚說明用途、限制、AI 身分及升級求助方式。",
+      "既有醫材不良事件、資料外洩及重大資安事件通報仍依各自法律辦理；遵循指引不會免除法定責任。"
+    ],
+    "action": "供應商與醫療機構應依三類角色重整責任矩陣與契約，完成醫材資格、AI 清冊、風險分級、場域驗證、人類監督、GenAI 紅隊與事實核對、事件及退場控制；另逐項對照 HPA、HCSA、PDPA、Cybersecurity Act 與專業規範，避免把建議性指引誤作合規豁免。",
+    "sourceUrl": "https://www.moh.gov.sg/others/health-regulation/emerging-regulatory-policy-issues/",
+    "verifiedAt": "2026-09-26"
+  },
+  {
     "id": "oecd-responsible-ai-due-diligence-guidance-2026",
     "date": "2026-02-19",
     "jurisdiction": "國際標準",
