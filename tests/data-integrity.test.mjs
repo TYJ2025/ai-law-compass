@@ -96,6 +96,7 @@ test("researched instruments link to official primary sources", async () => {
     "digital.gov.au",
     "planalto.gov.br",
     "camara.leg.br",
+    "gov.br",
     "pib.gov.in",
     "meity.gov.in",
     "iso.org",
@@ -333,6 +334,35 @@ test("Singapore healthcare AI guide preserves sector scope and non-statutory sta
   assert.equal(update.date, "2026-03-10");
   assert.equal(update.verifiedAt, "2026-09-26");
   assert.match(update.businessImpact, /不是獨立強制法規.*不能.*替代證明/);
+});
+
+test("Brazil human-research AI guide preserves voluntary status and MARIAH controls", async () => {
+  const regulations = await readRegulations();
+  const guide = regulations.find(
+    (regulation) => regulation.id === "brazil-inaep-ai-human-research-ethics-guide-2026",
+  );
+
+  assert.equal(guide.statusGroup, "指引");
+  assert.equal(guide.promulgationDate, "2026-09-25");
+  assert.match(guide.effectiveDate, /不具獨立法律拘束力/);
+  assert.match(guide.articleCount, /指南 41 頁.*10 章.*參考手冊 159 頁.*MARIAH 57 頁.*6 部/);
+  assert.match(guide.scope, /人類研究.*企業供應商.*不是一般企業 AI 法/);
+  assert.match(guide.transition, /六個月.*自行決定.*不能取代/);
+  assert.ok(guide.keyPoints.some((point) => /低、普通、高及關鍵四級.*累加/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /質化 A 版.*5 個.*量化 B 版.*7 個.*275／304/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /人類監督.*實際否決/.test(point)));
+  assert.equal(new URL(guide.sourceUrl).hostname, "www.gov.br");
+  assert.equal(guide.verifiedAt, "2026-09-29");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "brazil-inaep-ai-human-research-guide-2026",
+  );
+  assert.equal(update.date, "2026-09-25");
+  assert.equal(update.verifiedAt, "2026-09-29");
+  assert.match(update.summary, /四級風險.*並非新法/);
+  assert.match(update.businessImpact, /不具拘束力.*自主採用.*不會排除/);
+  assert.match(update.keyDate, /固定起迄日.*尚待官方公告/);
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
