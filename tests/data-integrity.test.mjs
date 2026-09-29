@@ -365,6 +365,47 @@ test("Brazil human-research AI guide preserves voluntary status and MARIAH contr
   assert.match(update.keyDate, /固定起迄日.*尚待官方公告/);
 });
 
+test("EU copyright consultation and Brazil AI child-safety law preserve legal status", async () => {
+  const regulations = await readRegulations();
+  const brazil = regulations.find(
+    (regulation) => regulation.id === "brazil-ai-child-sexual-violence-law-15487-2026",
+  );
+
+  assert.equal(brazil.statusGroup, "生效");
+  assert.match(brazil.promulgationDate, /2026-08-06.*2026-08-07.*DOU/);
+  assert.match(brazil.effectiveDate, /2026-08-07.*立即生效/);
+  assert.match(brazil.articleCount, /7 條.*5 部/);
+  assert.match(brazil.scope, /真實或虛構.*AI.*一般模型.*不.*當然負刑責/);
+  assert.match(brazil.transition, /沒有另設企業過渡期.*嚴格責任/);
+  assert.ok(brazil.keyPoints.some((point) => /第 241-C 條.*3 至 5 年/.test(point)));
+  assert.ok(brazil.keyPoints.some((point) => /第 241-D 條.*三分之一至三分之二/.test(point)));
+  assert.ok(brazil.keyPoints.some((point) => /48 小時.*證據保管鏈/.test(point)));
+  assert.equal(new URL(brazil.sourceUrl).hostname, "www.planalto.gov.br");
+  assert.equal(brazil.verifiedAt, "2026-09-30");
+
+  const updates = await readJson("data/updates.json");
+  const brazilUpdate = updates.find(
+    (entry) => entry.id === "brazil-ai-child-sexual-violence-law-15487-2026",
+  );
+  assert.equal(brazilUpdate.date, "2026-08-07");
+  assert.equal(brazilUpdate.verifiedAt, "2026-09-30");
+  assert.match(brazilUpdate.businessImpact, /並非.*一般嚴格責任.*分別核對/);
+
+  const euConsultation = updates.find(
+    (entry) => entry.id === "eu-copyright-generative-ai-targeted-consultation-2026",
+  );
+  assert.equal(euConsultation.date, "2026-09-29");
+  assert.equal(euConsultation.verifiedAt, "2026-09-30");
+  assert.match(euConsultation.summary, /只是諮詢.*不是新法或新增義務/);
+  assert.match(euConsultation.keyDate, /2026-11-03.*尚未決定/);
+  assert.match(euConsultation.whatChanged, /生成式 AI.*表演者仿冒.*研究領域著作權/);
+  assert.match(euConsultation.businessImpact, /沒有立即改變.*不能當作已通過/);
+  assert.equal(
+    new URL(euConsultation.sourceUrl).hostname,
+    "digital-strategy.ec.europa.eu",
+  );
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
