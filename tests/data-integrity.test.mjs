@@ -406,6 +406,33 @@ test("EU copyright consultation and Brazil AI child-safety law preserve legal st
   );
 });
 
+test("Taiwan AI impact assessments 2.0 preserve non-binding status and scoring limits", async () => {
+  const regulations = await readRegulations();
+  const reports = regulations.find(
+    (regulation) => regulation.id === "taiwan-ai-child-human-rights-gender-impact-assessments-2-2026",
+  );
+
+  assert.equal(reports.statusGroup, "指引");
+  assert.match(reports.promulgationDate, /2026-09-30.*1157001574/);
+  assert.match(reports.effectiveDate, /不創設獨立法律義務/);
+  assert.match(reports.articleCount, /52 頁.*50 頁.*49 頁.*18 項/);
+  assert.match(reports.transition, /沒有重做.*問卷.*不是政府政策決定或行政承諾/);
+  assert.match(reports.scope, /不是強制檢核表.*一般企業 AI 法/);
+  assert.ok(reports.keyPoints.some((point) => /18\.62/.test(point)));
+  assert.ok(reports.keyPoints.some((point) => /19\.11/.test(point)));
+  assert.ok(reports.keyPoints.some((point) => /19\.52/.test(point)));
+  assert.ok(reports.keyPoints.some((point) => /不是法律上的風險分類.*不能.*直接比較/.test(point)));
+  assert.equal(new URL(reports.sourceUrl).hostname, "moda.gov.tw");
+  assert.equal(reports.verifiedAt, "2026-10-01");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "taiwan-ai-impact-assessments-2-2026");
+  assert.equal(update.date, "2026-09-30");
+  assert.equal(update.verifiedAt, "2026-10-01");
+  assert.match(update.summary, /非拘束性政策評估.*不是新法或強制風險分級/);
+  assert.match(update.businessImpact, /不創設法律義務.*現行.*仍須逐案適用/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
