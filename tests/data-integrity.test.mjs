@@ -433,6 +433,94 @@ test("Taiwan AI impact assessments 2.0 preserve non-binding status and scoring l
   assert.match(update.businessImpact, /不創設法律義務.*現行.*仍須逐案適用/);
 });
 
+test("EU KIDS Act proposal preserves draft status and AI child-safety obligations", async () => {
+  const regulations = await readRegulations();
+  const proposal = regulations.find((regulation) => regulation.id === "eu-kids-act-proposal-2026");
+
+  assert.equal(proposal.statusGroup, "草案");
+  assert.match(proposal.promulgationDate, /2026-09-17.*COM\(2026\) 681.*2026\/0286/);
+  assert.match(proposal.effectiveDate, /尚未生效.*第 43 條.*6 個月/);
+  assert.match(proposal.articleCount, /43 條.*9 章.*99 頁/);
+  assert.match(proposal.transition, /議會與理事會審議.*第 5 條.*6 個月.*12 個月.*不得當作現行法/);
+  assert.match(proposal.scope, /AI 伴侶.*一般對話式聊天機器人.*境外.*微型及小型企業.*沒有一般豁免/);
+  assert.ok(proposal.keyPoints.some((point) => /情感依賴.*先前對話預設不得/.test(point)));
+  assert.ok(proposal.keyPoints.some((point) => /上市.*前.*評估.*上市後監測/.test(point)));
+  assert.ok(proposal.keyPoints.some((point) => /不得自動啟用.*不得鼓勵.*隨時.*退出/.test(point)));
+  assert.ok(proposal.keyPoints.some((point) => /仍待.*審議.*不得.*已生效/.test(point)));
+  assert.equal(new URL(proposal.sourceUrl).hostname, "eur-lex.europa.eu");
+  assert.equal(proposal.verifiedAt, "2026-10-02");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "eu-kids-act-ai-child-safety-proposal-2026");
+  assert.equal(update.date, "2026-09-17");
+  assert.equal(update.verifiedAt, "2026-10-02");
+  assert.match(update.summary, /43 條.*尚未生效/);
+  assert.match(update.businessImpact, /小微企業沒有全面豁免.*不能先當作已生效法/);
+});
+
+test("US terminology order preserves statutory scope and historical documents", async () => {
+  const regulations = await readRegulations();
+  const order = regulations.find(
+    (regulation) => regulation.id === "us-super-intelligence-terminology-executive-order-2026",
+  );
+
+  assert.equal(order.statusGroup, "生效");
+  assert.equal(order.promulgationDate, "2026-09-29");
+  assert.match(order.effectiveDate, /2026-09-29.*行政機關/);
+  assert.equal(order.articleCount, "4 節");
+  assert.match(order.transition, /非法律文件.*不要求改寫既有法規.*60 日/);
+  assert.match(order.scope, /15 U\.S\.C\. § 9401\(3\).*不自行修正.*不直接對一般私人企業/);
+  assert.match(order.nextDeadline, /2026-11-28.*60 日/);
+  assert.ok(order.keyPoints.some((point) => /SI.*既有 AI 法定定義.*不能.*推定.*擴張/.test(point)));
+  assert.ok(order.keyPoints.some((point) => /不創設.*私人.*權利.*一般私人企業/.test(point)));
+  assert.equal(new URL(order.sourceUrl).hostname, "www.whitehouse.gov");
+  assert.equal(order.verifiedAt, "2026-10-02");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-super-intelligence-terminology-executive-order-2026",
+  );
+  assert.equal(update.date, "2026-09-29");
+  assert.equal(update.verifiedAt, "2026-10-02");
+  assert.match(update.summary, /不改寫既有法規、契約或補助.*未直接新增私人企業義務/);
+  assert.match(update.businessImpact, /不是新的產品安全.*罰鍰制度/);
+});
+
+test("ISO 27090 remains under publication and NIST TEVV retains its historical name", async () => {
+  const regulations = await readRegulations();
+  const iso = regulations.find(
+    (regulation) => regulation.id === "iso-iec-27090-ai-cybersecurity-under-publication-2026",
+  );
+  const nist = regulations.find((regulation) => regulation.id === "nist-ai-200-2-tevv-athlon");
+
+  assert.equal(iso.statusGroup, "草案");
+  assert.match(iso.status, /Stage 60\.00.*尚未正式發布/);
+  assert.match(iso.promulgationDate, /2026-08-19.*Stage 60\.00.*2026-10/);
+  assert.match(iso.effectiveDate, /尚未發布.*自願採用/);
+  assert.match(iso.articleCount, /尚未公開.*未揭示.*頁數.*章節/);
+  assert.match(iso.transition, /最長可能需 7 週.*尚未到 Stage 60\.60.*不能標示為已發布/);
+  assert.ok(iso.keyPoints.some((point) => /資料投毒.*模型竊取/.test(point)));
+  assert.ok(iso.keyPoints.some((point) => /Stage 60\.00.*尚未登錄 Stage 60\.60 正式發布/.test(point)));
+  assert.equal(new URL(iso.sourceUrl).hostname, "committee.iso.org");
+  assert.equal(iso.verifiedAt, "2026-10-02");
+
+  assert.match(nist.transition, /2026-10-01.*Super Intelligence.*不要求改寫既有歷史文件/);
+  assert.equal(nist.verifiedAt, "2026-10-02");
+
+  const updates = await readJson("data/updates.json");
+  const isoUpdate = updates.find(
+    (entry) => entry.id === "iso-iec-27090-ai-cybersecurity-under-publication-2026",
+  );
+  assert.equal(isoUpdate.date, "2026-08-19");
+  assert.equal(isoUpdate.verifiedAt, "2026-10-02");
+  assert.match(isoUpdate.summary, /Stage 60\.00.*Under development.*不得宣稱已依最終標準合規/);
+  assert.match(isoUpdate.businessImpact, /不能.*27090 認證.*自願性指引/);
+
+  const nistUpdate = updates.find((entry) => entry.id === "nist-tevv-athlon-draft-2026");
+  assert.equal(nistUpdate.verifiedAt, "2026-10-02");
+  assert.match(nistUpdate.whatChanged, /2026-10-01.*不要求改寫既有歷史文件/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);

@@ -56,6 +56,33 @@
     "verifiedAt": "2026-09-30"
   },
   {
+    "id": "us-super-intelligence-terminology-executive-order-2026",
+    "date": "2026-09-29",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "行政命令／聯邦 AI 用語",
+    "importance": "中",
+    "title": "美國行政部門改以 Super Intelligence／SI 稱呼 AI",
+    "summary": "美國總統簽署行政命令，要求聯邦行政部門在非法律文件中以 Super Intelligence／SI 取代 AI 用語，並於 60 日內提出法定定義修法建議；命令不改寫既有法規、契約或補助，也未直接新增私人企業義務。",
+    "authority": "President of the United States；Assistant to the President for Science and Technology；各聯邦行政機關",
+    "keyDate": "2026-09-29 簽署並指示行政機關執行；2026-11-28 前提出 SI 聯邦定義立法文字與配套建議",
+    "affectedCompanies": "向美國聯邦行政機關投標、交付 AI 系統、模型、技術文件、研究報告或政策顧問服務的企業，以及需管理美國法規、契約、補助與政府溝通版本的跨國法遵和公共政策團隊",
+    "background": "美國成文法以 15 U.S.C. § 9401(3) 定義人工智慧，聯邦政策、採購與 NIST 文件也長期使用 AI 用語。行政命令認為現代前沿系統已超越早期概念，因而要求行政部門改用 Super Intelligence，但沒有以行政命令立即改寫國會法律或具法律效果的歷史文件。",
+    "whatChanged": "各行政機關現在應在法律允許範圍內，於官方函文、公共溝通、網站、報告、政策及其他非法律文件使用 Super Intelligence／SI。SI 暫時仍等同現行 AI 法定定義；總統科技助理須在 60 日內評估是否修改、擴張或取代該定義，提出法條一致性修正與額外行政行動建議。",
+    "businessImpact": "近期影響主要是政府溝通、網站、招標與交付物的術語對照，不是新的產品安全、測試、揭露或罰鍰制度。供應商若不區分非法律文件與既有法規、契約、補助，可能錯誤改寫有法律效果的文字；另一方面，各機關後續模板、採購條款與立法建議可能逐步採 SI 用語，需保留搜尋及版本管理能力。",
+    "keyPoints": [
+      "聯邦行政機關須在官方函文、網站、報告、政策與其他非法律文件中，以 Super Intelligence／SI 取代 Artificial Intelligence／AI。",
+      "SI 目前仍引用 15 U.S.C. § 9401(3) 的既有 AI 定義，名稱改變本身沒有擴張或縮減現行法定範圍。",
+      "命令明文不要求修改既有法規、總統行動、契約、補助及其他歷史文件，企業不應進行未經法律審查的批次更名。",
+      "總統科技助理須於 60 日內提出 SI 法定定義的立法文字、法條一致性修正及其他行政建議。",
+      "命令不限制機關或 OMB 的既有法定權限，以合法及預算可用為執行前提，也不創設私人可依法執行的權利。",
+      "聯邦供應商的直接義務仍由招標、契約、補助條件及既有法規決定；命令本身沒有新增一般私人企業罰則。"
+    ],
+    "action": "建立 AI／SI 同義詞與文件類型對照，讓投標、政策監測及交付物可同時搜尋兩種用語；保留既有法規、契約和補助的原始名稱，追蹤各機關模板及 2026-11-28 立法建議後，再由法務決定是否調整定義與合約條款。",
+    "sourceUrl": "https://www.whitehouse.gov/presidential-actions/2026/09/inaugurating-the-era-of-super-intelligence/",
+    "verifiedAt": "2026-10-02"
+  },
+  {
     "id": "brazil-inaep-ai-human-research-guide-2026",
     "date": "2026-09-25",
     "jurisdiction": "巴西",
@@ -111,6 +138,34 @@
     "action": "有意進入選擇畫面的搜尋或 AI 助理提供者應對照資格、來源歸屬、安全及服務連續性整理證據，必要時於 2026-10-09 前回應諮詢；Google 應先做選擇畫面、年度提示、試用、API 與申請流程差距分析，但在最終決定前把它列為草案情境而非現行義務；出版者同步評估各 AI 助理的引用與導流政策。",
     "sourceUrl": "https://www.gov.uk/government/consultations/googles-general-search-services-proposed-user-choice-conduct-requirement",
     "verifiedAt": "2026-09-24"
+  },
+  {
+    "id": "eu-kids-act-ai-child-safety-proposal-2026",
+    "date": "2026-09-17",
+    "jurisdiction": "歐盟",
+    "flag": "EU",
+    "category": "兒少安全／AI 伴侶與聊天機器人規則提案",
+    "importance": "高",
+    "title": "歐盟提出 KIDS Act，擬對 AI 伴侶與兒少數位服務設安全設計義務",
+    "summary": "歐盟執委會提出 43 條 KIDS Act，擬規範社群、影音、遊戲、應用程式商店及兒少可使用的 AI 伴侶與聊天機器人，涵蓋年齡保證、安全預設、情感依賴、測試監測、申訴及獨立稽核；目前尚未生效。",
+    "authority": "European Commission；European Parliament；Council of the European Union；未來由 European Commission、AI Office 與會員國主管機關執法",
+    "keyDate": "2026-09-17 提案；歐洲議會與理事會審議中，尚無確定通過、生效或適用日期",
+    "affectedCompanies": "向歐盟未成年人提供或可能使其接觸 AI 伴侶、一般對話式聊天機器人、社群網路、影音分享、線上遊戲、應用程式商店、作業系統及年齡保證服務的境內外企業與供應商",
+    "background": "DSA、AI Act、GDPR 與消費者法已處理部分兒少隱私、安全、操弄及 AI 風險，但歐盟仍缺乏統一帳號年齡門檻與針對成癮設計、AI 伴侶情感依賴及年齡保證的具體跨服務規則。會員國各自推動不同年齡限制，也帶來單一市場碎片化風險。",
+    "whatChanged": "COM(2026) 681 提出 43 條、9 章規則：未滿 15 歲原則上不能自行建立具特定風險的社群或影音帳號；AI 伴侶與一般聊天機器人須避免情感依賴設計、採安全記憶預設、限制未滿 13 歲存取、上市前測試並做上市後監測。超大型平台另擬提交合規計畫、自費獨立稽核及年度報告。",
+    "businessImpact": "若提案通過，兒少可使用的 AI 與平台產品將需要同時改造帳號、年齡保證、對話記憶、推薦、推播、交易、人類支援、申訴、監護工具、上市前評估與上市後監測。跨境提供者也可能適用，且小微企業沒有全面豁免；但目前所有義務與時程仍可能在共同立法程序中變更，不能先當作已生效法。",
+    "keyPoints": [
+      "提案涵蓋 AI 伴侶、一般聊天機器人、社群、影音、遊戲、應用程式商店及作業系統，境外提供者向歐盟市場供應也可能適用。",
+      "未滿 15 歲原則上不得建立具特定風險的自主帳號；13 至 14 歲的監護人帳號擬限制功能及每日最多一小時。",
+      "AI 系統不得以模擬人際關係造成兒少情感依賴，未成年人先前對話預設不得帶入後續互動。",
+      "AI 提供者擬須在上市前做兒少健康、安全、基本權及身心發展測試，並監測傷害與重大事件。",
+      "平台或遊戲內嵌聊天機器人不得自動啟用、醒目推播或鼓勵兒少使用，啟用後須可隨時退出。",
+      "超大型平台擬提交合規計畫、自費獨立稽核並按年報告；AI 違規擬沿用最高全球年營收 6% 的執法框架。",
+      "依提案多數條文擬於最終法規生效後 6 個月適用，但法案仍在審議，門檻、內容及日期均未定案。"
+    ],
+    "action": "先對所有可供兒少接觸的 AI 與平台用例建立年齡、對話記憶、情感依賴、推播、自動啟用、交易、測試、監測及申訴差距清單；維持既有 DSA、AI Act 與 GDPR 合規，並以共同立法結果作為正式專案啟動及期限設定依據。",
+    "sourceUrl": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX%3A52026PC0681",
+    "verifiedAt": "2026-10-02"
   },
   {
     "id": "canada-agentic-ai-use-guide-2026",
@@ -649,6 +704,33 @@
     "verifiedAt": "2026-08-26"
   },
   {
+    "id": "iso-iec-27090-ai-cybersecurity-under-publication-2026",
+    "date": "2026-08-19",
+    "jurisdiction": "國際標準",
+    "flag": "ISO",
+    "category": "AI 資安標準／出版作業中",
+    "importance": "中",
+    "title": "ISO/IEC 27090 進入出版階段，但尚未成為正式標準",
+    "summary": "ISO/IEC 27090 已進入 Stage 60.00，擬提供資料投毒、模型竊取、營運資料回灌及模型更新等 AI 全生命週期資安指引；ISO 仍標示 Under development／Under publication，現階段不得宣稱已依最終標準合規。",
+    "authority": "ISO/IEC JTC 1/SC 27",
+    "keyDate": "2026-08-19 進入 Stage 60.00；ISO 頁面預示 2026-10 出版，截至 2026-10-02 尚未登錄 Stage 60.60 正式發布",
+    "affectedCompanies": "開發、提供、採購或部署 AI，並管理訓練資料、模型權重、智慧財產、營運資料、模型更新、持續學習、供應鏈及資安事件的跨產業組織",
+    "background": "ISO/IEC 27001、27002 提供一般資訊安全管理與控制，但 AI 的資料投毒、模型竊取、提示或查詢濫用、持續學習及更新回灌可能穿透傳統控制。ISO/IEC JTC 1/SC 27 因而制定 27090，作為 AI 資安威脅與緩解的專門補充。",
+    "whatChanged": "文件已完成 FDIS 投票並於 2026-08-19 進入 Stage 60.00 最終出版作業，官方說明作業最長可能需 7 週，並公開確認標準將涵蓋 AI 特有弱點、後果、偵測與緩解，以及訓練資料、模型、工作流程和更新保護。不過 ISO 尚未登錄正式發布的 Stage 60.60。",
+    "businessImpact": "企業可先以官方揭示的威脅範圍檢查資料投毒、模型竊取、更新回灌與供應鏈控制，但尚無完整最終條文可逐條映射，也不能對客戶宣稱已取得 27090 認證或符合最終版。正式發布後仍屬自願性指引，須與法律及 ISO/IEC 27001、27002、42001 分別管理。",
+    "keyPoints": [
+      "ISO/IEC 27090 聚焦 AI 系統全生命週期的威脅、弱點、攻擊後果、偵測與緩解。",
+      "官方明列資料投毒及模型竊取，並提醒看似正常的查詢也可能被用於推取或竊取模型。",
+      "營運資料用於更新或重新訓練時，污染可能進入未來版本；持續學習及回饋迴路需納入控制。",
+      "標準將補充 ISO/IEC 27001、27002，不會使既有一般資安、供應鏈及事件處理控制失效。",
+      "Stage 60.00 代表最終出版作業中，不等於 Stage 60.60 已正式發布，也不是強制法規。",
+      "ISO 尚未公開最終頁數、章節與完整控制文字，現階段不得推測或宣稱符合最終版。"
+    ],
+    "action": "先把資料投毒、模型竊取、模型與權重存取、營運資料回灌、版本更新及供應鏈風險映射到現有資安與 AI 管理制度；監測 Stage 60.60，正式文本發布後再完成逐條差距分析與對外聲明。",
+    "sourceUrl": "https://committee.iso.org/standard/27090",
+    "verifiedAt": "2026-10-02"
+  },
+  {
     "id": "brazil-anpd-ai-sandbox-consultation-2026",
     "date": "2026-08-13",
     "jurisdiction": "巴西",
@@ -739,18 +821,18 @@
     "keyDate": "2026-08-07 公開徵詢開始；2026-10-06 意見截止",
     "affectedCompanies": "開發、採購或部署 AI，尤其是大型語言模型、多模態、代理型 AI 與高影響系統，並需建立模型測試、紅隊或第三方保證證據的組織",
     "background": "NIST AI RMF 要求以 TEVV 支援 Measure 與風險管理，但企業常缺少把高階可信任特性轉為實際測試計畫的方法。NIST 因而提出可依組織目標與使用情境客製的 TEVV-Athlon 初始公開草案。",
-    "whatChanged": "草案把評估流程分為 Articulate & Organize、Define & Construct、Apply & Measure、Synthesize & Interrogate 四階段，並提供模型測試、紅隊、使用者／實地測試與實驗設計工具箱。NIST 明確標示這仍是初始公開草案，最終版本可能調整。",
+    "whatChanged": "草案把評估流程分為 Articulate & Organize、Define & Construct、Apply & Measure、Synthesize & Interrogate 四階段，並提供模型測試、紅隊、使用者／實地測試與實驗設計工具箱。NIST 明確標示這仍是初始公開草案，最終版本可能調整；2026-10-01 頁面另說明草案早於 Super Intelligence 用語行政命令發布，該命令不要求改寫既有歷史文件。",
     "businessImpact": "企業可用它檢查現有模型評測是否真正對應使用目的、風險與決策需求，而不是只保存通用基準分數。採購、產品、風險與稽核團隊需共同定義評估目標、證據、限制及結果升級門檻。",
     "keyPoints": [
       "四階段方法從評估目的與利害關係人開始，再設計量測區塊、測試事件與工具。",
       "TEVV-Athlon 對應 AI RMF：Govern／Map 提供輸入，框架落實 Measure，結果支援 Manage。",
       "可混合模型測試、紅隊、使用者研究與實地測試，並依系統及使用情境客製。",
       "結果須揭露不確定性、有效性與限制，避免基準指標被過度最佳化或誤用。",
-      "目前為 41 頁初始公開草案，不是法律或最終 NIST 標準；公開意見至 10 月 6 日。"
+      "目前為 41 頁初始公開草案，不是法律或最終 NIST 標準；公開意見至 10 月 6 日，文件仍保留 AI 200-2 原名稱。"
     ],
     "action": "在 2026-10-06 前以一個高風險 AI 用例試跑四階段流程，盤點現有評測缺口並決定是否向 NIST 提交實務意見；同時把情境與限制納入採購及上線核准文件。",
     "sourceUrl": "https://www.nist.gov/artificial-intelligence/ai-research/tevv-athlon-framework-evaluating-ai-systems",
-    "verifiedAt": "2026-08-30"
+    "verifiedAt": "2026-10-02"
   },
   {
     "id": "brazil-ai-child-sexual-violence-law-15487-2026",
