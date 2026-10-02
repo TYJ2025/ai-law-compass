@@ -1,5 +1,31 @@
 [
   {
+    "id": "eu-kids-act-feedback-consultation-2026",
+    "date": "2026-10-02",
+    "jurisdiction": "歐盟",
+    "flag": "EU",
+    "category": "兒少安全／AI 規則提案諮詢",
+    "importance": "高",
+    "title": "歐盟 KIDS Act 開放公眾回饋至 11 月 26 日",
+    "summary": "歐盟執委會在 KIDS Act 官方提案頁新增公開回饋入口，意見徵集至 2026-11-26 布魯塞爾時間午夜；這是共同立法前的諮詢機會，提案仍未通過或生效。",
+    "authority": "European Commission Directorate-General for Communications Networks, Content and Technology（DG CONNECT）；後續仍由 European Parliament 與 Council of the European Union 審議",
+    "keyDate": "2026-10-02 官方頁面更新並確認回饋期限；2026-11-26 布魯塞爾時間午夜截止；沒有因此產生法規生效日或企業強制遵循日",
+    "affectedCompanies": "向歐盟使用者提供 AI 伴侶、一般聊天機器人、社群或影音平台、線上遊戲、應用程式商店、作業系統或年齡保證服務的企業，以及相關模型、內容安全、身分驗證與稽核供應商",
+    "background": "執委會於 2026-09-17 提出 COM(2026) 681，共 43 條、9 章，擬就未成年人帳號建立、年齡保證、安全預設、AI 伴侶與聊天機器人、上市前測試、上市後監測及稽核建立統一規則。提案仍在歐盟普通立法程序中。",
+    "whatChanged": "執委會於 2026-10-02 更新官方提案頁，加入公開回饋連結並明定 2026-11-26 布魯塞爾時間午夜截止。受影響企業、兒少安全團體及其他利害關係人現在有具體窗口，可就年齡門檻、每日一小時上限、情感依賴與記憶預設、測試監測、稽核及小微企業影響提交證據。",
+    "businessImpact": "本次更新沒有讓 KIDS Act 成為現行法，也未改變既有 DSA、AI Act、GDPR 或各會員國法律的適用；但它為可能受規範企業提供有限期的政策參與窗口。若產品設計、成本或兒少安全控制會受 43 條提案實質影響，未在期限前提出可驗證資料，未來共同立法討論可能缺少企業的實務證據。",
+    "keyPoints": [
+      "公開回饋期限為 2026-11-26 布魯塞爾時間午夜，企業應以當地截止時間安排內部審查與送件。",
+      "官方頁面更新的是意見徵集期限，不是提案的通過、生效或適用日期。",
+      "提案仍須經歐洲議會與理事會審議，15 歲門檻、過渡期、義務及罰則都可能改變。",
+      "具體回饋可涵蓋年齡保證、監護帳號、每日時間上限、情感依賴、記憶預設、自動啟用、測試、監測與獨立稽核。",
+      "企業仍須依現行 DSA、AI Act、GDPR、消費者與兒少保護規則逐案合規，提交意見不會產生豁免。"
+    ],
+    "action": "由法務、產品、兒少安全、信任安全、隱私與公共政策團隊在 2026-11-26 前整理可驗證的使用者年齡、傷害、控制效果、技術限制與合規成本資料；如決定回應，清楚區分現行義務與草案選項，並持續追蹤歐洲議會及理事會修正。",
+    "sourceUrl": "https://digital-strategy.ec.europa.eu/en/library/proposal-eu-kids-act-eu-keeping-internet-digital-spaces-accountable-and-trustworthy",
+    "verifiedAt": "2026-10-03"
+  },
+  {
     "id": "taiwan-ai-impact-assessments-2-2026",
     "date": "2026-09-30",
     "jurisdiction": "臺灣",

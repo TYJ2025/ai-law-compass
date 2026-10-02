@@ -441,14 +441,16 @@ test("EU KIDS Act proposal preserves draft status and AI child-safety obligation
   assert.match(proposal.promulgationDate, /2026-09-17.*COM\(2026\) 681.*2026\/0286/);
   assert.match(proposal.effectiveDate, /尚未生效.*第 43 條.*6 個月/);
   assert.match(proposal.articleCount, /43 條.*9 章.*99 頁/);
-  assert.match(proposal.transition, /議會與理事會審議.*第 5 條.*6 個月.*12 個月.*不得當作現行法/);
+  assert.match(proposal.transition, /2026-11-26.*議會與理事會審議.*第 5 條.*6 個月.*12 個月.*不得當作現行法/);
   assert.match(proposal.scope, /AI 伴侶.*一般對話式聊天機器人.*境外.*微型及小型企業.*沒有一般豁免/);
   assert.ok(proposal.keyPoints.some((point) => /情感依賴.*先前對話預設不得/.test(point)));
   assert.ok(proposal.keyPoints.some((point) => /上市.*前.*評估.*上市後監測/.test(point)));
   assert.ok(proposal.keyPoints.some((point) => /不得自動啟用.*不得鼓勵.*隨時.*退出/.test(point)));
+  assert.ok(proposal.keyPoints.some((point) => /2026-11-26.*不是法規生效日/.test(point)));
   assert.ok(proposal.keyPoints.some((point) => /仍待.*審議.*不得.*已生效/.test(point)));
+  assert.match(proposal.nextDeadline, /2026-11-26.*公開意見截止.*布魯塞爾時間午夜.*尚無確定生效/);
   assert.equal(new URL(proposal.sourceUrl).hostname, "eur-lex.europa.eu");
-  assert.equal(proposal.verifiedAt, "2026-10-02");
+  assert.equal(proposal.verifiedAt, "2026-10-03");
 
   const updates = await readJson("data/updates.json");
   const update = updates.find((entry) => entry.id === "eu-kids-act-ai-child-safety-proposal-2026");
@@ -456,6 +458,16 @@ test("EU KIDS Act proposal preserves draft status and AI child-safety obligation
   assert.equal(update.verifiedAt, "2026-10-02");
   assert.match(update.summary, /43 條.*尚未生效/);
   assert.match(update.businessImpact, /小微企業沒有全面豁免.*不能先當作已生效法/);
+
+  const consultation = updates.find(
+    (entry) => entry.id === "eu-kids-act-feedback-consultation-2026",
+  );
+  assert.equal(consultation.date, "2026-10-02");
+  assert.equal(consultation.verifiedAt, "2026-10-03");
+  assert.match(consultation.keyDate, /2026-11-26.*布魯塞爾時間午夜.*沒有因此產生法規生效日/);
+  assert.match(consultation.summary, /公開回饋.*仍未通過或生效/);
+  assert.match(consultation.businessImpact, /沒有讓 KIDS Act 成為現行法.*有限期.*政策參與窗口/);
+  assert.equal(new URL(consultation.sourceUrl).hostname, "digital-strategy.ec.europa.eu");
 });
 
 test("US terminology order preserves statutory scope and historical documents", async () => {
