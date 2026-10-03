@@ -470,6 +470,30 @@ test("EU KIDS Act proposal preserves draft status and AI child-safety obligation
   assert.equal(new URL(consultation.sourceUrl).hostname, "digital-strategy.ec.europa.eu");
 });
 
+test("Japan AI regulatory-barrier request preserves its consultation-only status", async () => {
+  const regulations = await readRegulations();
+  const act = regulations.find((regulation) => regulation.id === "japan-ai-act");
+
+  assert.equal(act.statusGroup, "生效");
+  assert.equal(act.articleCount, "28 條");
+  assert.match(act.effectiveDate, /2025-06-04.*2025-09-01.*全面/);
+  assert.match(act.transition, /2026-10-02.*政策資訊募集.*不會暫停現行法律.*直接新增企業義務/);
+  assert.match(act.nextDeadline, /2026-10-19.*2026-10-30 17:00.*資訊募集/);
+  assert.ok(act.keyPoints.some((point) => /LLM.*多模態.*代理式.*實體 AI.*不是修法或合規豁免/.test(point)));
+  assert.equal(act.verifiedAt, "2026-10-04");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "japan-ai-regulatory-barriers-information-request-2026",
+  );
+  assert.equal(update.date, "2026-10-02");
+  assert.equal(update.verifiedAt, "2026-10-04");
+  assert.match(update.keyDate, /2026-10-19.*2026-10-30 17:00/);
+  assert.match(update.summary, /政策研究.*不是修法、豁免或新企業義務/);
+  assert.match(update.businessImpact, /不會暫停現行法.*保證修法.*安全港/);
+  assert.equal(new URL(update.sourceUrl).hostname, "www8.cao.go.jp");
+});
+
 test("US terminology order preserves statutory scope and historical documents", async () => {
   const regulations = await readRegulations();
   const order = regulations.find(
