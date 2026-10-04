@@ -103,6 +103,7 @@ test("researched instruments link to official primary sources", async () => {
     "oecd.org",
     "coe.int",
     "samr.gov.cn",
+    "cas.go.jp",
   ];
 
   for (const regulation of regulations) {
@@ -492,6 +493,37 @@ test("Japan AI regulatory-barrier request preserves its consultation-only status
   assert.match(update.summary, /政策研究.*不是修法、豁免或新企業義務/);
   assert.match(update.businessImpact, /不會暫停現行法.*保證修法.*安全港/);
   assert.equal(new URL(update.sourceUrl).hostname, "www8.cao.go.jp");
+});
+
+test("Japan generative-AI IP code remains voluntary and preserves its public scope", async () => {
+  const regulations = await readRegulations();
+  const code = regulations.find(
+    (regulation) => regulation.id === "japan-generative-ai-ip-transparency-principles-code-2026",
+  );
+
+  assert.equal(code.statusGroup, "指引");
+  assert.match(code.status, /已發布.*自願接受/);
+  assert.match(code.promulgationDate, /2026-08-25.*2026-09-08/);
+  assert.match(code.effectiveDate, /自願採用.*2026-10-26/);
+  assert.match(code.articleCount, /無條文.*4 部分.*3 項原則.*408KB/);
+  assert.match(code.transition, /comply or explain.*沒有法定過渡期、罰則或強制揭露.*2026-10-26/);
+  assert.match(code.scope, /公眾.*境外業者.*日本.*單一法人或個人.*不在定義內/);
+  assert.ok(code.keyPoints.some((point) => /原則一.*網站.*任何人可閱覽/.test(point)));
+  assert.ok(code.keyPoints.some((point) => /原則二.*訴訟、調停、ADR.*URL/.test(point)));
+  assert.ok(code.keyPoints.some((point) => /comply or explain.*不強制揭露營業秘密.*不能把守則誤標為法定義務或政府認證/.test(point)));
+  assert.match(code.nextDeadline, /2026-10-26.*通報開始.*尚未設定截止日/);
+  assert.equal(new URL(code.sourceUrl).hostname, "www.cas.go.jp");
+  assert.equal(code.verifiedAt, "2026-10-05");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "japan-generative-ai-ip-transparency-principles-code-notice-2026",
+  );
+  assert.equal(update.date, "2026-09-08");
+  assert.equal(update.verifiedAt, "2026-10-05");
+  assert.match(update.keyDate, /2026-08-25.*2026-09-08.*2026-10-26.*尚無截止日/);
+  assert.match(update.summary, /comply or explain.*自願接受.*沒有罰則.*不是著作權法修正或政府合規認證/);
+  assert.match(update.businessImpact, /未接受本身不是違法.*不等於著作權合規安全港/);
 });
 
 test("US terminology order preserves statutory scope and historical documents", async () => {
