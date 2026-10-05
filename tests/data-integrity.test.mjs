@@ -86,6 +86,7 @@ test("researched instruments link to official primary sources", async () => {
     "pdpc.gov.sg",
     "imda.gov.sg",
     "moh.gov.sg",
+    "acra.gov.sg",
     "ico.org.uk",
     "gov.uk",
     "nist.gov",
@@ -552,6 +553,35 @@ test("US terminology order preserves statutory scope and historical documents", 
   assert.equal(update.verifiedAt, "2026-10-02");
   assert.match(update.summary, /不改寫既有法規、契約或補助.*未直接新增私人企業義務/);
   assert.match(update.businessImpact, /不是新的產品安全.*罰鍰制度/);
+});
+
+test("Singapore audit AI guidance preserves professional accountability and soft-law status", async () => {
+  const regulations = await readRegulations();
+  const guidance = regulations.find(
+    (regulation) => regulation.id === "singapore-acra-audit-ai-responsible-guidance-2026",
+  );
+
+  assert.equal(guidance.statusGroup, "指引");
+  assert.equal(guidance.promulgationDate, "2026-10-02");
+  assert.match(guidance.effectiveDate, /無獨立法定生效日/);
+  assert.match(guidance.articleCount, /10 頁.*7 節.*5 項核心考量/);
+  assert.match(guidance.transition, /沒有法定過渡期、獨立罰則或安全港.*不取代.*審計準則.*PDPA/);
+  assert.match(guidance.scope, /審計人員.*會計師事務所.*AI 製作或協助製作的資訊/);
+  assert.ok(guidance.keyPoints.some((point) => /專業判斷不能委派給 AI.*原始來源/.test(point)));
+  assert.ok(guidance.keyPoints.some((point) => /最終責任/.test(point)));
+  assert.ok(guidance.keyPoints.some((point) => /提示詞.*重要假設.*重大修訂/.test(point)));
+  assert.ok(guidance.keyPoints.some((point) => /模型訓練.*事務所核准/.test(point)));
+  assert.equal(new URL(guidance.sourceUrl).hostname, "www.acra.gov.sg");
+  assert.equal(guidance.verifiedAt, "2026-10-06");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "singapore-acra-audit-ai-responsible-guidance-2026",
+  );
+  assert.equal(update.date, "2026-10-02");
+  assert.equal(update.verifiedAt, "2026-10-06");
+  assert.match(update.summary, /非拘束性指引.*沒有獨立罰則或合規安全港/);
+  assert.match(update.businessImpact, /不是法律、認證或安全港.*品質檢查與監理溝通/);
 });
 
 test("ISO 27090 remains under publication and NIST TEVV retains its historical name", async () => {
