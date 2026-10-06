@@ -584,6 +584,32 @@ test("Singapore audit AI guidance preserves professional accountability and soft
   assert.match(update.businessImpact, /不是法律、認證或安全港.*品質檢查與監理溝通/);
 });
 
+test("OECD EL-MAP preserves its non-binding status and full health AI action structure", async () => {
+  const regulations = await readRegulations();
+  const elMap = regulations.find(
+    (regulation) => regulation.id === "oecd-el-map-health-ai-action-plan-2026",
+  );
+
+  assert.equal(elMap.statusGroup, "指引");
+  assert.equal(elMap.promulgationDate, "2026-10-07");
+  assert.match(elMap.effectiveDate, /非法律、非 OECD 理事會建議.*無獨立法定生效日/);
+  assert.match(elMap.articleCount, /39 頁.*4 章.*10 項優先行動.*1 項衡量與協調/);
+  assert.match(elMap.transition, /沒有法定過渡期、直接罰則、認證或安全港.*不必然代表會員國正式立場/);
+  assert.match(elMap.scope, /政府.*監管機關.*醫療體系.*企業.*跨境醫療體系/);
+  assert.ok(elMap.keyPoints.some((point) => /全生命週期.*設計開發.*上市後監測.*退場/.test(point)));
+  assert.ok(elMap.keyPoints.some((point) => /經濟評估.*總持有成本/.test(point)));
+  assert.ok(elMap.keyPoints.some((point) => /目前尚非正式標準或企業合規認證/.test(point)));
+  assert.equal(new URL(elMap.sourceUrl).hostname, "www.oecd.org");
+  assert.equal(elMap.verifiedAt, "2026-10-07");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "oecd-el-map-health-ai-action-plan-2026");
+  assert.equal(update.date, "2026-10-07");
+  assert.equal(update.verifiedAt, "2026-10-07");
+  assert.match(update.summary, /十項行動.*非拘束性.*不是 OECD 理事會建議、認證或安全港/);
+  assert.match(update.businessImpact, /不會立即改變.*不能取代上市核准或形成合規推定/);
+});
+
 test("ISO 27090 remains under publication and NIST TEVV retains its historical name", async () => {
   const regulations = await readRegulations();
   const iso = regulations.find(
