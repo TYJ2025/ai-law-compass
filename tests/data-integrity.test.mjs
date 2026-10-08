@@ -87,6 +87,7 @@ test("researched instruments link to official primary sources", async () => {
     "imda.gov.sg",
     "moh.gov.sg",
     "acra.gov.sg",
+    "mas.gov.sg",
     "ico.org.uk",
     "gov.uk",
     "nist.gov",
@@ -608,6 +609,56 @@ test("OECD EL-MAP preserves its non-binding status and full health AI action str
   assert.equal(update.verifiedAt, "2026-10-07");
   assert.match(update.summary, /十項行動.*非拘束性.*不是 OECD 理事會建議、認證或安全港/);
   assert.match(update.businessImpact, /不會立即改變.*不能取代上市核准或形成合規推定/);
+});
+
+test("MAS AI risk guidelines and UK healthcare response preserve phased legal status", async () => {
+  const regulations = await readRegulations();
+  const mas = regulations.find(
+    (regulation) => regulation.id === "singapore-mas-ai-risk-management-guidelines-2026",
+  );
+  const uk = regulations.find(
+    (regulation) => regulation.id === "uk-healthcare-ai-regulatory-recommendations-2026",
+  );
+
+  assert.equal(mas.statusGroup, "即將生效");
+  assert.match(mas.effectiveDate, /2027-10-07.*第 3–4 節.*2028-10-07.*第 5–6 節/);
+  assert.match(mas.articleCount, /30 頁.*6 節.*65 個編號段落/);
+  assert.match(mas.transition, /一年準備.*2027-10-07.*再有一年.*2028-10-07/);
+  assert.ok(mas.keyPoints.some((point) => /高重大性.*獨立.*正式驗證.*kill-switch/.test(point)));
+  assert.ok(mas.keyPoints.some((point) => /第三方 AI.*不承接.*最終責任/.test(point)));
+  assert.equal(new URL(mas.sourceUrl).hostname, "www.mas.gov.sg");
+  assert.equal(mas.verifiedAt, "2026-10-09");
+
+  assert.match(uk.status, /44 項建議全數接受.*落實中/);
+  assert.match(uk.promulgationDate, /2026-09-10.*2026-10-06/);
+  assert.match(uk.effectiveDate, /政策回應不自行修法/);
+  assert.match(uk.articleCount, /44 項建議.*42 頁政府回應.*119 頁原始報告/);
+  assert.match(uk.nextDeadline, /2026-12.*PCCP.*2027 年春季/);
+  assert.ok(uk.keyPoints.some((point) => /民事罰款.*不得當作目前已生效/.test(point)));
+  assert.equal(new URL(uk.sourceUrl).hostname, "www.gov.uk");
+  assert.equal(uk.verifiedAt, "2026-10-09");
+
+  const updates = await readJson("data/updates.json");
+  const masUpdate = updates.find(
+    (entry) => entry.id === "singapore-mas-ai-risk-management-guidelines-2026",
+  );
+  const ukUpdate = updates.find(
+    (entry) => entry.id === "uk-government-response-healthcare-ai-regulation-2026",
+  );
+  const australiaUpdate = updates.find(
+    (entry) => entry.id === "australia-frontier-ai-national-standards-legislation-2026",
+  );
+
+  assert.equal(masUpdate.date, "2026-10-07");
+  assert.match(masUpdate.keyDate, /2027-10-07.*2028-10-07/);
+  assert.equal(masUpdate.verifiedAt, "2026-10-09");
+  assert.equal(ukUpdate.date, "2026-10-06");
+  assert.match(ukUpdate.whatChanged, /接受全部 44 項建議.*Programme Board/);
+  assert.equal(ukUpdate.verifiedAt, "2026-10-09");
+  assert.equal(australiaUpdate.date, "2026-10-08");
+  assert.match(australiaUpdate.whatChanged, /承諾.*National AI Standards.*系統式監管/);
+  assert.match(australiaUpdate.businessImpact, /不必把演說當成現行強制義務/);
+  assert.equal(australiaUpdate.verifiedAt, "2026-10-09");
 });
 
 test("ISO 27090 remains under publication and NIST TEVV retains its historical name", async () => {
