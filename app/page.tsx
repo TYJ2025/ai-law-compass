@@ -102,6 +102,13 @@ const deadlineItems = [
     date: "2027-01-22",
     kind: "主管機關政策",
   },
+  {
+    jurisdiction: "美國・加州",
+    flag: "US",
+    title: "工作場所 ADS 主要義務開始適用",
+    date: "2027-07-01",
+    kind: "生效準備",
+  },
 ];
 
 function formatDate(date: string) {

@@ -92,6 +92,7 @@ test("researched instruments link to official primary sources", async () => {
     "gov.uk",
     "nist.gov",
     "whitehouse.gov",
+    "leginfo.legislature.ca.gov",
     "tbs-sct.canada.ca",
     "canada.ca",
     "industry.gov.au",
@@ -122,6 +123,25 @@ test("legislative proposals are not presented as enacted law", async () => {
   const brazilBill = regulations.find((regulation) => regulation.id === "brazil-ai-bill-2338");
   assert.equal(brazilBill.statusGroup, "草案");
   assert.match(brazilBill.effectiveDate, /尚未生效/);
+});
+
+test("California workplace ADS law preserves enactment status and human-review duties", async () => {
+  const regulations = await readRegulations();
+  const law = regulations.find(
+    (regulation) => regulation.id === "california-sb947-workplace-ads-law-2026",
+  );
+
+  assert.equal(law.statusGroup, "即將生效");
+  assert.match(law.promulgationDate, /2026-09-30.*Chapter 859/);
+  assert.match(law.effectiveDate, /2027-07-01/);
+  assert.match(law.articleCount, /11 個編碼條文/);
+  assert.ok(law.keyPoints.some((point) => /不得完全依賴 ADS/.test(point)));
+  assert.ok(law.keyPoints.some((point) => /無法確認.*不正確、不完整.*誤導/.test(point)));
+  assert.ok(law.keyPoints.some((point) => /500 美元.*未新增一般私人訴權/.test(point)));
+
+  const sourceUrl = new URL(law.sourceUrl);
+  assert.equal(sourceUrl.hostname, "leginfo.legislature.ca.gov");
+  assert.equal(sourceUrl.searchParams.get("bill_id"), "202520260SB947");
 });
 
 test("Korean decree includes inserted articles and cumulative safety criteria", async () => {
