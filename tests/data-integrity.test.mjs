@@ -163,6 +163,31 @@ test("regulatory updates are sorted newest first", async () => {
   assert.deepEqual(dates, [...dates].sort().reverse());
 });
 
+test("EU AI-generated content transparency code preserves voluntary status and Article 50 distinction", async () => {
+  const regulations = await readRegulations();
+  const code = regulations.find(
+    (regulation) => regulation.id === "eu-ai-generated-content-transparency-code-2026",
+  );
+
+  assert.equal(code.statusGroup, "指引");
+  assert.match(code.status, /自願/);
+  assert.match(code.promulgationDate, /2026-06-10.*2026-07-08.*2026-07-09/);
+  assert.match(code.effectiveDate, /2026-08-02.*守則本身屬自願性/);
+  assert.match(code.articleCount, /2 部分.*附錄 I/);
+  assert.match(code.transition, /未簽署者.*同等充分措施/);
+  assert.ok(code.keyPoints.some((point) => /圖示.*可選.*法定標示義務.*不是自願/.test(point)));
+  assert.ok(code.keyPoints.some((point) => /不構成決定性合規證據/.test(point)));
+  assert.equal(code.verifiedAt, "2026-10-13");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "eu-ai-generated-content-transparency-code-implementation-2026",
+  );
+  assert.equal(update.date, "2026-10-12");
+  assert.match(update.whatChanged, /沒有新增 Article 50 義務、罰則或適用日/);
+  assert.match(update.keyPoints.at(-1), /官方專頁更新日.*不是守則制定、生效或新增企業義務/);
+});
+
 test("September guidance and REDATA preserve status, dates and conditional benefits", async () => {
   const regulations = await readRegulations();
   const byId = new Map(regulations.map((regulation) => [regulation.id, regulation]));
