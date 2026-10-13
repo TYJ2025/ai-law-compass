@@ -1,5 +1,33 @@
 [
   {
+    "id": "taiwan-financial-agentic-ai-security-consultation-2026",
+    "date": "2026-10-13",
+    "jurisdiction": "臺灣",
+    "flag": "TW",
+    "category": "金融監理／代理 AI 安全諮詢",
+    "importance": "高",
+    "title": "金管會提出金融業代理 AI 四級風險與零信任控制方案",
+    "summary": "金管會發布 45 頁代理 AI 安全諮詢文件，以用例為單位、依三項風險軸採 L1–L4 最高等級優先分類，並提出七大零信任控制領域；目前只是 30 日諮詢，不是已生效指引或新法。",
+    "authority": "金融監督管理委員會",
+    "keyDate": "2026-10-13 發布；發布日起 30 日公開諮詢，但官方新聞稿未明列具體截止日，應以眾開講頁面為準；後續政策、指引或生效時程尚未確定",
+    "affectedCompanies": "受金管會監理並自行開發、採購、委外或部署能連接、操作、修改或觸發營運系統的代理 AI 之銀行、保險、證券期貨與其他金融機構，以及模型、代理平台、工具、雲端、資安及委外供應商",
+    "background": "現行金融業 AI 指引已要求治理、風險分級、人類可控、穩健安全與第三方監督，但能自主規劃、調用工具、跨系統取用資料並執行行動的代理 AI，會放大權限繼承、提示注入、記憶污染、資料外傳、批次擴散及責任不清風險。金管會因此提出更具體的代理治理與零信任方案徵詢意見。",
+    "whatChanged": "新諮詢文件以用例為治理單位，要求先確認資料、工具、目的地、可採行動、人類監督、責任與日誌，再按資料敏感性、行動影響及能力邊界／擴散性三軸分為 L1 至 L4，任一軸較高即採較高級別。文件並把代理視為非人類身分與工作負載，提出身分、執行環境、網路、應用、資料、行為及可視性七大控制領域，以及高風險試辦、紅隊、停用、復原與人類介入要求。",
+    "businessImpact": "金融機構可預期未來監理將要求比一般聊天工具更細的代理清冊、任務授權、委派鏈、測試、事件與停止證據；供應商也可能被要求提供工具調用、記憶、權限、日誌及復原能力。不過本文件仍是諮詢，企業不應把 L1–L4 或進階控制當成已生效法定門檻，也不能因此降低現行金融、個資、消保、資安、委外及內控要求。",
+    "keyPoints": [
+      "三軸為資料敏感性、行動影響、能力邊界與擴散性，採最高風險優先原則判定 L1 至 L4。",
+      "L1、L2 原則上配置基礎控制；L3、L4 應評估進階治理、模擬或影子運行、限縮試辦與紅隊測試。",
+      "高風險測試涵蓋提示注入、工具誤用、權限繼承、記憶污染、代理間通訊、繞過人工核准、異常外傳及批次擴散。",
+      "代理應使用唯一非人類身分、任務限縮授權及可撤銷委派，不得共用帳號或冒用使用者。",
+      "不可逆、高影響或涉及客戶權益的行動應保留實質人類覆核，代理不得取代法令或內規指定的授權角色。",
+      "若無法記錄、停用、撤銷、復原或移交人員處理，就不宜正式自動化；第三方使用也不能移轉金融機構責任。",
+      "30 日諮詢不等於生效或設定罰則；官方新聞稿沒有列出具體截止日期，送件前須以眾開講頁面確認。"
+    ],
+    "action": "先建立代理 AI 用例清冊及三軸試評，驗證唯一身分、最小權限、委派日誌、人類核准、紅隊、異常阻擋、停止與復原及供應商證據；如擬回應諮詢，先在眾開講確認截止日，再提交可驗證的風險、控制效果與成本資料。",
+    "sourceUrl": "https://www.ey.gov.tw/Page/88F151FFCE5C741E/db045d36-897b-475f-ac04-18e04cbdf0c6",
+    "verifiedAt": "2026-10-14"
+  },
+  {
     "id": "eu-ai-generated-content-transparency-code-implementation-2026",
     "date": "2026-10-12",
     "jurisdiction": "歐盟",
@@ -26,6 +54,33 @@
     "action": "生成式 AI 提供者與部署者應決定是否簽署對應部分，並立即測試機器可讀標記、偵測、深偽及公共利益文本標示、下載轉傳保留和可存取性；未簽署者應建立同等充分措施的書面證據。另逐系統確認是否適用 2026-12-02 的既有系統過渡期。",
     "sourceUrl": "https://digital-strategy.ec.europa.eu/en/policies/code-practice-ai-generated-content",
     "verifiedAt": "2026-10-13"
+  },
+  {
+    "id": "uk-ai-cyber-resilience-agentic-incident-policy-2026",
+    "date": "2026-10-12",
+    "jurisdiction": "英國",
+    "flag": "UK",
+    "category": "前沿 AI／資安與事件通報政策",
+    "importance": "高",
+    "title": "英國研議把 AI 重大事故與失控代理納入資安韌性制度",
+    "summary": "英國政府宣布將透過 Cyber Security and Resilience Bill 及較廣泛制度研議更強的 AI 防護，議題包括重大事故、近失事件與逃逸人類監督的自主代理；目前沒有法案修正文字、新通報義務、門檻、罰則或生效日。",
+    "authority": "UK Government；Department for Science, Innovation and Technology；National Cyber Security Centre；AI Security Institute",
+    "keyDate": "2026-10-12 政策公告；後續將由國會、技術專家及營運者研議法律措施，AI 驗證支援細節預計於未來數月公布，但沒有確定日期",
+    "affectedCompanies": "開發、提供或部署前沿 AI 與高自主代理系統的企業，以及關鍵基礎設施、重要數位服務、雲端、資安、模型評測及可能落入未來 Cyber Security and Resilience Bill 制度的營運者與供應商",
+    "background": "高自主代理可能在多個系統間持續行動、取得工具與權限，並以一般資安事件流程未必能及時捕捉的方式繞過人類監督。英國正推進 Cyber Security and Resilience Bill，同時由 AI Security Institute 評估前沿模型、NCSC 建立事件回應能力，政府因而評估是否把 AI 特有事故及近失事件納入更完整的國家防禦。",
+    "whatChanged": "官方公告首次明確把 serious AI incidents、near misses、loss of control 及 autonomous agents evading human oversight 列為需要更強保護的情境，並表示將透過 Cyber Security and Resilience Bill 與較廣泛制度研議。NCSC 與 AI Security Institute 正共同處理代理事件回應，後者也持續評估最新進階模型；但具體法律措施仍要與國會、技術專家及營運者討論，尚未提出條文。",
+    "businessImpact": "關鍵基礎設施與前沿 AI 業者可預期英國未來可能要求更一致的 AI 事故、近失事件、失控與復原證據，並把模型安全和資安通報銜接。不過公告本身不是法案修正或已生效監理規則；企業應維持現行資安、資料、產品及產業通報義務，不能先推定所有 AI 事件都已新增法定通報期限。",
+    "keyPoints": [
+      "政策關注重大 AI 事故、近失事件、AI 失去控制，以及自主代理逃逸人類監督等前沿情境。",
+      "政府將同時檢視 Cyber Security and Resilience Bill 與較廣泛監理制度，但尚未公布修正條文或適用範圍。",
+      "NCSC 與 AI Security Institute 正合作強化代理系統事故的國家回應能力。",
+      "AI Security Institute 持續評估最新進階模型，政府另預告未來數月說明 AI 驗證支援。",
+      "法律措施仍須與國會、技術專家及營運者研議，現在沒有新通報期限、模型門檻、罰則或生效日。",
+      "企業應區分政策訊號與現行義務，並持續依既有 NIS、資料保護、產品安全、金融或其他產業事件規則處理。"
+    ],
+    "action": "前沿 AI、代理平台與關鍵基礎設施團隊應把重大事故、近失、失控、越權、跨系統擴散及繞過人工核准納入事件分類，保留偵測、升級、停止、復原與證據保存流程；另追蹤法案及驗證支援細節，在正式文本出現後再更新法定通報矩陣。",
+    "sourceUrl": "https://www.gov.uk/government/news/britain-steps-up-national-defences-against-growing-ai-risks",
+    "verifiedAt": "2026-10-14"
   },
   {
     "id": "australia-frontier-ai-national-standards-legislation-2026",

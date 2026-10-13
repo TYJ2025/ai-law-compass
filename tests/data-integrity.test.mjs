@@ -163,6 +163,52 @@ test("regulatory updates are sorted newest first", async () => {
   assert.deepEqual(dates, [...dates].sort().reverse());
 });
 
+test("Taiwan financial agentic AI consultation preserves draft status and three-axis controls", async () => {
+  const regulations = await readRegulations();
+  const consultation = regulations.find(
+    (regulation) => regulation.id === "taiwan-financial-agentic-ai-security-consultation-2026",
+  );
+
+  assert.equal(consultation.statusGroup, "草案");
+  assert.match(consultation.status, /諮詢文件.*徵詢中/);
+  assert.match(consultation.promulgationDate, /2026-10-13/);
+  assert.match(consultation.effectiveDate, /尚未生效.*不取代現行法令/);
+  assert.match(consultation.articleCount, /45 頁.*5 章.*4 個附錄.*L1–L4/);
+  assert.match(consultation.transition, /30 日公開諮詢.*沒有明列具體截止日期.*不得.*已生效/);
+  assert.match(consultation.scope, /連接、操作、修改或觸發.*自主調用工具.*重新評估/);
+  assert.ok(consultation.keyPoints.some((point) => /資料敏感性.*行動影響.*能力邊界.*L1 至 L4.*最高等級/.test(point)));
+  assert.ok(consultation.keyPoints.some((point) => /提示注入.*記憶污染.*繞過人工核准/.test(point)));
+  assert.ok(consultation.keyPoints.some((point) => /唯一非人類身分.*不得共用帳號/.test(point)));
+  assert.ok(consultation.keyPoints.some((point) => /無法記錄、停用、撤銷、復原.*不宜.*正式自動化/.test(point)));
+  assert.equal(new URL(consultation.sourceUrl).hostname, "www.ey.gov.tw");
+  assert.equal(consultation.verifiedAt, "2026-10-14");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "taiwan-financial-agentic-ai-security-consultation-2026",
+  );
+  assert.equal(update.date, "2026-10-13");
+  assert.equal(update.verifiedAt, "2026-10-14");
+  assert.match(update.summary, /30 日諮詢.*不是已生效指引或新法/);
+  assert.match(update.keyDate, /未明列具體截止日.*眾開講/);
+  assert.match(update.businessImpact, /不應把 L1–L4.*已生效法定門檻/);
+});
+
+test("UK agentic AI incident announcement remains a non-binding policy signal", async () => {
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "uk-ai-cyber-resilience-agentic-incident-policy-2026",
+  );
+
+  assert.equal(update.date, "2026-10-12");
+  assert.equal(update.verifiedAt, "2026-10-14");
+  assert.match(update.summary, /沒有法案修正文字、新通報義務、門檻、罰則或生效日/);
+  assert.match(update.whatChanged, /serious AI incidents.*near misses.*loss of control.*autonomous agents/);
+  assert.match(update.businessImpact, /不是法案修正或已生效監理規則/);
+  assert.match(update.keyDate, /未來數月.*沒有確定日期/);
+  assert.equal(new URL(update.sourceUrl).hostname, "www.gov.uk");
+});
+
 test("EU AI-generated content transparency code preserves voluntary status and Article 50 distinction", async () => {
   const regulations = await readRegulations();
   const code = regulations.find(
