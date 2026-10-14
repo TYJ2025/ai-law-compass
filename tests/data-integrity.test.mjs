@@ -90,6 +90,7 @@ test("researched instruments link to official primary sources", async () => {
     "mas.gov.sg",
     "ico.org.uk",
     "gov.uk",
+    "parliament.uk",
     "nist.gov",
     "whitehouse.gov",
     "leginfo.legislature.ca.gov",
@@ -194,19 +195,38 @@ test("Taiwan financial agentic AI consultation preserves draft status and three-
   assert.match(update.businessImpact, /不應把 L1–L4.*已生效法定門檻/);
 });
 
-test("UK agentic AI incident announcement remains a non-binding policy signal", async () => {
+test("UK cyber bill preserves draft status and technology-neutral agent incident scope", async () => {
+  const regulations = await readRegulations();
+  const bill = regulations.find(
+    (regulation) => regulation.id === "uk-cyber-security-resilience-bill-agentic-ai-2026",
+  );
+
+  assert.equal(bill.statusGroup, "草案");
+  assert.match(bill.status, /上議院報告階段.*尚未通過/);
+  assert.match(bill.promulgationDate, /2025-11-12.*2026-09-07/);
+  assert.match(bill.effectiveDate, /尚未生效.*御准.*分階段/);
+  assert.match(bill.articleCount, /61 條.*5 部分.*2 個附表/);
+  assert.match(bill.transition, /不得.*24／72 小時.*現行義務/);
+  assert.match(bill.nextDeadline, /2026-10-26.*上議院報告階段/);
+  assert.ok(bill.keyPoints.some((point) => /1MW.*10MW/.test(point)));
+  assert.ok(bill.keyPoints.some((point) => /24 小時初報、72 小時完整通報.*英國客戶/.test(point)));
+  assert.ok(bill.keyPoints.some((point) => /科技中立.*自主 AI 代理.*實際或潛在重大影響/.test(point)));
+  assert.ok(bill.keyPoints.some((point) => /2% 或 4%.*不能概括套用/.test(point)));
+  assert.equal(new URL(bill.sourceUrl).hostname, "bills.parliament.uk");
+  assert.equal(bill.verifiedAt, "2026-10-15");
+
   const updates = await readJson("data/updates.json");
   const update = updates.find(
     (entry) => entry.id === "uk-ai-cyber-resilience-agentic-incident-policy-2026",
   );
 
-  assert.equal(update.date, "2026-10-12");
-  assert.equal(update.verifiedAt, "2026-10-14");
-  assert.match(update.summary, /沒有法案修正文字、新通報義務、門檻、罰則或生效日/);
-  assert.match(update.whatChanged, /serious AI incidents.*near misses.*loss of control.*autonomous agents/);
-  assert.match(update.businessImpact, /不是法案修正或已生效監理規則/);
-  assert.match(update.keyDate, /未來數月.*沒有確定日期/);
-  assert.equal(new URL(update.sourceUrl).hostname, "www.gov.uk");
+  assert.equal(update.date, "2026-10-14");
+  assert.equal(update.verifiedAt, "2026-10-15");
+  assert.match(update.summary, /科技中立.*自主 AI 代理事故.*尚未通過或生效/);
+  assert.match(update.whatChanged, /in-scope.*nature and potential impact.*24／72 小時/);
+  assert.match(update.businessImpact, /不是現行新通報義務.*不能假設所有 AI 事故都須通報/);
+  assert.match(update.keyDate, /2026-10-26.*上議院報告階段/);
+  assert.equal(new URL(update.sourceUrl).hostname, "committees.parliament.uk");
 });
 
 test("EU AI-generated content transparency code preserves voluntary status and Article 50 distinction", async () => {
