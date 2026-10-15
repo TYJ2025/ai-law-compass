@@ -104,6 +104,7 @@ test("researched instruments link to official primary sources", async () => {
     "pib.gov.in",
     "meity.gov.in",
     "iso.org",
+    "fsb.org",
     "oecd.org",
     "coe.int",
     "samr.gov.cn",
@@ -227,6 +228,72 @@ test("UK cyber bill preserves draft status and technology-neutral agent incident
   assert.match(update.businessImpact, /不是現行新通報義務.*不能假設所有 AI 事故都須通報/);
   assert.match(update.keyDate, /2026-10-26.*上議院報告階段/);
   assert.equal(new URL(update.sourceUrl).hostname, "committees.parliament.uk");
+});
+
+test("FSB final sound practices preserve non-binding status and agentic AI controls", async () => {
+  const regulations = await readRegulations();
+  const practices = regulations.find(
+    (regulation) => regulation.id === "fsb-responsible-ai-adoption-sound-practices-2026",
+  );
+
+  assert.equal(practices.statusGroup, "指引");
+  assert.match(practices.status, /最終報告.*非拘束性/);
+  assert.match(practices.promulgationDate, /2026-10-15.*取代.*諮詢版/);
+  assert.match(practices.effectiveDate, /非拘束性國際標準.*無法定生效日/);
+  assert.match(practices.articleCount, /75 頁.*12 項良好實務/);
+  assert.match(practices.transition, /沒有法定過渡期.*不免除.*所在地法律/);
+  assert.ok(practices.keyPoints.some((point) => /control plane.*kill switch/.test(point)));
+  assert.ok(practices.keyPoints.some((point) => /第三方治理.*內嵌 AI.*超出風險胃納/.test(point)));
+  assert.ok(practices.keyPoints.some((point) => /不是拘束性國際標準.*不取代/.test(point)));
+  assert.equal(new URL(practices.sourceUrl).hostname, "www.fsb.org");
+  assert.equal(practices.verifiedAt, "2026-10-16");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "fsb-responsible-ai-adoption-sound-practices-2026",
+  );
+  assert.equal(update.date, "2026-10-15");
+  assert.equal(update.verifiedAt, "2026-10-16");
+  assert.match(update.whatChanged, /可稽核文件.*代理式與多代理系統控制/);
+  assert.match(update.businessImpact, /不會自動符合各地法律.*不免除/);
+});
+
+test("ISO 27090 is recorded as a published voluntary AI cybersecurity guide", async () => {
+  const regulations = await readRegulations();
+  const standard = regulations.find(
+    (regulation) => regulation.id === "iso-iec-27090-ai-cybersecurity-2026",
+  );
+
+  assert.ok(standard);
+  assert.equal(standard.statusGroup, "指引");
+  assert.match(standard.status, /已發布.*自願採用/);
+  assert.match(standard.promulgationDate, /2026-10-14.*Stage 60.60/);
+  assert.match(standard.effectiveDate, /自願性指引.*無法定生效日/);
+  assert.match(standard.articleCount, /56 頁.*第 1 版/);
+  assert.match(standard.transition, /取代先前出版作業中紀錄.*沒有法定寬限期/);
+  assert.ok(standard.keyPoints.some((point) => /資料投毒.*模型竊取/.test(point)));
+  assert.ok(standard.keyPoints.some((point) => /不等於取得認證.*免除法律義務/.test(point)));
+  assert.equal(standard.verifiedAt, "2026-10-16");
+  assert.equal(
+    regulations.some(
+      (regulation) => regulation.id === "iso-iec-27090-ai-cybersecurity-under-publication-2026",
+    ),
+    false,
+  );
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "iso-iec-27090-ai-cybersecurity-2026",
+  );
+  assert.equal(update.date, "2026-10-14");
+  assert.equal(update.verifiedAt, "2026-10-16");
+  assert.match(update.whatChanged, /Stage 60.60.*56 頁.*取代舊出版中紀錄/);
+  assert.equal(
+    updates.some(
+      (entry) => entry.id === "iso-iec-27090-ai-cybersecurity-under-publication-2026",
+    ),
+    false,
+  );
 });
 
 test("EU AI-generated content transparency code preserves voluntary status and Article 50 distinction", async () => {
@@ -772,36 +839,14 @@ test("MAS AI risk guidelines and UK healthcare response preserve phased legal st
   assert.equal(australiaUpdate.verifiedAt, "2026-10-09");
 });
 
-test("ISO 27090 remains under publication and NIST TEVV retains its historical name", async () => {
+test("NIST TEVV retains its historical name after the terminology order", async () => {
   const regulations = await readRegulations();
-  const iso = regulations.find(
-    (regulation) => regulation.id === "iso-iec-27090-ai-cybersecurity-under-publication-2026",
-  );
   const nist = regulations.find((regulation) => regulation.id === "nist-ai-200-2-tevv-athlon");
-
-  assert.equal(iso.statusGroup, "草案");
-  assert.match(iso.status, /Stage 60\.00.*尚未正式發布/);
-  assert.match(iso.promulgationDate, /2026-08-19.*Stage 60\.00.*2026-10/);
-  assert.match(iso.effectiveDate, /尚未發布.*自願採用/);
-  assert.match(iso.articleCount, /尚未公開.*未揭示.*頁數.*章節/);
-  assert.match(iso.transition, /最長可能需 7 週.*尚未到 Stage 60\.60.*不能標示為已發布/);
-  assert.ok(iso.keyPoints.some((point) => /資料投毒.*模型竊取/.test(point)));
-  assert.ok(iso.keyPoints.some((point) => /Stage 60\.00.*尚未登錄 Stage 60\.60 正式發布/.test(point)));
-  assert.equal(new URL(iso.sourceUrl).hostname, "committee.iso.org");
-  assert.equal(iso.verifiedAt, "2026-10-02");
 
   assert.match(nist.transition, /2026-10-01.*Super Intelligence.*不要求改寫既有歷史文件/);
   assert.equal(nist.verifiedAt, "2026-10-02");
 
   const updates = await readJson("data/updates.json");
-  const isoUpdate = updates.find(
-    (entry) => entry.id === "iso-iec-27090-ai-cybersecurity-under-publication-2026",
-  );
-  assert.equal(isoUpdate.date, "2026-08-19");
-  assert.equal(isoUpdate.verifiedAt, "2026-10-02");
-  assert.match(isoUpdate.summary, /Stage 60\.00.*Under development.*不得宣稱已依最終標準合規/);
-  assert.match(isoUpdate.businessImpact, /不能.*27090 認證.*自願性指引/);
-
   const nistUpdate = updates.find((entry) => entry.id === "nist-tevv-athlon-draft-2026");
   assert.equal(nistUpdate.verifiedAt, "2026-10-02");
   assert.match(nistUpdate.whatChanged, /2026-10-01.*不要求改寫既有歷史文件/);
