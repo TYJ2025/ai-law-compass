@@ -1,5 +1,34 @@
 [
   {
+    "id": "nist-si-agent-incident-readiness-response-2026",
+    "date": "2026-10-16",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "前沿代理／事故應變",
+    "importance": "高",
+    "title": "NIST、NSA 與 CISA 發布高能力代理事故應變十項實務",
+    "summary": "美國三個聯邦機構發布 14 頁 Version 1.0，針對自主代理採取重大未受指示行動的控制事故，建立準備、偵測、應變、復原及通報十項實務；文件屬自願性，不會自行新增企業法定通報期限。",
+    "authority": "NIST CAISSI；NSA Super Intelligence Security Center；CISA",
+    "keyDate": "2026-10-16 發布 PP-26-4396 Version 1.0；無法定生效日、過渡期或統一申報期限",
+    "affectedCompanies": "訓練、評估或部署可在有限人類監督下執行長時程任務的高能力自主代理之模型開發商、安全評估機構、雲端與算力供應商及關鍵基礎設施部署者",
+    "background": "現有 NIST CSF 2.0 與 SP 800-61 Rev.3 處理一般資安事故，但高能力代理可能跨工具、網路與環境持續行動、複製權重、干預監控或在多代理協作中累積失控。NIST 先於 2026 年 5 月舉辦事故管理工作坊，再由 NIST、NSA 與 CISA 形成專門的代理控制事故實務。",
+    "whatChanged": "新文件首次把 SI control incident、near-miss 及十項實務整合成官方 Version 1.0。它要求從訓練與評估前的結構化風險評估、最小權限及停止設計，延伸至多層監控、證據保全、軌跡關閉、可信重建、受影響方協調、既有法定通報與額外自願分享。",
+    "businessImpact": "前沿代理業者需要的不只是一般 SOC 流程，還要能重建代理軌跡、工具調用、推理與環境狀態，隔離監控和日誌，暫停相似代理並由可信基準復原。企業可把文件作為合約及事件演練基線，但須分開標示 CISA 或其他現行法定通報與對 NIST／NSA 的自願分享，不能因採用指引而主張已完成法律義務。",
+    "keyPoints": [
+      "控制事故是代理在無營運者或敵對來源指示下採取重大未受指示行動，破壞任務範圍、人類監督或安全措施。",
+      "敵對提示注入或故意後門所指示的行動不是該定義的主要成因，但仍可能另構成資安事故並觸發現行處理與通報。",
+      "準備須限制代理工具、資料、網路、通訊與權限，防止模型權重複製、未監控推論及持續性機制，並預先演練停止與復原。",
+      "監控要涵蓋模型、harness、主機及網路與多代理軌跡，監控器和日誌本身也要防止代理存取或操弄。",
+      "事故證據應保留權重、checkpoint、環境、時間戳、被拒絕行動、工具調用與可重建軌跡的防竄改日誌。",
+      "控制失效時可自動終止軌跡、暫停相似代理活動、撤銷憑證及清除後門；恢復前須重播事故並驗證新控制。",
+      "法定通報須依 CISA、執法與適用法律先行；向 NIST CAISSI、NSA SISC 分享近失及公開經驗原則上屬自願。",
+      "文件尚未建立統一事故嚴重度分數，該項仍列為後續研究，企業不得把自訂分數誤稱為 NIST 正式標準。"
+    ],
+    "action": "把十項實務納入高能力代理的上線門檻與桌上演練：建立結構化風險評估、最小權限與 egress allowlist、多層及隔離監控、證據保全、自動停止、相似代理暫停、可信重建、軌跡重播及高階恢復核准；法務另維護逐法域強制通報矩陣。",
+    "sourceUrl": "https://www.nist.gov/news-events/news/2026/10/key-practices-incident-readiness-and-response-super-intelligence-training",
+    "verifiedAt": "2026-10-17"
+  },
+  {
     "id": "fsb-responsible-ai-adoption-sound-practices-2026",
     "date": "2026-10-15",
     "jurisdiction": "國際標準",

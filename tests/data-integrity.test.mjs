@@ -296,6 +296,36 @@ test("ISO 27090 is recorded as a published voluntary AI cybersecurity guide", as
   );
 });
 
+test("NIST agent incident practices preserve voluntary scope and reporting distinctions", async () => {
+  const regulations = await readRegulations();
+  const practices = regulations.find(
+    (regulation) => regulation.id === "nist-si-agent-incident-readiness-response-2026",
+  );
+
+  assert.equal(practices.statusGroup, "指引");
+  assert.match(practices.status, /Version 1\.0.*自願採用/);
+  assert.match(practices.promulgationDate, /2026-10-16.*PP-26-4396/);
+  assert.match(practices.effectiveDate, /自願性指引.*未新增法定通報義務/);
+  assert.match(practices.articleCount, /14 頁.*5 階段.*10 項關鍵實務/);
+  assert.match(practices.transition, /適用法律.*通報.*自願措施.*尚待研究的嚴重度分數/);
+  assert.match(practices.scope, /有限人類監督.*長時程任務.*多代理.*模型權重/);
+  assert.ok(practices.keyPoints.some((point) => /敵對提示注入.*不屬此定義的主要成因.*資安事故/.test(point)));
+  assert.ok(practices.keyPoints.some((point) => /模型權重.*checkpoint.*工具調用.*防竄改/.test(point)));
+  assert.ok(practices.keyPoints.some((point) => /法定通報.*自願.*不是新的統一法定期限/.test(point)));
+  assert.equal(new URL(practices.sourceUrl).hostname, "www.nist.gov");
+  assert.equal(practices.verifiedAt, "2026-10-17");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "nist-si-agent-incident-readiness-response-2026",
+  );
+  assert.equal(update.date, "2026-10-16");
+  assert.equal(update.verifiedAt, "2026-10-17");
+  assert.match(update.whatChanged, /SI control incident.*near-miss.*Version 1\.0/);
+  assert.match(update.businessImpact, /一般 SOC.*法定通報.*自願分享.*不能.*完成法律義務/);
+  assert.ok(update.keyPoints.some((point) => /尚未建立統一事故嚴重度分數.*後續研究/.test(point)));
+});
+
 test("EU AI-generated content transparency code preserves voluntary status and Article 50 distinction", async () => {
   const regulations = await readRegulations();
   const code = regulations.find(
