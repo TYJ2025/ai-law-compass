@@ -98,6 +98,8 @@ test("researched instruments link to official primary sources", async () => {
     "canada.ca",
     "industry.gov.au",
     "digital.gov.au",
+    "legislation.gov.au",
+    "oaic.gov.au",
     "planalto.gov.br",
     "camara.leg.br",
     "gov.br",
@@ -880,6 +882,38 @@ test("NIST TEVV retains its historical name after the terminology order", async 
   const nistUpdate = updates.find((entry) => entry.id === "nist-tevv-athlon-draft-2026");
   assert.equal(nistUpdate.verifiedAt, "2026-10-02");
   assert.match(nistUpdate.whatChanged, /2026-10-01.*不要求改寫既有歷史文件/);
+});
+
+test("Australia ADM transparency duty preserves scope, deadline, and enforcement limits", async () => {
+  const regulations = await readRegulations();
+  const duty = regulations.find(
+    (regulation) => regulation.id === "australia-app-automated-decision-transparency-2026",
+  );
+
+  assert.equal(duty.statusGroup, "即將生效");
+  assert.match(duty.promulgationDate, /2024-12-10.*Act No\. 128, 2024.*2024-12-13/);
+  assert.equal(duty.effectiveDate, "2026-12-10");
+  assert.match(duty.articleCount, /Part 15.*87–89.*APP 1\.7–1\.9/);
+  assert.match(duty.transition, /24 個月.*生效後作成.*沒有既有系統.*豁免/);
+  assert.match(duty.scope, /安排電腦程式使用個人資料.*決策.*並非所有澳洲企業/);
+  assert.ok(duty.keyPoints.some((point) => /三項門檻須同時成立/.test(point)));
+  assert.ok(duty.keyPoints.some((point) => /人員保留最後簽核不必然排除/.test(point)));
+  assert.ok(duty.keyPoints.some((point) => /第三方軟體.*APP entity/.test(point)));
+  assert.ok(duty.keyPoints.some((point) => /沒有新設.*解釋權或人工覆核權/.test(point)));
+  assert.ok(duty.keyPoints.some((point) => /第 13K 條.*200 penalty units/.test(point)));
+  assert.equal(new URL(duty.sourceUrl).hostname, "www.legislation.gov.au");
+  assert.equal(duty.verifiedAt, "2026-10-18");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "australia-oaic-adm-transparency-resources-2026",
+  );
+  assert.equal(update.date, "2026-09-30");
+  assert.equal(update.verifiedAt, "2026-10-18");
+  assert.match(update.keyDate, /2026-09-30.*2026-12-10/);
+  assert.match(update.summary, /隱私政策.*決策類別/);
+  assert.match(update.businessImpact, /不是要求揭露演算法原始碼.*200 penalty units/);
+  assert.equal(new URL(update.sourceUrl).hostname, "www.oaic.gov.au");
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {

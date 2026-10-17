@@ -413,6 +413,34 @@
     "verifiedAt": "2026-10-01"
   },
   {
+    "id": "australia-oaic-adm-transparency-resources-2026",
+    "date": "2026-09-30",
+    "jurisdiction": "澳洲",
+    "flag": "AU",
+    "category": "個資／自動化決策透明",
+    "importance": "高",
+    "title": "澳洲 OAIC 定稿自動化決策透明義務合規資源",
+    "summary": "OAIC 更新 APP 1 Guidelines 並發布事實表與流程圖，確認 2026-12-10 起，範圍內組織須在隱私政策揭露使用個資作成或實質協助重大權益決策的程式及決策類別。",
+    "authority": "Office of the Australian Information Commissioner（OAIC）／Attorney-General's Department",
+    "keyDate": "2024-12-10 修正法御准；2026-09-30 OAIC 發布最終合規資源；2026-12-10 APP 1.7–1.9 生效",
+    "affectedCompanies": "受澳洲 Privacy Act 約束，並使用規則式程式、AI、機器學習、生成式 AI 或第三方軟體處理個資，以作成或實質協助就業、授信、保險、醫療、退款、帳戶、政府福利及其他重大權益決策的機關與企業",
+    "background": "Privacy and Other Legislation Amendment Act 2024 已新增 APP 1.7–1.9，但企業容易把範圍誤解為只有完全自動化或只有 AI 決策。OAIC 經 90 份書面意見後，更新 APP 1 Guidelines 並發布事實表、政府機關補充表及流程圖，協助組織在法定生效日前完成判斷與揭露。",
+    "whatChanged": "最終資源確認 computer program 採廣義，規則式流程、AI、機器學習及生成式 AI 均可能涵蓋；人員作最後決定也不當然排除，只要程式輸出是實質且直接相關的關鍵因素。組織安排第三方程式代為篩選、評分或決定時，使用個資作成決策的 APP entity 通常仍是義務主體。",
+    "businessImpact": "企業需要把自動化決策盤點從模型清冊擴大到一般規則引擎、工作流程及第三方服務，並修改公開隱私政策。這不是要求揭露演算法原始碼，也未在 APP 1.7–1.9 中創設一般人工覆核權；但 APP 1.7 已被納入 Privacy Act 第 13K 條，違反可面臨最高 200 penalty units，且其他隱私與產業義務仍可能同時適用。",
+    "keyPoints": [
+      "三項法定門檻必須同時成立：安排程式參與決策、個人權利或利益可能受重大影響、程式使用該個人的個資。",
+      "揭露應包括個資種類、完全由程式作成的決策種類，以及程式實質且直接協助作成的決策種類。",
+      "重大影響可有利或不利，並須考量兒少、弱勢等個人情境；影響不得只是瑣碎。",
+      "人員簽核不是自動排除條件；應檢視對輸出的依賴、覆寫可能性、輸出性質、可解釋性及流程整合程度。",
+      "採購第三方工具不會自動移轉責任，契約應釐清誰保有最終決策能力並提供盤點與揭露所需資訊。",
+      "商業機密例外不能用來隱藏有使用自動化決策；公開資訊仍須有意義、容易理解及可存取。",
+      "項次 89 對生效後決策適用，即使系統安排或個資取得在生效前，也沒有一般既有系統豁免。"
+    ],
+    "action": "立即完成規則引擎、AI 與第三方決策服務盤點，判斷是否同時符合三項門檻；為每個範圍內流程保留資料與決策類別、人工依賴、供應商責任及重大影響分析，並在 2026-12-10 前完成隱私政策、契約與內部覆核更新。",
+    "sourceUrl": "https://www.oaic.gov.au/news/media-centre/new-resources-on-transparency-for-use-of-ai-and-automated-decision-making",
+    "verifiedAt": "2026-10-18"
+  },
+  {
     "id": "eu-copyright-generative-ai-targeted-consultation-2026",
     "date": "2026-09-29",
     "jurisdiction": "歐盟",
