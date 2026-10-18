@@ -1,5 +1,33 @@
 [
   {
+    "id": "us-fda-genai-medical-device-feedback-deadline-2026",
+    "date": "2026-10-19",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "醫療器材／生成式與代理式 AI",
+    "importance": "高",
+    "title": "FDA 生成式 AI 醫療器材監管諮詢期限為 10 月 19 日",
+    "summary": "FDA 的 31 頁生成式 AI 醫療器材討論文件以 10 月 19 日為意見截止日，涵蓋雙軸風險、能力導向上市前評估、上市後監測、基礎模型與代理式 AI；它不是草案指引、規則或政策變更。",
+    "authority": "U.S. Food and Drug Administration, CDRH Digital Health Center of Excellence",
+    "keyDate": "2026-08-18 發布 Discussion Paper；2026-10-19 Docket FDA-2026-N-7874 公開意見截止；後續政策或指引時程尚未公布",
+    "affectedCompanies": "開發、製造、申請、供應或部署生成式 AI 醫療器材與 SaMD 的企業、基礎模型與代理平台供應商、醫療院所、臨床評估單位及數位健康投資或採購團隊",
+    "background": "生成式 AI 醫療器材可接受開放式輸入、執行多個子任務、產生可變輸出，並因底層模型、提示、檢索、護欄、編排與介面改變而演進。既有以固定輸入輸出為中心的審查方法，未必足以處理多輪對話、第三方基礎模型、持續變更或能自主使用工具的代理式功能。",
+    "whatChanged": "FDA 官方頁面指定 10 月 19 日為公開意見截止日，但未列出截止時區，入口狀態仍應以 Regulations.gov 為準。討論文件提出以功能活動／自主程度及錯誤輸出後果為兩軸的風險思考工具，並徵詢 device benchmarking 加 clinical confirmation 的能力導向上市前架構、風險比例上市後監測、第三方基礎模型資訊及代理式 AI 額外評估；26 個問題仍只是早期意見徵集。",
+    "businessImpact": "企業若已提交意見，應保存版本、附件與送件證明，並把爭點納入產品與監管策略。尚未送件者則不應假設入口在任何特定時區仍開放。無論是否參與，雙軸、能力基準或 Model Master File 都不是現行強制門檻；企業仍須依既有 FD&C Act、分類、上市前審查、品質、變更與上市後義務評估產品。",
+    "keyPoints": [
+      "10 月 19 日是諮詢截止日，不是新規則、指引或證據要求的生效日。",
+      "FDA 明示文件僅供討論，不提出或實施政策變更，也未判斷現有權限是否足夠。",
+      "可能的雙軸架構比較 action-directing、action-taking 與自主行動，並同時考量錯誤輸出的後果。",
+      "病患面向、多輪對話、照護過度或不足升級，以及一般科與專科使用情境都可能改變風險。",
+      "能力導向上市前方法擬結合非臨床 benchmarking 與 clinical confirmation，但尚未成為 FDA 接受的申請路徑。",
+      "上市後構想涵蓋重新基準測試、臨床抽樣複核、效能衰退監測及監督代理，不能藉第三方參與分散製造商責任。",
+      "基礎模型與代理式 AI 的爭點包括第三方更新、工具使用、提示注入、不可逆行動前的人類檢查點及錯誤工具輸出。"
+    ],
+    "action": "保存諮詢送件證明與公司立場，建立生成式 AI device function 清冊及雙軸風險初評，補強能力基準、臨床確認、真實世界效能、漂移、第三方模型變更、代理工具和人工檢查點證據；追蹤 FDA 後續正式政策，但現階段仍以現行器材法規為準。",
+    "sourceUrl": "https://www.fda.gov/medical-devices/digital-health-center-excellence/considerations-regulation-generative-ai-enabled-medical-devices-discussion-paper-and-request",
+    "verifiedAt": "2026-10-19"
+  },
+  {
     "id": "nist-si-agent-incident-readiness-response-2026",
     "date": "2026-10-16",
     "jurisdiction": "美國",
@@ -27,6 +55,34 @@
     "action": "把十項實務納入高能力代理的上線門檻與桌上演練：建立結構化風險評估、最小權限與 egress allowlist、多層及隔離監控、證據保全、自動停止、相似代理暫停、可信重建、軌跡重播及高階恢復核准；法務另維護逐法域強制通報矩陣。",
     "sourceUrl": "https://www.nist.gov/news-events/news/2026/10/key-practices-incident-readiness-and-response-super-intelligence-training",
     "verifiedAt": "2026-10-17"
+  },
+  {
+    "id": "brazil-inaep-ai-human-research-consultation-2026",
+    "date": "2026-10-15",
+    "jurisdiction": "巴西",
+    "flag": "BR",
+    "category": "研究倫理／AI 風險分類諮詢",
+    "importance": "高",
+    "title": "巴西開放人類研究 AI 倫理指南與 MARIAH 諮詢",
+    "summary": "巴西衛生部 INAEP 已正式開放 AI 人類研究倫理指南、參考手冊與 MARIAH 四級風險工具的公開諮詢，收件至 2027 年 3 月 31 日；文件是諮詢中指引，不是新法。",
+    "authority": "巴西衛生部國家研究倫理機構（INAEP）與研究規範及倫理總協調處（CGREP）",
+    "keyDate": "2026-10-15 公開諮詢開始；2027-03-31 截止；意見須透過衛生部官方表單提交",
+    "affectedCompanies": "在巴西贊助、承作或供應含 AI 的臨床、健康、人文社會及跨領域人類研究之製藥、生技、醫療器材、SaMD、CRO、研究機構，以及模型、資料、雲端與分析供應商",
+    "background": "INAEP 先前已核准並發布 41 頁倫理指南、159 頁參考手冊與 57 頁 MARIAH，但早期公告未載明固定諮詢期限。這套文件把巴西人類研究、LGPD 與衛生規範轉為 AI 用途、資料、代表性、偏誤、監督、漂移、再識別、跨境傳輸與模型退場等審查問題。",
+    "whatChanged": "衛生部在 10 月 15 日建立正式諮詢頁面，確認三份文件均納入收件，起迄日為 2026-10-15 至 2027-03-31，並指定僅透過官方表單提交。MARIAH 同時提供五軸質化版與七區塊量化版，均以 I 至 IV 四級分流；這些分類仍在諮詢中，不是法定產品風險等級。",
+    "businessImpact": "研究贊助者、CRO、醫療 AI 與研究機構現在有明確期限可就分類、證據可行性、資料治理與供應鏈責任提出意見。即使不參與，也應預先比較研究計畫文件與 MARIAH，因 CEP 可能要求更細證據；但不能把諮詢版當作具拘束力新法，現行 Lei 14.874/2024、LGPD、CNS 與 ANVISA 義務仍須另外判斷。",
+    "keyPoints": [
+      "諮詢涵蓋倫理指南、Caderno Referencial 與 MARIAH 三份文件，截止日為 2027-03-31。",
+      "意見須透過官方表單提交，INAEP 與 CGREP 是官方責任單位。",
+      "MARIAH 質化版以五個風險軸採最高等級優先，任一軸達 IV 級即可把整體提升至 IV 級。",
+      "量化版以七個區塊及最高 275 分分類，只有文件化且可驗證的緩解措施才能在設計內影響分數。",
+      "關鍵臨床決策缺乏有效人類監督、不可逆傷害或未說明技術不確定性，不能被其他低風險分數平均掉。",
+      "文件涵蓋 AI 作為研究對象或分析、寫作、推論、合成資料與決策工具的情境，不只限於醫療產品。",
+      "公開諮詢與風險矩陣不取代人類研究法、LGPD、CNS 決議、ANVISA 或個案倫理審查。"
+    ],
+    "action": "在 2027-03-31 前由研究、法務、個資、醫療與技術團隊試跑 MARIAH，記錄五軸與七區塊在實際計畫中的證據缺口、成本與歧義，必要時透過官方表單提交意見；同步補齊資料法源、代表性、人工監督、模型變更、事件、跨境傳輸與退場紀錄。",
+    "sourceUrl": "https://www.gov.br/saude/pt-br/acesso-a-informacao/participacao-social/consultas-publicas/2026/conjunto-de-orientacoes-e-instrumentos-para-apoiar-a-avaliacao-etica-do-uso-da-ia-em-pesquisas-com-seres-humanos-no-brasil/consulta-publica-conjunto-de-orientacoes-e-instrumentos-para-apoiar-a-avaliacao-etica-do-uso-da-ia-em-pesquisas-com-seres-humanos-no-brasil",
+    "verifiedAt": "2026-10-19"
   },
   {
     "id": "fsb-responsible-ai-adoption-sound-practices-2026",

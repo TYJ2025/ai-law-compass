@@ -93,6 +93,7 @@ test("researched instruments link to official primary sources", async () => {
     "parliament.uk",
     "nist.gov",
     "whitehouse.gov",
+    "fda.gov",
     "leginfo.legislature.ca.gov",
     "tbs-sct.canada.ca",
     "canada.ca",
@@ -560,12 +561,13 @@ test("Brazil human-research AI guide preserves voluntary status and MARIAH contr
   assert.match(guide.effectiveDate, /不具獨立法律拘束力/);
   assert.match(guide.articleCount, /指南 41 頁.*10 章.*參考手冊 159 頁.*MARIAH 57 頁.*6 部/);
   assert.match(guide.scope, /人類研究.*企業供應商.*不是一般企業 AI 法/);
-  assert.match(guide.transition, /六個月.*自行決定.*不能取代/);
+  assert.match(guide.transition, /2026-10-15.*2027-03-31.*不能取代.*不得視為新法/);
+  assert.match(guide.nextDeadline, /2027-03-31.*官方表單/);
   assert.ok(guide.keyPoints.some((point) => /低、普通、高及關鍵四級.*累加/.test(point)));
   assert.ok(guide.keyPoints.some((point) => /質化 A 版.*5 個.*量化 B 版.*7 個.*275／304/.test(point)));
   assert.ok(guide.keyPoints.some((point) => /人類監督.*實際否決/.test(point)));
   assert.equal(new URL(guide.sourceUrl).hostname, "www.gov.br");
-  assert.equal(guide.verifiedAt, "2026-09-29");
+  assert.equal(guide.verifiedAt, "2026-10-19");
 
   const updates = await readJson("data/updates.json");
   const update = updates.find(
@@ -576,6 +578,45 @@ test("Brazil human-research AI guide preserves voluntary status and MARIAH contr
   assert.match(update.summary, /四級風險.*並非新法/);
   assert.match(update.businessImpact, /不具拘束力.*自主採用.*不會排除/);
   assert.match(update.keyDate, /固定起迄日.*尚待官方公告/);
+
+  const consultationUpdate = updates.find(
+    (entry) => entry.id === "brazil-inaep-ai-human-research-consultation-2026",
+  );
+  assert.equal(consultationUpdate.date, "2026-10-15");
+  assert.equal(consultationUpdate.verifiedAt, "2026-10-19");
+  assert.match(consultationUpdate.keyDate, /2026-10-15.*2027-03-31.*官方表單/);
+  assert.match(consultationUpdate.summary, /公開諮詢.*不是新法/);
+  assert.match(consultationUpdate.businessImpact, /不能把諮詢版.*具拘束力新法/);
+});
+
+test("FDA GenAI medical-device paper preserves consultation-only status and deadline", async () => {
+  const regulations = await readRegulations();
+  const paper = regulations.find(
+    (regulation) => regulation.id === "us-fda-genai-medical-device-discussion-paper-2026",
+  );
+
+  assert.equal(paper.statusGroup, "草案");
+  assert.match(paper.status, /公開諮詢截止日.*非草案指引/);
+  assert.match(paper.promulgationDate, /2026-08-18.*FDA-2026-N-7874/);
+  assert.match(paper.effectiveDate, /不是草案或最終指引.*未提出或實施政策變更/);
+  assert.match(paper.articleCount, /31 頁.*8 節.*2 個附錄.*26 個討論問題/);
+  assert.match(paper.transition, /2026-10-19.*未列出截止時區.*尚未公布後續規則、指引或過渡期/);
+  assert.match(paper.scope, /符合 FD&C Act 醫療器材定義.*不因使用生成式 AI 就自動納入/);
+  assert.ok(paper.keyPoints.some((point) => /只供討論.*不是草案或最終指引/.test(point)));
+  assert.ok(paper.keyPoints.some((point) => /雙軸.*action-directing.*action-taking/.test(point)));
+  assert.ok(paper.keyPoints.some((point) => /benchmarking.*clinical confirmation.*不得先當成/.test(point)));
+  assert.ok(paper.keyPoints.some((point) => /代理式裝置.*提示注入/.test(point)));
+  assert.equal(new URL(paper.sourceUrl).hostname, "www.fda.gov");
+  assert.equal(paper.verifiedAt, "2026-10-19");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-fda-genai-medical-device-feedback-deadline-2026",
+  );
+  assert.equal(update.date, "2026-10-19");
+  assert.equal(update.verifiedAt, "2026-10-19");
+  assert.match(update.summary, /10 月 19 日為意見截止日.*不是草案指引、規則或政策變更/);
+  assert.match(update.businessImpact, /不是現行強制門檻.*既有 FD&C Act/);
 });
 
 test("EU copyright consultation and Brazil AI child-safety law preserve legal status", async () => {
