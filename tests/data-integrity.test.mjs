@@ -101,6 +101,7 @@ test("researched instruments link to official primary sources", async () => {
     "digital.gov.au",
     "legislation.gov.au",
     "oaic.gov.au",
+    "mcv.vic.gov.au",
     "planalto.gov.br",
     "camara.leg.br",
     "gov.br",
@@ -955,6 +956,36 @@ test("Australia ADM transparency duty preserves scope, deadline, and enforcement
   assert.match(update.summary, /隱私政策.*決策類別/);
   assert.match(update.businessImpact, /不是要求揭露演算法原始碼.*200 penalty units/);
   assert.equal(new URL(update.sourceUrl).hostname, "www.oaic.gov.au");
+});
+
+test("Victoria court AI guidelines preserve court scope, human verification, and record limits", async () => {
+  const regulations = await readRegulations();
+  const guide = regulations.find(
+    (regulation) => regulation.id === "australia-victoria-magistrates-court-ai-guidelines-2026",
+  );
+
+  assert.equal(guide.statusGroup, "指引");
+  assert.equal(guide.promulgationDate, "2026-10-19");
+  assert.match(guide.effectiveDate, /沒有獨立法定生效日.*法院程序指引.*不是一般 AI 成文法/);
+  assert.match(guide.articleCount, /4 頁.*18 個編號段落/);
+  assert.match(guide.scope, /所有法院場所.*全體法院使用者/);
+  assert.match(guide.transition, /沒有另設寬限期.*費用命令.*專業監管機關.*不是新設.*AI 法定罰則/);
+  assert.ok(guide.keyPoints.some((point) => /有意義的人類控制/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /具體由 AI 產出的部分.*驗證方式/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /不得.*錄製法院程序.*不得.*AI 轉錄未經授權/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /AI 轉錄.*不是法院正式紀錄/.test(point)));
+  assert.equal(new URL(guide.sourceUrl).hostname, "www.mcv.vic.gov.au");
+  assert.equal(guide.verifiedAt, "2026-10-20");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "australia-victoria-court-ai-guidelines-2026",
+  );
+  assert.equal(update.date, "2026-10-19");
+  assert.equal(update.verifiedAt, "2026-10-20");
+  assert.match(update.summary, /法院程序指引.*不是一般 AI 成文法/);
+  assert.match(update.businessImpact, /不是一部.*所有澳洲企業.*AI 法/);
+  assert.match(update.whatChanged, /AI 轉錄.*不是正式法院紀錄/);
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
