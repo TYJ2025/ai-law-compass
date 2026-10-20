@@ -94,6 +94,7 @@ test("researched instruments link to official primary sources", async () => {
     "nist.gov",
     "whitehouse.gov",
     "fda.gov",
+    "govinfo.gov",
     "leginfo.legislature.ca.gov",
     "tbs-sct.canada.ca",
     "canada.ca",
@@ -101,6 +102,7 @@ test("researched instruments link to official primary sources", async () => {
     "digital.gov.au",
     "legislation.gov.au",
     "oaic.gov.au",
+    "fwc.gov.au",
     "mcv.vic.gov.au",
     "planalto.gov.br",
     "camara.leg.br",
@@ -113,6 +115,7 @@ test("researched instruments link to official primary sources", async () => {
     "coe.int",
     "samr.gov.cn",
     "cas.go.jp",
+    "digital.go.jp",
   ];
 
   for (const regulation of regulations) {
@@ -986,6 +989,88 @@ test("Victoria court AI guidelines preserve court scope, human verification, and
   assert.match(update.summary, /法院程序指引.*不是一般 AI 成文法/);
   assert.match(update.businessImpact, /不是一部.*所有澳洲企業.*AI 法/);
   assert.match(update.whatChanged, /AI 轉錄.*不是正式法院紀錄/);
+});
+
+test("DHS DeepSeek order preserves immediate federal scope and embedded-product coverage", async () => {
+  const regulations = await readRegulations();
+  const order = regulations.find(
+    (regulation) => regulation.id === "us-dhs-deepseek-exclusion-removal-order-2026",
+  );
+
+  assert.equal(order.statusGroup, "生效");
+  assert.match(order.promulgationDate, /2026-07-24.*2026-10-20.*Federal Register/);
+  assert.match(order.effectiveDate, /2026-07-24.*立即執行/);
+  assert.match(order.articleCount, /5 頁.*簽署命令 4 頁.*2 項必要行動.*例外程序/);
+  assert.match(order.scope, /聯邦民用行政機關.*國家安全系統.*第三方產品與服務.*一般私人企業.*未.*全面禁止/);
+  assert.match(order.transition, /立即.*排除.*立即移除.*60 日.*流量.*日誌.*資料外洩.*異常/);
+  assert.ok(order.keyPoints.some((point) => /DeepSeek implementations.*第三方/.test(point)));
+  assert.ok(order.keyPoints.some((point) => /一年內.*每年.*複核/.test(point)));
+  assert.equal(new URL(order.sourceUrl).hostname, "www.govinfo.gov");
+  assert.equal(order.verifiedAt, "2026-10-21");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-dhs-deepseek-exclusion-removal-order-notice-2026",
+  );
+  assert.equal(update.date, "2026-10-20");
+  assert.equal(update.verifiedAt, "2026-10-21");
+  assert.match(update.summary, /7 月 24 日已執行.*10 月 20 日.*公告日/);
+  assert.match(update.businessImpact, /不是全美私人市場禁令.*不能.*允許使用/);
+});
+
+test("FWC GenAI guidance preserves all-matters scope and human-only verification", async () => {
+  const regulations = await readRegulations();
+  const guide = regulations.find(
+    (regulation) => regulation.id === "australia-fwc-genai-case-guidance-2026",
+  );
+
+  assert.equal(guide.statusGroup, "生效");
+  assert.match(guide.promulgationDate, /2026-08-24.*最終 Guidance Note/);
+  assert.match(guide.effectiveDate, /2026-10-20.*所有 Fair Work Commission 案件/);
+  assert.match(guide.articleCount, /9 頁.*46 個編號段落.*3 項核心要求/);
+  assert.match(guide.scope, /建立、撰寫、編輯、修改.*拼字或文法.*電子證據開示.*一般搜尋引擎/);
+  assert.match(guide.transition, /沒有另設寬限期.*降低權重.*費用.*駁回.*不是.*自動受罰/);
+  assert.ok(guide.keyPoints.some((point) => /不能把查證工作.*相同或另一個 GenAI/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /專業代表.*必須.*判例連結/.test(point)));
+  assert.ok(guide.keyPoints.some((point) => /個資.*機密.*禁止或限制公開/.test(point)));
+  assert.equal(new URL(guide.sourceUrl).hostname, "www.fwc.gov.au");
+  assert.equal(guide.verifiedAt, "2026-10-21");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "australia-fwc-genai-requirements-effective-2026",
+  );
+  assert.equal(update.date, "2026-10-20");
+  assert.equal(update.verifiedAt, "2026-10-21");
+  assert.match(update.whatChanged, /人類.*真實證據.*專業代表.*判例超連結/);
+  assert.match(update.businessImpact, /FWC 程序要求而非所有澳洲勞動文件.*一般 AI 法/);
+});
+
+test("Japan Gennai standard preserves hosted-government scope and agent controls", async () => {
+  const regulations = await readRegulations();
+  const standard = regulations.find(
+    (regulation) => regulation.id === "japan-gennai-agent-governance-standard-2026",
+  );
+
+  assert.equal(standard.statusGroup, "指引");
+  assert.match(standard.promulgationDate, /2026-10-20.*第 1 版/);
+  assert.match(standard.effectiveDate, /沒有獨立法定生效日.*分階段導入/);
+  assert.match(standard.articleCount, /53 頁.*4 章.*21 個子節.*改訂履歷/);
+  assert.match(standard.scope, /數位廳託管.*政府職員.*管理者.*外部開發運維.*不因此.*法定義務/);
+  assert.match(standard.transition, /Agent Chat.*2026 年 12 月.*Gennai Workshop.*OSS 2\.0.*2027 年 2 月.*自行負責/);
+  assert.ok(standard.keyPoints.some((point) => /人工確認、監督、批准、介入與利用停止/.test(point)));
+  assert.ok(standard.keyPoints.some((point) => /提示、附件與輸出.*訓練/.test(point)));
+  assert.ok(standard.keyPoints.some((point) => /目的與執行權限.*日誌保存.*停止.*性能評估/.test(point)));
+  assert.equal(new URL(standard.sourceUrl).hostname, "www.digital.go.jp");
+  assert.equal(standard.verifiedAt, "2026-10-21");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "japan-gennai-agent-governance-standard-2026");
+  assert.equal(update.date, "2026-10-20");
+  assert.equal(update.verifiedAt, "2026-10-21");
+  assert.match(update.title, /18 萬/);
+  assert.match(update.summary, /不是一般民間 AI 強制法/);
+  assert.match(update.businessImpact, /不能.*開源.*自動安全.*一般法律合規/);
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
