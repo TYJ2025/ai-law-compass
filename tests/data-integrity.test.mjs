@@ -1073,6 +1073,36 @@ test("Japan Gennai standard preserves hosted-government scope and agent controls
   assert.match(update.businessImpact, /不能.*開源.*自動安全.*一般法律合規/);
 });
 
+test("ANPD sandbox cycle 3 preserves test limits, sector findings, and non-certification status", async () => {
+  const regulations = await readRegulations();
+  const report = regulations.find(
+    (regulation) => regulation.id === "brazil-anpd-ai-sandbox-cycle-3-report-2026",
+  );
+
+  assert.equal(report.statusGroup, "指引");
+  assert.match(report.status, /非合規認證或執法決定/);
+  assert.match(report.promulgationDate, /2026-10-16.*第三期/);
+  assert.match(report.effectiveDate, /不適用.*不創設一般法定義務或合規安全港/);
+  assert.match(report.articleCount, /54 頁.*5 章.*3 家.*7 軸 100 分/);
+  assert.match(report.scope, /Synapse Trajetto.*Prevvine STAiDOC.*Metatext GuardionAI.*不是.*一般規則/);
+  assert.match(report.transition, /第四期.*不代表完整合規、產品核准、無限制使用.*執法結論/);
+  assert.ok(report.keyPoints.some((point) => /幻覺、不存在引用.*TRL 7.*TRL 6/.test(point)));
+  assert.ok(report.keyPoints.some((point) => /5 項增至 58 項.*第四期/.test(point)));
+  assert.ok(report.keyPoints.some((point) => /聲稱、文件化、已實作及實際驗證/.test(point)));
+  assert.ok(report.keyPoints.some((point) => /不得.*ANPD 產品核准、完整合規或使用授權/.test(point)));
+  assert.equal(new URL(report.sourceUrl).hostname, "www.gov.br");
+  assert.equal(report.verifiedAt, "2026-10-22");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "brazil-anpd-ai-sandbox-cycle-3-results-2026",
+  );
+  assert.equal(update.date, "2026-10-16");
+  assert.equal(update.verifiedAt, "2026-10-22");
+  assert.match(update.whatChanged, /30 個臨床案例.*幻覺、不存在引用.*TRL 7.*TRL 6/);
+  assert.match(update.businessImpact, /只反映三個沙盒專案.*不能.*新法.*不能.*產品獲核准/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);

@@ -138,6 +138,34 @@
     "verifiedAt": "2026-10-19"
   },
   {
+    "id": "brazil-anpd-ai-sandbox-cycle-3-results-2026",
+    "date": "2026-10-16",
+    "jurisdiction": "巴西",
+    "flag": "BR",
+    "category": "個資監管／AI 監理沙盒",
+    "importance": "高",
+    "title": "ANPD 公開 AI 監理沙盒第三期測試結果與附條件續行要求",
+    "summary": "巴西 ANPD 的 54 頁第三期報告揭露交通、醫療及金融 AI 的實測風險與第四期條件；醫療系統測得幻覺、偽造引用和失效連結，但報告不是合規認證或執法決定。",
+    "authority": "Agência Nacional de Proteção de Dados（ANPD）；CIAAM/USP",
+    "keyDate": "2026-10-16 發布第三期部分監測報告；第四期測試及補正日期未公開，參與者依 ANPD／CIAAM-USP 排程續行",
+    "affectedCompanies": "在巴西開發或部署使用個資的醫療 AI、智慧移動、金融反詐與自主代理系統之企業，以及其模型、資料、API、雲端、安全與系統整合供應商",
+    "background": "ANPD 與聖保羅大學 CIAAM 依 2025 年遴選結果，在受控監理沙盒中測試 Synapse Trajetto、Prevvine STAiDOC 及 Metatext GuardionAI。前兩期著重方法、環境與文件缺口，第三期開始將企業聲明和文件與技術測試、模擬案例、倫理評分、風險及實作證據交叉核對。",
+    "whatChanged": "第三期首次更清楚區分聲稱、文件化、已實作及實際驗證的控制。Trajetto 受測傳輸及影像控制有進展但仍附條件；STAiDOC 的 30 個臨床案例暴露幻覺、不存在引用與失效連結，文獻驗證模組由 TRL 7 下修至 TRL 6；GuardionAI 的法規映射由 5 項擴至 58 項，但關鍵實測延至第四期。",
+    "businessImpact": "報告提供 ANPD 可能要求的證據粒度，特別是第三方與 API 清冊、RIPD、資料刪除、加密、人工監督、可解釋性、引用驗證、跨境流向、事件與退場。它只反映三個沙盒專案及已測條件，不能當作所有巴西 AI 的新法，也不能讓參與者宣稱產品獲核准或已完整遵循 LGPD。",
+    "keyPoints": [
+      "54 頁報告採前測、測試及後測三階段，並以七軸 100 分倫理治理框架搭配技術證據。",
+      "Trajetto 從 45 分升至 68 分，固有風險高、殘餘風險中，結論為足夠但附條件；第三方 API、再識別與無障礙仍待補強。",
+      "STAiDOC 從 60 分升至 63 分，但固有風險列為關鍵、第三期僅部分成功，30 個臨床案例仍發現幻覺與引用問題。",
+      "GuardionAI 已擴充法規映射，但個資保護及安全警示測試、國際傳輸、監督、可解釋性與責任仍未完成驗證。",
+      "政策文件、分數上升或作業障礙排除不等於控制有效；ANPD 要求以實測證據區分聲稱、文件、實作與驗證。",
+      "第四期須追蹤每項條件的負責人、期限、證據及完成標準，並更新殘餘風險、模型版本、第三方及退場方案。",
+      "沙盒與報告不產生監察或執法效果，也不構成產品認證、完整合規或無限制使用授權。"
+    ],
+    "action": "以報告建立巴西 AI 證據矩陣，逐項標示控制的聲稱、文件、實作與實測狀態；醫療 AI 增加來源驗證及臨床人類覆核，移動與金融代理補齊再識別、第三方、跨境、權限、警示、事件及停止控制，並審查對外宣稱不得把沙盒成果說成 ANPD 認證。",
+    "sourceUrl": "https://www.gov.br/anpd/pt-br/assuntos/noticias/anpd-publica-3o-relatorio-parcial-de-monitoramento-do-sandbox-regulatorio-em-ia",
+    "verifiedAt": "2026-10-22"
+  },
+  {
     "id": "nist-si-agent-incident-readiness-response-2026",
     "date": "2026-10-16",
     "jurisdiction": "美國",
