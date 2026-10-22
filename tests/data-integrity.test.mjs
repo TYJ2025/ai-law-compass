@@ -86,6 +86,7 @@ test("researched instruments link to official primary sources", async () => {
     "pdpc.gov.sg",
     "imda.gov.sg",
     "moh.gov.sg",
+    "mlaw.gov.sg",
     "acra.gov.sg",
     "mas.gov.sg",
     "ico.org.uk",
@@ -1101,6 +1102,62 @@ test("ANPD sandbox cycle 3 preserves test limits, sector findings, and non-certi
   assert.equal(update.verifiedAt, "2026-10-22");
   assert.match(update.whatChanged, /30 個臨床案例.*幻覺、不存在引用.*TRL 7.*TRL 6/);
   assert.match(update.businessImpact, /只反映三個沙盒專案.*不能.*新法.*不能.*產品獲核准/);
+});
+
+test("UK police AI factsheet preserves accountability, assurance boundaries, and registry status", async () => {
+  const regulations = await readRegulations();
+  const factsheet = regulations.find(
+    (regulation) => regulation.id === "uk-police-ai-factsheet-policeai-registry-2026",
+  );
+
+  assert.equal(factsheet.statusGroup, "指引");
+  assert.match(factsheet.status, /非一般民間強制法/);
+  assert.match(factsheet.promulgationDate, /2026-06-09.*2026-10-22/);
+  assert.match(factsheet.effectiveDate, /不適用.*未創設一般私人企業法定義務/);
+  assert.match(factsheet.articleCount, /19 項問答/);
+  assert.match(factsheet.scope, /Chief Officer.*Equality Act 2010.*Data Protection Act 2018/);
+  assert.match(factsheet.transition, /2026 年底前.*試點.*不應.*法定登錄義務/);
+  assert.ok(factsheet.keyPoints.some((point) => /Chief Officer.*最終責任/.test(point)));
+  assert.ok(factsheet.keyPoints.some((point) => /不代管.*不執行.*資訊安全評估/.test(point)));
+  assert.ok(factsheet.keyPoints.some((point) => /999 緊急電話/.test(point)));
+  assert.ok(factsheet.keyPoints.some((point) => /政策期待.*不是.*法定義務/.test(point)));
+  assert.equal(new URL(factsheet.sourceUrl).hostname, "www.gov.uk");
+  assert.equal(factsheet.verifiedAt, "2026-10-23");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "uk-police-ai-factsheet-updated-2026");
+  assert.equal(update.date, "2026-10-22");
+  assert.equal(update.verifiedAt, "2026-10-23");
+  assert.match(update.whatChanged, /未提供逐段差異.*不能.*新法律/);
+  assert.match(update.businessImpact, /不取代.*資安評估.*不取代.*Chief Officer/);
+});
+
+test("Singapore AI and IP consultation preserves current law and extended deadline", async () => {
+  const regulations = await readRegulations();
+  const consultation = regulations.find(
+    (regulation) => regulation.id === "singapore-ai-ip-consultation-2026",
+  );
+
+  assert.equal(consultation.statusGroup, "草案");
+  assert.match(consultation.status, /尚未形成修法決定/);
+  assert.match(consultation.promulgationDate, /2026-08-26.*2026-10-20/);
+  assert.match(consultation.effectiveDate, /不適用.*尚未修正/);
+  assert.match(consultation.articleCount, /36 頁.*5 部.*2 份附錄/);
+  assert.match(consultation.transition, /2026-10-22 17:00.*2026-11-05.*未使任何修法提案生效/);
+  assert.ok(consultation.keyPoints.some((point) => /CDA 例外.*生成式 AI.*商業性.*不是新法/.test(point)));
+  assert.ok(consultation.keyPoints.some((point) => /robots\.txt.*不等同.*法律拘束力/.test(point)));
+  assert.ok(consultation.keyPoints.some((point) => /自然人為發明人/.test(point)));
+  assert.equal(new URL(consultation.sourceUrl).hostname, "www.mlaw.gov.sg");
+  assert.equal(consultation.verifiedAt, "2026-10-23");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "singapore-ai-ip-consultation-extension-2026",
+  );
+  assert.equal(update.date, "2026-10-20");
+  assert.equal(update.verifiedAt, "2026-10-23");
+  assert.match(update.whatChanged, /11 月 5 日.*延長不等於任何修法已獲採納/);
+  assert.match(update.businessImpact, /不能把選項當成豁免/);
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
