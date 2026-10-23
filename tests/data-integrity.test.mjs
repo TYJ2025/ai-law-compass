@@ -1160,6 +1160,64 @@ test("Singapore AI and IP consultation preserves current law and extended deadli
   assert.match(update.businessImpact, /不能把選項當成豁免/);
 });
 
+test("EU EN 18286 preserves voluntary use and limited presumption of conformity", async () => {
+  const regulations = await readRegulations();
+  const standard = regulations.find(
+    (regulation) => regulation.id === "eu-en-18286-ai-act-qms-harmonised-standard-2026",
+  );
+
+  assert.equal(standard.statusGroup, "生效");
+  assert.match(standard.status, /標準自願採用.*涵蓋要求.*符合性推定/);
+  assert.match(standard.promulgationDate, /2026-07-22.*2026-10-12.*2026-10-14/);
+  assert.match(standard.effectiveDate, /2026-10-14.*標準本身仍為自願採用/);
+  assert.match(standard.articleCount, /2 條.*1 份附錄.*1 項標準 EN 18286:2026/);
+  assert.match(standard.scope, /高風險 AI.*Article 17.*不會自動涵蓋.*所有產業法/);
+  assert.match(standard.transition, /沒有強制改用.*自願.*不涵蓋整部.*2027-12-02.*2028-08-02/);
+  assert.ok(standard.keyPoints.some((point) => /第一個.*官方公報.*調和標準/.test(point)));
+  assert.ok(standard.keyPoints.some((point) => /符合性推定只及於.*實際涵蓋/.test(point)));
+  assert.ok(standard.keyPoints.some((point) => /ISO\/IEC 42001.*ISO 9001.*ISO 13485.*不是.*取代/.test(point)));
+  assert.equal(new URL(standard.sourceUrl).hostname, "eur-lex.europa.eu");
+  assert.equal(standard.verifiedAt, "2026-10-24");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "eu-en-18286-ai-act-qms-ojeu-2026");
+  assert.equal(update.date, "2026-10-14");
+  assert.equal(update.verifiedAt, "2026-10-24");
+  assert.match(update.whatChanged, /首次.*符合性推定.*自願標準.*不會推定整部/);
+  assert.match(update.businessImpact, /ISO\/IEC 42001.*仍須.*差距分析.*不能取代/);
+});
+
+test("Council of Europe HUDERIA additions preserve non-binding and publication limits", async () => {
+  const regulations = await readRegulations();
+  const huderia = regulations.find(
+    (regulation) => regulation.id === "coe-huderia-stakeholder-roles-components-2026",
+  );
+
+  assert.equal(huderia.statusGroup, "指引");
+  assert.match(huderia.status, /非法律拘束性/);
+  assert.match(huderia.promulgationDate, /2026-10-23.*兩項元件/);
+  assert.match(huderia.effectiveDate, /不適用.*不直接創設企業義務或合規安全港/);
+  assert.match(huderia.articleCount, /2 項.*尚未提供完整元件頁數或條文數/);
+  assert.match(huderia.scope, /公共與私人行為者.*不因採用而自動履行/);
+  assert.match(huderia.transition, /Methodology.*2025-02-26.*COBRA.*2026-02-25.*仍在研擬.*不能標示為已採納/);
+  assert.ok(
+    huderia.keyPoints.some((point) =>
+      /Stakeholder Engagement Process.*Roles and Responsibilities.*兩項/.test(point),
+    ),
+  );
+  assert.ok(huderia.keyPoints.some((point) => /尚未附完整文本.*不能自行推定/.test(point)));
+  assert.ok(huderia.keyPoints.some((point) => /非法律拘束.*不產生.*安全港/.test(point)));
+  assert.equal(new URL(huderia.sourceUrl).hostname, "www.coe.int");
+  assert.equal(huderia.verifiedAt, "2026-10-24");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "coe-huderia-sep-roles-adopted-2026");
+  assert.equal(update.date, "2026-10-23");
+  assert.equal(update.verifiedAt, "2026-10-24");
+  assert.match(update.whatChanged, /正式採納.*官方公告未附完整元件文本.*仍在開發/);
+  assert.match(update.businessImpact, /不直接創設企業義務、認證或安全港/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);

@@ -1,5 +1,32 @@
 [
   {
+    "id": "coe-huderia-sep-roles-adopted-2026",
+    "date": "2026-10-23",
+    "jurisdiction": "國際標準",
+    "flag": "CoE",
+    "category": "人權影響評估／利害關係人與問責",
+    "importance": "高",
+    "title": "歐洲委員會採納兩項 HUDERIA 模型元件",
+    "summary": "CDNET 採納利害關係人參與流程及 AI 專案生命週期角色責任建議，補強 HUDERIA 的參與與問責層；兩者仍是非法律拘束性資源。",
+    "authority": "Council of Europe Steering Committee for New and Emerging Digital Technologies（CDNET）",
+    "keyDate": "2026-10-21 至 10-23 召開第二次全會；2026-10-23 宣布採納兩項 HUDERIA Model 元件",
+    "affectedCompanies": "在歐洲或採用國際人權治理框架開發、部署、採購或評估 AI 的公私部門組織、基礎模型與應用供應商、系統整合商、顧問及受監管產業",
+    "background": "HUDERIA 以人權、民主與法治為核心，把 AI 情境資料先納入 COBRA，再視重大性進入更完整的風險與影響評估、緩解及救濟。既有方法論和 COBRA 分別於 2025 與 2026 年獲核准，CDNET 持續開發可協助公共與私人行為者實作的模型元件。",
+    "whatChanged": "第二次全會正式採納 Stakeholder Engagement Process 與 Recommendations on Roles and Responsibilities in AI Project Lifecycle。SEP 把 COBRA 識別的潛在受影響者觀點納入分析；角色責任元件把生命週期問責納入模型。官方公告未附完整元件文本，採購指引、互通性條款及 AI 使用趨勢研究仍在開發。",
+    "businessImpact": "人權影響評估若只有內部風險分數，未記錄受影響者如何被識別、參與和回應，或沒有涵蓋資料、模型、部署、監測及退場的責任鏈，將更難對照 HUDERIA。這些元件不直接創設企業義務、認證或安全港，也不能取代 EU AI Act、資料保護法、產業法或契約要求。",
+    "keyPoints": [
+      "CDNET 採納 SEP 與 AI 專案生命週期角色責任兩項元件。",
+      "SEP 以 COBRA 識別的受影響者與風險情境決定參與形式及程度。",
+      "HUDERIA 可由公共及私人行為者全部或部分採用，並依適用法律調整。",
+      "官方公告尚未提供兩項元件的完整條文、角色清單或證據格式。",
+      "採購指引、互通性條款與 AI 使用趨勢研究仍在研擬，尚未採納。",
+      "HUDERIA 是非拘束性指引，不等於法律合規、認證或風險安全港。"
+    ],
+    "action": "先為重大 AI 用例建立受影響者地圖、參與層級、無障礙與弱勢代表性、回饋處理和救濟紀錄，再把資料、模型、整合、部署、監測、事件及退場責任列入 RACI；待完整元件發布後逐條比對，並將 HUDERIA 證據與各項適用法律分開管理。",
+    "sourceUrl": "https://www.coe.int/en/web/artificial-intelligence/-/cdnet-adopts-two-huderia-components-on-stakeholder-engagement-process-and-ai-roles-and-responsibilities-during-its-second-plenary",
+    "verifiedAt": "2026-10-24"
+  },
+  {
     "id": "uk-police-ai-factsheet-updated-2026",
     "date": "2026-10-22",
     "jurisdiction": "英國",
@@ -362,6 +389,33 @@
     "action": "範圍可能涵蓋的企業應把自主代理的越權、資料外洩或破壞、服務中斷、近失、跨系統及跨客戶擴散納入事故分級，演練 24／72 小時蒐證與客戶通知；同步追蹤 10 月 26 日修正及後續次級立法，在正式生效前與現行通報矩陣分開標示。",
     "sourceUrl": "https://committees.parliament.uk/publications/55268/documents/307069/default/",
     "verifiedAt": "2026-10-15"
+  },
+  {
+    "id": "eu-en-18286-ai-act-qms-ojeu-2026",
+    "date": "2026-10-14",
+    "jurisdiction": "歐盟",
+    "flag": "EU",
+    "category": "AI Act／高風險系統品質管理",
+    "importance": "高",
+    "title": "歐盟首個 AI Act 調和標準取得符合性推定",
+    "summary": "Decision (EU) 2026/2274 在官方公報引用 EN 18286:2026；高風險 AI 供應者自願採用後，可就標準涵蓋的 Article 17 QMS 要求取得符合性推定。",
+    "authority": "European Commission；CEN and CENELEC Joint Technical Committee 21",
+    "keyDate": "2026-10-12 採納施行決定；2026-10-14 官方公報刊登並生效；2027-12-02／2028-08-02 高風險義務分階段適用",
+    "affectedCompanies": "在歐盟市場投放或投入使用 Annex III 或 Annex I 高風險 AI 的供應者，以及其品質、法遵、產品、工程、資料、測試、供應鏈、稽核與受監管產業合作方",
+    "background": "《AI 法》第 17 條要求高風險 AI 供應者建立書面品質管理系統，第 40 條則讓官方公報已引用的調和標準就涵蓋要求產生符合性推定。EN 18286 由 CEN／CENELEC JTC 21 依歐盟標準化委託制定，把抽象法律要求轉成可稽核的 AI 系統生命週期 QMS。",
+    "whatChanged": "施行決定首次把一項 AI Act 標準列入官方公報：EN 18286:2026 自 10 月 14 日起可就其涵蓋的 Article 17 要求提供符合性推定。它以 AI 系統為核心並可疊加 ISO/IEC 42001、ISO 9001 或 ISO 13485；引用不會把自願標準變成唯一方法，也不會推定整部《AI 法》已遵循。",
+    "businessImpact": "高風險供應者現在可用具法律辨識度的 QMS 基線提前準備設計、資料、測試、變更、供應商、紀錄、事故與上市後監測證據。已持有 ISO/IEC 42001 或產業 QMS 證書仍須做 EN 18286 及 Article 17 差距分析；相反地，EN 18286 推定也不能取代其他高風險義務或資料、產品與產業法遵。",
+    "keyPoints": [
+      "EN 18286:2026 是第一個獲官方公報引用的 AI Act 調和標準。",
+      "Decision (EU) 2026/2274 於 10 月 14 日生效，符合性推定自引用公布日起產生。",
+      "標準主要支援高風險 AI 供應者的 Article 17 品質管理系統。",
+      "採用仍屬自願，使用替代方法者須自行證明達成法律要求。",
+      "推定只限標準涵蓋部分，不是整部 AI Act、整個產品或其他法律的全面認證。",
+      "既有 ISO/IEC 42001、ISO 9001 或 ISO 13485 可作整合基礎，但不能不經差距分析直接視為等同。"
+    ],
+    "action": "立即以 Article 17 和 EN 18286 對既有 QMS 做控制映射，指定高風險 AI 系統層級的責任、設計開發、資料、測試、變更、供應商、紀錄、事件及上市後監測證據；在合規聲明與技術文件中限縮符合性推定範圍，另行管理其他 AI Act 與產業義務。",
+    "sourceUrl": "https://digital-strategy.ec.europa.eu/en/library/first-harmonised-standard-supporting-ai-act-published-official-journal",
+    "verifiedAt": "2026-10-24"
   },
   {
     "id": "taiwan-financial-agentic-ai-security-consultation-2026",
