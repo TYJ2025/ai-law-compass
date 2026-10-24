@@ -95,6 +95,7 @@ test("researched instruments link to official primary sources", async () => {
     "nist.gov",
     "whitehouse.gov",
     "fda.gov",
+    "federalregister.gov",
     "govinfo.gov",
     "leginfo.legislature.ca.gov",
     "tbs-sct.canada.ca",
@@ -117,6 +118,8 @@ test("researched instruments link to official primary sources", async () => {
     "samr.gov.cn",
     "cas.go.jp",
     "digital.go.jp",
+    "moenv.gov.tw",
+    "ec.europa.eu",
   ];
 
   for (const regulation of regulations) {
@@ -1216,6 +1219,85 @@ test("Council of Europe HUDERIA additions preserve non-binding and publication l
   assert.equal(update.verifiedAt, "2026-10-24");
   assert.match(update.whatChanged, /正式採納.*官方公告未附完整元件文本.*仍在開發/);
   assert.match(update.businessImpact, /不直接創設企業義務、認證或安全港/);
+});
+
+test("US outbound investment proposal preserves draft status and AI prohibition scope", async () => {
+  const regulations = await readRegulations();
+  const proposal = regulations.find(
+    (regulation) => regulation.id === "us-treasury-oisp-part-851-proposed-2026",
+  );
+
+  assert.equal(proposal.statusGroup, "草案");
+  assert.match(proposal.status, /擬議規則.*尚未生效/);
+  assert.match(proposal.promulgationDate, /2026-10-23.*Public Inspection.*2026-10-26/);
+  assert.match(proposal.effectiveDate, /尚未生效.*Part 850 持續適用/);
+  assert.match(proposal.articleCount, /38 頁.*11 個 Subparts.*73 個 Sections/);
+  assert.match(proposal.transition, /2026-12-07.*不溯及既往.*2025-01-02.*不等於.*生效/);
+  assert.ok(proposal.keyPoints.some((point) => /任何 SI／AI 系統開發.*禁止技術/.test(point)));
+  assert.ok(
+    proposal.keyPoints.some((point) => /agent harness.*具身／實體 AI.*自駕.*無人系統/.test(point)),
+  );
+  assert.ok(proposal.keyPoints.some((point) => /5 萬美元.*只限應申報交易.*不能.*禁止交易/.test(point)));
+  assert.equal(new URL(proposal.sourceUrl).hostname, "www.federalregister.gov");
+  assert.equal(proposal.verifiedAt, "2026-10-25");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-oisp-part-851-ai-prohibition-proposal-2026",
+  );
+  assert.equal(update.date, "2026-10-23");
+  assert.equal(update.verifiedAt, "2026-10-25");
+  assert.match(update.whatChanged, /§ 851\.226\(h\).*任何 SI 系統開發.*嚴格限內部、非商業/);
+  assert.match(update.businessImpact, /5 萬美元.*只豁免應申報交易.*不能豁免 AI 禁止交易.*Part 850/);
+});
+
+test("Taiwan MOENV AI document rules preserve four tiers and limited scope", async () => {
+  const regulations = await readRegulations();
+  const principles = regulations.find(
+    (regulation) => regulation.id === "taiwan-moenv-ai-document-data-management-principles-2026",
+  );
+
+  assert.equal(principles.statusGroup, "生效");
+  assert.match(principles.promulgationDate, /2026-10-14.*環部資字/);
+  assert.match(principles.effectiveDate, /2026-10-14.*即日生效/);
+  assert.match(principles.articleCount, /14 點.*附表 1 份.*2 份附件/);
+  assert.match(principles.scope, /環境部.*外部人員.*切結.*保證書.*不是所有民間資料/);
+  assert.match(principles.transition, /沒有另設寬限期.*不是對所有臺灣企業的一般 AI 法/);
+  assert.ok(principles.keyPoints.some((point) => /密等資料不得輸入商業 AI.*六個月/.test(point)));
+  assert.ok(principles.keyPoints.some((point) => /第三、四級.*主管核定/.test(point)));
+  assert.equal(new URL(principles.sourceUrl).hostname, "oaout.moenv.gov.tw");
+  assert.equal(principles.verifiedAt, "2026-10-25");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "taiwan-moenv-ai-document-data-rules-2026");
+  assert.equal(update.date, "2026-10-14");
+  assert.equal(update.verifiedAt, "2026-10-25");
+  assert.match(update.businessImpact, /不是所有臺灣企業的一般 AI 規範.*直接受拘束/);
+});
+
+test("EU Article 75c and 75d procedural proposal remains unadopted", async () => {
+  const regulations = await readRegulations();
+  const proposal = regulations.find(
+    (regulation) => regulation.id === "eu-ai-act-75c-75d-procedural-rules-draft-2026",
+  );
+
+  assert.equal(proposal.statusGroup, "草案");
+  assert.match(proposal.status, /未獲執委會採納或背書/);
+  assert.match(proposal.promulgationDate, /2026-10-12.*Ares\(2026\)9589403/);
+  assert.match(proposal.effectiveDate, /尚未生效.*官方公報刊登後第 20 日/);
+  assert.match(proposal.articleCount, /10 頁.*9 條/);
+  assert.match(proposal.transition, /2026-11-09 23:59.*尚未由執委會採納或背書/);
+  assert.match(proposal.scope, /第 75\(1\) 條.*同一供應者.*VLOP／VLOSE.*不是所有 AI 部署者/);
+  assert.ok(proposal.keyPoints.some((point) => /裁罰時效與決定執行時效均為五年.*十年/.test(point)));
+  assert.ok(proposal.keyPoints.some((point) => /草案尚未採納.*不能把.*當成已生效/.test(point)));
+  assert.equal(new URL(proposal.sourceUrl).hostname, "ec.europa.eu");
+  assert.equal(proposal.verifiedAt, "2026-10-25");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === "eu-ai-act-75c-75d-procedure-draft-2026");
+  assert.equal(update.date, "2026-10-12");
+  assert.equal(update.verifiedAt, "2026-10-25");
+  assert.match(update.businessImpact, /一般 AI 部署者.*不會.*自動落入.*不能把.*已生效規則/);
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
