@@ -7,13 +7,13 @@
     "title": "境外投資安全計畫 Part 851 擬議規則（AI／SI 系統）",
     "titleEn": "Proposed Outbound Investment Security Program Regulations, 31 CFR Parts 850 and 851",
     "type": "聯邦擬議規則／境外投資與國家安全",
-    "status": "擬議規則・Public Inspection 已公開，尚未生效",
+    "status": "擬議規則・2026-10-26 已刊登 Federal Register，尚未生效",
     "statusGroup": "草案",
-    "promulgationDate": "2026-10-23 08:45 ET（Public Inspection 提交）；預定 2026-10-26 刊登 Federal Register",
+    "promulgationDate": "2026-10-26（Federal Register 91 FR 67396–67433 正式刊登；2026-10-23 08:45 ET Public Inspection）",
     "effectiveDate": "尚未生效；最終規則的生效日尚未決定，現行 31 CFR Part 850 持續適用",
     "articleCount": "Federal Register 38 頁・擬增 31 CFR Part 851 共 11 個 Subparts、73 個 Sections（§§ 851.101–851.1104）",
     "structure": "Part 850 適用日期・Part 851 一般規則・定義・禁止交易・申報交易・例外／豁免・違規・處罰／揭露・資訊處理・非拘束性回覆・受涵蓋外國人資訊・其他規定",
-    "transition": "意見須於 2026-12-07 前送達。草案不溯及既往；現行 Part 850 適用於 2025-01-02 起至最終 Part 851 生效日前的活動，Part 851 僅自未來最終規則生效日起適用。預定刊登、Public Inspection 或提出草案均不等於最終規則生效。",
+    "transition": "意見須於 2026-12-07 前送達。草案不溯及既往；現行 Part 850 適用於 2025-01-02 起至最終 Part 851 生效日前的活動，Part 851 僅自未來最終規則生效日起適用。Federal Register 刊登、Public Inspection 或提出草案均不等於最終規則生效。",
     "nextDeadline": "2026-12-07（書面意見截止）；最終規則及其生效日待財政部另行決定",
     "authority": "U.S. Department of the Treasury, Office of Investment Security",
     "risk": "高",
@@ -39,11 +39,11 @@
       "美國人須採合理措施防止受控制外國實體從事禁止交易；財政部將考量集團協議、治理權、定期訓練與通報、書面內控及測試／稽核。",
       "Part 851 擬擴大關切國家至中國（含香港、澳門）、古巴、伊朗、北韓、俄羅斯及 Maduro 政權下的委內瑞拉。",
       "200 萬美元基金 LP 門檻與契約保證有特定條件；12 個月合計 5 萬美元例外只限應申報交易，不能讓禁止交易合法化。",
-      "草案預定 10 月 26 日刊登，意見 12 月 7 日截止；在最終規則生效前，企業仍須依現行 Part 850 判斷，不得把 Part 851 草案標示為已生效。"
+      "草案已於 10 月 26 日刊登，意見 12 月 7 日截止；在最終規則生效前，企業仍須依現行 Part 850 判斷，不得把 Part 851 草案標示為已生效。"
     ],
     "action": "具有美國人、外國子公司、投資基金或合資曝險的企業，應立即把模型開發、agent harness、具身 AI、第三方模型增強、基金權益及目標公司關係納入交易篩選；區分 Part 850 現行義務與 Part 851 草案，檢查受控制外國實體的協議、訓練、內控及稽核證據。若規則將影響既定交易或正常內部使用，應在 12 月 7 日前提交具體意見，並於最終規則發布後重新判斷生效日與例外。",
     "sourceUrl": "https://www.federalregister.gov/documents/2026/10/26/2026-21786/outbound-investment-security-program-regulations",
-    "verifiedAt": "2026-10-25"
+    "verifiedAt": "2026-10-26"
   },
   {
     "id": "taiwan-moenv-ai-document-data-management-principles-2026",
@@ -1902,12 +1902,12 @@
     "type": "自願性軟法守則",
     "status": "已發布・自願接受",
     "statusGroup": "指引",
-    "promulgationDate": "2026-08-25（2026-09-08 公布接受通報起始日與表格）",
-    "effectiveDate": "不適用（自願採用；接受守則之通報自 2026-10-26 開始）",
+    "promulgationDate": "2026-08-25（2026-09-08 公布通報起始日與表格；2026-10-22 公布通報頁與事業者名單頁）",
+    "effectiveDate": "不適用（自願採用；2026-10-26 已開始受理接受守則之通報）",
     "articleCount": "非成文法，無條文；4 部分・3 項原則・日文版 408KB",
     "structure": "目的與適用對象・遵循或解釋方法・3 項透明及知財原則・接受與通報程序・另附概要開示具體例",
-    "transition": "守則採 comply or explain，沒有法定過渡期、罰則或強制揭露。自願接受的生成式 AI 業者可自 2026-10-26 起向內閣府知財戰略推進事務局通報，並應在自家網站公開接受狀態；通報地點及細節預定在開始日另行公告。",
-    "nextDeadline": "2026-10-26（自願接受守則的通報開始；官方尚未設定截止日）",
+    "transition": "守則採 comply or explain，沒有法定過渡期、罰則或強制揭露。自願接受的生成式 AI 業者可自 2026-10-26 起填寫官方表格、轉為 PDF 後以指定電子郵件向內閣府知財戰略推進事務局通報，並應在自家網站公開接受狀態；如自行公開有困難，可把開示資料 PDF 交由內閣府網站刊登。官方另設事業者名單頁，尚無通報截止日。",
+    "nextDeadline": "已於 2026-10-26 開始受理；官方尚未設定截止日",
     "authority": "知的財產戰略本部；內閣府知的財產戰略推進事務局",
     "risk": "高",
     "priority": 4,
@@ -1921,11 +1921,11 @@
       "原則三處理生成物與既有內容相同或類似的情境，讓生成物創作者以 URL 等資訊查詢既有內容是否用於學習。",
       "守則使用 comply or explain，不強制揭露營業秘密；如不實施原則，業者應充分說明理由與替代措施，不能把守則誤標為法定義務或政府認證。",
       "適用對象包括向日本提供生成式 AI 系統或服務的境外業者，但純內部使用或只供單一客戶的專用系統原則上不屬面向公眾的開發者或提供者。",
-      "自願接受者自 2026-10-26 起可向內閣府通報並在自家網站公開；政府預計公布名單，但官方尚未設定通報截止日。"
+      "自願接受者自 2026-10-26 起可把官方表格轉為 PDF 後以指定電子郵件通報，並在自家網站公開；內閣府另設事業者名單頁，但尚未設定通報截止日。"
     ],
-    "action": "面向日本公眾的生成式 AI 業者應先確認開發者／提供者角色與產品範圍，建立守則三原則的 comply-or-explain 決策、網站概要揭露、URL／內容查詢驗證與回覆流程、營業秘密及個資遮蔽、證據保存與升級機制；若決定接受守則，準備官方表格並於 2026-10-26 起通報，同步公開接受狀態。",
-    "sourceUrl": "https://www.cas.go.jp/jp/seisakukaigi/titeki2/ai_kentoukai/kaisai/index.html",
-    "verifiedAt": "2026-10-05"
+    "action": "面向日本公眾的生成式 AI 業者應先確認開發者／提供者角色與產品範圍，建立守則三原則的 comply-or-explain 決策、網站概要揭露、URL／內容查詢驗證與回覆流程、營業秘密及個資遮蔽、證據保存與升級機制；若決定接受守則，填寫官方表格、轉為 PDF 並依指定電子郵件通報，同步公開接受狀態。",
+    "sourceUrl": "https://www.cas.go.jp/jp/seisakukaigi/titeki2/ai_principle_code/index.html",
+    "verifiedAt": "2026-10-26"
   },
   {
     "id": "japan-ai-business-guidelines",
