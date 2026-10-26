@@ -55,6 +55,34 @@
     "verifiedAt": "2026-10-26"
   },
   {
+    "id": "uk-ai-cyber-resilience-agentic-incident-policy-2026",
+    "date": "2026-10-26",
+    "jurisdiction": "英國",
+    "flag": "UK",
+    "category": "代理式 AI／資安法案報告階段",
+    "importance": "高",
+    "title": "英國上議院納入 AI 代理失控調查權，駁回模型開發者獨立通報義務",
+    "summary": "英國上議院報告階段採納 Amendment 70，允許未來以次級法規建立 AI 代理失去監督或控制影響相關 NIS 時的調查與處置權；資訊協作及年度檢討條文亦獲通過，但前沿 AI 開發者的直接通報義務遭否決。法案仍未通過或生效。",
+    "authority": "UK Parliament；Department for Science, Innovation and Technology；未來由 Secretary of State、Ofcom、Information Commission 及產業主管機關依正式法規執行",
+    "keyDate": "2026-10-26 上議院報告階段完成；上議院三讀日期待公布；御准、次級立法與實際施行日期均未確定",
+    "affectedCompanies": "可能落入英國 NIS 改革範圍的關鍵基礎設施、資料中心、雲端、數位與託管服務商、關鍵供應商，以及開發、提供或部署可操作前述網路及資訊系統之自主 AI 代理的模型、平台與資安供應商",
+    "background": "Cyber Security and Resilience Bill 擬擴大英國 NIS 的受規管服務、重大事故通報、客戶通知、供應鏈及監理權限。政府先前以科技中立方式說明，自主 AI 代理事故可依組織範圍與實際或潛在影響落入制度；報告階段則直接處理 AI 代理失控調查權、資訊協作、法後檢討及是否另設開發者通報義務。",
+    "whatChanged": "上議院同意政府 Amendment 70，授權未來第 29 條法規在相關 NIS 的安全或營運危害或風險可歸因於 AI 代理失去監督或控制時，賦予識別、調查、保存分析資訊、測試補救、要求改正及制裁等職能；Amendments 74、75 補充資訊揭露、指引、紀錄、報告、檢討與境外合作。Amendment 163 以 202 比 155 通過，要求法案成為法律後 12 個月內及其後至少每年檢討前沿 AI、代理技術、AISI 權限、供應鏈及通報時程。要求前沿 AI 開發者於未授權存取或干預事件後 24 小時初報、72 小時詳報、14 日終報的 Amendment 41，則以 95 比 165 遭否決。",
+    "businessImpact": "範圍內業者應預先保留代理權限、人工接管、工具調用、版本、事件、跨境資料及補救證據，因未來法規可能授權檢查、搜索、扣押、文件或境外資訊要求、測試訪談、改正及財務罰則。不過 Amendment 70 只是次級立法授權，具體定義、程序與權限尚未生效；Amendment 41 遭否決也表示不能把其 24／72 小時及 14 日開發者時程當成現行或已確定義務。",
+    "keyPoints": [
+      "Amendment 70 已獲同意，未來法規可處理 AI 代理失去監督或控制所致的相關 NIS 危害或風險。",
+      "潛在職能包括調查、保存分析資訊、測試補救與要求合規；潛在權力可含檢查員、搜索扣押、境外資訊要求、測試訪談、補救命令及罰則。",
+      "Amendments 74、75 已獲同意，補上資訊揭露、指引、紀錄、報告、檢討及境外合作授權。",
+      "Amendment 41 以 95 比 165 遭否決，前沿 AI 開發者 24 小時、72 小時及 14 日的獨立通報時程未納入法案。",
+      "Amendment 163 以 202 比 155 通過；法案若成為法律，須在 12 個月內及其後至少每年檢討前沿 AI、代理技術、AISI 權限、供應鏈與通報時程。",
+      "報告階段重印本與最終條次尚未發布，上議院三讀、兩院協調、御准及實施法規仍未完成。",
+      "本次修正不會立即建立一般 AI 法、直接開發者通報義務或現行 AI 代理調查權。"
+    ],
+    "action": "把代理系統與相關 NIS、受規管服務、供應鏈及主管機關映射，保存授權、人工監督、工具調用、版本、日誌、事件、跨境資料與可執行補救證據；另建未來 Amendment 70 情境表，與既有 NIS 義務及遭否決的 Amendment 41 提案分開，追蹤三讀、重印本、御准與第 29 條次級法規。",
+    "sourceUrl": "https://hansard.parliament.uk/lords/2026-10-26/debates/B413EFAE-E7D4-4742-986D-092884E0D8D1/CyberSecurityAndResilience(NetworkAndInformationSystems)Bill",
+    "verifiedAt": "2026-10-27"
+  },
+  {
     "id": "coe-huderia-sep-roles-adopted-2026",
     "date": "2026-10-23",
     "jurisdiction": "國際標準",
@@ -416,34 +444,6 @@
     "action": "取得授權文本後，盤點資料投毒、模型竊取、權重與智慧財產存取、營運資料回灌、版本更新、持續學習、供應鏈與事件情境，映射至 ISO/IEC 27001、27002、42001 控制並保存測試及殘餘風險證據。",
     "sourceUrl": "https://committee.iso.org/standard/27090",
     "verifiedAt": "2026-10-16"
-  },
-  {
-    "id": "uk-ai-cyber-resilience-agentic-incident-policy-2026",
-    "date": "2026-10-14",
-    "jurisdiction": "英國",
-    "flag": "UK",
-    "category": "代理式 AI／資安事故通報法案",
-    "importance": "高",
-    "title": "英國確認自主 AI 代理事故可落入未來資安通報架構",
-    "summary": "英國國會公開 AI 部長函覆，確認 Cyber Security and Resilience Bill 採科技中立設計：範圍內組織發生自主 AI 代理事故時，是否須通報將依事故性質與實際或潛在影響判斷；法案尚未通過或生效。",
-    "authority": "UK Parliament；Department for Science, Innovation and Technology；National Cyber Security Centre；AI Security Institute；未來由 Ofcom、Information Commission 及產業主管機關執行",
-    "keyDate": "2026-09-25 AI 部長函覆；2026-10-12 政策聲明；2026-10-14 國會公開函件；2026-10-26 法案上議院報告階段；三讀、御准及實際施行日期均未確定",
-    "affectedCompanies": "可能落入英國 NIS 改革範圍的關鍵基礎設施、一般或企業資料中心、雲端與數位服務、中大型託管服務商、重要供應商，以及開發、提供或部署高自主代理並可能影響前述組織的模型與資安供應商",
-    "background": "英國先前已把 serious AI incidents、near misses、loss of control 及自主代理逃逸人類監督列為國家韌性議題。Cyber Security and Resilience Bill 同時正於上議院審議，擬擴大 NIS 至資料中心、託管服務與關鍵供應商，並建立更完整的事故初報、完整通報及客戶通知機制。企業需要知道代理事件是否會另成一套制度，或由既有科技中立門檻處理。",
-    "whatChanged": "10 月 14 日公開的部長函件正式說明，法案擬強化既有事故通報，涵蓋可能對英國造成重大影響、即使尚未實際造成影響的攻擊，並納入資料中心、數位與託管服務商。這些要求採科技中立設計；自主 AI 代理事故若影響 in-scope organisation，是否通報取決於事件的 nature and potential impact。現行法案文本擬採 24／72 小時兩階段通報，但仍待國會完成審議及施行。",
-    "businessImpact": "範圍內資料中心、雲端、數位與託管服務商不能只把代理事故當成模型品質問題，還應準備以服務中斷、資料機密性完整性可用性、客戶影響及跨系統擴散判定重大性。不過部長函件與法案都不是現行新通報義務；在御准及後續施行前，企業仍依目前 NIS 與產業規則處理，不能假設所有 AI 事故都須通報。",
-    "keyPoints": [
-      "法案採科技中立設計，不會只因事件涉及 AI 就自動觸發通報，也不會因事故由自主代理造成就排除適用。",
-      "AI 代理事故須先確認組織是否落入資料中心、數位或託管服務商、關鍵供應商或其他 NIS 範圍，再評估事件性質與實際或潛在重大影響。",
-      "現行修正法案擬要求重大事故 24 小時初報及 72 小時完整通報，數位與託管服務商另須通知可能受不利影響的英國客戶。",
-      "部長函件說明即使攻擊尚未造成實際影響，只要可能對英國產生重大影響，也可能落入未來通報判斷。",
-      "AISI 與主要模型開發商維持自願性上市前測試，但自願模型評估不會取代法案生效後範圍內企業的事故通報責任。",
-      "法案下一程序為 2026-10-26 上議院報告階段；條文、御准、次級立法、調整期與實際適用日仍可能變更。",
-      "政府仍在評估前沿 AI 是否需要額外法定保護或權力，目前不能把此函解讀為已建立獨立 AI 監管機關或一般 AI 事故通報制度。"
-    ],
-    "action": "範圍可能涵蓋的企業應把自主代理的越權、資料外洩或破壞、服務中斷、近失、跨系統及跨客戶擴散納入事故分級，演練 24／72 小時蒐證與客戶通知；同步追蹤 10 月 26 日修正及後續次級立法，在正式生效前與現行通報矩陣分開標示。",
-    "sourceUrl": "https://committees.parliament.uk/publications/55268/documents/307069/default/",
-    "verifiedAt": "2026-10-15"
   },
   {
     "id": "eu-en-18286-ai-act-qms-ojeu-2026",

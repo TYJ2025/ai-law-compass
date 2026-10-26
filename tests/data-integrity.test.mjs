@@ -207,38 +207,40 @@ test("Taiwan financial agentic AI consultation preserves draft status and three-
   assert.match(update.businessImpact, /不應把 L1–L4.*已生效法定門檻/);
 });
 
-test("UK cyber bill preserves draft status and technology-neutral agent incident scope", async () => {
+test("UK cyber bill preserves draft status and report-stage AI agent outcomes", async () => {
   const regulations = await readRegulations();
   const bill = regulations.find(
     (regulation) => regulation.id === "uk-cyber-security-resilience-bill-agentic-ai-2026",
   );
 
   assert.equal(bill.statusGroup, "草案");
-  assert.match(bill.status, /上議院報告階段.*尚未通過/);
-  assert.match(bill.promulgationDate, /2025-11-12.*2026-09-07/);
+  assert.match(bill.status, /上議院報告階段完成.*尚未通過/);
+  assert.match(bill.promulgationDate, /2025-11-12.*2026-09-07.*2026-10-26/);
   assert.match(bill.effectiveDate, /尚未生效.*御准.*分階段/);
-  assert.match(bill.articleCount, /61 條.*5 部分.*2 個附表/);
-  assert.match(bill.transition, /不得.*24／72 小時.*現行義務/);
-  assert.match(bill.nextDeadline, /2026-10-26.*上議院報告階段/);
+  assert.match(bill.articleCount, /61 條.*5 部分.*2 個附表.*重印本.*待確認/);
+  assert.match(bill.transition, /Amendment 70.*次級法規.*尚未生效/);
+  assert.match(bill.nextDeadline, /上議院三讀日期待.*兩院修正協調.*御准/);
   assert.ok(bill.keyPoints.some((point) => /1MW.*10MW/.test(point)));
   assert.ok(bill.keyPoints.some((point) => /24 小時初報、72 小時完整通報.*英國客戶/.test(point)));
-  assert.ok(bill.keyPoints.some((point) => /科技中立.*自主 AI 代理.*實際或潛在重大影響/.test(point)));
+  assert.ok(bill.keyPoints.some((point) => /Amendment 70.*失去監督或控制.*次級立法/.test(point)));
+  assert.ok(bill.keyPoints.some((point) => /Amendment 41.*95 票對 165 票.*24 小時.*72 小時.*14 日/.test(point)));
+  assert.ok(bill.keyPoints.some((point) => /Amendment 163.*202 票對 155 票.*12 個月內.*至少每年/.test(point)));
   assert.ok(bill.keyPoints.some((point) => /2% 或 4%.*不能概括套用/.test(point)));
-  assert.equal(new URL(bill.sourceUrl).hostname, "bills.parliament.uk");
-  assert.equal(bill.verifiedAt, "2026-10-15");
+  assert.equal(new URL(bill.sourceUrl).hostname, "hansard.parliament.uk");
+  assert.equal(bill.verifiedAt, "2026-10-27");
 
   const updates = await readJson("data/updates.json");
   const update = updates.find(
     (entry) => entry.id === "uk-ai-cyber-resilience-agentic-incident-policy-2026",
   );
 
-  assert.equal(update.date, "2026-10-14");
-  assert.equal(update.verifiedAt, "2026-10-15");
-  assert.match(update.summary, /科技中立.*自主 AI 代理事故.*尚未通過或生效/);
-  assert.match(update.whatChanged, /in-scope.*nature and potential impact.*24／72 小時/);
-  assert.match(update.businessImpact, /不是現行新通報義務.*不能假設所有 AI 事故都須通報/);
-  assert.match(update.keyDate, /2026-10-26.*上議院報告階段/);
-  assert.equal(new URL(update.sourceUrl).hostname, "committees.parliament.uk");
+  assert.equal(update.date, "2026-10-26");
+  assert.equal(update.verifiedAt, "2026-10-27");
+  assert.match(update.summary, /Amendment 70.*失去監督或控制.*開發者.*否決.*仍未通過或生效/);
+  assert.match(update.whatChanged, /Amendment 70.*Amendments 74、75.*Amendment 163.*Amendment 41/);
+  assert.match(update.businessImpact, /次級立法授權.*尚未生效.*24／72 小時.*現行或已確定義務/);
+  assert.match(update.keyDate, /2026-10-26.*上議院三讀日期待公布.*御准.*均未確定/);
+  assert.equal(new URL(update.sourceUrl).hostname, "hansard.parliament.uk");
 });
 
 test("FSB final sound practices preserve non-binding status and agentic AI controls", async () => {
