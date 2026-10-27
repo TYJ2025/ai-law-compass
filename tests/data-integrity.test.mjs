@@ -98,6 +98,7 @@ test("researched instruments link to official primary sources", async () => {
     "federalregister.gov",
     "govinfo.gov",
     "leginfo.legislature.ca.gov",
+    "insurance.ca.gov",
     "tbs-sct.canada.ca",
     "canada.ca",
     "industry.gov.au",
@@ -241,6 +242,41 @@ test("UK cyber bill preserves draft status and report-stage AI agent outcomes", 
   assert.match(update.businessImpact, /次級立法授權.*尚未生效.*24／72 小時.*現行或已確定義務/);
   assert.match(update.keyDate, /2026-10-26.*上議院三讀日期待公布.*御准.*均未確定/);
   assert.equal(new URL(update.sourceUrl).hostname, "hansard.parliament.uk");
+});
+
+test("California solvency rule and Poland enforcement stage preserve scope and timing", async () => {
+  const regulations = await readRegulations();
+  const california = regulations.find(
+    (regulation) => regulation.id === "california-long-term-solvency-ai-risk-regulation-2026",
+  );
+
+  assert.equal(california.statusGroup, "生效");
+  assert.equal(california.effectiveDate, "2026-10-26");
+  assert.match(california.articleCount, /Article 4\.7.*§ 2319\.7/);
+  assert.match(california.transition, /2028-01-01.*保密.*不直接變更消費者保單或費率/);
+  assert.match(california.scope, /加州設籍.*5,000 萬美元.*不是.*一般 AI 法/);
+  assert.match(california.summary, /財務監理.*不是直接規範 AI 產品/);
+  assert.equal(new URL(california.sourceUrl).hostname, "www.insurance.ca.gov");
+  assert.equal(california.verifiedAt, "2026-10-28");
+
+  const updates = await readJson("data/updates.json");
+  const californiaUpdate = updates.find(
+    (entry) => entry.id === "california-insurer-long-term-solvency-ai-final-2026",
+  );
+  assert.equal(californiaUpdate.date, "2026-10-27");
+  assert.equal(californiaUpdate.verifiedAt, "2026-10-28");
+  assert.match(californiaUpdate.businessImpact, /不是一般 AI 產品許可.*不直接改變消費者保單/);
+
+  const poland = updates.find(
+    (entry) => entry.id === "poland-ai-systems-act-enforcement-stage-2026",
+  );
+  assert.equal(poland.date, "2026-10-28");
+  assert.equal(poland.verifiedAt, "2026-10-28");
+  assert.equal(new URL(poland.sourceUrl).hostname, "eli.gov.pl");
+  assert.match(poland.whatChanged, /第 8 至 18 條.*第 3 至 5 章.*第 8、9 章/);
+  assert.match(poland.businessImpact, /今日生效的是國內程序.*EU 適用日期/);
+  assert.ok(poland.keyPoints.some((point) => /127 條、10 章.*34 頁/.test(point)));
+  assert.ok(poland.keyPoints.some((point) => /不是.*所有 EU AI Act 實體義務/.test(point)));
 });
 
 test("FSB final sound practices preserve non-binding status and agentic AI controls", async () => {
