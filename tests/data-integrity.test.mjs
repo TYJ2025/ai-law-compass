@@ -279,6 +279,34 @@ test("California solvency rule and Poland enforcement stage preserve scope and t
   assert.ok(poland.keyPoints.some((point) => /不是.*所有 EU AI Act 實體義務/.test(point)));
 });
 
+test("US robotics Section 232 proclamation preserves negotiation-only status", async () => {
+  const regulations = await readRegulations();
+  const proclamation = regulations.find(
+    (regulation) => regulation.id === "us-section-232-robotics-industrial-machinery-proclamation-2026",
+  );
+
+  assert.equal(proclamation.statusGroup, "生效");
+  assert.match(proclamation.promulgationDate, /2026-10-28/);
+  assert.match(proclamation.effectiveDate, /談判、監測.*未設定新關稅、配額、費用/);
+  assert.match(proclamation.articleCount, /12 段.*4 項/);
+  assert.match(proclamation.transition, /180 日.*沒有公布稅率、配額、費用.*未來.*後續/);
+  assert.match(proclamation.scope, /任何國家.*自主機器人.*沒有逐項列出 HTSUS.*尚無新增申報/);
+  assert.ok(proclamation.keyPoints.some((point) => /未列 HTSUS.*不能先行推定.*已被加稅/.test(point)));
+  assert.ok(proclamation.keyPoints.some((point) => /不是一般 AI 模型安全.*部署治理/.test(point)));
+  assert.equal(new URL(proclamation.sourceUrl).hostname, "www.whitehouse.gov");
+  assert.equal(proclamation.verifiedAt, "2026-10-29");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-section-232-robotics-import-negotiations-2026",
+  );
+  assert.equal(update.date, "2026-10-28");
+  assert.equal(update.verifiedAt, "2026-10-29");
+  assert.match(update.summary, /自主、人形、四足機器人.*尚未加徵新關稅.*禁止進口/);
+  assert.match(update.whatChanged, /180 日.*沒有公布 HTSUS.*稅率.*豁免/);
+  assert.match(update.businessImpact, /不應把談判指令當成已加徵關稅或禁運/);
+});
+
 test("FSB final sound practices preserve non-binding status and agentic AI controls", async () => {
   const regulations = await readRegulations();
   const practices = regulations.find(
