@@ -90,6 +90,7 @@ test("researched instruments link to official primary sources", async () => {
     "acra.gov.sg",
     "mas.gov.sg",
     "ico.org.uk",
+    "drcf.org.uk",
     "gov.uk",
     "parliament.uk",
     "nist.gov",
@@ -305,6 +306,69 @@ test("US robotics Section 232 proclamation preserves negotiation-only status", a
   assert.match(update.summary, /自主、人形、四足機器人.*尚未加徵新關稅.*禁止進口/);
   assert.match(update.whatChanged, /180 日.*沒有公布 HTSUS.*稅率.*豁免/);
   assert.match(update.businessImpact, /不應把談判指令當成已加徵關稅或禁運/);
+});
+
+test("October 30 AI governance updates preserve status, scope and ratification thresholds", async () => {
+  const regulations = await readRegulations();
+  const byId = new Map(regulations.map((regulation) => [regulation.id, regulation]));
+  const updates = await readJson("data/updates.json");
+  const updatesById = new Map(updates.map((update) => [update.id, update]));
+
+  const australia = byId.get("australia-government-ai-reference-architecture-2026");
+  assert.equal(australia.statusGroup, "指引");
+  assert.match(australia.promulgationDate, /2026-10-23.*2026-10-30/);
+  assert.match(australia.effectiveDate, /自願性.*不取代/);
+  assert.match(australia.articleCount, /5 個核心部分.*3 個附錄.*Companion Guide/);
+  assert.match(australia.scope, /澳洲政府機關.*供應商.*不因本架構直接產生法定義務/);
+  assert.ok(australia.keyPoints.some((point) => /五層/.test(point)));
+  assert.ok(australia.keyPoints.some((point) => /斷路器.*控制權移交/.test(point)));
+  assert.equal(australia.verifiedAt, "2026-10-31");
+
+  const uk = byId.get("uk-drcf-agentic-economy-joint-statement-2026");
+  assert.equal(uk.statusGroup, "指引");
+  assert.equal(uk.promulgationDate, "2026-10-30");
+  assert.match(uk.effectiveDate, /沒有獨立法定生效日.*既有法律/);
+  assert.match(uk.transition, /沒有新增.*代理.*自主性不會減輕.*責任/);
+  assert.ok(uk.keyPoints.some((point) => /CMA、FCA、ICO 與 Ofcom/.test(point)));
+  assert.ok(uk.keyPoints.some((point) => /不是新法.*許可、登錄、通報期限/.test(point)));
+  assert.equal(new URL(uk.sourceUrl).hostname, "www.drcf.org.uk");
+  assert.equal(uk.verifiedAt, "2026-10-31");
+
+  const convention = byId.get("council-of-europe-ai-framework-convention");
+  assert.equal(convention.statusGroup, "尚未生效");
+  assert.match(convention.transition, /21 個簽署方.*歐盟與波士尼亞與赫塞哥維納.*再取得 3 份.*至少 2 份.*會員國/);
+  assert.match(convention.nextDeadline, /3 份批准.*至少 2 份.*會員國/);
+  assert.equal(convention.verifiedAt, "2026-10-31");
+
+  const euCanada = updatesById.get("eu-canada-digital-trade-ai-cooperation-2026");
+  assert.equal(euCanada.date, "2026-10-30");
+  assert.match(euCanada.summary, /完成數位貿易協定實質談判.*尚未生效/);
+  assert.match(euCanada.whatChanged, /DTA.*獨立於協定談判結果.*AI 系統符合性評估結果互認/);
+  assert.match(euCanada.businessImpact, /不能先行假設已有新豁免/);
+  assert.equal(euCanada.verifiedAt, "2026-10-31");
+
+  const ukUpdate = updatesById.get("uk-drcf-agentic-economy-joint-statement-2026");
+  assert.equal(ukUpdate.date, "2026-10-30");
+  assert.match(ukUpdate.summary, /代理自主性不會降低部署者責任/);
+  assert.match(ukUpdate.keyDate, /沒有新增法定生效日.*通報.*寬限期限/);
+
+  const australiaUpdate = updatesById.get("australia-ai-reference-architecture-2026");
+  assert.equal(australiaUpdate.date, "2026-10-30");
+  assert.match(australiaUpdate.summary, /自願使用.*不是新法或合規認證/);
+  assert.match(australiaUpdate.whatChanged, /四個構面.*五層/);
+
+  const bosnia = updatesById.get("coe-ai-convention-bosnia-ratification-2026");
+  assert.equal(bosnia.date, "2026-10-28");
+  assert.match(bosnia.summary, /首個.*會員國.*第二個批准方.*尚未達/);
+  assert.match(bosnia.whatChanged, /尚需三份批准.*至少兩份.*會員國/);
+  assert.ok(bosnia.keyPoints.some((point) => /歐盟不計入三個會員國批准門檻/.test(point)));
+
+  const ftc = updatesById.get("us-ftc-personalized-pricing-compensation-inquiry-2026");
+  assert.equal(ftc.date, "2026-10-28");
+  assert.match(ftc.summary, /Section 6\(b\).*45 日.*尚非違法認定或新的.*規則/);
+  assert.match(ftc.whatChanged, /九家公司.*消費者價格.*工作者報酬/);
+  assert.match(ftc.businessImpact, /不能把調查誤報為全面禁止個人化定價/);
+  assert.equal(ftc.verifiedAt, "2026-10-31");
 });
 
 test("FSB final sound practices preserve non-binding status and agentic AI controls", async () => {
