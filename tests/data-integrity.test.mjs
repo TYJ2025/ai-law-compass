@@ -91,6 +91,7 @@ test("researched instruments link to official primary sources", async () => {
     "mas.gov.sg",
     "ico.org.uk",
     "drcf.org.uk",
+    "thepensionsregulator.gov.uk",
     "gov.uk",
     "parliament.uk",
     "nist.gov",
@@ -113,6 +114,7 @@ test("researched instruments link to official primary sources", async () => {
     "gov.br",
     "pib.gov.in",
     "meity.gov.in",
+    "trai.gov.in",
     "iso.org",
     "fsb.org",
     "oecd.org",
@@ -138,6 +140,49 @@ test("legislative proposals are not presented as enacted law", async () => {
   const brazilBill = regulations.find((regulation) => regulation.id === "brazil-ai-bill-2338");
   assert.equal(brazilBill.statusGroup, "草案");
   assert.match(brazilBill.effectiveDate, /尚未生效/);
+});
+
+test("India telecom AI consultation preserves draft status and unresolved reporting details", async () => {
+  const regulations = await readRegulations();
+  const draft = regulations.find(
+    (regulation) => regulation.id === "india-trai-telecom-ai-draft-guidelines-2026",
+  );
+
+  assert.equal(draft.statusGroup, "草案");
+  assert.match(draft.promulgationDate, /2026-10-30.*12 頁/);
+  assert.match(draft.effectiveDate, /尚未生效.*日期待定/);
+  assert.match(draft.articleCount, /12 頁.*A–D.*11 項定義/);
+  assert.match(draft.transition, /2026-11-27.*七個工作日.*目前均為提案/);
+  assert.ok(draft.keyPoints.some((point) => /高、中、低風險.*關鍵、高、中、低嚴重度/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /格式、方式或時限.*不能自行推定/.test(point)));
+  assert.equal(new URL(draft.sourceUrl).hostname, "www.trai.gov.in");
+  assert.equal(draft.verifiedAt, "2026-11-01");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "india-trai-telecom-ai-draft-guidelines-2026",
+  );
+  assert.equal(update.date, "2026-10-30");
+  assert.match(update.summary, /意見 11 月 27 日截止.*尚未生效/);
+  assert.match(update.businessImpact, /目前所有 shall 條款仍是草案/);
+});
+
+test("UK pensions AI guidance preserves existing-duty scope and seven principles", async () => {
+  const regulations = await readRegulations();
+  const guidance = regulations.find(
+    (regulation) => regulation.id === "uk-pensions-ai-guidance-2026",
+  );
+
+  assert.equal(guidance.statusGroup, "指引");
+  assert.match(guidance.status, /既有義務.*未新增/);
+  assert.equal(guidance.promulgationDate, "2026-10-29");
+  assert.match(guidance.effectiveDate, /不是新法.*沒有獨立法定生效日/);
+  assert.match(guidance.articleCount, /8 個主題段落.*7 項核心原則/);
+  assert.ok(guidance.keyPoints.some((point) => /七項核心原則/.test(point)));
+  assert.ok(guidance.keyPoints.some((point) => /外包 AI.*不會移轉受託義務/.test(point)));
+  assert.ok(guidance.keyPoints.some((point) => /未新增獨立 AI 許可、登錄、認證或一般事故通報制度/.test(point)));
+  assert.equal(new URL(guidance.sourceUrl).hostname, "www.thepensionsregulator.gov.uk");
+  assert.equal(guidance.verifiedAt, "2026-11-01");
 });
 
 test("California workplace ADS law preserves enactment status and human-review duties", async () => {
