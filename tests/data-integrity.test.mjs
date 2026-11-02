@@ -185,6 +185,32 @@ test("UK pensions AI guidance preserves existing-duty scope and seven principles
   assert.equal(guidance.verifiedAt, "2026-11-01");
 });
 
+test("UK pensions AI concentration guidance preserves portfolio and scenario scope", async () => {
+  const regulations = await readRegulations();
+  const guidance = regulations.find(
+    (regulation) => regulation.id === "uk-pensions-ai-concentration-risk-guidance-2026",
+  );
+
+  assert.equal(guidance.statusGroup, "指引");
+  assert.match(guidance.status, /既有投資治理期待.*未新增/);
+  assert.equal(guidance.promulgationDate, "2026-10-22");
+  assert.match(guidance.effectiveDate, /不是新法.*沒有獨立法定生效日/);
+  assert.match(guidance.articleCount, /3 個主題段落.*5 類主要行動/);
+  assert.match(guidance.scope, /直接與間接曝險.*預設安排.*被動.*主動/);
+  assert.ok(guidance.keyPoints.some((point) => /嚴重但合理可能.*流動性需求.*相關性.*風險胃納/.test(point)));
+  assert.ok(guidance.keyPoints.some((point) => /確定提撥制.*成員溝通計畫/.test(point)));
+  assert.equal(new URL(guidance.sourceUrl).hostname, "www.thepensionsregulator.gov.uk");
+  assert.equal(guidance.verifiedAt, "2026-11-03");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "uk-pensions-ai-concentration-risk-guidance-2026",
+  );
+  assert.equal(update.date, "2026-10-22");
+  assert.match(update.businessImpact, /沒有新增獨立 AI 許可、登錄、定期申報或固定法定期限/);
+  assert.equal(update.verifiedAt, "2026-11-03");
+});
+
 test("California workplace ADS law preserves enactment status and human-review duties", async () => {
   const regulations = await readRegulations();
   const law = regulations.find(
