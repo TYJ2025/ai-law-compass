@@ -124,6 +124,7 @@ test("researched instruments link to official primary sources", async () => {
     "digital.go.jp",
     "moenv.gov.tw",
     "ec.europa.eu",
+    "curia.europa.eu",
   ];
 
   for (const regulation of regulations) {
@@ -140,6 +141,34 @@ test("legislative proposals are not presented as enacted law", async () => {
   const brazilBill = regulations.find((regulation) => regulation.id === "brazil-ai-bill-2338");
   assert.equal(brazilBill.statusGroup, "草案");
   assert.match(brazilBill.effectiveDate, /尚未生效/);
+});
+
+test("CJEU Like Company opinion preserves pending status and separates training from RAG", async () => {
+  const regulations = await readRegulations();
+  const opinion = regulations.find(
+    (regulation) => regulation.id === "eu-cjeu-like-company-rag-press-publisher-opinion-2026",
+  );
+
+  assert.equal(opinion.statusGroup, "司法程序");
+  assert.match(opinion.status, /待 CJEU 判決.*不具拘束力/);
+  assert.match(opinion.promulgationDate, /2026-11-03.*ECLI:EU:C:2026:919/);
+  assert.match(opinion.effectiveDate, /非終局判決.*日期待定/);
+  assert.match(opinion.articleCount, /240 段.*4 個先決問題/);
+  assert.ok(opinion.keyPoints.some((point) => /訓練問題.*不可受理/.test(point)));
+  assert.ok(opinion.keyPoints.some((point) => /TDM.*不是.*全面安全港/.test(point)));
+  assert.ok(opinion.keyPoints.some((point) => /RAG.*繞過.*有效技術措施.*可辨識.*直接替代/.test(point)));
+  assert.ok(opinion.keyPoints.some((point) => /未設付費牆.*不當然.*默示同意/.test(point)));
+  assert.ok(opinion.keyPoints.some((point) => /主案現有事證.*不足以成立.*具體侵權/.test(point)));
+  assert.equal(new URL(opinion.sourceUrl).hostname, "infocuria.curia.europa.eu");
+  assert.equal(opinion.verifiedAt, "2026-11-04");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "eu-cjeu-like-company-rag-press-publisher-opinion-2026",
+  );
+  assert.equal(update.date, "2026-11-03");
+  assert.match(update.businessImpact, /不能把意見描述為 Google 已敗訴.*不是終局判例或新法/);
+  assert.equal(update.verifiedAt, "2026-11-04");
 });
 
 test("India telecom AI consultation preserves draft status and unresolved reporting details", async () => {
@@ -228,6 +257,33 @@ test("California workplace ADS law preserves enactment status and human-review d
   const sourceUrl = new URL(law.sourceUrl);
   assert.equal(sourceUrl.hostname, "leginfo.legislature.ca.gov");
   assert.equal(sourceUrl.searchParams.get("bill_id"), "202520260SB947");
+});
+
+test("Korean AI Basic Act includes the training-data platform amendment", async () => {
+  const regulations = await readRegulations();
+  const law = regulations.find((regulation) => regulation.id === "korea-ai-basic-act");
+
+  assert.equal(law.statusGroup, "生效");
+  assert.match(law.status, /已生效.*2026-10-20 修正.*2027-04-21 生效/);
+  assert.match(law.promulgationDate, /2026-10-20.*法律第22076號/);
+  assert.match(law.effectiveDate, /2027-04-21.*訓練資料整合提供系統/);
+  assert.match(law.articleCount, /第15條之2.*共47個編號條文/);
+  assert.match(law.scope, /不是所有私人 AI 開發者的一般資料上傳義務/);
+  assert.ok(law.keyPoints.some((point) => /公費計畫執行者.*訓練資料.*連結或提供/.test(point)));
+  assert.ok(law.keyPoints.some((point) => /營業秘密.*第三人權利.*國家安全.*MSIT 協議/.test(point)));
+  assert.ok(law.keyPoints.some((point) => /資料範圍、程序.*收費.*施行令/.test(point)));
+  const sourceUrl = new URL(law.sourceUrl);
+  assert.equal(sourceUrl.hostname, "www.law.go.kr");
+  assert.equal(sourceUrl.searchParams.get("lsId"), "014820");
+  assert.equal(law.verifiedAt, "2026-11-04");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "korea-ai-basic-act-training-data-platform-amendment-2026",
+  );
+  assert.equal(update.date, "2026-10-20");
+  assert.match(update.businessImpact, /不是所有私人 AI 開發者.*施行令尚未定義/);
+  assert.equal(update.verifiedAt, "2026-11-04");
 });
 
 test("Korean decree includes inserted articles and cumulative safety criteria", async () => {

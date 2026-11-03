@@ -1,5 +1,34 @@
 [
   {
+    "id": "eu-cjeu-like-company-rag-press-publisher-opinion-2026",
+    "date": "2026-11-03",
+    "jurisdiction": "歐盟",
+    "flag": "EU",
+    "category": "生成式 AI／新聞著作權與 RAG",
+    "importance": "高",
+    "title": "CJEU 首件生成式 AI 案 AG 意見劃出 RAG 新聞再利用責任邊界",
+    "summary": "CJEU Like Company 案的 AG 意見認為，聊天機器人即時擷取新聞若繞過有效技術限制，或輸出可辨識地重現受保護表達並足以替代原文，可能侵害出版者權利；但意見不拘束法院，主案亦尚未判決。",
+    "authority": "Court of Justice of the European Union（CJEU）First Advocate General Maciej Szpunar；Budapest Regional Court",
+    "keyDate": "2026-11-03 AG 意見提出；CJEU 終局判決及匈牙利主案續行日期待定",
+    "affectedCompanies": "向歐盟使用者提供 LLM 聊天機器人、RAG、AI 搜尋、新聞摘要及內容聚合服務的模型與平台業者，以及新聞出版者、內容授權與反爬技術供應商",
+    "background": "匈牙利新聞網站營運商 Like Company 主張 Google Gemini 使用其文章訓練 LLM，並在使用者查詢時以 RAG 擷取、重用及顯示文章。Budapest Regional Court 提出四個先決問題，分別涉及 CDSM Directive 第15(1)條出版者權利、Article 4 TDM 例外，以及 InfoSoc Directive 的重製與向公眾提供權。",
+    "whatChanged": "First Advocate General Szpunar 提出 CJEU 首件生成式 AI 案意見。兩個訓練問題因沒有證據顯示涉案文章用於 Gemini 訓練，且訓練不屬第15(1)條的線上使用，被建議判為不可受理；對 RAG 則提出判準：不法存取或繞過有效技術措施，以及輸出可辨識重用文章表達並直接替代原文，都可能使技術性重製成為侵權；受保護表達若系統性出現在回答，也可能構成向公眾提供。公開網站不當然默示同意 RAG，提供者若以此為商業模式或未採可信有效措施，可能承擔責任。",
+    "businessImpact": "歐盟 RAG 與 AI 搜尋業者不能只把模型訓練的 TDM 分析沿用到即時 grounding。存取來源、付費牆及反爬遵循、權利保留、輸出相似度、是否替代原文、出版者拒絕機制與服務商緩解措施，都會影響風險。AG 並認為主案現有事證似不足以成立具體侵權，因此不能把意見描述為 Google 已敗訴；意見也不是終局判例或新法。",
+    "keyPoints": [
+      "案件 C-250/25 仍為 pending；AG 意見不拘束 CJEU 審判庭。",
+      "訓練問題因欠缺涉案文章用於訓練的證據而被建議判為不可受理，TDM 補充分析不是全面安全港。",
+      "RAG 繞過付費牆或反爬等有效技術措施，可能使擷取及技術性重製成為侵權。",
+      "回答若可辨識地重用文章安排、結構或措辭並足以替代原文，可能構成重製；新聞事實本身不受壟斷。",
+      "受保護表達若在相關回答中系統性可辨識並直接替代原文，可能構成向公眾提供。",
+      "網站免費公開且未設技術限制不當然表示默示同意 RAG。",
+      "行為若屬提供者商業模式固有，或提供者未採合理勤勉業者可期待的有效措施，可能歸責提供者。",
+      "AG 對本案事證的初步看法偏向未成立具體侵權，最終仍待法院判決。"
+    ],
+    "action": "立即把模型訓練與即時 RAG 分開做權利分析；保存來源、授權、權利保留、付費牆／robots／反爬遵循、擷取片段、提示、輸出及版本日誌，建立表達相似度與原文替代測試、出版者拒絕與授權升級流程。將本意見列入高風險追蹤，但在 CJEU 判決前不得當成拘束法源。",
+    "sourceUrl": "https://infocuria.curia.europa.eu/tabs/jurisprudence?publishedId=C-250%2F25",
+    "verifiedAt": "2026-11-04"
+  },
+  {
     "id": "india-trai-telecom-ai-draft-guidelines-2026",
     "date": "2026-10-30",
     "jurisdiction": "印度",
@@ -444,6 +473,35 @@
     "action": "立即把 PoliceAI 可能要求的測試與公開資料納入投標包：模型用途限制、資料與版本、分群準確率和偏差、人工覆核、權限日誌、個資和平等影響、資安責任、事件及停用；合約中分清 PoliceAI 保證、Police Digital Service 資安與地方 Chief Officer 部署核准。",
     "sourceUrl": "https://www.gov.uk/government/publications/police-use-of-artificial-intelligence-ai-factsheet/police-use-of-artificial-intelligence-ai-factsheet-accessible",
     "verifiedAt": "2026-10-23"
+  },
+  {
+    "id": "korea-ai-basic-act-training-data-platform-amendment-2026",
+    "date": "2026-10-20",
+    "jurisdiction": "韓國",
+    "flag": "KR",
+    "category": "AI 基本法／政府資助訓練資料",
+    "importance": "高",
+    "title": "韓國修正 AI 基本法，政府資助訓練資料須連結整合平台",
+    "summary": "韓國法律第22076號新增第15條之2，自 2027-04-21 起要求國家機關及施行令指定的政府出資、中央或地方補助計畫執行者，將計畫產出的全部或部分 AI 訓練資料連結或提供至整合系統。",
+    "authority": "韓國科學技術資訊通信部（MSIT）；國家法令資訊中心",
+    "keyDate": "2026-10-20 公布；2027-04-21 主要修正生效；2027-06-10 對《國家研究資料法》的條號配套生效",
+    "affectedCompanies": "在韓國承作 AI、資料或研發相關政府出資計畫、中央補助、間接補助或地方補助計畫，且可能被施行令指定的企業、研究機構與供應商，以及使用國家訓練資料整合系統者",
+    "background": "韓國 AI 基本法原第15條已提供政府建置及流通訓練資料與整合系統的政策基礎，但對公費計畫產出資料的提供主體、連結義務、例外及品質責任不夠明確。政府以修法把整合提供系統獨立成新條文，強化公共資金產出訓練資料的供應與再利用。",
+    "whatChanged": "法律第22076號刪除第15條原有系統及收費段落，新增六項第15條之2。MSIT 須建置、管理並開放任何人使用訓練資料整合提供系統；國家機關及施行令指定的政府出資、中央補助、間接補助、地方補助與相當類型計畫執行者，原則上須連結或提供計畫產出的全部或部分訓練資料。營業秘密、第三人權利、國家安全或施行令指定事由可在與 MSIT 協議後不提供；政府可支援，MSIT 須管理品質並得收費。",
+    "businessImpact": "這不是所有私人 AI 開發者的一般資料上傳義務，直接風險集中在公費計畫執行者；但受涵蓋企業需在投標、補助契約與資料架構階段就處理權利、機密、國安、品質、格式及平台連結。施行令尚未定義指定對象、資料範圍、程序、技術方法、例外及收費，企業不能先推定全部資料均須公開，也不能只以自我判斷主張豁免。",
+    "keyPoints": [
+      "主要修正自公布後六個月，即 2027-04-21 生效。",
+      "MSIT 須建置、管理並讓任何人可使用訓練資料整合提供系統。",
+      "國家機關及施行令指定的政府出資、中央、間接與地方補助計畫執行者是主要義務對象。",
+      "受涵蓋者原則上須連結或提供計畫中建置、產出的全部或部分訓練資料。",
+      "營業秘密、第三人權利、國家安全及施行令指定事由可成為例外，但須與 MSIT 協議。",
+      "MSIT 須採取資料品質管理措施，並可向系統使用者收費。",
+      "具體對象、資料範圍、程序、方法、例外內容與收費仍待施行令規定。",
+      "修正沒有改變高影響、生成式及高性能 AI 的既有義務與寬限定位。"
+    ],
+    "action": "盤點所有韓國政府出資與中央、間接、地方補助 AI／資料計畫，標記計畫產出的訓練資料、權利人、營業秘密、個資、國安限制、品質與格式；在契約中配置提供、例外協議、第三人授權、品質及費用責任，並持續追蹤施行令草案，於 2027-04-21 前完成平台連結或經 MSIT 同意的例外路徑。",
+    "sourceUrl": "https://www.law.go.kr/LSW/lsRvsDocListP.do?chrClsCd=010202&lsId=014820&lsRvsGubun=all",
+    "verifiedAt": "2026-11-04"
   },
   {
     "id": "singapore-ai-ip-consultation-extension-2026",
