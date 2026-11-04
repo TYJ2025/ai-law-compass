@@ -76,6 +76,7 @@ test("researched instruments link to official primary sources", async () => {
     "digital-strategy.ec.europa.eu",
     "eur-lex.europa.eu",
     "cac.gov.cn",
+    "miit.gov.cn",
     "meti.go.jp",
     "msit.go.kr",
     "law.go.kr",
@@ -169,6 +170,34 @@ test("CJEU Like Company opinion preserves pending status and separates training 
   assert.equal(update.date, "2026-11-03");
   assert.match(update.businessImpact, /不能把意見描述為 Google 已敗訴.*不是終局判例或新法/);
   assert.equal(update.verifiedAt, "2026-11-04");
+});
+
+test("China AI technology ethics measures preserve review scope and expert-review limits", async () => {
+  const regulations = await readRegulations();
+  const measures = regulations.find(
+    (regulation) => regulation.id === "china-ai-technology-ethics-review-measures-2026",
+  );
+
+  assert.equal(measures.statusGroup, "生效");
+  assert.match(measures.status, /現行有效.*自印發日起施行/);
+  assert.match(measures.promulgationDate, /2026-03-20.*2026-04-02/);
+  assert.match(measures.effectiveDate, /2026-03-20.*第37條/);
+  assert.match(measures.articleCount, /6章37條.*專家復核清單/);
+  assert.match(measures.scope, /中國境內.*不是.*所有一般 AI 產品營運/);
+  assert.ok(measures.keyPoints.some((point) => /一般活動.*12個月/.test(point)));
+  assert.ok(measures.keyPoints.some((point) => /人機融合.*社會動員.*高度自主決策/.test(point)));
+  assert.ok(measures.keyPoints.some((point) => /專家復核.*30日.*6個月/.test(point)));
+  assert.ok(measures.keyPoints.some((point) => /只可免除.*專家復核.*不能推論.*全面.*豁免/.test(point)));
+  assert.equal(new URL(measures.sourceUrl).hostname, "www.miit.gov.cn");
+  assert.equal(measures.verifiedAt, "2026-11-05");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "china-ai-technology-ethics-review-measures-2026",
+  );
+  assert.equal(update.date, "2026-03-20");
+  assert.match(update.businessImpact, /免除重複專家復核.*不能視為全面豁免/);
+  assert.equal(update.verifiedAt, "2026-11-05");
 });
 
 test("India telecom AI consultation preserves draft status and unresolved reporting details", async () => {
