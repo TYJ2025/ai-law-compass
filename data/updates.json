@@ -1,5 +1,32 @@
 [
   {
+    "id": "us-doj-super-intelligence-task-force-2026",
+    "date": "2026-11-05",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "執法／AI 公司內控",
+    "importance": "高",
+    "title": "美國司法部成立跨部門 SI 執法工作小組",
+    "summary": "司法部成立 DOJ-SITF，集中協調 AI／SI 刑民事執法、選案及案件去衝突，並將研擬起訴與企業合規措施評估指引；目前是內部管理與執法訊號，未直接新增企業法定義務。",
+    "authority": "U.S. Department of Justice；Attorney General；Associate Attorney General；Associate Deputy Attorney General",
+    "keyDate": "2026-10-13 備忘錄簽發並整併原 AI Task Force；2026-11-05 司法部公開宣布；起訴指引、合規評估方法及案件通知流程尚待發布",
+    "affectedCompanies": "在美國開發、提供或部署生成式 AI、前沿模型及自動化代理的企業，尤其涉及金融或消費者詐欺、關鍵基礎設施、國家安全、反托拉斯、跨境技術及高風險企業應用者",
+    "background": "司法部先於 2026 年 1 月成立 Artificial Intelligence Task Force。隨聯邦行政部門改以 Super Intelligence／SI 稱呼 AI，司法部以新備忘錄整併原工作小組，建立由反托拉斯、民事、刑事、FBI、國家詐欺執法與國家安全等部門參與的統一架構。",
+    "whatChanged": "DOJ-SITF 現負責組織涉及 SI 的刑民事執法、協調重複或衝突案件、建議公共安全與濫用防制的執法優先順序、聯繫白宮 SI Force 及其他機關，並發展 SI 違法行為起訴與企業合規措施評估指引。司法部內部另將建立調查、起訴及和解前的案件通知流程。",
+    "businessImpact": "這不是新法律或一般企業自我申報制度，備忘錄也明定不創設私人權利；然而它提高了 AI 案件跨部門、跨法域協調執法的可能性，且後續合規評估指引可能成為司法部衡量企業內控與處置的重要基準。企業不宜把新聞稿所稱定期風險報告與強健內控誤標為已生效規則，但應先備妥可供調查驗證的治理證據。",
+    "keyPoints": [
+      "統籌 SI 相關刑事與民事執法，並處理司法部各單位和聯邦檢察官案件去衝突。",
+      "可建議公共安全與防止濫用的執法優先順序，對象含外國行為者、跨國犯罪、詐欺及其他違法企業行為。",
+      "原 AI Task Force 已整併，既有案件、工作成果、人員安排及通報義務全部移轉。",
+      "司法部將發展 SI 違法行為起訴指引與合規措施評估方法，具體內容和發布日期尚未公布。",
+      "司法部單位可能須在調查、起訴或和解前進行內部通知；這不是企業法定申報義務。",
+      "備忘錄僅改善司法部內部管理，不創設私人可執行權利，也未直接新增罰則、控制清單或報告期限。"
+    ],
+    "action": "將 DOJ-SITF 納入美國執法監測與事件升級矩陣，跨法務、資安、產品、競爭、詐欺與國安團隊檢查模型權限、測試、監控、事故、決策及補救紀錄；追蹤後續起訴與合規評估指引，再依正式文件調整控制與調查應對。",
+    "sourceUrl": "https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force",
+    "verifiedAt": "2026-11-06"
+  },
+  {
     "id": "eu-cjeu-like-company-rag-press-publisher-opinion-2026",
     "date": "2026-11-03",
     "jurisdiction": "歐盟",

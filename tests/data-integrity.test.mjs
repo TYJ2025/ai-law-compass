@@ -97,6 +97,7 @@ test("researched instruments link to official primary sources", async () => {
     "parliament.uk",
     "nist.gov",
     "whitehouse.gov",
+    "justice.gov",
     "fda.gov",
     "federalregister.gov",
     "govinfo.gov",
@@ -198,6 +199,32 @@ test("China AI technology ethics measures preserve review scope and expert-revie
   assert.equal(update.date, "2026-03-20");
   assert.match(update.businessImpact, /免除重複專家復核.*不能視為全面豁免/);
   assert.equal(update.verifiedAt, "2026-11-05");
+});
+
+test("US DOJ SI task force remains an internal enforcement signal without invented company duties", async () => {
+  const regulations = await readRegulations();
+  const taskForce = regulations.find(
+    (regulation) => regulation.id === "us-doj-super-intelligence-task-force-2026",
+  );
+
+  assert.equal(taskForce.statusGroup, "政策");
+  assert.match(taskForce.promulgationDate, /2026-10-13.*2026-11-05/);
+  assert.match(taskForce.effectiveDate, /2026-10-13/);
+  assert.match(taskForce.articleCount, /2頁.*6項核心職能/);
+  assert.match(taskForce.scope, /司法部.*不是.*新合規義務/);
+  assert.ok(taskForce.keyPoints.some((point) => /起訴指引.*合規措施評估.*尚未公布/.test(point)));
+  assert.ok(taskForce.keyPoints.some((point) => /政府內部程序.*不是企業自行申報義務/.test(point)));
+  assert.ok(taskForce.keyPoints.some((point) => /不創設私人.*權利.*沒有直接新增罰則/.test(point)));
+  assert.equal(new URL(taskForce.sourceUrl).hostname, "www.justice.gov");
+  assert.equal(taskForce.verifiedAt, "2026-11-06");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-doj-super-intelligence-task-force-2026",
+  );
+  assert.equal(update.date, "2026-11-05");
+  assert.match(update.businessImpact, /不是新法律.*後續合規評估指引/);
+  assert.equal(update.verifiedAt, "2026-11-06");
 });
 
 test("India telecom AI consultation preserves draft status and unresolved reporting details", async () => {
