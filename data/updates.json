@@ -1,5 +1,33 @@
 [
   {
+    "id": "singapore-personal-ai-agents-safety-advisory-2026",
+    "date": "2026-11-06",
+    "jurisdiction": "新加坡",
+    "flag": "SG",
+    "category": "個人 AI 代理／資安與責任",
+    "importance": "高",
+    "title": "新加坡三機關發布個人 AI 代理安全使用指引",
+    "summary": "CSA、GovTech 與 IMDA 以五步驟要求個人 AI 代理採最小權限、重要行動核准、資料與記憶管理、提示注入防護及事故處置；文件是消費者安全建議，不是新法律或企業強制控制清單。",
+    "authority": "Cyber Security Agency of Singapore（CSA）；Government Technology Agency of Singapore（GovTech）；Infocomm Media Development Authority（IMDA）",
+    "keyDate": "2026-11-06 發布；無法定生效日、寬限期、登錄、認證或一般通報期限",
+    "affectedCompanies": "提供或整合個人 AI 代理、連接器、外掛、郵件、日曆、雲端檔案、通訊、支付與身分服務的業者，以及允許員工使用代理存取工作帳戶與企業資料的雇主",
+    "background": "個人 AI 代理能代表使用者連接應用與帳戶、瀏覽網站、管理郵件、預約及保存長期記憶，錯誤或惡意指令可能造成付款、資料外洩、誤發訊息及背景持續行動。三機關因此將一般聊天機器人風險進一步轉為代理的權限與事故控制。",
+    "whatChanged": "八頁聯合指引提出五步驟：限制帳戶及資料存取、對重要動作保留人工控制、查明資料使用與保存、防範詐騙與提示注入、評估對他人影響；並提供常見設定位置及 Muse 操作示例。異常時應停止代理、雙向撤銷連接、輪替憑證、檢查付款與設定、保存紀錄並通報。",
+    "businessImpact": "指引直接面向消費者，沒有對企業創設新罰則；但它明確呈現監管機關期待的可操作安全基線。雇主若允許代理連接工作郵件、檔案與 SaaS，應處理 shadow AI、第三人資料與權限外溢；代理提供者也需要把一次性核准、活動與排程可視性、記憶及訓練設定、停止與資料刪除做成實際介面。",
+    "keyPoints": [
+      "只連接必要帳戶與資料，敏感工作、銀行、政府及醫療帳戶應特別限制。",
+      "密碼、OTP、API 金鑰及信用卡資料不得交給代理；驗證碼信箱也可能構成間接存取。",
+      "重要動作採唯讀或一次性核准，不能只靠聊天指令限制權限。",
+      "須查明資料保存、第三方分享、模型訓練、廣告與持久記憶設定。",
+      "提示注入可能藏在網頁、郵件、文件與圖片，應配置強驗證、可信外掛及活動監控。",
+      "事故時停止代理、撤銷雙方連接、輪替憑證、保存紀錄並通知受影響者或主管機關。",
+      "使用者仍可能對代理代為採取的行動負責，但責任須依適用法律個案判斷。"
+    ],
+    "action": "將個人 AI 代理納入企業可接受使用、shadow AI 與供應商治理；盤點所有連接器、帳戶、資料、排程與外掛，設定最小權限、唯讀預設、重大行動核准、不可竄改日誌、停止及憑證撤銷，並讓員工知道哪些工作帳戶不得連接。",
+    "sourceUrl": "https://www.csa.gov.sg/alerts-and-advisories/advisories/ad-2026-015/",
+    "verifiedAt": "2026-11-07"
+  },
+  {
     "id": "us-doj-super-intelligence-task-force-2026",
     "date": "2026-11-05",
     "jurisdiction": "美國",
@@ -194,6 +222,34 @@
     "action": "建立退休金計畫 AI 清冊與風險分級，將受託人、管理人、顧問和供應商的責任、資料及人工覆核串聯；更新採購、續約、稽核、事故、退出與資料返還條款，測試 AI 中斷及錯誤情境，並確保成員可取得人工支援、更正、申訴和適當救濟。",
     "sourceUrl": "https://www.thepensionsregulator.gov.uk/document-library/scheme-management-detailed-guidance/governing-body-detailed-guidance/use-of-artificial-intelligence-ai-in-pension-schemes",
     "verifiedAt": "2026-11-01"
+  },
+  {
+    "id": "canada-fpt-health-ai-privacy-resolution-2026",
+    "date": "2026-10-29",
+    "jurisdiction": "加拿大",
+    "flag": "CA",
+    "category": "醫療 AI／個資與研究倫理",
+    "importance": "高",
+    "title": "加拿大隱私監管機關發布醫療 AI 共同決議",
+    "summary": "加拿大聯邦、省及領地隱私監管機關要求醫療與健康研究 AI 落實六項原則，並列出開發、採購、供應商、shadow AI、人類覆核與研究倫理措施；決議不是新法，但預示跨地區協調執法與立法方向。",
+    "authority": "Office of the Privacy Commissioner of Canada 與各省、領地具隱私監督職責之資訊及隱私專員／申訴專員",
+    "keyDate": "2026-09-15 決議通過；2026-10-29 公開發布；政府修法、TCPS 2 更新及後續共同監管時程均未確定",
+    "affectedCompanies": "在加拿大開發、提供、採購或使用診斷、分類、生成式 AI、聊天機器人、AI scribes 及研究 AI 的醫院、診所、研究機構、CRO、醫療軟體、模型、雲端與資料供應商",
+    "background": "醫療 AI 可能造成個人健康資料未授權蒐集與再利用、再識別、外洩、偏誤、錯誤診斷及弱勢群體損害；加拿大醫療及隱私權限又分散於聯邦、省與領地，因此各監管機關以共同決議建立一致監管立場。",
+    "whatChanged": "共同決議提出隱私保護、有效可靠、安全、人權、透明及問責六原則，並分別向政府、開發商、醫療提供者、研究社群與監管機關提出行動。開發商應交付訓練來源、運作、合規與持續風險證據；醫療提供者應處理同意、退出、申訴、供應商契約、shadow AI、員工訓練及人工驗證；監管機關承諾協調法遵與監管行動。",
+    "businessImpact": "決議不自行修法或新增全國統一罰則，現行聯邦及省級法律仍須逐案適用；但跨地區共同立場會提高供應商證據、採購盡職調查、員工使用管理與病患透明的監管期待。政府另被呼籲把治理與問責框架改為法律要求，企業應將後續修法列為觸發點。",
+    "keyPoints": [
+      "六項原則涵蓋隱私、可靠、安全、人權、透明與問責，適用 AI 全生命週期。",
+      "政府被呼籲立法要求治理架構，但該呼籲不是已通過的新法律。",
+      "開發商須證明資料來源合法、採保護性預設、可稽核及持續測試，並向客戶提供合規與風險證據。",
+      "醫療提供者須評估供應商並把稽核、紀錄、用途限制及未授權商業化寫入契約。",
+      "醫療機構應防止 shadow AI、訓練員工並保留人工覆核及申訴途徑。",
+      "研究社群被呼籲更新 TCPS 2、REB 能力與再識別、代表性及風險效益審查。",
+      "監管機關將在既有權限內協調法遵、監管、指引與教育。"
+    ],
+    "action": "建立聯邦與省級醫療 AI 法規矩陣，補齊資料法源、去識別與再識別、族群代表性、隱私與威脅評估、效能偏誤、人工覆核、申訴及退場證據；更新供應商契約、shadow AI 管理與員工訓練，並追蹤 TCPS 2 及各省後續政策。",
+    "sourceUrl": "https://www.priv.gc.ca/en/about-the-opc/what-we-do/provincial-and-territorial-collaboration/joint-resolutions-with-provinces-and-territories/res_20260915_aihealth/",
+    "verifiedAt": "2026-11-07"
   },
   {
     "id": "coe-ai-convention-bosnia-ratification-2026",

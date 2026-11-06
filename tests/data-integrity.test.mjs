@@ -86,6 +86,7 @@ test("researched instruments link to official primary sources", async () => {
     "moda.gov.tw",
     "pdpc.gov.sg",
     "imda.gov.sg",
+    "csa.gov.sg",
     "moh.gov.sg",
     "mlaw.gov.sg",
     "acra.gov.sg",
@@ -105,6 +106,7 @@ test("researched instruments link to official primary sources", async () => {
     "insurance.ca.gov",
     "tbs-sct.canada.ca",
     "canada.ca",
+    "priv.gc.ca",
     "industry.gov.au",
     "digital.gov.au",
     "legislation.gov.au",
@@ -225,6 +227,52 @@ test("US DOJ SI task force remains an internal enforcement signal without invent
   assert.equal(update.date, "2026-11-05");
   assert.match(update.businessImpact, /不是新法律.*後續合規評估指引/);
   assert.equal(update.verifiedAt, "2026-11-06");
+});
+
+test("Singapore personal-agent advisory and Canada health-AI resolution remain non-binding guidance", async () => {
+  const regulations = await readRegulations();
+  const singapore = regulations.find(
+    (regulation) => regulation.id === "singapore-personal-ai-agents-safety-advisory-2026",
+  );
+  const canada = regulations.find(
+    (regulation) => regulation.id === "canada-fpt-health-ai-privacy-resolution-2026",
+  );
+
+  assert.equal(singapore.statusGroup, "指引");
+  assert.match(singapore.promulgationDate, /2026-11-06/);
+  assert.match(singapore.effectiveDate, /無法定生效日/);
+  assert.match(singapore.articleCount, /8 頁.*5 個操作步驟.*2 項附錄/);
+  assert.match(singapore.scope, /直接對.*個人 AI 代理.*不是.*強制技術標準/);
+  assert.ok(singapore.keyPoints.some((point) => /密碼.*OTP.*API 金鑰.*信用卡/.test(point)));
+  assert.ok(
+    singapore.keyPoints.some((point) => /網頁.*郵件.*文件.*圖片.*提示注入.*監控活動/.test(point)),
+  );
+  assert.equal(new URL(singapore.sourceUrl).hostname, "www.csa.gov.sg");
+  assert.equal(singapore.verifiedAt, "2026-11-07");
+
+  assert.equal(canada.statusGroup, "指引");
+  assert.match(canada.promulgationDate, /2026-09-15.*2026-10-29/);
+  assert.match(canada.effectiveDate, /無獨立生效日.*既有.*隱私.*健康法/);
+  assert.match(canada.articleCount, /6 項核心原則.*政府 4 項.*醫療提供者 10 項/);
+  assert.match(canada.transition, /不是法律.*沒有新增生效日.*不能把.*已完成修法/);
+  assert.ok(canada.keyPoints.some((point) => /shadow AI.*人類覆核/.test(point)));
+  assert.ok(canada.keyPoints.some((point) => /更新 TCPS 2.*審查能力/.test(point)));
+  assert.equal(new URL(canada.sourceUrl).hostname, "www.priv.gc.ca");
+  assert.equal(canada.verifiedAt, "2026-11-07");
+
+  const updates = await readJson("data/updates.json");
+  const singaporeUpdate = updates.find(
+    (entry) => entry.id === "singapore-personal-ai-agents-safety-advisory-2026",
+  );
+  const canadaUpdate = updates.find(
+    (entry) => entry.id === "canada-fpt-health-ai-privacy-resolution-2026",
+  );
+  assert.equal(singaporeUpdate.date, "2026-11-06");
+  assert.match(singaporeUpdate.businessImpact, /沒有對企業創設新罰則.*可操作安全基線/);
+  assert.equal(singaporeUpdate.verifiedAt, "2026-11-07");
+  assert.equal(canadaUpdate.date, "2026-10-29");
+  assert.match(canadaUpdate.businessImpact, /不自行修法.*聯邦及省級法律.*逐案適用/);
+  assert.equal(canadaUpdate.verifiedAt, "2026-11-07");
 });
 
 test("India telecom AI consultation preserves draft status and unresolved reporting details", async () => {
