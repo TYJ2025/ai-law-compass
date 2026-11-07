@@ -1418,21 +1418,21 @@ test("Japan Gennai standard preserves hosted-government scope and agent controls
   );
 
   assert.equal(standard.statusGroup, "指引");
-  assert.match(standard.promulgationDate, /2026-10-20.*第 1 版/);
-  assert.match(standard.effectiveDate, /沒有獨立法定生效日.*分階段導入/);
-  assert.match(standard.articleCount, /53 頁.*4 章.*21 個子節.*改訂履歷/);
+  assert.match(standard.promulgationDate, /2026-11-06.*第 1 版.*2026 年 10 月/);
+  assert.match(standard.effectiveDate, /沒有獨立法定生效日.*2026-11-06.*分階段導入/);
+  assert.match(standard.articleCount, /日文 53 頁.*英文暫譯 73 頁.*4 章.*21 個子節.*改訂履歷/);
   assert.match(standard.scope, /數位廳託管.*政府職員.*管理者.*外部開發運維.*不因此.*法定義務/);
   assert.match(standard.transition, /Agent Chat.*2026 年 12 月.*Gennai Workshop.*OSS 2\.0.*2027 年 2 月.*自行負責/);
   assert.ok(standard.keyPoints.some((point) => /人工確認、監督、批准、介入與利用停止/.test(point)));
   assert.ok(standard.keyPoints.some((point) => /提示、附件與輸出.*訓練/.test(point)));
   assert.ok(standard.keyPoints.some((point) => /目的與執行權限.*日誌保存.*停止.*性能評估/.test(point)));
   assert.equal(new URL(standard.sourceUrl).hostname, "www.digital.go.jp");
-  assert.equal(standard.verifiedAt, "2026-10-21");
+  assert.equal(standard.verifiedAt, "2026-11-08");
 
   const updates = await readJson("data/updates.json");
   const update = updates.find((entry) => entry.id === "japan-gennai-agent-governance-standard-2026");
-  assert.equal(update.date, "2026-10-20");
-  assert.equal(update.verifiedAt, "2026-10-21");
+  assert.equal(update.date, "2026-11-06");
+  assert.equal(update.verifiedAt, "2026-11-08");
   assert.match(update.title, /18 萬/);
   assert.match(update.summary, /不是一般民間 AI 強制法/);
   assert.match(update.businessImpact, /不能.*開源.*自動安全.*一般法律合規/);
