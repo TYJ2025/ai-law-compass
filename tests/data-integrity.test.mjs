@@ -82,6 +82,7 @@ test("researched instruments link to official primary sources", async () => {
     "law.go.kr",
     "ey.gov.tw",
     "gazette.nat.gov.tw",
+    "nstc.gov.tw",
     "fsc.gov.tw",
     "moda.gov.tw",
     "pdpc.gov.sg",
@@ -1635,6 +1636,34 @@ test("Taiwan MOENV AI document rules preserve four tiers and limited scope", asy
   assert.equal(update.date, "2026-10-14");
   assert.equal(update.verifiedAt, "2026-10-25");
   assert.match(update.businessImpact, /不是所有臺灣企業的一般 AI 規範.*直接受拘束/);
+});
+
+test("Taiwan Hsinchu Science Park AI controls preserve procurement and internal scope", async () => {
+  const regulations = await readRegulations();
+  const rules = regulations.find(
+    (regulation) =>
+      regulation.id === "taiwan-hsinchu-science-park-ai-internal-control-rules-2026",
+  );
+
+  assert.equal(rules.statusGroup, "生效");
+  assert.match(rules.promulgationDate, /2026-11-02.*竹企字第1150034857A號函/);
+  assert.match(rules.effectiveDate, /2026-11-02.*即日生效/);
+  assert.match(rules.articleCount, /10 點.*風險評估檢核表 1 份.*逐點說明 1 份/);
+  assert.match(rules.scope, /自行開發、委外建置或採購.*供應商.*不是.*一般直接受規範者.*園區內企業/);
+  assert.match(rules.transition, /沒有另設寬限期.*重大功能變更.*沒有對.*一般申報或許可義務/);
+  assert.ok(rules.keyPoints.some((point) => /行政處分.*人為介入與最終覆核/.test(point)));
+  assert.ok(rules.keyPoints.some((point) => /採購契約.*資安、資料治理.*防範歧視/.test(point)));
+  assert.ok(rules.keyPoints.some((point) => /立即暫停.*人工備援.*一小時內通報/.test(point)));
+  assert.equal(new URL(rules.sourceUrl).hostname, "law.nstc.gov.tw");
+  assert.equal(rules.verifiedAt, "2026-11-09");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "taiwan-hsinchu-science-park-ai-controls-effective-2026",
+  );
+  assert.equal(update.date, "2026-11-02");
+  assert.equal(update.verifiedAt, "2026-11-09");
+  assert.match(update.businessImpact, /不是對新竹科學園區所有企業的一般 AI 法.*契約與驗收控制/);
 });
 
 test("EU Article 75c and 75d procedural proposal remains unadopted", async () => {
