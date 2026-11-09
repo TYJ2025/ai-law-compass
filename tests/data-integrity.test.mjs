@@ -1691,6 +1691,63 @@ test("EU Article 75c and 75d procedural proposal remains unadopted", async () =>
   assert.match(update.businessImpact, /一般 AI 部署者.*不會.*自動落入.*不能把.*已生效規則/);
 });
 
+test("NIST agentic AML publication remains a voluntary initial public draft", async () => {
+  const regulations = await readRegulations();
+  const draft = regulations.find(
+    (regulation) =>
+      regulation.id === "nist-sp-2400-102e2026-adversarial-ml-agentic-draft",
+  );
+
+  assert.equal(draft.statusGroup, "草案");
+  assert.match(draft.status, /初步公開草案.*不具法律拘束力/);
+  assert.match(draft.promulgationDate, /2026-11-09.*Initial Public Draft/);
+  assert.match(draft.effectiveDate, /不適用.*非最終標準.*不具法律效力/);
+  assert.match(draft.articleCount, /158 頁.*5 章.*第 4 章專論代理式系統/);
+  assert.match(draft.transition, /2026-12-18.*不建立法律標準、法律要求、抗辯或安全港/);
+  assert.ok(draft.keyPoints.some((point) => /行動層政策.*軌跡監控/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /rogue MCP servers.*技能市集.*供應鏈/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /長時代理.*記憶、權限、工具存取與操作信任/.test(point)));
+  assert.equal(new URL(draft.sourceUrl).hostname, "csrc.nist.gov");
+  assert.equal(draft.verifiedAt, "2026-11-10");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "nist-sp-2400-102e2026-agentic-aml-draft-2026",
+  );
+  assert.equal(update.date, "2026-11-09");
+  assert.equal(update.verifiedAt, "2026-11-10");
+  assert.match(update.businessImpact, /不是新法律、最終 NIST 標準或認證清單.*不創設法律抗辯或安全港/);
+});
+
+test("China agentic terminal notice preserves network-access scope and unstated effective date", async () => {
+  const regulations = await readRegulations();
+  const notice = regulations.find(
+    (regulation) =>
+      regulation.id === "china-agentic-terminal-network-access-management-notice-2026",
+  );
+
+  assert.equal(notice.statusGroup, "生效");
+  assert.match(notice.status, /現行監管通知.*未另載施行日/);
+  assert.match(notice.promulgationDate, /2026-10-24.*2026-11-06.*工信廳信管〔2026〕42號/);
+  assert.match(notice.effectiveDate, /未另載施行日.*不宜另行推定/);
+  assert.match(notice.articleCount, /2 部分.*7 項.*4 項工作任務.*3 項工作要求/);
+  assert.match(notice.scope, /預置安裝智能體.*不是對中國境內所有一般聊天機器人.*一律建立相同進網義務/);
+  assert.match(notice.transition, /沒有列出寬限期.*未明載施行日.*不應自行宣稱有特定寬限期/);
+  assert.ok(notice.keyPoints.some((point) => /涉詐風險安全評估.*反詐能力前置評測/.test(point)));
+  assert.ok(notice.keyPoints.some((point) => /OTA.*提交升級方案.*專家評估/.test(point)));
+  assert.ok(notice.keyPoints.some((point) => /電子簽章.*未同意者.*不得被智能體強制調取/.test(point)));
+  assert.equal(new URL(notice.sourceUrl).hostname, "www.miit.gov.cn");
+  assert.equal(notice.verifiedAt, "2026-11-10");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "china-agentic-terminal-network-access-notice-2026",
+  );
+  assert.equal(update.date, "2026-11-06");
+  assert.equal(update.verifiedAt, "2026-11-10");
+  assert.match(update.businessImpact, /不是對所有雲端模型或聊天機器人的一般 AI 法.*不宜自行推定施行日/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
