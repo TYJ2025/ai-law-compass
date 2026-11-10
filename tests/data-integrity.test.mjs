@@ -127,6 +127,7 @@ test("researched instruments link to official primary sources", async () => {
     "samr.gov.cn",
     "cas.go.jp",
     "digital.go.jp",
+    "pmda.go.jp",
     "moenv.gov.tw",
     "ec.europa.eu",
     "curia.europa.eu",
@@ -1065,16 +1066,16 @@ test("EU KIDS Act proposal preserves draft status and AI child-safety obligation
   assert.match(proposal.promulgationDate, /2026-09-17.*COM\(2026\) 681.*2026\/0286/);
   assert.match(proposal.effectiveDate, /尚未生效.*第 43 條.*6 個月/);
   assert.match(proposal.articleCount, /43 條.*9 章.*99 頁/);
-  assert.match(proposal.transition, /2026-11-26.*議會與理事會審議.*第 5 條.*6 個月.*12 個月.*不得當作現行法/);
+  assert.match(proposal.transition, /2026-12-03.*議會與理事會審議.*第 5 條.*6 個月.*12 個月.*不得當作現行法/);
   assert.match(proposal.scope, /AI 伴侶.*一般對話式聊天機器人.*境外.*微型及小型企業.*沒有一般豁免/);
   assert.ok(proposal.keyPoints.some((point) => /情感依賴.*先前對話預設不得/.test(point)));
   assert.ok(proposal.keyPoints.some((point) => /上市.*前.*評估.*上市後監測/.test(point)));
   assert.ok(proposal.keyPoints.some((point) => /不得自動啟用.*不得鼓勵.*隨時.*退出/.test(point)));
-  assert.ok(proposal.keyPoints.some((point) => /2026-11-26.*不是法規生效日/.test(point)));
+  assert.ok(proposal.keyPoints.some((point) => /2026-12-03.*不是法規生效日/.test(point)));
   assert.ok(proposal.keyPoints.some((point) => /仍待.*審議.*不得.*已生效/.test(point)));
-  assert.match(proposal.nextDeadline, /2026-11-26.*公開意見截止.*布魯塞爾時間午夜.*尚無確定生效/);
+  assert.match(proposal.nextDeadline, /2026-12-03.*公開意見截止日.*布魯塞爾時間午夜.*尚無確定生效/);
   assert.equal(new URL(proposal.sourceUrl).hostname, "eur-lex.europa.eu");
-  assert.equal(proposal.verifiedAt, "2026-10-03");
+  assert.equal(proposal.verifiedAt, "2026-11-11");
 
   const updates = await readJson("data/updates.json");
   const update = updates.find((entry) => entry.id === "eu-kids-act-ai-child-safety-proposal-2026");
@@ -1087,9 +1088,9 @@ test("EU KIDS Act proposal preserves draft status and AI child-safety obligation
     (entry) => entry.id === "eu-kids-act-feedback-consultation-2026",
   );
   assert.equal(consultation.date, "2026-10-02");
-  assert.equal(consultation.verifiedAt, "2026-10-03");
-  assert.match(consultation.keyDate, /2026-11-26.*布魯塞爾時間午夜.*沒有因此產生法規生效日/);
-  assert.match(consultation.summary, /公開回饋.*仍未通過或生效/);
+  assert.equal(consultation.verifiedAt, "2026-11-11");
+  assert.match(consultation.keyDate, /2026-12-03.*布魯塞爾時間午夜.*沒有因此產生法規生效日/);
+  assert.match(consultation.summary, /回饋窗口.*仍未通過或生效/);
   assert.match(consultation.businessImpact, /沒有讓 KIDS Act 成為現行法.*有限期.*政策參與窗口/);
   assert.equal(new URL(consultation.sourceUrl).hostname, "digital-strategy.ec.europa.eu");
 });
@@ -1746,6 +1747,114 @@ test("China agentic terminal notice preserves network-access scope and unstated 
   assert.equal(update.date, "2026-11-06");
   assert.equal(update.verifiedAt, "2026-11-10");
   assert.match(update.businessImpact, /不是對所有雲端模型或聊天機器人的一般 AI 法.*不宜自行推定施行日/);
+});
+
+test("Northern Ireland EU AI Act decision preserves its binding but product-limited scope", async () => {
+  const regulations = await readRegulations();
+  const decision = regulations.find(
+    (regulation) => regulation.id === "uk-northern-ireland-eu-ai-act-windsor-decision-2026",
+  );
+
+  assert.equal(decision.statusGroup, "生效");
+  assert.match(decision.promulgationDate, /2026-11-10.*Decision No 3\/2026/);
+  assert.match(decision.effectiveDate, /2026-11-11.*第 2 條.*採納日次日生效/);
+  assert.match(decision.articleCount, /2 條.*決定 2 頁.*指引 32 頁.*5 章/);
+  assert.match(decision.scope, /北愛爾蘭市場.*緊密整合.*一般網頁、API、可下載聊天機器人.*不在/);
+  assert.match(decision.transition, /2026-12-02.*2027-12-02.*2028-08-02.*日期差異/);
+  assert.ok(decision.keyPoints.some((point) => /並非在北愛爾蘭全面適用/.test(point)));
+  assert.ok(decision.keyPoints.some((point) => /十年保存.*符合性評估.*CE 標誌/.test(point)));
+  assert.ok(decision.keyPoints.some((point) => /GPAI 直接義務.*不在 NI/.test(point)));
+  assert.equal(new URL(decision.sourceUrl).hostname, "www.gov.uk");
+  assert.equal(decision.verifiedAt, "2026-11-11");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "uk-northern-ireland-eu-ai-act-windsor-decision-2026",
+  );
+  assert.equal(update.date, "2026-11-10");
+  assert.equal(update.verifiedAt, "2026-11-11");
+  assert.match(update.businessImpact, /不是英國全境或北愛爾蘭所有軟體全面套用.*日期.*相差一天/);
+});
+
+test("EU revised DSA election guidelines remain a consultation draft", async () => {
+  const regulations = await readRegulations();
+  const draft = regulations.find(
+    (regulation) => regulation.id === "eu-dsa-revised-election-guidelines-draft-2026",
+  );
+
+  assert.equal(draft.statusGroup, "草案");
+  assert.match(draft.status, /公開諮詢中.*尚未定稿或刊登官方公報/);
+  assert.match(draft.articleCount, /33 頁.*127 個編號段落.*4 節/);
+  assert.match(draft.transition, /2026-11-23.*尚未採納.*DSA 第 34、35 條.*已經存在/);
+  assert.match(draft.scope, /4,500 萬.*VLOP 與 VLOSE.*未被指定.*不因本草案自動/);
+  assert.ok(draft.keyPoints.some((point) => /recorder.*選前六個月/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /曝光最高的 1,000 則/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /選後 30 日內.*機密.*公開版/.test(point)));
+  assert.equal(new URL(draft.sourceUrl).hostname, "digital-strategy.ec.europa.eu");
+  assert.equal(draft.verifiedAt, "2026-11-11");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "eu-dsa-election-guidelines-revision-consultation-2026",
+  );
+  assert.equal(update.date, "2026-11-10");
+  assert.equal(update.verifiedAt, "2026-11-11");
+  assert.match(update.businessImpact, /草案不是新法律.*DSA 系統性風險義務已在生效/);
+});
+
+test("PMDA AI regulatory principles remain non-binding early considerations", async () => {
+  const regulations = await readRegulations();
+  const principles = regulations.find(
+    (regulation) => regulation.id === "japan-pmda-ai-regulatory-activities-principles-2026",
+  );
+
+  assert.equal(principles.statusGroup, "指引");
+  assert.match(principles.status, /非拘束性 Early Consideration.*不新增法規要求/);
+  assert.match(principles.articleCount, /5 頁.*3 層.*12 項原則/);
+  assert.match(principles.transition, /不建立新的法規要求.*不足以履行所有既有義務/);
+  assert.match(principles.scope, /生成式 AI.*藥品.*醫療器材.*再生醫療產品.*一般醫療實務不是主要對象/);
+  assert.ok(principles.keyPoints.some((point) => /資料特性、來源.*變更歷史.*可追溯/.test(point)));
+  assert.ok(principles.keyPoints.some((point) => /實際使用環境.*評估與驗證/.test(point)));
+  assert.ok(principles.keyPoints.some((point) => /持續監測.*一次性驗證/.test(point)));
+  assert.equal(new URL(principles.sourceUrl).hostname, "www.pmda.go.jp");
+  assert.equal(principles.verifiedAt, "2026-11-11");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "japan-pmda-ai-regulatory-activities-principles-2026",
+  );
+  assert.equal(update.date, "2026-11-02");
+  assert.equal(update.verifiedAt, "2026-11-11");
+  assert.match(update.businessImpact, /不是新法、PMDA 認證或完整合規清單/);
+});
+
+test("new policy signals preserve proposal and publication limits", async () => {
+  const updates = await readJson("data/updates.json");
+
+  const australia = updates.find(
+    (entry) => entry.id === "australia-frontier-ai-mandatory-safety-announcement-2026",
+  );
+  assert.equal(australia.date, "2026-11-10");
+  assert.match(australia.keyDate, /法案文本.*尚未公布/);
+  assert.match(australia.businessImpact, /政策與立法意向.*不是已提出或生效/);
+
+  const brazil = updates.find(
+    (entry) => entry.id === "brazil-cne-ai-education-directives-homologated-2026",
+  );
+  assert.equal(brazil.date, "2026-11-10");
+  assert.match(brazil.keyDate, /正式決議全文與公報日期仍待核對/);
+  assert.match(brazil.businessImpact, /不得把新聞稿直接等同已刊登法規.*不能先推定 12 個月起算日/);
+
+  const edtech = updates.find(
+    (entry) => entry.id === "uk-edtech-ai-safety-certification-consultation-2026",
+  );
+  assert.equal(edtech.date, "2026-11-10");
+  assert.match(edtech.keyDate, /2027-02-04.*是否強制.*尚未決定/);
+  assert.match(edtech.businessImpact, /不是已生效認證、採購禁令或供應商法定義務/);
+
+  for (const entry of [australia, brazil, edtech]) {
+    assert.equal(entry.verifiedAt, "2026-11-11");
+  }
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
