@@ -1857,6 +1857,36 @@ test("new policy signals preserve proposal and publication limits", async () => 
   }
 });
 
+test("Taiwan national core technology AI amendment remains a draft", async () => {
+  const regulations = await readRegulations();
+  const draft = regulations.find(
+    (regulation) =>
+      regulation.id === "taiwan-national-core-key-technologies-ai-amendment-draft-2026",
+  );
+
+  assert.equal(draft.statusGroup, "草案");
+  assert.match(draft.status, /公開預告中.*尚未生效/);
+  assert.match(draft.promulgationDate, /2026-11-11.*1150079191B/);
+  assert.match(draft.effectiveDate, /尚未生效.*審議會.*行政院公告/);
+  assert.match(draft.articleCount, /46 項.*現行 42 項.*新增 4 項.*變更 6 項/);
+  assert.match(draft.transition, /2026-11-12.*2026-11-25.*不得把 46 項草案當成現行清單/);
+  assert.match(draft.scope, /營業秘密法第 2 條.*不是.*一般出口禁令/);
+  assert.ok(draft.keyPoints.some((point) => /高階 AI 晶片載板/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /AI 網路主動防禦/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /預告不等於生效/.test(point)));
+  assert.equal(new URL(draft.sourceUrl).hostname, "www.nstc.gov.tw");
+  assert.equal(draft.verifiedAt, "2026-11-12");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) =>
+      entry.id === "taiwan-national-core-key-technologies-ai-amendment-draft-2026",
+  );
+  assert.equal(update.date, "2026-11-11");
+  assert.equal(update.verifiedAt, "2026-11-12");
+  assert.match(update.businessImpact, /現階段只是預告.*不是.*一般出口禁令/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
