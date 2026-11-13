@@ -109,6 +109,7 @@ test("researched instruments link to official primary sources", async () => {
     "canada.ca",
     "priv.gc.ca",
     "industry.gov.au",
+    "dewr.gov.au",
     "digital.gov.au",
     "legislation.gov.au",
     "oaic.gov.au",
@@ -1885,6 +1886,35 @@ test("Taiwan national core technology AI amendment remains a draft", async () =>
   assert.equal(update.date, "2026-11-11");
   assert.equal(update.verifiedAt, "2026-11-12");
   assert.match(update.businessImpact, /現階段只是預告.*不是.*一般出口禁令/);
+});
+
+test("Australia workplace AI guide remains a voluntary consultation draft", async () => {
+  const regulations = await readRegulations();
+  const draft = regulations.find(
+    (regulation) =>
+      regulation.id === "australia-workplace-ai-adoption-guide-draft-2026",
+  );
+
+  assert.equal(draft.statusGroup, "草案");
+  assert.match(draft.status, /公開諮詢中.*尚未定稿或產生新義務/);
+  assert.match(draft.promulgationDate, /2026-11-12.*2026-11-11/);
+  assert.match(draft.effectiveDate, /尚未定稿.*沒有獨立法律生效日/);
+  assert.match(draft.articleCount, /3 大主題.*8 項原則.*非條文式/);
+  assert.match(draft.transition, /2027-01-27.*不建立法定過渡期、認證或安全港/);
+  assert.match(draft.scope, /各規模企業.*工作者.*不是已定稿法規/);
+  assert.ok(draft.keyPoints.some((point) => /Plan、Enable、Embed/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /工作者.*參與/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /不是新法.*安全港/.test(point)));
+  assert.equal(new URL(draft.sourceUrl).hostname, "www.dewr.gov.au");
+  assert.equal(draft.verifiedAt, "2026-11-14");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "australia-workplace-ai-adoption-guide-draft-2026",
+  );
+  assert.equal(update.date, "2026-11-12");
+  assert.equal(update.verifiedAt, "2026-11-14");
+  assert.match(update.businessImpact, /自願性最佳實務.*不是新法.*安全港/);
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {

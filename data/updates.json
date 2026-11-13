@@ -1,5 +1,32 @@
 [
   {
+    "id": "australia-workplace-ai-adoption-guide-draft-2026",
+    "date": "2026-11-12",
+    "jurisdiction": "澳洲",
+    "flag": "AU",
+    "category": "職場 AI／員工參與與工作健康安全",
+    "importance": "中",
+    "title": "澳洲徵詢職場 AI 採用最佳實務指南草案",
+    "summary": "澳洲提出以 Plan、Enable、Embed 三階段及八項原則管理職場 AI 導入的自願性指南草案，涵蓋員工參與、工作設計、技能轉型、治理、風險與工作健康安全；意見至 2027 年 1 月 27 日。",
+    "authority": "Australian Department of Employment and Workplace Relations（DEWR）；Minister for Employment and Workplace Relations；AI Employment and Workplaces Forum",
+    "keyDate": "2026-11-11 諮詢平台開放；2026-11-12 DEWR 公布草案；2027-01-27 23:59 AEDT 意見截止；最終版本日期未公布",
+    "affectedCompanies": "在澳洲導入、採購或管理職場 AI 的各規模雇主，以及其人資、勞動關係、工作設計、演算法管理、職場監測、隱私、工作健康安全、採購與技術供應鏈",
+    "background": "澳洲 2025 年 Guidance for AI Adoption 已提供跨組織的一般 AI 治理實務；DEWR 現與勞方、資方及政府組成的 AI Employment and Workplaces Forum 合作，把焦點延伸至 AI 導入如何改變工作、職務、技能、人員參與及工作健康安全。",
+    "whatChanged": "政府首次提出聚焦職場轉型的全國最佳實務指南草案，建立 Plan、Enable、Embed 三大主題與八項原則：掌握機會、辨識用例與評估就緒度、合作規劃與員工參與、設計工作與職務、建立能力、管理勞動力轉型、建立 AI 治理，以及主動管理風險與工作健康安全。",
+    "businessImpact": "草案尚未定稿，屬自願性最佳實務，不是新法、強制認證或合規安全港，也不建立獨立過渡期。企業仍須依現行公平工作、反歧視、隱私、工作健康安全、協商及契約要求逐案合規；但草案已顯示主管機關期待 AI 導入證據同時涵蓋員工參與、職務影響、技能轉型、治理與安全。",
+    "keyPoints": [
+      "Plan 階段要求先辨識機會、用例及職場就緒度，並與工作者合作規劃。",
+      "Enable 階段聚焦工作與職務設計、能力建立及勞動力轉型。",
+      "Embed 階段要求建立 AI 治理並主動管理一般風險與工作健康安全。",
+      "八項原則適用各規模企業，但企業可依產業、用例與成熟度調整實作。",
+      "草案不創設新法定義務，既有僱傭、隱私、反歧視與安全義務仍須獨立判斷。",
+      "企業、工作者、工會與其他利害關係人可在 2027-01-27 23:59 AEDT 前提交意見。"
+    ],
+    "action": "立即以八項原則盤點職場 AI 用例與證據缺口，指定法務、人資、勞動關係、工作健康安全、隱私、採購及技術責任人，記錄員工參與、工作與技能影響、轉型計畫、治理和風險控制；如需回應制度設計，於 2027-01-27 前提交意見。",
+    "sourceUrl": "https://www.dewr.gov.au/workplace-relations/announcements/consultation-now-open-draft-best-practice-guide-adoption-ai-workplace",
+    "verifiedAt": "2026-11-14"
+  },
+  {
     "id": "taiwan-national-core-key-technologies-ai-amendment-draft-2026",
     "date": "2026-11-11",
     "jurisdiction": "臺灣",
