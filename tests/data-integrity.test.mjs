@@ -96,6 +96,7 @@ test("researched instruments link to official primary sources", async () => {
     "drcf.org.uk",
     "thepensionsregulator.gov.uk",
     "gov.uk",
+    "ofgem.gov.uk",
     "parliament.uk",
     "nist.gov",
     "whitehouse.gov",
@@ -148,6 +149,34 @@ test("legislative proposals are not presented as enacted law", async () => {
   const brazilBill = regulations.find((regulation) => regulation.id === "brazil-ai-bill-2338");
   assert.equal(brazilBill.statusGroup, "草案");
   assert.match(brazilBill.effectiveDate, /尚未生效/);
+});
+
+test("Ofgem energy AI assurance consultation remains a voluntary draft with operational evidence expectations", async () => {
+  const regulations = await readRegulations();
+  const consultation = regulations.find(
+    (regulation) => regulation.id === "uk-ofgem-energy-ai-assurance-consultation-2026",
+  );
+
+  assert.equal(consultation.statusGroup, "草案");
+  assert.match(consultation.status, /公開諮詢中.*自願性指引.*尚未定稿/);
+  assert.match(consultation.promulgationDate, /2026-11-18.*25 頁/);
+  assert.match(consultation.effectiveDate, /尚未定稿.*2027 年 3 月.*沒有獨立法定生效日/);
+  assert.match(consultation.articleCount, /25 頁.*11 項正式諮詢問題.*7 類保證成果/);
+  assert.match(consultation.transition, /2027-01-15 23:59.*沒有新增法定過渡期.*安全港/);
+  assert.ok(consultation.keyPoints.some((point) => /關鍵基礎設施.*持續監測/.test(point)));
+  assert.ok(consultation.keyPoints.some((point) => /基礎模型.*集中風險/.test(point)));
+  assert.ok(consultation.keyPoints.some((point) => /代理式.*自治.*覆寫/.test(point)));
+  assert.ok(consultation.keyPoints.some((point) => /監管核准.*不移轉.*法律責任/.test(point)));
+  assert.equal(new URL(consultation.sourceUrl).hostname, "www.ofgem.gov.uk");
+  assert.equal(consultation.verifiedAt, "2026-11-18");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "uk-ofgem-energy-ai-assurance-consultation-2026",
+  );
+  assert.equal(update.date, "2026-11-18");
+  assert.match(update.businessImpact, /不是新法律.*強制認證.*既有能源執照/);
+  assert.equal(update.verifiedAt, "2026-11-18");
 });
 
 test("CJEU Like Company opinion preserves pending status and separates training from RAG", async () => {
