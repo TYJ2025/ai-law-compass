@@ -151,6 +151,34 @@ test("legislative proposals are not presented as enacted law", async () => {
   assert.match(brazilBill.effectiveDate, /尚未生效/);
 });
 
+test("BIS remote compute IFR stays pending until formal Federal Register publication", async () => {
+  const regulations = await readRegulations();
+  const rule = regulations.find(
+    (regulation) =>
+      regulation.id === "us-bis-remote-access-advanced-semiconductors-ifr-2026",
+  );
+
+  assert.equal(rule.statusGroup, "即將生效");
+  assert.match(rule.status, /公開檢閱.*預定 2026-11-19.*尚待正式刊登頁確認/);
+  assert.match(rule.effectiveDate, /預定.*2026-11-19.*日期占位符.*待刊登頁確認/);
+  assert.match(rule.articleCount, /117 頁.*11 個 Part.*743\.10.*744\.24/);
+  assert.match(rule.transition, /30 日.*90 日.*次月第一個工作日.*刊登後 60 日/);
+  assert.match(rule.scope, /12,000,000 aggregate TPP.*印尼.*馬來西亞.*新加坡.*泰國.*巴西/);
+  assert.ok(rule.keyPoints.some((point) => /最終母公司.*第三方訓練/.test(point)));
+  assert.ok(rule.keyPoints.some((point) => /生成.*文字、影像、音訊、影片或軟體/.test(point)));
+  assert.ok(rule.keyPoints.some((point) => /公開檢閱版.*確切生效.*正式刊登頁/.test(point)));
+  assert.equal(new URL(rule.sourceUrl).hostname, "public-inspection.federalregister.gov");
+  assert.equal(rule.verifiedAt, "2026-11-19");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-bis-remote-access-advanced-semiconductors-ifr-2026",
+  );
+  assert.equal(update.date, "2026-11-16");
+  assert.equal(update.verifiedAt, "2026-11-19");
+  assert.match(update.businessImpact, /暫行最終規則.*不是提案草案.*即將生效.*正式頁確認/);
+});
+
 test("Ofgem energy AI assurance consultation remains a voluntary draft with operational evidence expectations", async () => {
   const regulations = await readRegulations();
   const consultation = regulations.find(
