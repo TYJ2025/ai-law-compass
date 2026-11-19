@@ -133,6 +133,7 @@ test("researched instruments link to official primary sources", async () => {
     "moenv.gov.tw",
     "ec.europa.eu",
     "curia.europa.eu",
+    "redipd.org",
   ];
 
   for (const regulation of regulations) {
@@ -151,32 +152,83 @@ test("legislative proposals are not presented as enacted law", async () => {
   assert.match(brazilBill.effectiveDate, /尚未生效/);
 });
 
-test("BIS remote compute IFR stays pending until formal Federal Register publication", async () => {
+test("BIS remote compute IFR reflects formal Federal Register publication and effective dates", async () => {
   const regulations = await readRegulations();
   const rule = regulations.find(
     (regulation) =>
       regulation.id === "us-bis-remote-access-advanced-semiconductors-ifr-2026",
   );
 
-  assert.equal(rule.statusGroup, "即將生效");
-  assert.match(rule.status, /公開檢閱.*預定 2026-11-19.*尚待正式刊登頁確認/);
-  assert.match(rule.effectiveDate, /預定.*2026-11-19.*日期占位符.*待刊登頁確認/);
+  assert.equal(rule.statusGroup, "生效");
+  assert.match(rule.status, /已正式刊登並生效.*91 FR 74970/);
+  assert.match(rule.effectiveDate, /2026-11-19.*立即生效/);
   assert.match(rule.articleCount, /117 頁.*11 個 Part.*743\.10.*744\.24/);
-  assert.match(rule.transition, /30 日.*90 日.*次月第一個工作日.*刊登後 60 日/);
+  assert.match(rule.transition, /2026-12-21.*90 日.*次月第一個工作日.*2027-01-19/);
   assert.match(rule.scope, /12,000,000 aggregate TPP.*印尼.*馬來西亞.*新加坡.*泰國.*巴西/);
   assert.ok(rule.keyPoints.some((point) => /最終母公司.*第三方訓練/.test(point)));
   assert.ok(rule.keyPoints.some((point) => /生成.*文字、影像、音訊、影片或軟體/.test(point)));
-  assert.ok(rule.keyPoints.some((point) => /公開檢閱版.*確切生效.*正式刊登頁/.test(point)));
-  assert.equal(new URL(rule.sourceUrl).hostname, "public-inspection.federalregister.gov");
-  assert.equal(rule.verifiedAt, "2026-11-19");
+  assert.ok(rule.keyPoints.some((point) => /91 FR 74970.*2026-11-19.*2027-01-19/.test(point)));
+  assert.equal(new URL(rule.sourceUrl).hostname, "www.federalregister.gov");
+  assert.equal(rule.verifiedAt, "2026-11-20");
 
   const updates = await readJson("data/updates.json");
   const update = updates.find(
     (entry) => entry.id === "us-bis-remote-access-advanced-semiconductors-ifr-2026",
   );
   assert.equal(update.date, "2026-11-16");
-  assert.equal(update.verifiedAt, "2026-11-19");
-  assert.match(update.businessImpact, /暫行最終規則.*不是提案草案.*即將生效.*正式頁確認/);
+  assert.equal(update.verifiedAt, "2026-11-20");
+  assert.match(update.businessImpact, /2026-11-19.*立即生效.*暫行最終規則.*不是提案草案/);
+});
+
+test("EU Article 27 FRIA template remains a draft with the correct deployer scope and deadlines", async () => {
+  const regulations = await readRegulations();
+  const draft = regulations.find(
+    (regulation) => regulation.id === "eu-ai-act-article-27-fria-template-consultation-2026",
+  );
+
+  assert.equal(draft.statusGroup, "草案");
+  assert.match(draft.status, /公開諮詢中.*尚未定稿.*2027-12-02/);
+  assert.match(draft.articleCount, /6 項法定評估要素/);
+  assert.match(draft.transition, /2026-12-04.*2027-01-15.*2027-12-02/);
+  assert.match(draft.scope, /公法機構.*公共服務.*信用評等.*人壽與健康保險/);
+  assert.ok(draft.keyPoints.some((point) => /首次部署.*前.*改變時須更新/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /DPIA/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /不是範本正式採納.*2027-12-02/.test(point)));
+  assert.equal(new URL(draft.sourceUrl).hostname, "digital-strategy.ec.europa.eu");
+  assert.equal(draft.verifiedAt, "2026-11-20");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "eu-ai-act-article-27-fria-template-consultation-2026",
+  );
+  assert.equal(update.date, "2026-11-16");
+  assert.equal(update.verifiedAt, "2026-11-20");
+  assert.match(update.businessImpact, /仍在諮詢.*不能標示為已採納或已生效/);
+});
+
+test("RIPD AI personal-data standards remain non-binding and preserve operational safeguards", async () => {
+  const regulations = await readRegulations();
+  const standards = regulations.find(
+    (regulation) => regulation.id === "ripd-iberoamerican-ai-personal-data-standards-2026",
+  );
+
+  assert.equal(standards.statusGroup, "指引");
+  assert.match(standards.status, /指導性與補充性.*非新法或獨立義務/);
+  assert.match(standards.articleCount, /29 頁.*9 章.*非條文式/);
+  assert.match(standards.transition, /不建立平行法律制度.*各國法律/);
+  assert.ok(standards.keyPoints.some((point) => /公開可得.*合法基礎.*目的相容/.test(point)));
+  assert.ok(standards.keyPoints.some((point) => /人工介入.*真實.*有效/.test(point)));
+  assert.ok(standards.keyPoints.some((point) => /持久記憶.*停止機制/.test(point)));
+  assert.equal(new URL(standards.sourceUrl).hostname, "www.redipd.org");
+  assert.equal(standards.verifiedAt, "2026-11-20");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "ripd-iberoamerican-ai-personal-data-standards-2026",
+  );
+  assert.equal(update.date, "2026-11-12");
+  assert.equal(update.verifiedAt, "2026-11-20");
+  assert.match(update.businessImpact, /不是新法.*各國法律仍決定/);
 });
 
 test("Ofgem energy AI assurance consultation remains a voluntary draft with operational evidence expectations", async () => {
