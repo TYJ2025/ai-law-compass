@@ -1,5 +1,32 @@
 [
   {
+    "id": "us-acus-generative-ai-agency-adjudication-rfi-2026",
+    "date": "2026-11-19",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "行政程序／生成式AI與聯邦機關裁決",
+    "importance": "中",
+    "title": "ACUS 就聯邦機關裁決使用生成式AI政策徵求意見",
+    "summary": "美國行政會議就裁決者、機關人員、當事人與代理人在聯邦行政裁決使用生成式AI徵詢意見，涵蓋揭露、準確性確認、深偽證據、保密、制裁及不同代理人標準；目前只是研究與建議形成程序。",
+    "authority": "Administrative Conference of the United States（ACUS）",
+    "keyDate": "2026-11-16 簽署；2026-11-19 聯邦公報刊登。公告原文稱刊登後60日截止，但正式網頁與API誤列已過去的2026-01-19，正確日期須待ACUS更正確認",
+    "affectedCompanies": "參與美國聯邦機關行政裁決、許可、福利、專利、移民、勞動或其他準司法程序的企業、律師、非律師代理人、專家、AI法律科技與證據工具供應商",
+    "background": "聯邦機關已對當事人與代理人使用生成式AI採取不同做法，有些要求揭露或確認人工查核，另有程序曾處理虛構權威、錯誤陳述及深偽證據。ACUS依法研究行政程序並向機關、總統、國會與司法機關提出非拘束性建議。",
+    "whatChanged": "ACUS正式啟動跨機關政策研究，提出10組問題，要求說明生成式AI在撰狀、研究、證據摘要、發現程序及逐字稿的使用，以及既有職業倫理是否足夠、機關是否應另訂規則、是否要求揭露或準確性確認、誤用後果，以及律師、非律師、自行代理人與政府律師是否採不同標準。",
+    "businessImpact": "這不是新規則、全國法院命令或已生效揭露義務，也不表示所有聯邦機關將採同一政策；但結果可能影響未來機關裁決中的AI揭露、人工驗證、保密、證據真實性與制裁。官方截止日期目前內部矛盾，不應自行把2027-01-19標示為已確認期限。",
+    "keyPoints": [
+      "涵蓋裁決者、其他機關人員、當事人、律師、非律師代理人及其他程序參與者。",
+      "徵詢AI撰狀、法律與非法律研究、證據摘要、發現程序及逐字稿等使用經驗。",
+      "特別詢問是否要求揭露AI使用或確認已人工查核輸出準確性。",
+      "風險包括虛構權威、錯誤陳述、保密與敏感資料，以及深偽證據。",
+      "ACUS最終成果是建議與最佳實務，不會自動成為各機關的拘束性程序規則。",
+      "聯邦公報原文採刊登後60日占位符，正式資料誤列2026-01-19，截止日須等待官方修正。"
+    ],
+    "action": "參與聯邦行政裁決的企業與律所應盤點各機關現行AI命令，建立撰狀、引證、證據與翻譯的人工查核、保密資料禁用、深偽驗證及使用紀錄；如要提交意見，先向ACUS確認截止日期，不依錯誤網頁日期自行計算。",
+    "sourceUrl": "https://www.federalregister.gov/documents/2026/11/19/2026-23539/policies-on-the-use-of-generative-super-intelligence-in-agency-adjudication-request-for-comments",
+    "verifiedAt": "2026-11-21"
+  },
+  {
     "id": "uk-ofgem-energy-ai-assurance-consultation-2026",
     "date": "2026-11-18",
     "jurisdiction": "英國",
@@ -26,6 +53,60 @@
     "action": "立即把現有能源 AI 用例對照七類成果，補強運作測試、持續監測、事故、決策日誌、人類覆核、董事會升級、供應鏈及集中風險證據；如指引的比例性、外部保證或資料取得會影響營運，於 2027-01-15 前向 Ofgem 提交意見。",
     "sourceUrl": "https://www.ofgem.gov.uk/consultation/approach-ai-assurance-energy-sector",
     "verifiedAt": "2026-11-18"
+  },
+  {
+    "id": "us-california-frontier-ai-safety-recommendations-2026",
+    "date": "2026-11-18",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "加州／前沿AI安全政策建議",
+    "importance": "高",
+    "title": "加州提出前沿AI強制標準、緊急停機與遞迴自我改進上限建議",
+    "summary": "加州政府發布專家政策建議，主張由州設定開發者基線、持續獨立驗證、擴大事故通報、緊急命令停機及限制遞迴自我改進；現階段是報告建議，不是新增已生效義務。",
+    "authority": "California Government Operations Agency；California Office of Emergency Services；Governor of California",
+    "keyDate": "2026-11-18 發布政策報告與州長新聞稿；後續立法、規則或行政措施日期尚未公布",
+    "affectedCompanies": "在加州開發或部署前沿模型、以AI自動化AI研發或遞迴自我改進的開發者，以及獨立驗證機構、AI稽核員、雲端與安全測試供應商",
+    "background": "加州已有SB 53前沿AI安全法、SB 813獨立驗證機構框架與AB 1405 AI稽核員登錄制度。州長另以行政命令召集專家，研究更高能力模型、環境外行動、緊急停機及AI參與下一代模型開發的監理缺口。",
+    "whatChanged": "新報告建議州政府設定所有AI開發者的基線安全標準，要求訓練、開發與部署各階段持續第三方測試與驗證，擴大重大安全事故通報並建立經驗證的風險控制與停機協定；另建議賦予州在緊急情況命令停止模型及限制遞迴自我改進開發或使用的權力。",
+    "businessImpact": "這些是專家報告與州長政策方向，不是自行執行的法律、命令或正式規則，不能描述為所有開發者已受停機或RSI上限約束；但它明確預示加州下一輪前沿AI立法與SB 813／AB 1405執行可能聚焦持續獨立驗證、事故控制、模型關閉能力及自動化研發透明。",
+    "keyPoints": [
+      "建議由州設定基線，而非由開發者自行決定全部安全標準。",
+      "獨立測試與驗證擬涵蓋訓練、開發與部署全階段。",
+      "事故通報範圍可能擴大，並要求可驗證的風險控制與停機協定。",
+      "建議建立州政府在緊急情況命令模型立即停機的權力。",
+      "建議可限制AI設計下一代模型的遞迴自我改進開發與使用。",
+      "報告尚未轉化為新法或規則，現行義務仍以已通過法令為準。"
+    ],
+    "action": "前沿模型開發者應把獨立驗證、全階段測試、重大事故、環境外行動、可證明停機及AI自動化研發納入加州法規雷達；同步保存現行SB 53、SB 813與AB 1405合規邊界，避免把建議提前當成法律。",
+    "sourceUrl": "https://www.gov.ca.gov/2026/11/18/governor-newsoms-nation-leading-ai-safety-framework-is-getting-even-stronger-as-california-releases-next-steps-on-mandatory-safety-standards-and-oversight/",
+    "verifiedAt": "2026-11-21"
+  },
+  {
+    "id": "us-new-york-oag-asset-ai-enforcement-unit-2026",
+    "date": "2026-11-17",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "紐約州／AI執法與監理能力",
+    "importance": "高",
+    "title": "紐約州檢察長成立ASSET專責AI安全與執法單位",
+    "summary": "紐約州檢察長成立AI Safety, Standards, Enforcement, and Transparency Unit，將主導2027年生效RAISE Act及其他AI、隱私、聊天機器人、深偽與消費者保護法律的執法並支援跨局調查。",
+    "authority": "Office of the New York State Attorney General（OAG）",
+    "keyDate": "2026-11-17 宣布成立；RAISE Act自2027-01-01生效；兒童聊天機器人安全法自2027年6月生效",
+    "affectedCompanies": "大型前沿模型開發者、AI聊天機器人與兒童產品、資料與資安業者、廣告及合成表演者使用者，以及可能受紐約消費者、隱私、詐欺或電腦犯罪法律調查的企業",
+    "background": "紐約已建立RAISE Act前沿模型安全公開與事故通報、聊天機器人自殺意念處理與人機揭露、兒童聊天機器人禁用功能、合成表演者揭露、深偽私密影像刑責及SHIELD Act合理資安等多套法律。",
+    "whatChanged": "OAG在經濟正義部門新設ASSET Unit，由專責團隊集中執行RAISE Act及其他AI安全法、研擬政策，並向OAG各局的隱私、數位詐欺、資安、線上安全、消費者與CFAA案件提供技術支援；單位亦明示接受AI公司內部人員檢舉。",
+    "businessImpact": "成立單位本身不新增法律義務或改變各法生效日，但代表紐約已建立集中技術與執法能力。受RAISE Act約束的前沿模型開發者應把2027-01-01公開安全措施與迅速報告事故視為近期執法準備重點，其他AI公司亦須把現有隱私、資安、消費者及聊天機器人義務納入同一事件升級路徑。",
+    "keyPoints": [
+      "ASSET將主導RAISE Act及其他紐約AI安全法的執法。",
+      "單位關注資料隱私、數位詐欺、資安、線上安全與消費者危害。",
+      "RAISE Act自2027-01-01生效，要求大型前沿模型開發者公開安全措施並迅速報告事故。",
+      "OAG亦可援用SHIELD Act、聊天機器人、深偽、合成表演者及一般不公平欺罔行為權限。",
+      "ASSET會提供跨局調查技術支援並研擬新政策提案。",
+      "專責單位成立不是新法，但提高既有AI法律協調執法的可能性。"
+    ],
+    "action": "在紐約營運的AI企業應建立OAG法規矩陣與集中事件升級，前沿模型開發者優先完成2027年RAISE Act安全公開與事故通報演練；聊天機器人、廣告與兒童產品團隊同步核對各自生效日、揭露、安全與內容限制。",
+    "sourceUrl": "https://ag.ny.gov/press-release/2026/attorney-general-james-announces-creation-ai-safety-standards-enforcement-and",
+    "verifiedAt": "2026-11-21"
   },
   {
     "id": "us-bis-remote-access-advanced-semiconductors-ifr-2026",
@@ -82,6 +163,34 @@
     "action": "確認組織與用例是否落入 Article 27，盤點 2027 年 12 月後的 Annex III 部署，建立六項要素、DPIA 交叉引用及主管機關通知工作底稿；如範本可用性會影響營運，於 2026-12-04 或 2027-01-15 前參與測試或提交意見。",
     "sourceUrl": "https://digital-strategy.ec.europa.eu/en/news/commission-seeks-feedback-draft-template-fundamental-rights-impact-assessment-under-ai-act",
     "verifiedAt": "2026-11-20"
+  },
+  {
+    "id": "china-mii-ai-humanoid-industry-standards-batch-2026",
+    "date": "2026-11-16",
+    "jurisdiction": "中國",
+    "flag": "CN",
+    "category": "推薦性標準／人形機器人、具身智慧與企業大模型",
+    "importance": "高",
+    "title": "中國發布9項AI與人形機器人SJ/T行業標準",
+    "summary": "工信部在274項行業標準批次中發布9項AI、人形機器人與具身智慧推薦性標準，涵蓋訓練資料全生命週期、智能化分級、鋼鐵大模型、企業合規大模型及具身資料生成。",
+    "authority": "中華人民共和國工業和信息化部（科技司）",
+    "keyDate": "2026-11-10 公告成文；2026-11-16 公開發布；8項自發布日起實施；SJ/T 12397—2026自2027-05-01實施",
+    "affectedCompanies": "在中國開發、製造、採購或評估人形機器人、具身智慧資料系統、鋼鐵大模型、企業合規大模型與相關訓練資料、測試、認證及系統整合的企業",
+    "background": "中國以SJ/T推薦性電子行業標準建立可供產品設計、資料管理、測試、採購與驗收引用的技術基準。第30號公告共批准274項化工、汽車、電子與通信等行業標準，其中序號118至126集中處理AI及人形機器人。",
+    "whatChanged": "新增的9項標準規範人形機器人訓練場與訓練資料全生命週期、智能化能力分級、電驅動關節與靈巧手；另建立鋼鐵AI場景與大模型資料集架構、企業合規大模型的業務認知／場景／安全要求，以及具身智慧資料生成系統框架。",
+    "businessImpact": "這些是推薦性SJ/T標準，不是強制AI許可或處罰規則；但一旦被採購、合同、招標、認證或主管機關政策引用，可能轉化為可稽核的設計與驗收基準。企業合規大模型標準另有2027-05-01實施日，不應與其餘立即實施標準混為一談。",
+    "keyPoints": [
+      "SJ/T 12354涵蓋訓練資料採集至銷毀的全生命週期。",
+      "SJ/T 12355建立人形機器人智能化能力分級與評定。",
+      "訓練場標準含安全、倫理、環境、網路及測試要求。",
+      "鋼鐵大模型資料集標準含清洗治理、知識融合、樣本成型與資料安全。",
+      "企業合規大模型標準涵蓋參考架構、合規認知、場景覆蓋與模型安全。",
+      "8項自發布日起實施，SJ/T 12397則自2027-05-01實施。",
+      "SJ/T屬推薦性標準，公告沒有創設一般強制義務。"
+    ],
+    "action": "取得適用的完整SJ/T文本，將資料、安全倫理、分級、測試與模型要求納入產品及供應商規格；檢查合同或招標是否引用標準並保存驗收證據，對企業合規大模型在2027-05-01前完成差距分析。",
+    "sourceUrl": "https://wap.miit.gov.cn/zwgk/zcwj/wjfb/gg/art/2026/art_eb2325cb1a844fe99958eb8d104a34fc.html",
+    "verifiedAt": "2026-11-21"
   },
   {
     "id": "australia-workplace-ai-adoption-guide-draft-2026",
@@ -414,6 +523,34 @@
     "verifiedAt": "2026-11-08"
   },
   {
+    "id": "australia-health-services-ai-guidance-draft-2026",
+    "date": "2026-11-05",
+    "jurisdiction": "澳洲",
+    "flag": "AU",
+    "category": "醫療AI／臨床治理與患者安全",
+    "importance": "高",
+    "title": "澳洲徵詢醫療服務AI全生命週期治理指引草案",
+    "summary": "澳洲醫療品質安全委員會提出14頁醫療服務AI治理草案，以導入前、實施、營運與持續管理三階段處理患者安全、法規、採購、資料、驗證、人類監督、透明同意、事故與退場。",
+    "authority": "Australian Commission on Safety and Quality in Health Care（ACSQHC）",
+    "keyDate": "2026-11-05 開放諮詢；2026-11-30 截止；預計2027年發布最終指引",
+    "affectedCompanies": "澳洲急性、基層與社區醫療服務、醫院董事會與主管、臨床人員、數位健康與醫材AI供應商，以及資料、採購、資安、測試和臨床治理團隊",
+    "background": "委員會既有臨床治理模型與供臨床人員使用的Pragmatic AI Guidance。新草案改從醫療機構層級處理誰核准、如何採購、測試、部署、監測、事故應變及退場，並支援第三版NSQHS Standards實施。",
+    "whatChanged": "草案首次建立14頁三階段組織治理路徑與角色表，要求先判斷AI是否適當、指定高階責任人、確認ARTG與隱私同意，將AI要求寫入採購契約，以本地資料與邊緣情境反覆驗證，上線後近即時監測並保留暫停、修正、退場、事件及患者補救能力。",
+    "businessImpact": "草案尚未定稿，不取代州法、Ahpra與National Boards專業義務、TGA醫材、隱私同意或既有臨床核准流程，也沒有新增認證或安全港；但醫療機構與供應商可預期最終指引將要求董事會可證明治理、在地驗證、患者透明與持續安全監測。",
+    "keyPoints": [
+      "三階段涵蓋導入前、實施，以及營運與持續管理。",
+      "董事會負治理與風險監督，臨床決定仍由獲授權人員負責。",
+      "部署前須判斷TGA醫材與ARTG、隱私、同意及患者安全要求。",
+      "契約應涵蓋效能、透明、更新、監測、事故責任及持續營運。",
+      "測試應使用本地或具代表性資料並涵蓋邊緣情境、公平與漂移。",
+      "上線後須能即時監測、暫停、退場並處理事故與受影響患者。",
+      "2026-11-30前可提交意見，最終指引預計2027年發布。"
+    ],
+    "action": "在11月30日前盤點醫療AI用例並完成ARTG判斷、治理責任、在地驗證、契約、透明同意、監測及退場差距；供應商準備模型版本、資料來源、限制、更新與事故通知證據，並視實務影響提交諮詢意見。",
+    "sourceUrl": "https://www.safetyandquality.gov.au/news-and-media/consultations/consultation-draft-artificial-intelligence-guidance-health-services",
+    "verifiedAt": "2026-11-21"
+  },
+  {
     "id": "us-doj-super-intelligence-task-force-2026",
     "date": "2026-11-05",
     "jurisdiction": "美國",
@@ -439,6 +576,34 @@
     "action": "將 DOJ-SITF 納入美國執法監測與事件升級矩陣，跨法務、資安、產品、競爭、詐欺與國安團隊檢查模型權限、測試、監控、事故、決策及補救紀錄；追蹤後續起訴與合規評估指引，再依正式文件調整控制與調查應對。",
     "sourceUrl": "https://www.justice.gov/opa/pr/department-justice-launches-super-intelligence-task-force",
     "verifiedAt": "2026-11-06"
+  },
+  {
+    "id": "us-occ-bank-ai-supervisory-framework-2026",
+    "date": "2026-11-04",
+    "jurisdiction": "美國",
+    "flag": "US",
+    "category": "銀行監理／生成式與代理式AI",
+    "importance": "高",
+    "title": "OCC發布銀行AI與代理式AI六支柱檢查框架",
+    "summary": "美國OCC以目的、風險、控制、監督、韌性與保證六支柱及16項組件，指導檢查人員依用例後果、自治、可逆性與人類監督評估銀行AI與代理式AI；明示不創設新銀行義務。",
+    "authority": "U.S. Office of the Comptroller of the Currency（OCC）",
+    "keyDate": "2026-11-04發布OCC Bulletin 2026-54；發布後供檢查人員使用；無獨立法定生效或過渡期限",
+    "affectedCompanies": "國家銀行、聯邦儲蓄協會、外國銀行聯邦分行與機構，以及向其提供生成式／代理式AI、模型、雲端、資料、金融科技、資安、測試和稽核服務的供應商",
+    "background": "銀行已在信用、支付、詐欺、客服、營運、風險與市場活動導入AI。OCC認為AI不是獨立風險類別，而會改變信用、法遵、營運與模型風險；代理可直接行動、連接工具及使用非人類身分，使傳統模型與IT控制需要補強。",
+    "whatChanged": "新檢查框架以六支柱整合16項組件，加入可測試目的與權限邊界、後果導向分級、真正人類介入、持續變更模型風險、提示與輸出資料、供應商代理、熔斷與kill switch、客戶補救、持續測試、可重建紀錄及獨立稽核，並提供AI模型與代理分開分級示例。",
+    "businessImpact": "文件不建立新監理期待、可執行標準或銀行自評義務，也不要求獨立AI風險胃納；但OCC檢查人員可用它判斷現有安全穩健、法遵、消費者、隱私、資安、模型與第三方控制是否足以涵蓋高後果及高度自治用例。",
+    "keyPoints": [
+      "分級看失敗後果、自治、可逆性、權限轉移及人類監督，而非只看模型技術。",
+      "六支柱展開為目的、分級、人類監督、治理、模型、資料、隱私、法遵、第三方等16組件。",
+      "人類覆核必須能理解、拒絕、修改、暫停或終止，形式點擊不足。",
+      "代理系統需最小權限、可觀測、熔斷、速率限制、kill switch與持續營運。",
+      "提示、輸出、嵌入與日誌可能包含敏感資料，須設定存取、保存與供應商再利用控制。",
+      "第三方更新、責任、事件、退出與共用模型／基礎設施集中風險均在檢查範圍。",
+      "框架非拘束性，但會作為檢查人員的監理判斷資源。"
+    ],
+    "action": "將AI與代理用例盤點對照六支柱和16組件，優先補強目的／權限、後果分級、真正人工介入、提示輸出資料、供應商變更、集中風險、熔斷與客戶補救，並準備向OCC說明既有義務如何涵蓋高後果用例。",
+    "sourceUrl": "https://occ.treas.gov/news-issuances/bulletins/2026/bulletin-2026-54.html",
+    "verifiedAt": "2026-11-21"
   },
   {
     "id": "eu-cjeu-like-company-rag-press-publisher-opinion-2026",

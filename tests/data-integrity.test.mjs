@@ -134,6 +134,8 @@ test("researched instruments link to official primary sources", async () => {
     "ec.europa.eu",
     "curia.europa.eu",
     "redipd.org",
+    "safetyandquality.gov.au",
+    "occ.treas.gov",
   ];
 
   for (const regulation of regulations) {
@@ -2024,6 +2026,106 @@ test("Australia workplace AI guide remains a voluntary consultation draft", asyn
   assert.equal(update.date, "2026-11-12");
   assert.equal(update.verifiedAt, "2026-11-14");
   assert.match(update.businessImpact, /自願性最佳實務.*不是新法.*安全港/);
+});
+
+test("China AI and humanoid industry standards preserve recommended status and mixed effective dates", async () => {
+  const regulations = await readRegulations();
+  const standards = regulations.find(
+    (regulation) => regulation.id === "china-mii-ai-humanoid-industry-standards-batch-2026",
+  );
+
+  assert.equal(standards.statusGroup, "指引");
+  assert.match(standards.status, /推薦性 SJ\/T.*非強制性法規/);
+  assert.match(standards.articleCount, /274項.*9項.*AI.*人形機器人/);
+  assert.match(standards.effectiveDate, /8 項自發布日起實施.*12397.*2027-05-01/);
+  assert.match(standards.transition, /推薦性行業標準.*未把它們轉為強制性法律義務/);
+  assert.ok(standards.keyPoints.some((point) => /訓練資料.*採集.*銷毀/.test(point)));
+  assert.ok(standards.keyPoints.some((point) => /企業合規大模型.*2027-05-01/.test(point)));
+  assert.ok(standards.keyPoints.some((point) => /推薦性.*未創設.*強制.*義務/.test(point)));
+  assert.equal(new URL(standards.sourceUrl).hostname, "wap.miit.gov.cn");
+  assert.equal(standards.verifiedAt, "2026-11-21");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "china-mii-ai-humanoid-industry-standards-batch-2026",
+  );
+  assert.equal(update.date, "2026-11-16");
+  assert.equal(update.verifiedAt, "2026-11-21");
+  assert.match(update.businessImpact, /推薦性SJ\/T標準.*不是強制AI許可或處罰規則/);
+});
+
+test("Australia health-service AI guidance remains a draft with lifecycle clinical governance", async () => {
+  const regulations = await readRegulations();
+  const draft = regulations.find(
+    (regulation) => regulation.id === "australia-health-services-ai-guidance-draft-2026",
+  );
+
+  assert.equal(draft.statusGroup, "草案");
+  assert.match(draft.status, /公開諮詢中.*尚未定稿.*既有法律與專業義務/);
+  assert.match(draft.articleCount, /14頁.*3個AI生命週期階段/);
+  assert.match(draft.transition, /2026-11-05.*2026-11-30.*2027年.*不取代/);
+  assert.ok(draft.keyPoints.some((point) => /TGA醫材.*ARTG/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /本地或具代表性資料.*邊緣情境/.test(point)));
+  assert.ok(draft.keyPoints.some((point) => /不取代州法.*安全港/.test(point)));
+  assert.equal(new URL(draft.sourceUrl).hostname, "www.safetyandquality.gov.au");
+  assert.equal(draft.verifiedAt, "2026-11-21");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "australia-health-services-ai-guidance-draft-2026",
+  );
+  assert.equal(update.date, "2026-11-05");
+  assert.equal(update.verifiedAt, "2026-11-21");
+  assert.match(update.businessImpact, /尚未定稿.*沒有新增認證或安全港/);
+});
+
+test("OCC bank AI framework remains non-binding while preserving agentic control depth", async () => {
+  const regulations = await readRegulations();
+  const framework = regulations.find(
+    (regulation) => regulation.id === "us-occ-bank-ai-supervisory-framework-2026",
+  );
+
+  assert.equal(framework.statusGroup, "指引");
+  assert.match(framework.status, /供檢查人員使用.*不建立新監理期待或可執行標準/);
+  assert.match(framework.articleCount, /17頁.*6大支柱.*16項框架組件/);
+  assert.match(framework.transition, /不要求銀行依此自評.*不建立新監理期待.*獨立AI風險類別/);
+  assert.ok(framework.keyPoints.some((point) => /潛在後果.*自治.*可逆性/.test(point)));
+  assert.ok(framework.keyPoints.some((point) => /名義核准.*無法介入不算有效控制/.test(point)));
+  assert.ok(framework.keyPoints.some((point) => /kill switch/.test(point)));
+  assert.equal(new URL(framework.sourceUrl).hostname, "occ.treas.gov");
+  assert.equal(framework.verifiedAt, "2026-11-21");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-occ-bank-ai-supervisory-framework-2026",
+  );
+  assert.equal(update.date, "2026-11-04");
+  assert.equal(update.verifiedAt, "2026-11-21");
+  assert.match(update.businessImpact, /不建立新監理期待.*檢查人員可用它判斷/);
+});
+
+test("new US regulatory signals preserve consultation, recommendation, and enforcement distinctions", async () => {
+  const updates = await readJson("data/updates.json");
+  const byId = new Map(updates.map((update) => [update.id, update]));
+  const acus = byId.get("us-acus-generative-ai-agency-adjudication-rfi-2026");
+  const california = byId.get("us-california-frontier-ai-safety-recommendations-2026");
+  const newYork = byId.get("us-new-york-oag-asset-ai-enforcement-unit-2026");
+
+  assert.equal(acus.date, "2026-11-19");
+  assert.match(acus.keyDate, /刊登後60日.*誤列.*2026-01-19.*待ACUS更正/);
+  assert.match(acus.businessImpact, /不是新規則.*截止日期目前內部矛盾/);
+  assert.equal(acus.verifiedAt, "2026-11-21");
+
+  assert.equal(california.date, "2026-11-18");
+  assert.match(california.businessImpact, /政策方向.*不是自行執行的法律、命令或正式規則/);
+  assert.ok(california.keyPoints.some((point) => /緊急情況.*停機/.test(point)));
+  assert.ok(california.keyPoints.some((point) => /遞迴自我改進/.test(point)));
+  assert.equal(california.verifiedAt, "2026-11-21");
+
+  assert.equal(newYork.date, "2026-11-17");
+  assert.match(newYork.businessImpact, /不新增法律義務.*RAISE Act.*2027-01-01/);
+  assert.ok(newYork.keyPoints.some((point) => /專責單位成立不是新法/.test(point)));
+  assert.equal(newYork.verifiedAt, "2026-11-21");
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
