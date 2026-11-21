@@ -2128,6 +2128,22 @@ test("new US regulatory signals preserve consultation, recommendation, and enfor
   assert.equal(newYork.verifiedAt, "2026-11-21");
 });
 
+test("DOJ OPR public AI misconduct signal preserves findings and pending discipline", async () => {
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "us-doj-opr-public-ai-confidential-data-misconduct-2026",
+  );
+
+  assert.equal(update.date, "2026-11-17");
+  assert.match(update.summary, /未經核准.*公開 AI 平台.*保護令.*醫療個資/);
+  assert.match(update.whatChanged, /魯莽.*明知且蓄意.*移送 PMRU/);
+  assert.match(update.businessImpact, /不是一般企業適用的新法律.*或已完成懲戒/);
+  assert.ok(update.keyPoints.some((point) => /未公布最終處分或懲戒/.test(point)));
+  assert.ok(update.keyPoints.some((point) => /個案專業責任調查結果.*不是新增一般企業/.test(point)));
+  assert.equal(new URL(update.sourceUrl).hostname, "www.justice.gov");
+  assert.equal(update.verifiedAt, "2026-11-22");
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
