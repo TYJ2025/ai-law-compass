@@ -2144,6 +2144,22 @@ test("DOJ OPR public AI misconduct signal preserves findings and pending discipl
   assert.equal(update.verifiedAt, "2026-11-22");
 });
 
+test("South Africa 90-day AI plan remains a policy directive, not a company deadline", async () => {
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "south-africa-national-ai-action-plan-90-day-directive-2026",
+  );
+
+  assert.equal(update.date, "2026-11-20");
+  assert.match(update.keyDate, /未來90日.*2027年2月.*正式計畫發布日尚未指定/);
+  assert.match(update.businessImpact, /政府內部交付時程.*不是.*企業90日合規期限/);
+  assert.ok(update.keyPoints.some((point) => /公共部門AI應用/.test(point)));
+  assert.ok(update.keyPoints.some((point) => /資料中心與AI運算投資/.test(point)));
+  assert.ok(update.keyPoints.some((point) => /資安.*關鍵基礎設施.*監理防護/.test(point)));
+  assert.equal(new URL(update.sourceUrl).hostname, "thepresidency.gov.za");
+  assert.equal(update.verifiedAt, "2026-11-23");
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
