@@ -2160,6 +2160,34 @@ test("South Africa 90-day AI plan remains a policy directive, not a company dead
   assert.equal(update.verifiedAt, "2026-11-23");
 });
 
+test("EU AI sandbox implementing regulation preserves future effect and no-safe-harbour limits", async () => {
+  const regulations = await readRegulations();
+  const rule = regulations.find(
+    (regulation) =>
+      regulation.id === "eu-ai-act-regulatory-sandbox-implementing-regulation-2026",
+  );
+
+  assert.equal(rule.statusGroup, "即將生效");
+  assert.match(rule.status, /2026-12-01.*生效.*直接適用/);
+  assert.match(rule.articleCount, /26.*10 條.*4 章/);
+  assert.match(rule.transition, /不另設一般企業過渡期.*不會自動開放特定沙盒/);
+  assert.ok(rule.keyPoints.some((point) => /中小企業.*優先.*免費/.test(point)));
+  assert.ok(rule.keyPoints.some((point) => /沒有歐盟.*授權代表/.test(point)));
+  assert.ok(rule.keyPoints.some((point) => /45 個工作日/.test(point)));
+  assert.ok(rule.keyPoints.some((point) => /不等同.*符合性聲明.*上市核准/.test(point)));
+  assert.ok(rule.keyPoints.some((point) => /健康、安全或基本權/.test(point)));
+  assert.equal(new URL(rule.sourceUrl).hostname, "eur-lex.europa.eu");
+  assert.equal(rule.verifiedAt, "2026-11-24");
+
+  const updates = await readJson("data/updates.json");
+  const update = updates.find(
+    (entry) => entry.id === "eu-ai-act-regulatory-sandbox-implementing-regulation-2026",
+  );
+  assert.equal(update.date, "2026-11-11");
+  assert.equal(update.verifiedAt, "2026-11-24");
+  assert.match(update.businessImpact, /不給參與者一般安全港.*不是符合性聲明、上市許可/);
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
