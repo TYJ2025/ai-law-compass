@@ -134,6 +134,7 @@ test("researched instruments link to official primary sources", async () => {
     "ec.europa.eu",
     "curia.europa.eu",
     "redipd.org",
+    "globalprivacyassembly.com",
     "safetyandquality.gov.au",
     "occ.treas.gov",
   ];
@@ -2186,6 +2187,45 @@ test("EU AI sandbox implementing regulation preserves future effect and no-safe-
   assert.equal(update.date, "2026-11-11");
   assert.equal(update.verifiedAt, "2026-11-24");
   assert.match(update.businessImpact, /不給參與者一般安全港.*不是符合性聲明、上市許可/);
+});
+
+test("GPA AI resolutions remain non-binding and preserve their distinct scopes", async () => {
+  const regulations = new Map((await readRegulations()).map((entry) => [entry.id, entry]));
+  const updates = new Map((await readJson("data/updates.json")).map((entry) => [entry.id, entry]));
+  const agentic = regulations.get("gpa-privacy-protective-agentic-ai-resolution-2026");
+  const education = regulations.get("gpa-ai-in-education-resolution-2026");
+
+  for (const entry of [agentic, education]) {
+    assert.equal(entry.statusGroup, "指引");
+    assert.match(entry.effectiveDate, /非拘束性決議，無法定生效日/);
+    assert.equal(entry.verifiedAt, "2026-11-25");
+    assert.equal(updates.get(entry.id).date, "2026-11-18");
+    assert.equal(updates.get(entry.id).verifiedAt, entry.verifiedAt);
+    assert.equal(updates.get(entry.id).sourceUrl, entry.sourceUrl);
+  }
+  assert.match(agentic.articleCount, /8 頁.*4 項正式決議/);
+  assert.match(agentic.scope, /公私部門組織.*個資.*不以純個人用途/);
+  assert.ok(agentic.keyPoints.some((point) => /日誌本身.*資料最小化.*保存期限/.test(point)));
+  assert.ok(agentic.keyPoints.some((point) => /重大影響.*申訴.*人工覆核/.test(point)));
+  assert.match(education.articleCount, /22 頁.*11 項.*6 項.*3 份/);
+  assert.match(education.scope, /正式教育前兩階段.*未滿 18 歲/);
+  assert.ok(education.keyPoints.some((point) => /原則上應禁止.*訓練.*例外須有法律依據/.test(point)));
+});
+
+test("ICO and OPC announcements do not present future guidance as published", async () => {
+  const updates = new Map((await readJson("data/updates.json")).map((entry) => [entry.id, entry]));
+  const ico = updates.get("uk-ico-consumer-agentic-ai-privacy-expectations-2026");
+  const opc = updates.get("canada-opc-personalized-algorithmic-pricing-guidance-announcement-2026");
+
+  assert.equal(ico.date, "2026-11-24");
+  assert.equal(ico.verifiedAt, "2026-11-25");
+  assert.match(ico.keyDate, /2027 年春季.*未公布確切日期/);
+  assert.match(ico.businessImpact, /不是最終指引、新法、上市前核准/);
+  assert.equal(opc.date, "2026-11-23");
+  assert.equal(opc.verifiedAt, "2026-11-25");
+  assert.match(opc.keyDate, /開始、截止及發布日期皆未定/);
+  assert.match(opc.businessImpact, /尚非諮詢草案、最終指引、禁令或違法判定/);
+  assert.ok(opc.keyPoints.some((point) => /PIPEDA 第 5\(3\) 條.*合理人/.test(point)));
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
