@@ -2228,6 +2228,38 @@ test("ICO and OPC announcements do not present future guidance as published", as
   assert.ok(opc.keyPoints.some((point) => /PIPEDA 第 5\(3\) 條.*合理人/.test(point)));
 });
 
+test("NIST uplift evaluation remains voluntary and open for comment", async () => {
+  const regulations = await readRegulations();
+  const id = "us-nist-sp-2400-801-uplift-evaluation-draft-2026";
+  const draft = regulations.find((entry) => entry.id === id);
+  const update = (await readJson("data/updates.json")).find((entry) => entry.id === id);
+
+  assert.equal(draft.statusGroup, "草案");
+  assert.match(draft.effectiveDate, /非強制性文件.*未設法定生效日/);
+  assert.match(draft.articleCount, /3 個實務章節.*11 項實務.*45 頁/);
+  assert.match(draft.transition, /2027-02-22.*並非企業採用期限/);
+  assert.match(draft.scope, /使用者、部署者、整合商與評估團隊/);
+  assert.equal(draft.verifiedAt, "2026-11-26");
+  assert.equal(update.date, "2026-11-24");
+  assert.equal(update.verifiedAt, draft.verifiedAt);
+  assert.equal(update.sourceUrl, draft.sourceUrl);
+  assert.match(update.businessImpact, /自願性文件草案.*不是新法律、強制認證/);
+});
+
+test("Japan AI agent liability agenda remains a study, not a legal change", async () => {
+  const id = "japan-ai-digital-expert-panel-agent-liability-2026";
+  const updates = await readJson("data/updates.json");
+  const update = updates.find((entry) => entry.id === id);
+
+  assert.equal(update.date, "2026-11-24");
+  assert.equal(update.verifiedAt, "2026-11-26");
+  assert.match(update.keyDate, /2026-12-03.*預定時程.*未公布法案或生效日期/);
+  assert.match(update.businessImpact, /並非法案、正式法律解釋.*企業期限/);
+  assert.ok(update.keyPoints.some((point) => /逾越使用者授權.*待研議/.test(point)));
+  assert.equal(new URL(update.sourceUrl).hostname, "www.digital.go.jp");
+  assert.ok(!(await readRegulations()).some((entry) => entry.id === id));
+});
+
 test("regulatory updates contain actionable compliance analysis", async () => {
   const updates = await readJson("data/updates.json");
   assert.ok(updates.length >= 13);
