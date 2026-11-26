@@ -114,6 +114,7 @@ test("researched instruments link to official primary sources", async () => {
     "digital.gov.au",
     "legislation.gov.au",
     "oaic.gov.au",
+    "esafety.gov.au",
     "fwc.gov.au",
     "mcv.vic.gov.au",
     "planalto.gov.br",
@@ -130,6 +131,7 @@ test("researched instruments link to official primary sources", async () => {
     "cas.go.jp",
     "digital.go.jp",
     "pmda.go.jp",
+    "shugiin.go.jp",
     "moenv.gov.tw",
     "ec.europa.eu",
     "curia.europa.eu",
@@ -2258,6 +2260,43 @@ test("Japan AI agent liability agenda remains a study, not a legal change", asyn
   assert.ok(update.keyPoints.some((point) => /逾越使用者授權.*待研議/.test(point)));
   assert.equal(new URL(update.sourceUrl).hostname, "www.digital.go.jp");
   assert.ok(!(await readRegulations()).some((entry) => entry.id === id));
+});
+
+test("Japan's APPI amendment distinguishes enacted law from uncommenced AI exceptions", async () => {
+  const id = "japan-appi-2026-statistical-use-amendment";
+  const regulations = await readRegulations();
+  const entry = regulations.find((regulation) => regulation.id === id);
+  const update = (await readJson("data/updates.json")).find((item) => item.id === id);
+  assert.equal(entry.statusGroup, "尚未生效");
+  assert.match(entry.promulgationDate, /2026-07-10.*2026-07-17.*法律第 56 號/);
+  assert.match(entry.articleCount, /正文 3 條.*附則 17 條/);
+  assert.match(entry.effectiveDate, /公布日起兩年內由政令指定施行日；確切日期未定/);
+  assert.match(entry.transition, /統計製作等特例不屬提前施行部分/);
+  assert.ok(entry.keyPoints.some((point) => /事前公開規定事項.*書面或電子合意/.test(point)));
+  assert.ok(entry.keyPoints.some((point) => /境外接收者.*持續維持相當保護措施/.test(point)));
+  assert.equal(update.date, "2026-11-25");
+  assert.equal(update.verifiedAt, entry.verifiedAt);
+  assert.match(update.whatChanged, /統計製作等.*12 月上旬.*2027 年 1 月下旬預定/);
+});
+
+test("online-safety cooperation and US state filings do not create general duties or decisions", async () => {
+  const regs = new Map((await readRegulations()).map((item) => [item.id, item]));
+  const updates = new Map((await readJson("data/updates.json")).map((item) => [item.id, item]));
+  const gosrnId = "gosrn-ai-generated-abuse-imagery-position-statement-2026";
+  const statement = regs.get(gosrnId);
+  const character = updates.get("us-character-ai-bankruptcy-states-data-sale-objection-2026");
+  const grok = updates.get("us-oregon-virginia-grok-state-consumer-protection-suits-2026");
+  assert.equal(statement.statusGroup, "指引");
+  assert.match(statement.effectiveDate, /非拘束性.*無法定生效日/);
+  assert.match(statement.articleCount, /7 頁.*無法律條文/);
+  assert.match(updates.get(gosrnId).businessImpact, /不統一違法內容定義.*不自行增設/);
+  assert.match(character.keyDate, /2026-11-20.*26-11603-BLS.*文件 219/);
+  assert.match(character.businessImpact, /不是法院已禁止、核准或完成資料移轉/);
+  assert.match(grok.whatChanged, /Multnomah County.*Richmond City.*另案起訴/);
+  assert.match(grok.businessImpact, /不是新法律或已證實違法.*不是法院判給/);
+  for (const item of [statement, updates.get(gosrnId), character, grok]) {
+    assert.equal(item.verifiedAt, "2026-11-27");
+  }
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
