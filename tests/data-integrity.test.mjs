@@ -402,18 +402,21 @@ test("India telecom AI consultation preserves draft status and unresolved report
   assert.match(draft.promulgationDate, /2026-10-30.*12 頁/);
   assert.match(draft.effectiveDate, /尚未生效.*日期待定/);
   assert.match(draft.articleCount, /12 頁.*A–D.*11 項定義/);
-  assert.match(draft.transition, /2026-11-27.*七個工作日.*目前均為提案/);
+  assert.match(draft.transition, /2026-11-27 延至 2026-12-04.*七個工作日.*目前均為提案/);
+  assert.match(draft.nextDeadline, /^2026-12-04/);
   assert.ok(draft.keyPoints.some((point) => /高、中、低風險.*關鍵、高、中、低嚴重度/.test(point)));
   assert.ok(draft.keyPoints.some((point) => /格式、方式或時限.*不能自行推定/.test(point)));
   assert.equal(new URL(draft.sourceUrl).hostname, "www.trai.gov.in");
-  assert.equal(draft.verifiedAt, "2026-11-01");
+  assert.equal(draft.verifiedAt, "2026-11-28");
 
   const updates = await readJson("data/updates.json");
   const update = updates.find(
     (entry) => entry.id === "india-trai-telecom-ai-draft-guidelines-2026",
   );
-  assert.equal(update.date, "2026-10-30");
-  assert.match(update.summary, /意見 11 月 27 日截止.*尚未生效/);
+  assert.equal(update.date, "2026-11-26");
+  assert.equal(update.verifiedAt, draft.verifiedAt);
+  assert.match(update.summary, /書面意見期至 12 月 4 日.*尚未生效/);
+  assert.match(update.sourceUrl, /PR_No162of2026\.pdf$/);
   assert.match(update.businessImpact, /目前所有 shall 條款仍是草案/);
 });
 
@@ -2297,6 +2300,36 @@ test("online-safety cooperation and US state filings do not create general dutie
   for (const item of [statement, updates.get(gosrnId), character, grok]) {
     assert.equal(item.verifiedAt, "2026-11-27");
   }
+});
+
+test("UK intimate image takedown duties are in force while the Ofcom codes are under consultation", async () => {
+  const id = "uk-intimate-image-takedown-crime-policing-act-2026";
+  const law = (await readRegulations()).find((entry) => entry.id === id);
+  const update = (await readJson("data/updates.json")).find((entry) => entry.id === id);
+  assert.equal(law.statusGroup, "生效");
+  assert.match(law.effectiveDate, /2026-06-29.*2026\/689/);
+  assert.match(law.articleCount, /第 100、101 條共 2 條/);
+  assert.match(law.transition, /未因守則諮詢而暫緩.*2027-01-20 17:00/);
+  assert.ok(law.keyPoints.some((point) => /48 小時.*上限.*須更快/.test(point)));
+  assert.ok(law.keyPoints.some((point) => /搜尋服務.*阻止.*相同或實質相同/.test(point)));
+  assert.equal(law.verifiedAt, "2026-11-28");
+  assert.equal(update.date, "2026-11-25");
+  assert.equal(update.verifiedAt, law.verifiedAt);
+  assert.match(update.businessImpact, /不應等待.*已生效的法定義務/);
+});
+
+test("AI exports program and companion research are not represented as legal obligations", async () => {
+  const updates = new Map((await readJson("data/updates.json")).map((entry) => [entry.id, entry]));
+  const exportsProgram = updates.get("us-ita-ai-exports-on-demand-consortia-2026");
+  const companions = updates.get("uk-ofcom-artificial-intimacy-discussion-paper-2026");
+
+  assert.equal(exportsProgram.date, "2026-11-27");
+  assert.match(exportsProgram.keyDate, /91 FR 76747–76749.*11-30 開放申請/);
+  assert.match(exportsProgram.businessImpact, /不是.*融資承諾或出口許可/);
+  assert.equal(companions.date, "2026-11-24");
+  assert.match(companions.businessImpact, /不是正式指引、官方政策立場或新義務/);
+  assert.equal(exportsProgram.verifiedAt, "2026-11-28");
+  assert.equal(companions.verifiedAt, "2026-11-28");
 });
 
 test("regulatory updates contain actionable compliance analysis", async () => {
